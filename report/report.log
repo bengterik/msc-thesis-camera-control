@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.23)  24 JAN 2023 12:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.23)  24 JAN 2023 12:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/alexander/git/MSc-thesis-camera-control/report/msccls/MScTemplateCS.tex
-(/Users/alexander/git/MSc-thesis-camera-control/report/msccls/MScTemplateCS.tex
+**/Users/alexander/git/MSc-thesis-camera-control/report/report.tex
+(/Users/alexander/git/MSc-thesis-camera-control/report/report.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-02-24> (./cslthse-msc.cls
 Document Class: cslthse-msc 2020/09/18 v1.6 Masters Thesis Class, Department of Electrical and Information Technology, Lund University
@@ -568,8 +568,8 @@ LaTeX Font Info:    Font shape `T1/CormorantGaramond-LF/m/n' aliased to
 (Font)              `T1/CormorantGaramond-LF/regular/n' on input line 64.
 LaTeX Font Info:    Font shape `T1/CormorantGaramond-LF/regular/n' will be
 (Font)              scaled to size 12.0pt on input line 64.
- (./MScTemplateCS.aux)
-\openout1 = `MScTemplateCS.aux'.
+ (./report.aux)
+\openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
 LaTeX Font Info:    ... okay on input line 64.
@@ -657,9 +657,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 64.
 LaTeX Info: Redefining \pageref on input line 64.
 LaTeX Info: Redefining \nameref on input line 64.
- (./MScTemplateCS.out) (./MScTemplateCS.out)
+ (./report.out) (./report.out)
 \@outlinefile=\write3
-\openout3 = `MScTemplateCS.out'.
+\openout3 = `report.out'.
 
  (/usr/local/texlive/2022/texmf-dist/tex/latex/pdflscape/pdflscape.sty
 Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
@@ -807,9 +807,9 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has b
 l.67 \makefrontmatter
                       [4
 
-] (./MScTemplateCS.toc)
+] (./report.toc)
 \tf@toc=\write4
-\openout4 = `MScTemplateCS.toc'.
+\openout4 = `report.toc'.
 
  [5] [6
 
@@ -870,7 +870,7 @@ LaTeX Font Info:    Font shape `T1/CormorantGaramond-LF/m/n' aliased to
 (Font)              `T1/CormorantGaramond-LF/regular/n' on input line 244.
 LaTeX Font Info:    Font shape `T1/CormorantGaramond-LF/regular/n' will be
 (Font)              scaled to size 7.0pt on input line 244.
- [14] (./MScTemplateCS.bbl
+ [14] (./report.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 4--7
 []\T1/CormorantGaramond-LF/regular/n/12 Commonwealth Forestry As-so-ci-a-tion.  On-line guide to sci-en-tific writ-ing.
  []
@@ -935,7 +935,7 @@ File: popsci/popsci.pdf Graphic file (type pdf)
 <use popsci/popsci.pdf, page 1>
 Package pdftex.def Info: popsci/popsci.pdf , page1 used on input line 374.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
- [24 <./popsci/popsci.pdf>] (./MScTemplateCS.aux)
+ [24 <./popsci/popsci.pdf>] (./report.aux)
 
  *File List*
 cslthse-msc.cls    2020/09/18 v1.6 Masters Thesis Class, Department of Electrical and Information Technology, Lund University
@@ -1028,8 +1028,8 @@ epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
  nameref.sty    2021-04-02 v2.47 Cross-referencing by name of section
 refcount.sty    2019/12/15 v3.6 Data extraction from label references (HO)
 gettitlestring.sty    2019/12/15 v1.6 Cleanup title references (HO)
-MScTemplateCS.out
-MScTemplateCS.out
+  report.out
+  report.out
 pdflscape.sty    2019/12/05 v0.12 Display of landscape pages in PDF (HO)
   lscape.sty    2020/05/28 v3.02 Landscape Pages (DPC)
    cover.jpg    Graphic file (type jpg)
@@ -1042,26 +1042,26 @@ LUlogoRGB.png    Graphic file (type png)
 TS1CormorantGaramond-LF.fd    2019/12/11 (autoinst) Font definitions for TS1/CormorantGaramond-LF.
 examplepic1.pdf    Graphic file (type pdf)
 examplepic3.jpg    Graphic file (type jpg)
-MScTemplateCS.bbl
+  report.bbl
 popsci/popsci.pdf
 popsci/popsci.pdf
 popsci/popsci.pdf
 popsci/popsci.pdf
  ***********
 
-Package rerunfilecheck Info: File `MScTemplateCS.out' has not changed.
+Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: C5DDDE9BF2C04D0579EE9D00CB7D244F;2256.
  ) 
 Here is how much of TeX's memory you used:
- 15742 strings out of 478268
- 263493 string characters out of 5846347
- 569398 words of memory out of 5000000
+ 15741 strings out of 478268
+ 263277 string characters out of 5846347
+ 569363 words of memory out of 5000000
  33564 multiletter control sequences out of 15000+600000
  648677 words of font info for 128 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 85i,17n,131p,769b,666s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 85i,17n,131p,755b,666s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cormorantgaramond/cgrm_v7t4yx.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-qx.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-rm.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cormorantgaramond/cgrm_hnmd4t.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cormorantgaramond/cgrm_xwhmgi.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cormorantgaramond/cgrm_yah5fp.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/catharsis/cormorantgaramond/CormorantGaramond-Bold.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/catharsis/cormorantgaramond/CormorantGaramond-Italic.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/catharsis/cormorantgaramond/CormorantGaramond-Regular.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmtt12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qtmri.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/txex.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb>
-Output written on MScTemplateCS.pdf (30 pages, 958598 bytes).
+Output written on report.pdf (30 pages, 958598 bytes).
 PDF statistics:
  454 PDF objects out of 1000 (max. 8388607)
  367 compressed objects within 4 object streams
