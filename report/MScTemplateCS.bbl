@@ -1,0 +1,56 @@
+\begin{thebibliography}{10}
+
+\bibitem{OGSW}
+{Commonwealth Forestry Association}.
+\newblock On-line guide to scientific writing.
+\newblock http://www.cfa-international.org/ONGSWfinish.html.
+
+\bibitem{CTAN}
+CTAN.
+\newblock Comprehensive tex archive network.
+\newblock \url{http://www.ctan.org}.
+
+\bibitem{few2012show}
+S.~Few.
+\newblock {\em Show Me the Numbers: Designing Tables and Graphs to Enlighten}.
+\newblock Analytics Press, 2012.
+
+\bibitem{goossens93}
+Michel Goossens, Frank Mittelbach, and Alexander Samarin.
+\newblock {\em The LaTeX Companion}.
+\newblock Addison-Wesley, Reading, Massachusetts, 1993.
+
+\bibitem{heffernan2000writing}
+J.A.W. Heffernan, J.E. Lincoln, and J.~Atwill.
+\newblock {\em Writing: A College Handbook}.
+\newblock W.W. Norton, 2000.
+
+\bibitem{shortstyleguide}
+University of~Washington.
+\newblock Style points for scientific writing.
+\newblock
+  \url{http://www.psych.uw.edu/writingcenter/writingguides/pdf/style.pdf}.
+
+\bibitem{fontspec}
+Will Robertson and Khaled Hosny.
+\newblock The fontspec package, May 2012.
+\newblock \url{http://ctan.uib.no/macros/latex/contrib/fontspec/fontspec.pdf}.
+
+\bibitem{Tufte:1986}
+Edward~R. Tufte.
+\newblock {\em The visual display of quantitative information}.
+\newblock Graphics Press, Cheshire, CT, USA, 1986.
+
+\bibitem{yalesentences}
+{Yale Graduate Writing Center}.
+\newblock The most common sentence structure problems.
+\newblock
+  \url{http://www.yale.edu/graduateschool/writing/forms/The%20Most%20Common%20Sentence%20Structure%20Problems.pdf}.
+
+\bibitem{subjectverb}
+{yourdictionary.com}.
+\newblock 20 rules of subject verb agreement.
+\newblock
+  \url{http://grammar.yourdictionary.com/sentences/20-Rules-of-subject-verb-agreement.html}.
+
+\end{thebibliography}
