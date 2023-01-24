@@ -1,0 +1,2 @@
+# Report resources #
+This directory contains the formatting, text and image resources in the report as provided by the template from the Department of Computer Science at Lund University. A compiled PDF-version of the report, "report.pdf", can be viewed. 
