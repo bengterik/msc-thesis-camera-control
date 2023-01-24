@@ -26,14 +26,14 @@
 
 %\title{Formatting a Master's Thesis}
 \title{Drone Camera Control at Varying Latency: A Quality of Experience Study}
-\svensktitel{Kamerastyrning på en Drönare vid Varierande Latens: en Studie i Upplevelsekvalité}
+\svensktitel{Kamerastyrning på en Drönare vid Varierande Latens: en Studie i Operatörsupplevelse}
 
 %\onelinetitle
 %\twolinestitle
 \threelinestitle
 %\fourlinestitle
 
-\subtitle{A {\LaTeX} class}
+%\subtitle{A suitable subtitle}
 \company{the Swedish Sea Rescue Society and the Department of Electrical and Information Technology, Lund University}
 \supervisors{Fredrik Falkman, \href{mailto:fredrik.falkman@ssrs.se}{\texttt{fredrik.falkman@ssrs.se}}}{William Tärneberg, \href{mailto:william.tarneberg@eit.lth.se}{\texttt{william.tarneberg@eit.lth.se}}}
 %\supervisor{John Deer, \href{mailto:jdeer@company.com}{\texttt{jdeer@company.com}}}
@@ -67,6 +67,47 @@ Leave a \textit{2cm} vertical space after the abstract and provide a few keyword
 \makefrontmatter
 \chapter[Introduction]{Introduction}
 This is a reference to \cite{Industry4}.
+% Should use consistent formatting when it comes to Names ("FirstName LastName", or "F. LastName")
+%\printbibliography
+\makebibliography{MyMSc}
+
+\begin{appendices}
+\chapter{About This Document}
+The following environments and tools were used to create this document:
+\begin{itemize}
+\item operating system: Mac OS X 10.14
+\item tex distribution: MacTeX-2014, \url{http://www.tug.org/mactex/}
+\item tex editor: Texmaker 5.0.2 for Mac, \url{http://www.xm1math.net/texmaker/} for its XeLaTeX flow (recommended) or pdfLaTeX flow
+\item bibtex editor: BibDesk 1.6.3 for Mac, \url{http://bibdesk.sourceforge.net/}
+\item fonts \texttt{cslthse-msc.cls} document class): 
+\begin{description}
+\item{for XeLaTeX}: TeX Gyre Termes, \textsf{TeX Gyre Heros}, \texttt{TeX Gyre Cursor} (installed from the TeXLive 2013)
+\item{for pdfLaTeX}: TeX Gyre font packages: tgtermes.sty, tgheros.sty, tgcursor.sty, gtxmath.sty (available through TeXLive 2013) 
+\end{description} 
+\item picture editor: OmniGraffle Professional 5.4.2
+\end{itemize}
+
+\noindent A list of the essential \LaTeX packages needed to compile this document follows (all except \texttt{hyperref} are included in the document class):
+\begin{itemize}
+\item \texttt{fontspec}, to access local fonts, needs the XeLaTeX flow
+\item \texttt{geometry}, for page layout
+\item \texttt{titling}, for formatting the title page
+\item \texttt{fancyhdr}, for custom headers and footers
+\item \texttt{abstract}, for customizing the abstract
+\item \texttt{titlesec}, for custom chapters, sections, etc.
+\item \texttt{caption}, for custom tables and figure captions
+\item \texttt{hyperref}, for producing PDF with hyperlinks
+\item \texttt{appendix}, for appendices
+\item \texttt{printlen}, for printing text sizes
+\item \texttt{textcomp}, for text companion fonts (e.g. bullet)
+\item \texttt{pdfpages}, to include the popular science summary page at the end
+\end{itemize}
+
+\noindent Other useful packages:
+\begin{itemize}
+\item \texttt{listings}, for producing code listings with syntax colouring and line numbers
+\end{itemize}
+
 \section{Page Size and Margins}
 Use A4 paper, with the text margins given in Table \ref{tab:margins}.
 \begin{table}[!hbt]
@@ -249,116 +290,7 @@ Occasionally these sections are intermingled, if this allows for a better presen
 \item[Appendices] should contain lengthy details of the experimental setup, mathematical proofs, code download information, and shorter code snippets. Avoid longer code listings. Source code should rather be made available for download on a website or on-line repository of your choosing.
 
 \end{description}
-% Should use consistent formatting when it comes to Names ("FirstName LastName", or "F. LastName")
-%\printbibliography
-\makebibliography{MyMSc}
 
-\begin{appendices}
-\chapter{About This Document}
-The following environments and tools were used to create this document:
-\begin{itemize}
-\item operating system: Mac OS X 10.14
-\item tex distribution: MacTeX-2014, \url{http://www.tug.org/mactex/}
-\item tex editor: Texmaker 5.0.2 for Mac, \url{http://www.xm1math.net/texmaker/} for its XeLaTeX flow (recommended) or pdfLaTeX flow
-\item bibtex editor: BibDesk 1.6.3 for Mac, \url{http://bibdesk.sourceforge.net/}
-\item fonts \texttt{cslthse-msc.cls} document class): 
-\begin{description}
-\item{for XeLaTeX}: TeX Gyre Termes, \textsf{TeX Gyre Heros}, \texttt{TeX Gyre Cursor} (installed from the TeXLive 2013)
-\item{for pdfLaTeX}: TeX Gyre font packages: tgtermes.sty, tgheros.sty, tgcursor.sty, gtxmath.sty (available through TeXLive 2013) 
-\end{description} 
-\item picture editor: OmniGraffle Professional 5.4.2
-\end{itemize}
-
-\noindent A list of the essential \LaTeX packages needed to compile this document follows (all except \texttt{hyperref} are included in the document class):
-\begin{itemize}
-\item \texttt{fontspec}, to access local fonts, needs the XeLaTeX flow
-\item \texttt{geometry}, for page layout
-\item \texttt{titling}, for formatting the title page
-\item \texttt{fancyhdr}, for custom headers and footers
-\item \texttt{abstract}, for customizing the abstract
-\item \texttt{titlesec}, for custom chapters, sections, etc.
-\item \texttt{caption}, for custom tables and figure captions
-\item \texttt{hyperref}, for producing PDF with hyperlinks
-\item \texttt{appendix}, for appendices
-\item \texttt{printlen}, for printing text sizes
-\item \texttt{textcomp}, for text companion fonts (e.g. bullet)
-\item \texttt{pdfpages}, to include the popular science summary page at the end
-\end{itemize}
-
-\noindent Other useful packages:
-\begin{itemize}
-\item \texttt{listings}, for producing code listings with syntax colouring and line numbers
-\end{itemize}
-
-\chapter{List of Changes}
-
-\subsubsection{Since 2020/09/18}
-\begin{itemize}
-\item Added the Swedish title displayed on page 3. Use \verb+\svensktitel{...}+ command to set it.
-\item Converted the default LU-CS-EX number to a magic number, \verb+2023-79+, easy to find and change in PDF with \verb+changepagestring.pl+; this is a \verb+perl+ command line utility found in \verb+CAM::PDF+ module -- but only works on some PDFs (e.g. generated with \verb+pdflatex+) but not others (e.g. \verb+xelatex+) \textbf{[CS internal use]}
-\end{itemize}
-
-\subsubsection{Since 2019/10/30}
-\begin{itemize}
-\item Bibliography is now called References. This can be easily adjusted by changing \\ \verb+\renewcommand{\bibname}{References}+ after \verb+\begin{document}+.
-\end{itemize}
-
-\subsubsection{Since 2019/04/01}
-\begin{itemize}
-\item Added the \texttt{nofilelist} option in to the package. By default the list of packages is displayed at the end of the document, before the pop-sci. With the option, the file list is not displayed. Used mainly for debug purposes. Ignore warnings and the two errors about the \texttt{fontenc.sty}
-\end{itemize}
-
-\subsubsection{Since 2018/11/21}
-\begin{itemize}
-\item Added the report cover to the template (along with the archive cover, as the 2nd page). This includes the front cover and back as the pop-sci article. Once the report is ready for print, the authors will receive a report number, of the format \texttt{LU-CS-EX 2019-NN}. Generate the report using this number in the template, to get a print-ready pdf.
-\item Changed both the report and pop-sci template to use \verb+\student+ or \verb+\students+ commands instead of \verb+\author+.
-\item Clarified the difference between {\em Results} and {\em Discussion} sections in a report.
-\item Added more information about the use of {\em References}.
-\item Added {\em LTH} colours in the template and description in {\em Colours}.
-\end{itemize}
-
-\subsubsection{Since 2016/04/29}
-\begin{itemize}
-\item A better template for the popular science summary, by Magnus Hultin.
-\end{itemize}
-
-\subsubsection{Since 2015/09/11}
-\begin{itemize}
-\item Added a template for the popular science summary, in the \verb+popsci+ directory.
-\item Added code in the report that imports the one page popular science \texttt{pdf} at the end of the document.
-\end{itemize}
-
-\subsubsection{Since 2015/04/27}
-\begin{itemize}
-\item Improved the \textbf{Structure} chapter and added more detailed comments for each part.
-\end{itemize}
-
-\subsubsection{Since 2014/02/18}
-\begin{itemize}
-\item Added the possibility to specify two supervisors. Use either of the \verb+\supervisor{}+ or \verb+\supervisors{}{}+ commands to set the names and contacts on the first page.
-\end{itemize}
-
-\subsubsection{Since 2013/09/23}
-\begin{itemize}
-\item Added missing colon ":" after \textit{Examiner} on the front page. 
-\end{itemize}
-
-\subsubsection{Since 2013/08/30}
-\begin{itemize}
-\item Changed fonts from Garamond ( Times New Roman ), Helvetica ( Arial ), Courier ( Source Code Pro ) to Tex Gyre fonts, namely Termes, Heros, Cursor, which are freely available with TexLive 2013 installation. These are all clones of Times New Roman, Helvetica and Courier, respectively. Garamond is problematic on some systems, being a non-freely available font.
-\item Corrected the \textit{Face} column in Table \ref{tab:fonts} to correctly depict the font face.
-\end{itemize}
-
-\subsubsection{Since 2013/02/22}
-\begin{itemize}
-\item Number of words required in the abstract changed to 150 (from 300).
-\end{itemize}
-
-\subsubsection{Since 2013/02/15}
-\begin{itemize}
-\item Made a separate document class, for clarity.
-\item made it work with pdfLaTeX and garamond.sty, in addition to XeLaTeX and true type fonts. It is up to the user to get the hold of the garamond.zip from \url{http://gael-varoquaux.info/computers/garamond/index.html}.
-\end{itemize}
 
 % display used packages information unless noflielist is used in the cslthse-msc package option
 \printfilelist
