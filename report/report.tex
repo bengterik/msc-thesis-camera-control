@@ -65,23 +65,29 @@ Leave a \textit{2cm} vertical space after the abstract and provide a few keyword
 
 \makefrontmatter
 \chapter{Introduction}
-The Swedish Sea Rescue Society (SSRS) with its 40 employees along with 2300 volunteers are responsible for around 90\% of sea rescues in Sweden. To make these missions more successful and effective SSRS is innovating with new technologies, where one of them is to have drones that will fly out to the location of a reported emergency and get eyes-on-sight before the rescue boat and its’ crew arrives.
+
 
 This thesis aims to compare a few different ways in which a camera onboard of a drone can be controlled in real-time and evaluate the operator’s experience with the different controls at different latencies. The different controls are to be evaluated through a Quality of Experience (QoE) user experiment, where subjective measurements will be collected from experienced and unexperienced drone operators performing a task with the different controls.
 
 \chapter{Background}
-Currently, SSRS has a drone connected to the mobile network that can fly towards and loiter around a set of waypoints given on a map, while also providing video from the gimbal mounted camera. The drone flies with a hardware module running the autopilot software ArduPilot which also supports camera gimbal control. The mechanical gimbal assembly supports three degrees of freedom, however, the software necessary for remotely controlling the camera gimbal is not implemented.
 
-Furthermore, SSRS does not have an estimate of the latency of the video-feed from the drone, making it difficult to determine how the
-camera should be controlled, be it by swiping, pressing they arrow-keys
+This thesis work is a collaboration between the Swedish Sea Rescue Society and the Department of Electrical and Information Technology at (+the Faculty of Engineering?) Lund University.
+
+\section{Motivation}
+Furthermore, SSRS does not have an estimate of the latency of the video-feed from the drone, making it difficult to determine how the camera should be controlled, be it by swiping, pressing they arrow-keys
 or setting a location on a map for it to look at. In the emerging field of research around drones and remote control there is a clear correlation between latency and the operator’s experience. However, a comparison of different types of controls and their effect on the operator at different latencies is, as far as the student’s knowledge goes, not documented in the current body of research.
 
-The technical challenges that SSRS face align very well with the challenges that are posed in general so called “Industry 4.0”-applications,
-and the harsh conditions under which the drone operates, i.e. flying above
 
 This is a reference to ~\cite{Industry4}.
 
 \section{Swedish Sea Rescue Society}
+As can be read on their website \cite{ssrs}, the Swedish Sea Rescue Society (SSRS) is a non-profit organization which was founded at a conference in Stockholm 1906 due to Sweden receiving criticism of its' poor sea rescue. Today, it is a foundation with 40 employees and over 143 000 members, and with their 2400 volunteers manning their different rescue vessels they carry out around 90\% of all sea rescues in Sweden all year around.
+
+\subsection{Innovation}
+To make these missions more successful and effective SSRS is innovating with new technologies, where one of them is to have drones that will fly out to the location of a reported emergency and get eyes-on-sight before the rescue boat and its’ crew arrives.
+
+Currently, SSRS has a drone connected to the mobile network that can fly towards and loiter around a set of waypoints given on a map, while also providing video from the gimbal mounted camera. The drone flies with a hardware module running the autopilot software ArduPilot which also supports camera gimbal control. The mechanical gimbal assembly supports three degrees of freedom, however, the software necessary for remotely controlling the camera gimbal is not implemented.
+
 \section{Quality of Experience}
 \section{Previous Work}
 
