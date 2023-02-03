@@ -74,7 +74,7 @@ This thesis aims to compare a few different ways in which a camera onboard a dro
 This thesis work is a collaboration between the Swedish Sea Rescue Society and the Department of Electrical and Information Technology at (+the Faculty of Engineering?) Lund University. 
 
 \section{Motivation}
-With the promise of real-time remote control over 5G, the systems of tomorrow will be heavily reliant on the uptime and latency of the network, making these systems exposed to vulnerabilities should the network experience high contingency or failure. Therefore, Having a system that can operate in a degraded state, i.e. with high latency, is a necessity. Furthermore, when 5G is more widely adopted and stable, there might also be different plans (i.e. costs) giving different latencies, giving the user a choice of how much they want to pay for latency that their particular application needs.  
+With the promise of real-time remote control over 5G, the systems of tomorrow will be heavily reliant on the uptime and latency of the network, making these systems exposed to vulnerabilities should the network experience high contingency or failure. Therefore, Having a system that can operate in a degraded state, i.e. with high latency, is a necessity. Furthermore, when 5G is more widely adopted and stable, Internet Service Providers might offer plans with different latencies, giving the user a choice of how much they want to pay for latency that their particular application needs.  
 
 In the emerging field of research around drones and remote control
 there is a clear correlation between latency and the operator’s experience.
@@ -99,8 +99,9 @@ This is a reference to ~\cite{Industry4}.
 As can be read on their website \cite{ssrs}, the Swedish Sea Rescue Society (SSRS) is a non-profit organization that was founded at a conference in Stockholm in 1906 due to Sweden receiving criticism of its' poor sea rescue. Today, it is a foundation with 40 employees and over 143 000 members, and with their 2400 volunteers manning their different rescue vessels, they carry out around 90\% of all sea rescues in Sweden all year around.
 
 \subsection{Innovation}
-To make these missions more successful and effective SSRS is innovating with new technologies, and one of them is to have drones that will fly out to the location of a reported emergency and get eyes-on-sight before the rescue boat and its’ crew arrives.
+ As stated in their statutes \cite{ssrs-statues}, the mission of SSRS is not solely to carry out these rescue missions but to also innovate and collaborate in the area of maritime rescue as well as other aiding activities in society as a whole. As a result of this, the drone project that this thesis is a part of has been conceived along with other innovation projects such as foiling rescue boats or improved rescue vehicles \cite{surtsey-innovation}.
 
+\subsection{Drone Project}
 Currently, SSRS has a drone connected to the mobile network that can fly towards and loiter around a set of waypoints given on a map, while also providing video from the gimbal-mounted camera. The drone flies with a hardware module running the autopilot software ArduPilot which also supports camera gimbal control. The mechanical gimbal assembly supports three degrees of freedom, however, the software necessary for remotely controlling the camera gimbal is not implemented.
 
 \section{Quality of Experience}
