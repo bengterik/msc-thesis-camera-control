@@ -69,28 +69,14 @@ Leave a \textit{2cm} vertical space after the abstract and provide a few keyword
 
 This thesis aims to compare a few different ways in which a camera onboard a drone can be controlled in real-time and evaluate the operator’s experience with the different controls at different latencies. The different controls are to be evaluated through a Quality of Experience (QoE) user experiment, where subjective measurements will be collected from experienced and inexperienced drone operators performing a task with the different controls.
 
-\chapter{Background}
-
 This thesis work is a collaboration between the Swedish Sea Rescue Society and the Department of Electrical and Information Technology at (+the Faculty of Engineering?) Lund University. 
 
-With the promise of real-time remote control over 5G, the systems of tomorrow will be heavily reliant on the uptime and latency of the network, making these systems exposed to vulnerabilities should the network experience high contingency or failure. Therefore, Having a system that can operate in a degraded state, i.e. with high latency, is a necessity. Furthermore, when 5G is more widely adopted and stable, Internet Service Providers might offer plans with different latencies, giving the user a choice of how much they want to pay for latency that their particular application needs.  
+\chapter{Background}
+With the promise of real-time remote control over 5G, the systems of tomorrow will be heavily reliant on the uptime and latency of the network, making these systems exposed to vulnerabilities should the network experience high contingency or failure. Therefore, Having a system that can operate in a degraded state, i.e. with high latency, is a necessity. Furthermore, when 5G is more widely adopted and stable, Internet Service Providers (ISPs) might offer plans with different latencies, giving the user a choice of how much they want to pay for latency that their particular application needs.  
 
-In the emerging field of research around drones and remote control
-there is a clear correlation between latency and the operator’s experience.
-However, a comparison of different types of controls and their effect on
-the operator at different latencies is, as far as the student’s knowledge
-goes, not documented in the current body of research.
+In the emerging field of research around drones and remote control, there is a clear correlation between latency and the operator’s experience. However, a comparison of different types of controls and their effect on the operator at different latencies are, as far as the student’s knowledge goes, not documented in the current body of research. The technical challenges that SSRS faces align very well with the challenges that are posed in general so-called “Industry 4.0”, and the highly dynamic environment in which the drone will operate along with the area of operation being far from any land-based infrastructure make a good case to employ learning outcomes from previous QoE research. 
 
-The technical challenges that SSRS face align very well with the
-challenges that are posed in general so-called “Industry 4.0”-applications,
-and the harsh conditions under which the drone operates---flying above
-the sea---makes a strong argument for applying the learning outcomes from
-previous QoE research.
-
-
-Furthermore, SSRS does not have an estimate of the latency of the video feed from the drone, making it difficult to determine how the camera should be controlled, be it by swiping, pressing they arrow-keys
-or setting a location on a map for it to look at. In the emerging field of research around drones and remote control, there is a clear correlation between latency and the operator’s experience. However, a comparison of different types of controls and their effect on the operator at different latencies are, as far as the student’s knowledge goes, not documented in the current body of research.
-
+Furthermore, SSRS does not have an estimate of the latency of the video feed from the drone, making it difficult to determine how the camera should be controlled, be it by swiping, pressing the arrow keys or setting a location on a map for it to look at. In the emerging field of research around drones and remote control, there is a clear correlation between latency and the operator’s experience. However, a comparison of different types of controls and their effect on the operator at different latencies are, as far as the student’s knowledge goes, not documented in the current body of research.
 
 This is a reference to ~\cite{Industry4}.
 
@@ -100,7 +86,7 @@ As can be read on their website \cite{ssrs}, the Swedish Sea Rescue Society (SSR
 \subsection{Innovation}
  As stated in their statutes \cite{ssrs-statues}, the mission of SSRS is not solely to carry out these rescue missions but to also innovate and collaborate in the area of maritime rescue as well as other aiding activities in society as a whole. As a result of this, the drone project that this thesis is a part of has been conceived along with other innovation projects such as foiling rescue boats and improved rescue vehicles \cite{surtsey-innovation}.
 
-\subsection{The Drone Project Eyes On Sight}
+\subsection{Eyes On Sight}
 Currently, SSRS has a drone connected to the mobile network that can fly towards and loiter around a set of waypoints given on a map, while also providing video from the gimbal-mounted camera. The drone flies with a hardware module running the autopilot software ArduPilot which also supports camera gimbal control. The mechanical gimbal assembly supports three degrees of freedom, however, the software necessary for remotely controlling the camera gimbal is not implemented.
 
 \section{Quality of Experience}
@@ -112,7 +98,6 @@ In the white paper \cite{qoe-definition}, Brunström et al. make a working defin
    \textit{Quality of Experience (QoE) is the degree of delight or annoyance of the user of an application or service. It results from the fulfillment of his or her expectations with respect to the utility and / or enjoyment of the application or service in the light of the user’s personality and current state.} 
 \end{quote}
 
-Although there are strong con Quality of Service
 
 \section{Previous Work}
 
@@ -120,8 +105,10 @@ W. Tärneberg et al. \cite{industry4.0} present a QoE study with industrial equi
 
 K. Brunnström et al. \cite{latency-impact} performed a study on log lifting using a head-mounted display system. In the study, latency is introduced both in the display's response to movement as well as the controls. The display delay was found to have a strong effect on nausea, but an observable effect on controller latency could only be found at latencies above 800 ms. 
 
+\section{Technology}
+
+
 \chapter{Method}
-\section{Hardware}
 \section{Experimental Setup}
 \section{Experimental Procedure}
 
