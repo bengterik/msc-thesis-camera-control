@@ -105,7 +105,39 @@ W. Tärneberg et al. \cite{industry4.0} present a QoE study with industrial equi
 
 K. Brunnström et al. \cite{latency-impact} performed a study on log lifting using a head-mounted display system. In the study, latency is introduced both in the display's response to movement as well as the controls. The display delay was found to have a strong effect on nausea, but an observable effect on controller latency could only be found at latencies above 800 ms. 
 
-\section{Technology}
+\section{Hardware}
+This chapter will briefly go through the main components of hardware that have been used in this thesis.
+
+\subsection{Flight controller}
+The flight controller is the brain of the aircraft and houses the following components:
+\begin{itemize}
+   \item Central Processing Unit (CPU)
+   \item Ardupilot firmware (described in \ref*{sec:ardupilot})
+   \item accelerometer
+   \item connector to external GPS receiver
+   \item servo-connectors for aircraft control surfaces and gimbal
+\end{itemize}
+   
+\subsection{Raspberry Pi 4}
+The Raspberry serves as the onboard computer, commonly known as the "companion computer" in the context of drone hardware. It is connected to the flight controller via USB and relays messages between the flight controller and the ground station (software mavlink-router \ref{sec:mavlink-router}) over its internet connection. In the SSRS drone, the Raspberry has a 4G modem which is what allows the drone to fly beyond visual line-of-sight (BVLOS).
+
+\subsection{Gimbal}
+The gimbal used in the experiment is designed and manufactured by Fredrik Falkman at the SSRS. It is a 3D-printed design that has three degrees of freedom made possible by 3 three servos placed in its hull. The servos are connected to the flight controller which provides them with power. The gimbal also hosts a Raspberry Pi Camera Module which is directly connected to the Raspberry with a ribbon cable.  
+
+\section{Software}
+This chapter will briefly go through the main components of the software that have been used in this thesis.
+
+\subsection{ArduPilot}
+\label{sec:ardupilot}
+
+\subsection{MAVLink}
+
+
+\subsection{mavlink-router}
+\label{sec:mavlink-router}
+
+\subsection{Pymavlink}
+
 
 
 \chapter{Method}
