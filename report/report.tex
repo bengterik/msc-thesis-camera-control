@@ -65,8 +65,6 @@ Leave a \textit{2cm} vertical space after the abstract and provide a few keyword
 
 \makefrontmatter
 \chapter{Introduction}
-
-
 This thesis aims to compare a few different ways in which a camera onboard a drone can be controlled in real-time and evaluate the operator’s experience with the different controls at different latencies. The different controls are to be evaluated through a Quality of Experience (QoE) user experiment, where subjective measurements will be collected from experienced and inexperienced drone operators performing a task with the different controls.
 
 This thesis work is a collaboration between the Swedish Sea Rescue Society and the Department of Electrical and Information Technology at (+the Faculty of Engineering?) Lund University. 
@@ -119,25 +117,27 @@ The flight controller is the brain of the aircraft and houses the following comp
 \end{itemize}
    
 \subsection{Raspberry Pi 4}
-The Raspberry serves as the onboard computer, commonly known as the "companion computer" in the context of drone hardware. It is connected to the flight controller via USB and relays messages between the flight controller and the ground station (software mavlink-router \ref{sec:mavlink-router}) over its internet connection. In the SSRS drone, the Raspberry has a 4G modem which is what allows the drone to fly beyond visual line-of-sight (BVLOS).
+The Raspberry serves as the onboard computer, commonly known as the "companion computer" in the context of drone hardware. It is connected to the flight controller via USB and relays messages between the flight controller and the ground station (through mavlink-router \ref{sec:mavlink-router}) over its connection to the Internet. In the SSRS drone, the Raspberry has a 4G modem which is what allows the drone to fly beyond visual line-of-sight (BVLOS).
 
 \subsection{Gimbal}
-The gimbal used in the experiment is designed and manufactured by Fredrik Falkman at the SSRS. It is a 3D-printed design that has three degrees of freedom made possible by 3 three servos placed in its hull. The servos are connected to the flight controller which provides them with power. The gimbal also hosts a Raspberry Pi Camera Module which is directly connected to the Raspberry with a ribbon cable.  
+The gimbal used in the experiment is designed and manufactured by Fredrik Falkman at the SSRS. It is a 3D-printed design that has three degrees of freedom made possible by three servos connected to drive belts that control each axis of the camera. The servos are connected to the flight controller which also provides them with power. The gimbal also hosts a Raspberry Pi Camera Module which is directly connected to the Raspberry with a ribbon cable.  
 
 \section{Software}
 This chapter will briefly go through the main components of the software that have been used in this thesis.
 
-\subsection{ArduPilot}
+\subsection{Firmware: ArduPlane}
 \label{sec:ardupilot}
+The firmware running on the flight controller is called ArduPlane, which is part of the open-source autopilot software suite ArduPilot that enables the creation of unmanned, autonomous vehicles \cite{ardupilot-org}. It is developed by a community of developers and is available on GitHub \cite{ardupilot-github}.
 
-\subsection{MAVLink}
+\subsection{Protocol: MAVLink}
+As can be read on their website \cite{mavlink}, MAVLink is a lightweight protocol suited for communication with drones and between drone components. It has a byte overhead of only 14 bytes and allows for concurrent communication between up to 255 systems. 
 
-
-\subsection{mavlink-router}
+\subsection{Software: mavlink-router}
 \label{sec:mavlink-router}
+The software mavlink-router is a daemon that allows for the routing of MAVLink messages between multiple endpoints \cite{mavlink-router}. In this thesis it is run on the companion computer to relay MAVLink messages between the flight controller and the ground station.
 
-\subsection{Pymavlink}
-
+\subsection{Package: pymavlink}
+This package is the Python interface to the MAVLink protocol, available at \cite{pymavlink}. In this thesis it is used to send and receive MAVLink messages on the GCS.
 
 
 \chapter{Method}
