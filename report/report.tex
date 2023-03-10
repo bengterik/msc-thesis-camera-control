@@ -106,7 +106,13 @@ K. Brunnström et al. \cite{latency-impact} performed a study on log lifting usi
 \section{System Overview}
 Due to the amount of software components executing on different machines in this control system, this section aims to provide an initial overview for the reader to understand its architecture.
 
-First, the system will be divided into components, then each of the components will be described in more detail.
+First, the system will be divided into components, then each of the components will be described in more detail. A visual overview of the system is shown in Figure \ref{fig:system-overview}.
+\begin{figure}[!hbt]
+   \centering
+   \includegraphics[scale=0.5]{system-overview.png} 
+   \caption{An overview of the entire system. On the left, the drone and its' components including the RPi, RPi camera module and the flight controller are shown. On the right, the ground station and its' components including the web application, Janus server and the controller are shown. The colour of the connections represent what data they transfer, where orange is video, orange double-line is video negotiation and yellow is control.}
+   \label{fig:system-overview}
+\end{figure}
 
 \subsection{Components}
 The complete system can be divided in two, where on component is the video feed and the other is the control of the gimbal, although some components are used in both.
@@ -127,9 +133,6 @@ The control of the gimbal involves the following components:
    \item pymavlink: Python library to send commands to flight controller
    \item MAVProxy: software running on a companion computer to relay messages between the flight controller and the ground station
 \end{itemize}
-
-
-
 
 \section{Hardware}
 This chapter will briefly go through the main components of hardware that have been used in this thesis.
@@ -179,7 +182,7 @@ The experimental setup consists of the following components:
    \item GCS: 
    \begin{itemize}
       \item Computer running the video feed
-      \item controller with joystick 
+      \item Controller with joystick 
    \end{itemize}
    
    \item Gimbal and object
