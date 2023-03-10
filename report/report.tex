@@ -164,6 +164,9 @@ As can be read on their website \cite{mavlink}, MAVLink is a lightweight protoco
 \label{sec:mavlink-router}
 The software mavlink-router is a daemon that allows for the routing of MAVLink messages between multiple endpoints \cite{mavlink-router}. In this thesis it is run on the companion computer to relay MAVLink messages between the flight controller and the ground station.
 
+\subsection{Software: MAVProxy}
+MAVProxy is a software running on the companion computer whose main task is to relay MAVLink messages between the flight controller and the ground station \cite{mavproxy}. This is required as a mobile network modem cannot be connected directly to the flight controller. 
+
 \subsection{Package: pymavlink}
 This package is the Python interface to the MAVLink protocol, available at \cite{pymavlink}. In this thesis it is used to send and receive MAVLink messages on the GCS.
 
