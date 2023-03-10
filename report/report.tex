@@ -103,6 +103,34 @@ W. Tärneberg et al. \cite{industry4.0} present a QoE study with industrial equi
 
 K. Brunnström et al. \cite{latency-impact} performed a study on log lifting using a head-mounted display system. In the study, latency is introduced both in the display's response to movement as well as the controls. The display delay was found to have a strong effect on nausea, but an observable effect on controller latency could only be found at latencies above 800 ms. 
 
+\section{System Overview}
+Due to the amount of software components executing on different machines in this control system, this section aims to provide an initial overview for the reader to understand its architecture.
+
+First, the system will be divided into components, then each of the components will be described in more detail.
+
+\subsection{Components}
+The complete system can be divided in two, where on component is the video feed and the other is the control of the gimbal, although some components are used in both.
+
+The video feed involves the following components:
+\begin{itemize}
+   \item Raspberry Pi Camera Module: records video
+   \item Raspberry Pi 4: sends the video feed to the Janus server
+   \item Janus Server: establishes a WebRTC connection to the web browser
+   \item Web Browser: displays the video feed
+\end{itemize}
+
+The control of the gimbal involves the following components:
+\begin{itemize}
+   \item Raspberry Pi 4: relays messages between the flight controller and the ground station, often referred to as companion computer.
+   \item Flight Controller: controls all flight and gimbal functions
+   \item Web Browser: user inputs from joystick
+   \item pymavlink: Python library to send commands to flight controller
+   \item MAVProxy: software running on a companion computer to relay messages between the flight controller and the ground station
+\end{itemize}
+
+
+
+
 \section{Hardware}
 This chapter will briefly go through the main components of hardware that have been used in this thesis.
 
@@ -139,8 +167,10 @@ The software mavlink-router is a daemon that allows for the routing of MAVLink m
 \subsection{Package: pymavlink}
 This package is the Python interface to the MAVLink protocol, available at \cite{pymavlink}. In this thesis it is used to send and receive MAVLink messages on the GCS.
 
-
 \chapter{Method}
+
+
+
 \section{Experimental Setup}
 \section{Experimental Procedure}
 
