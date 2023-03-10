@@ -165,19 +165,22 @@ As can be read on their website \cite{mavlink}, MAVLink is a lightweight protoco
 
 \subsection{Software: mavlink-router}
 \label{sec:mavlink-router}
-The software mavlink-router is a daemon that allows for the routing of MAVLink messages between multiple endpoints \cite{mavlink-router}. In this thesis it is run on the companion computer to relay MAVLink messages between the flight controller and the ground station.
+The software mavlink-router is a daemon that allows for the routing of MAVLink messages between multiple endpoints \cite{mavlink-router}. In this thesis, it is run on the companion computer to relay MAVLink messages between the flight controller and the ground station.
 
 \subsection{Software: MAVProxy}
 MAVProxy is a software running on the companion computer whose main task is to relay MAVLink messages between the flight controller and the ground station \cite{mavproxy}. This is required as a mobile network modem cannot be connected directly to the flight controller. 
 
 \subsection{Package: pymavlink}
-This package is the Python interface to the MAVLink protocol, available at \cite{pymavlink}. In this thesis it is used to send and receive MAVLink messages on the GCS.
+This package is the Python interface to the MAVLink protocol, available at \cite{pymavlink}. In this thesis, it is used to send and receive MAVLink messages on the GCS.
 
-\subsection{Uv4l}
-Uv4l is a streaming server solution that supports real-time communication protocols such as WebRTC \cite{uv4l}. In this thesis it is the software used to stream the local video feed over the web. 
+\subsection{UV4L}
+UV4L is a video streaming server that supports real-time communication protocols such as WebRTC \cite{uv4l}. In this thesis, it is the software used to stream the local video feed over the web. 
+
+\subsection{Janus Server}
+As described on their webpage \cite{janus}, Janus is a plugin-based software that helps establish WebRTC connections. In this thesis it is used to establish the connection between the UV4L server and the web browser, enabling the peer-to-peer connection between the two devices.
 
 \chapter{Method}
-This chapter will describe the method used to perform the experiment.
+This chapter will describe the method used in the experiment.
 
 \section{Experimental Setup}
 The experimental setup consists of the following components:
