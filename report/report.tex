@@ -207,10 +207,14 @@ The experimental setup consists of the following components:
 \end{itemize}
 
 \section{Evalutation}
-The evaluation of the experiment will be done by both quantative and qualitative methods.
+The following two sections will describe the quantative and qualitative methods that are used to evaluate the performance of the system. 
 
 \subsection{Quantative Evaluation}
-Have object detection running in the background and measure the error to the object.
+To quantify the performance of the test subject a printed apriltag will be attached on top of the robot that the subject will try to follow. The view from the camera will be recorded during the experiment and then an image recognition software will be used to detect the position of the robot. 
+
+This will make it possible to calculate the distance of the recognized object to the center of the video feed which then can be used to measure the performance of the test subject.
+
+An Apriltag is a QR-code that contains bigger squares, thus making it easier to recognize for a computer vision algorithm
 
 \subsection{Qualitative Evaluation}
 The user will get to respond to a QoE- as well as a sickness questionnaire after the experiment.
