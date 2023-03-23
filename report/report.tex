@@ -239,8 +239,9 @@ Being a real-time application over the Internet, there are many parts of the sys
 However, while one particular architecture might meet requierments in one area, for example latency, it can make other parts of the system more complex or computationally expensive. In order to balance the different tradeoffs the specific application in has to be taken into account. 
 
 \section{WebRTC and data channels}
-The use of WebRTC along with Janus enables two units to talk to one another directly over the web, removing a potential server from the  in order to reduce latency one could see that it would be benificial 
+The use of WebRTC along with Janus enables two units to talk to one another directly over the web, removing a potential server that has to process the video feed and the relay it forward. However, if one would like to record the video and save it on a server the feed now has to be redirected to the server from either the system of the end user or the drone itself. 
 
+One part of WebRTC that was of particular interest during the implementation was data channels. These are meant to be utilized to send small amounts of data along with the videopackets utilizing the already established P2P to transmit for example a time stamp or control commands. In UV4L it is possible to check a box that automatically ties the gyroscope of a device to the output of three servos. Since the control in this project goes through the Ardupilot firmware one would need to implement a relay running on the companion computer, which there was not time for in the implementation part of this project. 
 
 \chapter{Conclusion}
 
