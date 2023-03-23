@@ -222,6 +222,9 @@ An Apriltag is a QR-code that contains bigger squares, thus making it easier to 
 \subsection{Qualitative Evaluation}
 After each trial set the subject will answer questions regarding their perceived quality of experience with the system. They will also get to answer a sickness questionnaire, following standard questionnaire provided by \cite{SICKNESSQ}.
 
+\subsection{Auto-follow mode}
+As a proof of concept, an auto-follow mode was implemented in the application using real-time object detection of the video feed. Although it is not optimal to have that high latency introduced in the control-loop, it is of interest as the resource heavy object detection algorithm does not stress the hardware on the drone. The mode is evaluated with the same methods as the rest of the experiment, although the user is just passively watching the feed.  
+
 \chapter{Results}
 
 \chapter{Discussion}
