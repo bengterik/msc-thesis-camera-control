@@ -65,9 +65,9 @@ Leave a \textit{2cm} vertical space after the abstract and provide a few keyword
 
 \makefrontmatter
 \chapter{Introduction}
-This thesis aims to compare a few different ways in which a camera onboard a drone can be controlled in real-time and evaluate the operator’s experience with the different controls at different latencies. The different controls are to be evaluated through a Quality of Experience (QoE) user experiment, where subjective measurements will be collected from experienced and inexperienced drone operators performing a task with the different controls.
+In this thesis, gimbal control for drones running the ArduPilot firmware is implemented. The gimbal control software is used as a test bed evaluating quality of experience of a drone operator at different latencies. Furthermore, it was also integrated in the running flight stack of SSRS and tested in a real flight scenario (hopefully). 
 
-This thesis work is a collaboration between the Swedish Sea Rescue Society and the Department of Electrical and Information Technology at (+the Faculty of Engineering?) Lund University. 
+% The thesis work is a collaboration between the Swedish Sea Rescue Society and the Department of Electrical and Information Technology at (+the Faculty of Engineering?) Lund University.
 
 \section{Motivation}
 With the promise of real-time remote control over 5G, the systems of tomorrow will be heavily reliant on the uptime and latency of the network, making these systems exposed to vulnerabilities should the network experience high contingency or failure. Therefore, Having a system that can operate in a degraded state, i.e. with high latency, is a necessity. Furthermore, when 5G is more widely adopted and stable, Internet Service Providers (ISPs) might offer plans with different latencies, giving the user a choice of how much they want to pay for latency that their particular application needs.  
@@ -103,6 +103,9 @@ In the white paper \cite{qoe-definition}, Brunström et al. make a working defin
 W. Tärneberg et al. \cite{industry4.0} present a QoE study with industrial equipment on an excavation site where experienced operators controlled their usual equipment remotely at different latencies. 
 
 K. Brunnström et al. \cite{latency-impact} performed a study on log lifting using a head-mounted display system. In the study, latency is introduced both in the display's response to movement as well as the controls. The display delay was found to have a strong effect on nausea, but an observable effect on controller latency could only be found at latencies above 800 ms. 
+
+\chapter{Method}
+This chapter will describe the system as a whole, followed by a description of the experimental setup and procedure.
 
 \section{System Overview}
 Due to the amount of software components executing on different machines in this control system, this section aims to provide an initial overview for the reader to understand its architecture.
@@ -184,9 +187,6 @@ UV4L is a video streaming server that supports real-time communication protocols
 
 \subsection{Janus Server}
 As described on their webpage \cite{janus}, Janus is a plugin-based software that helps establish WebRTC connections. In this thesis it is used to establish the connection between the UV4L server and the web browser, enabling the peer-to-peer connection between the two devices.
-
-\chapter{Method}
-This chapter will describe the method used in the experiment.
 
 \section{Experimental Setup}
 The experimental setup consists of the following components:
