@@ -163,9 +163,14 @@ The firmware running on the flight controller is called ArduPlane, which is part
 \subsection{Protocol: MAVLink}
 As can be read on their website \cite{mavlink}, MAVLink is a lightweight protocol suited for communication with drones and between drone components. It has a byte overhead of only 14 bytes and allows for concurrent communication between up to 255 systems. 
 
-\subsection{Software: mavlink-router}
-\label{sec:mavlink-router}
-The software mavlink-router is a daemon that allows for the routing of MAVLink messages between multiple endpoints \cite{mavlink-router}. In this thesis, it is run on the companion computer to relay MAVLink messages between the flight controller and the ground station.
+% \subsection{Software: mavlink-router}
+% \label{sec:mavlink-router}
+% The software mavlink-router is a daemon that allows for the routing of MAVLink messages between multiple endpoints \cite{mavlink-router}. In this thesis, it is run on the companion computer to relay MAVLink messages between the flight controller and the ground station.
+% % @misc{mavlink-router,
+% title = {MAVLink-router, GitHub},
+% howpublished = {\url{https://github.com/mavlink-router/mavlink-router}},
+% note = {Accessed: 2023-02-13}
+% }
 
 \subsection{Software: MAVProxy}
 MAVProxy is a software running on the companion computer whose main task is to relay MAVLink messages between the flight controller and the ground station \cite{mavproxy}. This is required as a mobile network modem cannot be connected directly to the flight controller. 
