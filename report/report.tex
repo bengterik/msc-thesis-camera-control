@@ -198,31 +198,10 @@ As described on their webpage \cite{janus}, Janus is a plugin-based software tha
 In order to move the DRONE/OBJECT, a slightly modified hoverboard is used. The hoverboard can be controlled by a game controller or follow a set of points using the internal coordinate system that is set up in the lab. This makes it possible to have the hoverboard run in the exact same route over and over again. 
 
 \chapter{Method}
-This chapter will describe the experimental setup as well as how the experiment will be evaluated.
+This chapter will describe the experimental setup, procedure and evaluation.
 
 \section{Experimental Setup}
-The experimental setup consists of the following components:
-\begin{itemize}
-   \item GCS: 
-   \begin{itemize}
-      \item Computer running the video feed
-      \item Controller with joystick 
-   \end{itemize}
-   
-   \item Camera gimbal and hoverboard
-   \begin{itemize}
-      \item Camera
-      \item An object to follow
-   \end{itemize}
-\end{itemize}
-
-The full experimental setup is illustrated in figure \ref{fig:exp-setup}. 
-
-\subsection{Subject view}
-When entering the room the subject is instructed to sit by the desk next to the conductor.
-
-\subsection{Hoverboard}
-There path of the hoverboard is a 2x1 meter large elipse and slightly to the  the shelf the camera gimbal is placed about 2.1 meters from the ground.
+The experiment was set up in a lab where the subject and the conductor sits at a desk with a high shelf behind them obscuring the view towards the rest of the lab. Behind the shelf the robots used in the experiment are located. An illustration of the lab setup is provided in figure \ref{fig:exp-setup}. 
 
 \begin{figure}[!hbt]
    \centering
@@ -232,14 +211,33 @@ There path of the hoverboard is a 2x1 meter large elipse and slightly to the  th
 \end{figure}
 
 \section{Experimental Procedure}
-\begin{itemize}
-   \item User gets 30 seconds to familiarize themselves with the controls
-   \item User is given instructions on the task
-   \item User performs task (follow an object, ball)
-\end{itemize}
+The experimental procedure is presented in the table \ref{tab:task-timeline}.
+
+\begin{table}[ht]
+   \centering
+   \caption{Task Timeline}
+   \label{tab:task-timeline}
+   \begin{tabular}{|c|l|l|}
+   \hline
+   \textbf{Time (approx.)} & \textbf{Task} & \textbf{Instruction} \\ \hline
+   3 & Coffee and cookies & \\ \hline
+   5 & Introduction & Tell the subject about what the study is about. \\
+   & & Gather personal data + consent \\ \hline
+   2 & SSQ & \\ \hline
+   3 & Experiment walkthrough & What is going to happen \\
+   & & Description of task \\
+   & & Where to aim exactly on the apriltag \\ \hline
+   2 & Warm-up & The subject gets to try the setup for one lap \\ \hline
+   10 & Tests & 5 tests with added latencies [0, 200, 300, 400, 500] \\ 
+   & & in random order \\ \hline
+   2 & SSQ & \\ \hline
+   3 & Interview & \\ \hline
+   30 & Total & \\ \hline
+   \end{tabular}
+   \end{table}
 
 \section{Evaluation}
-The following two sections will describe the quantative and qualitative methods that are used to evaluate the performance of the system. 
+The following two sections will describe the quantative and qualitative methods that are used to evaluate the performance of the system.
 
 \subsection{Quantative Evaluation}
 To quantify the performance of the test subject a printed apriltag will be attached on top of the robot that the subject will try to follow. The view from the camera will be recorded during the experiment and then an image recognition software will be used to detect the position of the robot. 
