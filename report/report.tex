@@ -197,12 +197,11 @@ As described on their webpage \cite{janus}, Janus is a plugin-based software tha
 \subsection{Gimbal Control Interface}
 Using the software components previously named, a program serving as the gimbal interface for the operator was implemented in Python. The software takes joystick inputs from a PlayStation-controller and sends messages updating the position of the gimbal accordingly while displaying the video feed in a window. The same software was also modified so that it could record the video being displayed to the operator. Finally, a simple PI-controller was also implemented into the software to autonomously follow an object.
 
-
 \subsection{Result Script}
 In order to get results from the recorded video of each subject a script was implemented that was run on each trial, measuring the error of the operator in each video frame and saving it to a file.
 
 \section{Hoverboard robot}
-In order to move the DRONE/OBJECT, a slightly modified hoverboard is used. The hoverboard can be controlled by a game controller or follow a set of points using the internal coordinate system that is set up in the lab. This makes it possible to have the hoverboard run in the exact same route over and over again. 
+To make the object that was to be followed move, a slightly modified hoverboard was used. The hoverboard has two additional wheels so that it is stable, and can be controlled by a game controller or follow a set of points using coordinates. The hoverboard uses measurements from it's wheels and LIDAR to locate itself which makes it possible to have the hoverboard run in the exact same route over and over again with little error. 
 
 \chapter{Experiment}
 This chapter will describe the experimental setup, procedure and evaluation.
