@@ -119,7 +119,7 @@ Due to the amount of software components executing on different machines in this
 First, the system will be divided into components, then each of the components will be described in more detail. A visual overview of the system is shown in Figure \ref{fig:system-overview}.
 \begin{figure}[!hbt]
    \centering
-   \includegraphics[scale=0.5]{system-overview.png} 
+   \includegraphics[scale=0.5]{images/system-overview.png} 
    \caption{An overview of the entire system. On the left, the drone and its' components including the RPi, RPi camera module and the flight controller are shown. On the right, the ground station and its' components including the web application, Janus server and the controller are shown. The colour of the connections represent what data they transfer, where orange is video, orange double-line is video negotiation and yellow is control.}
    \label{fig:system-overview}
 \end{figure}
@@ -209,9 +209,19 @@ This chapter will describe the experimental setup, procedure and evaluation.
 \section{Experimental Setup}
 The experiment was set up in a lab where the subject and the conductor sits at a desk with a high shelf behind them obscuring the view towards the rest of the lab. Behind the shelf the robots used in the experiment are located. An illustration of the lab setup is provided in figure \ref{fig:exp-setup}. 
 
+An image of the hoverboard and the camera is shown in image \ref{fig:real-exp}.
+
 \begin{figure}[!hbt]
    \centering
-   \includegraphics[scale=0.5]{exp-setup.png} 
+   \includegraphics[scale=0.1]{images/testbed.jpg} 
+   \caption{A picture of the test bed. On the left side there is a server rack with the drone box mounted on top. The hoverboard can be seen on the right side of the picture.}
+   \label{fig:real-exp}
+\end{figure}
+
+
+\begin{figure}[!hbt]
+   \centering
+   \includegraphics[scale=0.5]{images/exp-setup.png} 
    \caption{An overview of the experimental setup. To the right the experiment conductor and subject by a desk facing right. On the left side, behind the shelf, the test bed including the camera and the hoverboard are located. The camera is mounted at a height of 2.1 meters with the gimbal facing down.}
    \label{fig:exp-setup}
 \end{figure}
@@ -222,7 +232,7 @@ The subjects were recruited mostly from the conductor's network of contacts, as 
 There was no compensation for the subjects other than home baked goods and a hot beverage, which were offered at the beginning of each experiment. 
 
 \section{Experimental Procedure}
-The experimental procedure is presented in the table \ref{tab:task-timeline}. In this section each of the steps will be described in more detail. 
+The experimental procedure is summarized in the table \ref{tab:task-timeline}. In this section each of the steps will be described in more detail. 
 
 \begin{table}[ht]
    \centering
@@ -253,12 +263,17 @@ The experiment starts with the subject being seated at the desk and where he or 
 When providing their background information the subject gets to choose a four digit code that from that point is the only identifier of the subject and it's results. If the subject booked a time slot in the spreadsheet, they were at this point removed from it.
 
 \subsection{Task description}
-The subjects were shown a printed apriltag with a cross on it marking the spot where to aim. The particular apriltag printed for this experiment had two white and two black squares meeting in the middle, thus making it a bit easier to identify. The subject was then given a chance to try the system, and was given the controller and presented with the view. The hoverboard was then started in the same path that it would run during the test and they had about one lap worth of time to get used to the controller and the view.
+The subjects were shown a printed apriltag with a cross on it marking the spot where to aim. The particular apriltag printed for this experiment had two white and two black squares meeting in the middle, thus making the center easier to identify. 
+
+The subject was then given a chance to try the system, and was given the controller and presented with the view. The hoverboard was started and ran for one lap in the same path that it would run during the test.
 
 \subsection{Test Procedure}
-After the task description and warm-up the tests commenced. The added latencies to be tested were 0, 200, 300, 400 and 600 and the order in which they were given to the subject was random. At the beginning of each trial the interface was restarted with one of the latencies induced in the system. The subject was then asked to put the red marker in the middle of the screen in the middle of the apriltag. When the subject confirmed that they were ready to start the hoverboard was started. The subject followed the hoverboard for two laps, which took about 2 minutes in total.
+After the task description and warm-up the tests commenced. The added latencies tested were 0, 200, 300, 400 and 600 and the order in which they were given to the subject was random. 
+At the beginning of each trial the interface was restarted with one of the latencies induced in the system. The subject was then asked to put the red marker in the middle of the screen in the middle of the apriltag. When the subject confirmed that they were ready to start the conductor started the hoverboard. The subject followed the hoverboard for two laps, which took about 2 minutes in total.
 
-After the laps were completed the interface was shut down and the subject was asked to rate the system by answering four different questions on a scale from 1 to 5. At the end of the fifth and last trial the subject got to fill in a sickness questionnaire and also answered a few interview questions regarding their experience with the system.
+After the laps were completed the interface was shut down and the subject was asked to rate the system by answering four different questions on a scale from 1 to 5. When the subject had answered the questions the next trial was started.
+
+At the end of the fifth and last trial the subject got to fill in the sickness questionnaire was also asked a few interview questions by the conductor.
 
 \section{Evaluation}
 The following two sections will describe the quantative and qualitative methods that are used to evaluate the performance of the system.
@@ -420,7 +435,7 @@ Figure labels, numbering, and captions should be formed similarly to tables. As 
 
 \begin{figure}[!hbt]
 \centering
-\includegraphics[scale=2.5]{examplepic3.jpg} 
+\includegraphics[scale=2.5]{images/examplepic3.jpg} 
 \caption{A JPEG bitmap figure. Notice the bad quality of such an image when scaling it. Sometimes bitmap images are unavoidable, such as for screen dumps.}\label{fig:rasterg}
 \end{figure}
 For those interested in delving deeper into the design of graphical information display, please refer to books such as \cite{Tufte:1986, few2012show}.

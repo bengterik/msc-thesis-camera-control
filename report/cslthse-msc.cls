@@ -216,7 +216,7 @@
 %cover page
 \begin{textblock*}{\paperwidth}(-3.75cm,-15.7cm)%
 %	\begin{overpic}[scale=2.0]{coverjpg.pdf}
-\begin{overpic}[scale=.845]{cover.jpg}
+\begin{overpic}[scale=.845]{images/cover.jpg}
 %	\begin{overpic}[scale=1.77]{cover.png}
 		\put(15,90){\color{white}\large\bfseries\textsf{\MakeUppercase{\@thesistype}'S THESIS \the\year{}}}
 %		\put(15,90){\color{white}\Large\bfseries\textsf{BACHELOR'S THESIS \the\year{}}}
@@ -251,7 +251,7 @@
 		\put(0,2){\colorbox{white}{\makebox(68,1){}}}
 		% logo
 %		\put(32.5,-23.8){\includegraphics[scale=1.2]{LUlogoNEG.png}}		
-  		\put(34,-28){\includegraphics[scale=1.2]{LUlogoRGB.png}}		
+  		\put(34,-28){\includegraphics[scale=1.2]{images/LUlogoRGB.png}}		
     \end{overpic}
 \end{textblock*}
 
