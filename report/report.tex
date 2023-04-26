@@ -312,9 +312,26 @@ An Apriltag is a QR-code that contains bigger squares, thus making it easier to 
 After each trial set the subject will answer questions regarding their perceived quality of experience with the system. They will also get to answer a sickness questionnaire, following standard questionnaire provided by \cite{SICKNESSQ}.
 
 \subsection{Auto-follow mode}
-As a proof of concept, an auto-follow mode was implemented in the application using real-time object detection of the video feed. Although it is not optimal to have that high latency introduced in the control-loop, it is of interest as the resource heavy object detection algorithm does not stress the hardware on the drone. The mode is evaluated with the same methods as the rest of the experiment, although the user is just passively watching the feed.  
+As a proof of concept, an auto-follow mode was implemented in the application using real-time object detection of the video feed. Although it is not optimal to have that high latency introduced in the control-loop, it is of interest as the resource heavy object detection algorithm does not stress the hardware on the drone. The mode is evaluated with the same methods as the rest of the experiment, although the user is just passively watching the feed.
 
 \chapter{Results}
+
+\section{Quantative Results}
+\begin{figure}[!hbt]
+   \centering
+   \includegraphics[scale=0.5]{images/0vs600.png} 
+   \caption{Total trials for latencies 0 and 600 averaged over all subjects.}
+   \label{fig:0vs600}
+\end{figure}
+
+\begin{figure}[!hbt]
+   \centering
+   \includegraphics[scale=0.5]{images/ecdf.png} 
+   \caption{ECDF of the total distance for all subjects.}
+   \label{fig:ecdf}
+\end{figure}
+
+
 
 \chapter{Discussion}
 \section{System Architecture (SKRIVA DET SOM QOS?)}
