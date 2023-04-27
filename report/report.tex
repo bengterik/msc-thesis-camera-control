@@ -91,12 +91,12 @@ As can be read on their website \cite{ssrs}, the Swedish Sea Rescue Society (SSR
 \subsection{Innovation}
 As stated in their statutes \cite{ssrs-statues}, the mission of SSRS is not solely to carry out these rescue missions but to also innovate and collaborate in the area of maritime rescue as well as other aiding activities in society as a whole. As a result of this, the drone project that this thesis is a part of has been conceived along with other innovation projects such as foiling rescue boats and improved rescue vehicles \cite{surtsey-innovation}.
 
-\subsection{Eyes On Scene}
-This thesis work is part of a project called Eyes-on-Scene, where a task-specific drone and mission control software has been developed to meet the requirements of sea rescue missions. In this section the project will be briefly described.
+\subsection{Drone Project: Eyes On Scene}
+This thesis work is part of a project called Eyes-on-Scene, where a task-specific drone and mission control software has been developed to meet the requirements of sea rescue missions. In this section the drone and surrounding system will be briefly described.
 
 The drone uses a fixed wing frame and is designed for two modes: sprinting and loitering, which allows for short response time while also being able to stay in the air for a long time. The only equipment it carries is a single camera gimbal with adjustable roll, pitch and yaw angles. The current system uses a launchpad for takeoff and the idea is that the plane will be able to land on a rescue vessel. 
 
-During the course of the project, an operator's interface has also been implemented. Currently, the interface allows flying to and loitering around waypoints given on a map which also displays both other naval and aerial traffic in real time. The map also shows the the regulatoy zones in which one is not allowed to fly, i.e. close to airports or military zones. The interface also provides video from the drone camera and which is recorded and accessible in the interface.
+A web interface for mission control has also been developed in the project. Currently, the interface allows flying to and loitering around waypoints given on a map which also displays both other naval and aerial traffic in real time. The map also shows the the regulatoy zones in which one is not allowed to fly, i.e. close to airports or military zones. The interface provides video from the drone camera which is recorded and accessible after the mission.
 
 \section{Quality of Experience}
 Quality of Experience is an emerging research field that is concerned with the user's experience in multimedia systems. It is an inherently multidisciplinary field that has close ties to the field of User Experience (UX) and Human-Computer Interaction (HCI). QoE is also closely related to the field of Quality of Service (QoS), which is concerned with the technical aspects of a system, but aims instead at evaluating the subjective experience through user experiments rather than qualitative measurements.
@@ -302,11 +302,7 @@ At the end of the fifth and last trial the subject got to fill in the sickness q
 The following two sections will describe the quantative and qualitative methods that are used to evaluate the performance of the system.
 
 \subsection{Quantative Evaluation}
-To quantify the performance of the test subject a printed apriltag will be attached on top of the robot that the subject will try to follow. The view from the camera will be recorded during the experiment and then an image recognition software will be used to detect the position of the robot. 
-
-This will make it possible to calculate the distance of the recognized object to the center of the video feed which then can be used to measure the performance of the test subject.
-
-An Apriltag is a QR-code that contains bigger squares, thus making it easier to recognize for a computer vision algorithm
+To measure each subjects performance, each trial was recorded and a script using a detection algorithm gave the distance between the red dot and the center of the apriltag.    
 
 \subsection{Qualitative Evaluation}
 After each trial set the subject will answer questions regarding their perceived quality of experience with the system. They will also get to answer a sickness questionnaire, following standard questionnaire provided by \cite{SICKNESSQ}.
