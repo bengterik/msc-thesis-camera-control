@@ -309,6 +309,27 @@ After each trial set the subject will answer questions regarding their perceived
 \subsection{Auto-follow mode}
 As a proof of concept, an auto-follow mode was implemented in the application using real-time object detection of the video feed. Although it is not optimal to have that high latency introduced in the control-loop, it is of interest as the resource heavy object detection algorithm does not stress the hardware on the drone. The mode is evaluated with the same methods as the rest of the experiment, although the user is just passively watching the feed.
 
+\section{Known Sources of Error}
+
+\subsection{Frame detection accuracy}
+The result script calculating the distance from the center of the apriltag to the center of the screen could during fast camera movements not detect the apriltag. This resulted in a NaN value for the distance. The average percentage of frames detected where 85\%, with a minimum of 80\% and a maximum of 89\%. The percentage of frames detected was not found to be correlated with the delay and are plotted for each subject and delay in figure \ref{fig:frames-detected}. 
+
+\begin{figure}[!hbt]
+   \centering
+   \includegraphics[scale=0.5]{images/frames-detected.png} 
+   \caption{Form answers averaged for all subjects for each delay.}
+   \label{fig:frames-detected}
+\end{figure}
+
+To make for better averages over different trials, all NaN values, i.e frames where no apriltag was detected in the frame, were linearly interpolated. To illustrate the result of the interpolation the result of one trial is shown in \ref{fig:raw-vs-interpolated} before and after interpolation. 
+
+\begin{figure}[!hbt]
+   \centering
+   \includegraphics[scale=0.5]{images/raw-vs-interpolated.png} 
+   \caption{Results for one trial, to the left the result with NaN-values and to the right interpolated result.}
+   \label{fig:raw-vs-interpolated}
+\end{figure}
+
 \chapter{Results}
 In \ref{tab:averages} the mean and standard deviation of the results are presented. The values are also visualized in plot \ref{fig:avg-std}.
 \begin{table}[ht]
@@ -359,10 +380,11 @@ In figure \ref{fig:ecdf} the ECDF over the averages at each delay is shown. The 
    \label{fig:ecdf}
 \end{figure}
 
-\section{Known Sources of Error}
-The result script calculating the distance from the center of the apriltag to the center of the screen could during fast camera movements not detect the apriltag. This resulted in a NaN value for the distance. The average percentage of frames detected where 85\%, with a minimum of 80\% and a maximum of 89\%. The percentage of frames detected was not correlated with the delay (FIND OUT).
-
 \chapter{Discussion}
+\section{Sources of error}
+\subsection{Frame detection accuracy and interpolation} 
+
+
 \section{System Architecture (SKRIVA DET SOM QOS?)}
 Although being a bit outside the research scope of the project, a natural consequence has been to evaluate the strengths and weaknesses of different system architectures that could be implemented for real drone missions. This section will bring up some of the requierments from SSRS along with the particular architectures considered for the application of sea rescue.
 
