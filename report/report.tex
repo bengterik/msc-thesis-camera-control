@@ -279,7 +279,7 @@ The experiment starts with the subject being seated at the desk and where he or 
 When providing their background information the subject gets to choose a four digit code that from that point is the only identifier of the subject and it's results. If the subject booked a time slot in the spreadsheet, they were at this point removed from it.
 
 \subsection{Task description}
-The subjects were shown a printed apriltag with a cross on it marking the spot where to aim. The particular apriltag printed for this experiment had two white and two black squares meeting in the middle, thus making the center easier to identify. The provided apriltag is shown in figure \ref{fig:apriltag}
+The task for the subject was to keep the center of the screen aligned with the center of the apriltag laying on top of the hoverboard (shown in \ref{fig:hoverboard}) while it followed it's path. In order to help the subject a red dot was overlayed in the center of the video feed. The subjects were then shown a printed apriltag with a cross on it, marking the spot where to aim on the tag. The particular apriltag printed for this experiment had two white and two black squares meeting in the middle, making the center easier to identify. The apriltag shown to the subject is shown in figure \ref{fig:apriltag}
 
 \begin{figure}[!hbt]
    \centering
@@ -315,6 +315,8 @@ After each trial set the subject will answer questions regarding their perceived
 As a proof of concept, an auto-follow mode was implemented in the application using real-time object detection of the video feed. Although it is not optimal to have that high latency introduced in the control-loop, it is of interest as the resource heavy object detection algorithm does not stress the hardware on the drone. The mode is evaluated with the same methods as the rest of the experiment, although the user is just passively watching the feed.
 
 \chapter{Results}
+
+The result script calculating the distance from the center of the apriltag to the center of the screen.
 
 In \ref{tab:averages} the mean and standard deviation of the results are presented. The values are also visualized in plot \ref{fig:avg-std}.
 \begin{table}[ht]
