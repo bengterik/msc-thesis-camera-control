@@ -312,7 +312,7 @@ As a proof of concept, an auto-follow mode was implemented in the application us
 \section{Known Sources of Error}
 
 \subsection{Frame detection accuracy}
-The result script calculating the distance from the center of the apriltag to the center of the screen could during fast camera movements not detect the apriltag. This resulted in a NaN value for the distance. The average percentage of frames detected where 85\%, with a minimum of 80\% and a maximum of 89\%. The percentage of frames detected was not found to be correlated with the delay and are plotted for each subject and delay in figure \ref{fig:frames-detected}. 
+The detection algorithm used to calculate the distance from the center of the apriltag to the center of the screen could sometimes during fast camera movements not detect the apriltag. This resulted in a NaN value at that particular frame. The average percentage of frames detected where 85\%, with a minimum of 80\% and a maximum of 89\%. The percentage of frames detected was not found to be correlated with the delay and are plotted for each subject and delay in figure \ref{fig:frames-detected}. 
 
 \begin{figure}[!hbt]
    \centering
@@ -326,7 +326,7 @@ To make for better averages over different trials, all NaN values, i.e frames wh
 \begin{figure}[!hbt]
    \centering
    \includegraphics[scale=0.5]{images/raw-vs-interpolated.png} 
-   \caption{Results for one trial, to the left the result with NaN-values and to the right interpolated result.}
+   \caption{Results for one trial: to the left the result with NaN-values and to the right interpolated result.}
    \label{fig:raw-vs-interpolated}
 \end{figure}
 
