@@ -307,7 +307,21 @@ The following two sections will describe the quantative and qualitative methods 
 To measure each subjects performance, each trial was recorded and a script using a detection algorithm gave the distance between the red dot and the center of the apriltag.    
 
 \subsection{Qualitative Evaluation}
-After each trial set the subject will answer questions regarding their perceived quality of experience with the system. They will also get to answer a sickness questionnaire, following standard questionnaire provided by \cite{SICKNESSQ}.
+After each trial the subject answered a form with four questions about the system on a scale from 1-5, labeled 'terrible' to 'excellent'. The questions were the following:
+\begin{enumerate}
+   \item How would you describe the controllability of the system?
+   \item How would you rate your ability to perform the task?
+   \item How would you rate your experience of the system?
+   \item How would you rate your impression of the system as a whole?
+\end{enumerate}
+
+Right after the last trial the subject filled out the SSQ once more. Then, a brief interview was conducted with the following four questions:
+\begin{enumerate}
+   \item What was your general experience of controlling the camera?
+   \item Did you experience any difference in the controls between the trials?
+   \item Was there any part of the track that was harder than any other?
+   \item Do you think the system would have been usable with the worst experimental conditions?
+\end{enumerate}
 
 \subsection{Auto-follow mode}
 As a proof of concept, an auto-follow mode was implemented in the application using real-time object detection of the video feed. Although it is not optimal to have that high latency introduced in the control-loop, it is of interest as the resource heavy object detection algorithm does not stress the hardware on the drone. The mode is evaluated with the same methods as the rest of the experiment, although the user is just passively watching the feed.
