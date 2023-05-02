@@ -20,13 +20,14 @@
 \student{Alexander Sandström}{alexander.h.sandstrom@gmail.com}
 %\students{Flavius Gruian}{Flavius.Gruian@cs.lth.se}{Camilla Lekebjer}{Camilla.Lekebjer@cs.lth.se}
 
-\thesisnumber{LU-EIT-EX: 2023} % Magic Number! Do not change unless Birger Swahn asks you to do so!
+\thesisnumber{} % Magic Number! Do not change unless Birger Swahn asks you to do so!
 % default is Master. Uncomment the following for "kandidatarbete"/Bachelor's thesis
 %\thesistype{Bachelor}{Kandidatarbete}
 
 %\title{Formatting a Master's Thesis}
 \title{Drones for Sea Rescue: A Quality of Experience Study of Camera Control}
 \svensktitel{Drönare inom Sjöräddning: en Studie i Operatörsupplevelse av Kamerakontroll}
+
 
 %\onelinetitle
 %\twolinestitle
@@ -163,9 +164,6 @@ This section will go through the finished components of software that were used 
    
    \item[Protocol: MAVLink]
    As can be read on their website \cite{mavlink}, MAVLink is a lightweight protocol suited for communication with drones and between drone components. It has a byte overhead of 14 bytes and allows for concurrent communication between up to 255 systems. 
-   
-   \item[Package: pymavlink]
-   This package is a Python interface to communicate with MAVLink devices, available at \cite{pymavlink}. In the test bed software it is used to send control-commands to the drone.
 
    \item [Software: MAVProxy]
    MAVProxy \cite{mavproxy} is a software running on the companion computer whose task is to relay MAVLink messages from the control station to the flight controller. In the test bed it relays messages between the ethernet port (application) and the serial port (drone box). 
@@ -185,6 +183,21 @@ Using the software components previously named, a program serving as the gimbal 
    \caption{An overview of the entire system. On the left, the drone and it's components including the RPi, RPi camera module and the flight controller are shown. On the right, the ground station and its' components including the web application, Janus server and the controller are shown. The colour of the connections represent what data they transfer, where orange is video, orange double-line is video negotiation and yellow is control.}
    \label{fig:system-overview}
 \end{figure}
+
+The application was run with Python version 3.9.16 and used the following libraries:
+\begin{description} 
+   \item [pymavlink (v. 2.4.37)]
+   An interface to communicate with MAVLink devices, available at \cite{pymavlink}. With the library a port can be set to send and receive MAVLink messages.
+ 
+   \item [Evdev v. (1.6.1)]
+   A python library for interrupt driven input devices. It is used for reading input from the Playstation-controller. Available at \cite{evdev}.
+
+   \item [OpenCV (v. 4.7)] 
+   Open Computer Vision, a very popular library for computer vision tasks. In the test interface it is used for displaying and recording the video feed. Available at \cite{opencv}.
+
+   \item[Multiprocessing]
+   This standard module was used in order to run the video tasks in different processes to not interfere with the control. The video frames were accessed by a process which then passed them to a the recording process using a queue. For more information see \cite{multiprocessing}.  
+\end{description}
 
 \section{Result Script}
 In order to get results from the recorded video of each subject a script was implemented that was run on each trial, measuring the error of the operator in each video frame and saving it to a file.
