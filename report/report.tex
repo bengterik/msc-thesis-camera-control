@@ -184,16 +184,32 @@ The flight controller is the brain of the aircraft and houses the following comp
 
 \end{description}
 
-
 \section{Software}
 There were many different softwares involved in this project, and this chapter will briefly go through the main ones that have been used in this thesis. A brief description of the program for the particular test bed will also be included.
 
-\subsection{Firmware: ArduPlane}
-\label{sec:ardupilot}
-The firmware running on the flight controller is called ArduPlane, which is part of the open-source autopilot software suite ArduPilot that enables the creation of unmanned, autonomous vehicles \cite{ardupilot-org}. It is developed by a community of developers and is available on GitHub \cite{ardupilot-github}.
+\begin{description}
+   \item[Firmware: ArduPlane]
+   \label{sec:ardupilot}
+   The firmware running on the flight controller is called ArduPlane, which is part of the open-source autopilot software suite ArduPilot that enables the creation of unmanned, autonomous vehicles \cite{ardupilot-org}. It is developed by a community of developers and is available on GitHub \cite{ardupilot-github}.
+   
+   \item[Protocol: MAVLink]
+   As can be read on their website \cite{mavlink}, MAVLink is a lightweight protocol suited for communication with drones and between drone components. It has a byte overhead of only 14 bytes and allows for concurrent communication between up to 255 systems. 
 
-\subsection{Protocol: MAVLink}
-As can be read on their website \cite{mavlink}, MAVLink is a lightweight protocol suited for communication with drones and between drone components. It has a byte overhead of only 14 bytes and allows for concurrent communication between up to 255 systems. 
+   \item [Software: MAVProxy]
+   MAVProxy is a software running on the companion computer whose main task is to relay MAVLink messages between the flight controller and the ground station \cite{mavproxy}. This is required as a mobile network modem cannot be connected directly to the flight controller. 
+
+   \item[Package: pymavlink]
+   This package is the Python interface to the MAVLink protocol, available at \cite{pymavlink}. In this thesis, it is used to send and receive MAVLink messages on the GCS.
+   
+   \item[UV4L]
+   UV4L is a video streaming server that supports real-time communication protocols such as WebRTC \cite{uv4l}. In this thesis, it is the software used to stream the local video feed over the web. 
+   
+   \item[Janus Server]
+   As described on their webpage \cite{janus}, Janus is a plugin-based software that helps establish WebRTC connections. In this thesis it is used to establish the connection between the UV4L server and the web browser, enabling the peer-to-peer connection between the two devices.
+\end{description}
+
+
+
 
 % \subsection{Software: mavlink-router}
 % \label{sec:mavlink-router}
@@ -204,17 +220,6 @@ As can be read on their website \cite{mavlink}, MAVLink is a lightweight protoco
 % note = {Accessed: 2023-02-13}
 % }
 
-\subsection{Software: MAVProxy}
-MAVProxy is a software running on the companion computer whose main task is to relay MAVLink messages between the flight controller and the ground station \cite{mavproxy}. This is required as a mobile network modem cannot be connected directly to the flight controller. 
-
-\subsection{Package: pymavlink}
-This package is the Python interface to the MAVLink protocol, available at \cite{pymavlink}. In this thesis, it is used to send and receive MAVLink messages on the GCS.
-
-\subsection{UV4L}
-UV4L is a video streaming server that supports real-time communication protocols such as WebRTC \cite{uv4l}. In this thesis, it is the software used to stream the local video feed over the web. 
-
-\subsection{Janus Server}
-As described on their webpage \cite{janus}, Janus is a plugin-based software that helps establish WebRTC connections. In this thesis it is used to establish the connection between the UV4L server and the web browser, enabling the peer-to-peer connection between the two devices.
 
 \subsection{Gimbal Control Interface}
 Using the software components previously named, a program serving as the gimbal interface for the operator was implemented in Python. The software takes joystick inputs from a PlayStation-controller and sends messages updating the position of the gimbal with desired delay, while also displaying the video feed in a window. The same software was also modified so that it could record the video being displayed to the operator. Finally, a simple PI-controller was also implemented into the software to autonomously follow an object.
