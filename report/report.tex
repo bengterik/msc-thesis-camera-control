@@ -67,7 +67,6 @@ Leave a \textit{2cm} vertical space after the abstract and provide a few keyword
 \chapter{Introduction}
 This chapter will give a short introduction to use cases of UAVs and the work of SSRS along with the motivation and scope for the thesis work.
 
-
 \section{Drone use}
 With the recent advancements in technology, the use of drones has skyrocketed. Most notably they have been used in warfare for surveillance and attack purposes, but in recent years the civilian applications have also increased (SOURCES). Common civilian use cases are in cinematography, agriculture and delivery, and there is also a growing interest in using drones for search and rescue (GET MORE EXAMPLES). 
 
@@ -75,10 +74,7 @@ Historically drones have been limited by the maximum distance it can travel from
 
 % The thesis work is a collaboration between the Swedish Sea Rescue Society and the Department of Electrical and Information Technology at (+the Faculty of Engineering?) Lund University.
 \section{SSRS Needs}
-The SSRS has been conducting a research project called Eyes-On-Scene where drones are to be used to give better information to a rescue crew on their way to the scene of the accident. As part of the project a study has been performed at Chalmers \cite{eos-maritime} where the same emergency call was performed with and without images from a UAV at the emergency site. The study showed that imagery from the accident allows for better planning before arriving at the scene, and that the crew was faster at locating a person or object.
-
-As part of the project a mission control software in which one can manage a fleet of drones and see their video feeds has been implemented. However, the drone camera can only be controlled by a so called region of interest (ROI), which points the camera at a GPS location provided on a map. This is not ideal for the operator, as the act of uploading a new ROI requires a point to be selected on the map which then is uploaded to the drone, forcing a context switch for the operator from the video feed to the map. Instead, the SSRS want to be able to adjust the gimbal angle with direct controls, such as with a joystick or the arrow keys. The SSRS also wants an estimate of the latency between the drone and the operator, which they currently don't know.   
-
+The SSRS has been conducting a research project called Eyes-On-Scene where drones are to be used to give better information to a rescue crew on their way to the scene of the accident. As part of the project a mission control software in which one can manage a fleet of drones and see their video feeds has been implemented. However, the drone camera can only be controlled by a so called region of interest (ROI), which points the camera at a GPS location provided on a map. This is not ideal for the operator, as the act of uploading a new ROI requires a point to be selected on the map which then is uploaded to the drone, forcing a context switch for the operator from the video feed to the map. Instead, the SSRS want to be able to adjust the gimbal angle with direct controls, such as with a joystick or the arrow keys. The SSRS also wants an estimate of the latency between the drone and the operator, which they currently don't know.
 
 \section{Research Motivation}
 With the expansion of newer, low-latency network technologies like 5G, the use case for remote control has grown stronger. With everything from connected cars, remote surgery or log lifting, the uses of real-time remote-control are many.  
@@ -121,6 +117,9 @@ In the white paper \cite{qoe-definition}, Brunström et al. make a working defin
 W. Tärneberg et al. \cite{industry4.0} present a QoE study with industrial equipment on an excavation site where experienced operators controlled their usual equipment remotely at different latencies. 
 
 K. Brunnström et al. \cite{latency-impact} performed a study on log lifting using a head-mounted display system. In the study, latency is introduced both in the display's response to movement as well as the controls. The display delay was found to have a strong effect on nausea, but an observable effect on controller latency could only be found at latencies above 800 ms. 
+
+As part of the Eyes-On-Scene-project, a study was performed at Chalmers by Grote et al. \cite{eos-maritime} where the same emergency call was performed with and without images from a UAV at the emergency site. The study showed that imagery from the accident gave the rescue personnel a sence of control before arriving at the scene when knowing what they were going to face. The crew was also faster at locating a person or object when having aerial footage of the scene.
+
 
 \chapter{Test Bed for QoE Experiment}
 This chapter will go through the technical details of the test bed used in the experiment. First, the hardware provided by SSRS will be presented. Then, the different software packages and APIs will be outlined. Lastly, the software implemented specifically for the test bed and the hoverboard will be introduced.
