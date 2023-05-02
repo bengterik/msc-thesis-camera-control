@@ -163,24 +163,17 @@ The control of the gimbal involves the following components:
 \end{itemize}
 
 \section{Hardware}
-This chapter will briefly go through the main components of hardware that have been used in this thesis.
-
-\subsection{Flight controller}
-The flight controller is the brain of the aircraft and houses the following components:
-\begin{itemize}
-   \item Central Processing Unit (CPU)
-   \item Ardupilot firmware (described in \ref*{sec:ardupilot})
-   \item accelerometer
-   \item connector to external GPS receiver
-   \item servo-connectors for aircraft control surfaces and gimbal
-\end{itemize}
+This chapter will go through the finished components of hardware that have been used in the testbed.
 
 \begin{description}
-   \item[Raspberry Pi 4] The Raspberry serves as the onboard computer, commonly known as the "companion computer" in the context of drone hardware. It is connected to the flight controller via USB and relays messages between the flight controller and the ground station over its connection to the Internet. In the SSRS drone, the Raspberry has a 4G modem which is what allows the drone to fly beyond visual line-of-sight (BVLOS).
+   \item[Flight Controller, Pixracer R15] The flight controller is the brain of the aircraft and houses components and connectors relevant to in-flight operations such as servos for control surfaces, GPS and accelorometer. The components and connectors relevant to this thesis has been the serial connector to the Raspberry Pi and the servo-connectors for gimbal.
 
-   \item[Raspberry Pi Camera Module]
+   \item[Raspberry Pi 4] The Raspberry Pi serves as the onboard computer, commonly known as the "companion computer" in the context of drone hardware. It is connected to the flight controller via USB and makes it possible to relay messages sent over ethernet instead of radio, allowing to connect to a ground station over the Internet. 
 
-   \item[Gimbal] The gimbal used in the experiment is designed and manufactured by Fredrik Falkman at the SSRS. It is a 3D-printed design that has three degrees of freedom made possible by three servos connected to drive belts that control each axis of the camera. The servos are connected to the flight controller which also provides them with power. The gimbal also hosts a Raspberry Pi Camera Module which is directly connected to the Raspberry with a ribbon cable.  
+   \item[Gimbal] The gimbal used in the experiment is designed and manufactured by Fredrik Falkman at the SSRS. It is a 3D-printed design that has three degrees of freedom made possible by three servos connected to drive belts that control each axis of the camera. The servos are connected to the flight controller which also provides them with power. The gimbal also hosts a Raspberry Pi Camera Module which is directly connected to the Raspberry with a ribbon cable. 
+    
+   \item[Raspberry Pi Camera Module v2] 
+
 
 \end{description}
 
@@ -189,7 +182,6 @@ There were many different softwares involved in this project, and this chapter w
 
 \begin{description}
    \item[Firmware: ArduPlane]
-   \label{sec:ardupilot}
    The firmware running on the flight controller is called ArduPlane, which is part of the open-source autopilot software suite ArduPilot that enables the creation of unmanned, autonomous vehicles \cite{ardupilot-org}. It is developed by a community of developers and is available on GitHub \cite{ardupilot-github}.
    
    \item[Protocol: MAVLink]
