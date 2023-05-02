@@ -171,6 +171,7 @@ This section will go through the finished components of hardware that have been 
    \item[Companion Computer: Raspberry Pi 4] The Raspberry Pi serves as the onboard computer, commonly known as the "companion computer" in the context of drone hardware. It is connected to the flight controller via USB and makes it possible to relay messages sent over ethernet instead of radio, allowing to connect to a ground station over the Internet. 
 
    \item[Gimbal] The gimbal used in the experiment is designed and manufactured by Fredrik Falkman at the SSRS. It is a 3D-printed design that has three degrees of freedom made possible by three servos connected to drive belts that control each axis of the camera. The servos are connected to the flight controller which also provides them with power. When mounted the servo-housing is inside the aircraft while the part with the mounting plate for the camera module sticks out on the bottom of the drone. In \ref{fig:gimbal-pics} the schematics of the gimbal can be seen. 
+   
    \begin{figure}[htp]
       \centering
       \includegraphics[width=.3\textwidth]{images/gimbal-1.png}\hfill
@@ -179,9 +180,20 @@ This section will go through the finished components of hardware that have been 
       \caption{3D-schematics of the gimbal used in the experiment. The middle and left picture shows the gimbal with its full housing. To the right the housing has has been removed and a mockup camera module has been inserted in the mounting plate.}
       \label{fig:gimbal-pics}
    \end{figure}
+   
    \item[Raspberry Pi Camera Module v2] The camera module is a small camera that is mounted inside on a flat surface on the gimbal. The camera connects to the module board which is then connected to the Raspberry Pi with a ribbon cable. It is capable of recording 1440x1080 video at 30 fps and has a 4:3 aspect ration.
 
 \end{description}
+
+In the test bed all the components are mounted inside an 2L IKEA SmartStore box where the gimbal is mounted in a cutout in the bottom of the box. The other components are mounted inside the box with velcro. The box can be seen in \ref{fig:drone-setup}. 
+
+\begin{figure}[htp]
+   \centering
+   \includegraphics[width=.47\textwidth]{images/drone-box-1.jpg}\hfill
+   \includegraphics[width=.47\textwidth]{images/drone-box-2.jpg}
+   \caption{The box that houses the drone hardware for the experiment. The left picture shows the box from above, from the left the following components are visible: flight controller, gimbal with camera module, power supply and Raspberry Pi. The right image shows the box from the outside.}
+   \label{fig:drone-setup}
+\end{figure}
 
 \section{Software}
 This section will go through the finished components of software that have been used in the
