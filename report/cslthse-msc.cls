@@ -216,9 +216,9 @@
 %cover page
 \begin{textblock*}{\paperwidth}(-3.75cm,-15.7cm)%
 %	\begin{overpic}[scale=2.0]{coverjpg.pdf}
-\begin{overpic}[scale=.845]{images/cover.jpg}
+\begin{overpic}[scale=.365]{images/dronepic.png}
 %	\begin{overpic}[scale=1.77]{cover.png}
-		\put(15,90){\color{white}\large\bfseries\textsf{\MakeUppercase{\@thesistype}'S THESIS \the\year{}}}
+		\put(15,90){\color{LTHbronze}\large\bfseries\textsf{\MakeUppercase{\@thesistype}'S THESIS \the\year{}}}
 %		\put(15,90){\color{white}\Large\bfseries\textsf{BACHELOR'S THESIS \the\year{}}}
 %		\put(15,77){\colorbox{white}{\makebox(53,12){ % 77, 12 for single line title 
 %		\put(15,74){\colorbox{white}{\makebox(53,15){ % 74, 15 for double line title, 
