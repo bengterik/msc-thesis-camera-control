@@ -191,7 +191,7 @@ The application was run with Python version 3.9.16 and used the following librar
    An interface to communicate with MAVLink devices, available at \cite{pymavlink}. With the library a port can be set to send and receive MAVLink messages.
  
    \item [Evdev v. (1.6.1)]
-   A python library for interrupt driven input devices. It is used for reading input from the Playstation-controller. Available at \cite{evdev}.
+   A python library for interrupt-driven input devices. It is used for reading input from the Playstation-controller. Available at \cite{evdev}.
 
    \item [OpenCV (v. 4.7)] 
    Open Computer Vision, a very popular library for computer vision tasks. In the test interface it is used for displaying and recording the video feed. Available at \cite{opencv}.
@@ -207,12 +207,12 @@ The application was run on a machine with the following specifications:
    \item[GPU] Mesa Intel HD Graphics 4600 (HSW GT2)
 \end{description}
 
-Delay was introduced in the controls by entering commands in a queue along with a timestamp, with the program waiting until timestamp was reached before sending the command. The following algorithm was used to calculate the delay:
+Delay was introduced in the controls by entering commands in a queue along with a timestamp, with the program waiting until timestamp was reached before sending the command. The following algorithm was used to schedule the sending of commands according to the delay:
 \begin{algorithmic}
    \While{running}
-   \State $timestamp, pitch, yaw = queue.get()$
-   \State $t0 = now()$
-   \State $diff = timestamp + delay - t0$
+   \State $timestamp, pitch, yaw = queue.get()$ // blocking call
+   \State $t_{0} = time.now$
+   \State $diff = timestamp + delay - t_{0}$
    \If{diff > 0}
       \State $time.sleep(diff)$
    \EndIf
@@ -220,15 +220,21 @@ Delay was introduced in the controls by entering commands in a queue along with 
    \EndWhile
 \end{algorithmic}
 
-% while True:
-% timestamp, pitch, yaw = self.queue.get()
+The inherent delay of the system was measured by recording a stopwatch, the controller and the video feed of the drone simultaneously. The screen and the controller were then filmed on a phone in 120 FPS to measure the time between a control input to the video feed updating. To measure the network delay a simple ping-measure was taken.
 
-% t0 = time.time()
+The network latency was found to be below 1 ms. The delay of the video feed alone was between 100-150ms while the full controller to video feedback delay was around 400ms. 
 
-% diff = timestamp + delay_s - t0
-
-% if diff > 0: 
-%     time.sleep(diff)
+Although the sources of the delay were not examined in any further depth there are a few probable causes of the delay:
+\begin{description}
+   \item[Message frequency] 
+   While the internal model of the gimbal's orientation was updated by interrupts, the message rate to the flight controller was set to a maximum of 20Hz.
+   
+   \item [Video encoding]
+   Some video encodings are faster at the cost of quality and vice versa. Although not the fastest, MJPEG was chosen as it was simple to integrate with OpenCV and had acceptable latency and video quality.
+   
+   \item[MAVProxy] Each message must be taken from the ethernet interface of the Raspberry Pi and be sent on the serial interface to the flight controller. It must then be processed before the servos can be updated. 
+   
+\end{description}
 
 \section{Result Script}
 In order to get results from the recorded video of each subject a script was implemented that was run on each trial, measuring the error of the operator in each video frame and saving it to a file.
