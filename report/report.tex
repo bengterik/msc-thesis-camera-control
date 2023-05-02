@@ -123,7 +123,7 @@ K. Brunnström et al. \cite{latency-impact} performed a study on log lifting usi
 As part of the Eyes-On-Scene-project, a study was performed at Chalmers by Grote et al. \cite{eos-maritime} where the same emergency call was performed with and without images from a UAV at the emergency site. The study showed that imagery from the accident gave the rescue personnel a sence of control before arriving at the scene when knowing what they were going to face. The crew was also faster at locating a person or object when having aerial footage of the scene.
 
 \chapter{Test Bed for QoE Experiment}
-This chapter will go through the technical details of the test bed used in the experiment. First, the hardware provided by SSRS will be presented. Then, the different software packages and APIs will be outlined. Lastly, the software implemented specifically for the test bed and the hoverboard will be introduced.
+This chapter will go through the technical details of the test bed used in the experiment. First, the hardware provided by SSRS will be presented. Then, the different software packages and APIs will be outlined. Lastly, the software implemented specifically for the test bed and the hoverboard will be detailed.
 
 \section{Hardware}
 \begin{description}
@@ -152,13 +152,11 @@ In the test bed all the components are mounted inside an 2L Ikea SmartStore box 
    \centering
    \includegraphics[width=.47\textwidth]{images/drone-box-1.jpg}\hfill
    \includegraphics[width=.47\textwidth]{images/drone-box-2.jpg}
-   \caption{The box that houses the drone hardware for the experiment. The left picture shows the box from above, from the left the following components are visible: flight controller, gimbal with camera module, power supply and Raspberry Pi. The right image shows the box from the outside.}
+   \caption{The box that houses the drone hardware for the experiment. The left picture shows the box from above, from the left the following components are visible: flight controller, gimbal with camera module, power supply and Raspberry Pi. The right image shows the box from below.}
    \label{fig:drone-setup}
 \end{figure}
 
 \section{Software}
-This section will go through the finished components of software that were used in the test bed.
-
 \begin{description}
    \item[Firmware: ArduPlane]
    The firmware running on the flight controller is called ArduPlane, which is part of the open-source autopilot software suite ArduPilot that enables the creation of unmanned, autonomous vehicles \cite{ardupilot-org}. It is developed by a community of developers and is available on GitHub \cite{ardupilot-github}.
