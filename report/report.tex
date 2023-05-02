@@ -129,42 +129,9 @@ W. Tärneberg et al. \cite{industry4.0} present a QoE study with industrial equi
 K. Brunnström et al. \cite{latency-impact} performed a study on log lifting using a head-mounted display system. In the study, latency is introduced both in the display's response to movement as well as the controls. The display delay was found to have a strong effect on nausea, but an observable effect on controller latency could only be found at latencies above 800 ms. 
 
 \chapter{Test Bed for QoE Experiment}
-This chapter aims to introduce the reader to the test bed and each of it's subsystems
-
-\section{System Overview}
-Due to the amount of software components executing on different machines in this control system, this section aims to provide an initial overview for the reader to understand its architecture.
-
-First, the system will be divided into components, then each of the components will be described in more detail. A visual overview of the system is shown in Figure \ref{fig:system-overview}.
-\begin{figure}[!hbt]
-   \centering
-   \includegraphics[scale=0.5]{images/system-overview.png} 
-   \caption{An overview of the entire system. On the left, the drone and its' components including the RPi, RPi camera module and the flight controller are shown. On the right, the ground station and its' components including the web application, Janus server and the controller are shown. The colour of the connections represent what data they transfer, where orange is video, orange double-line is video negotiation and yellow is control.}
-   \label{fig:system-overview}
-\end{figure}
-
-\subsection{Components}
-The complete system can be divided in two, where on component is the video feed and the other is the control of the gimbal, although some components are used in both.
-
-The video feed involves the following components:
-\begin{itemize}
-   \item Raspberry Pi Camera Module: records video
-   \item Raspberry Pi 4: sends the video feed to the Janus server
-   \item Janus Server: establishes a WebRTC connection to the web browser
-   \item Web Browser: displays the video feed
-\end{itemize}
-
-The control of the gimbal involves the following components:
-\begin{itemize}
-   \item Raspberry Pi 4: relays messages between the flight controller and the ground station, often referred to as companion computer.
-   \item Flight Controller: controls all flight and gimbal functions
-   \item Web Browser: user inputs from joystick
-   \item pymavlink: Python library to send commands to flight controller
-   \item MAVProxy: software running on a companion computer to relay messages between the flight controller and the ground station
-\end{itemize}
+This chapter will go through the technical details of the test bed used in the experiment. First, the hardware provided by SSRS will be presented. Then, the different software packages and APIs will be outlined. Lastly, the software implemented specifically for the test bed and the hoverboard will be introduced.
 
 \section{Hardware}
-This section will go through the finished components of hardware that have been used in the testbed.
-
 \begin{description}
    \item[Flight Controller: Pixracer R15] The flight controller is the brain of the aircraft and houses components and connectors relevant to in-flight operations such as servos for control surfaces, GPS and accelorometer. The components and connectors relevant to this thesis has been the serial connector to the Raspberry Pi and the servo-connectors for gimbal.
 
@@ -177,7 +144,7 @@ This section will go through the finished components of hardware that have been 
       \includegraphics[width=.3\textwidth]{images/gimbal-1.png}\hfill
       \includegraphics[width=.3\textwidth]{images/gimbal-2.png}\hfill
       \includegraphics[width=.3\textwidth]{images/gimbal-3.png}
-      \caption{3D-schematics of the gimbal used in the experiment. The middle and left picture shows the gimbal with its full housing. To the right the housing has has been removed and a mockup camera module has been inserted in the mounting plate.}
+      \caption{Schematics of the gimbal used in the experiment. The middle and left picture shows the gimbal with its full housing. To the right the housing has has been removed and a mockup camera module has been inserted in the mounting plate.}
       \label{fig:gimbal-pics}
    \end{figure}
    
@@ -185,7 +152,7 @@ This section will go through the finished components of hardware that have been 
 
 \end{description}
 
-In the test bed all the components are mounted inside an 2L IKEA SmartStore box where the gimbal is mounted in a cutout in the bottom of the box. The other components are mounted inside the box with velcro. The box can be seen in \ref{fig:drone-setup}. 
+In the test bed all the components are mounted inside an 2L Ikea SmartStore box where the gimbal is mounted in a cutout in the bottom of the box. The other components are mounted inside the box with velcro tape. Pictures of the box can be seen in figure \ref{fig:drone-setup}. 
 
 \begin{figure}[htp]
    \centering
@@ -196,46 +163,38 @@ In the test bed all the components are mounted inside an 2L IKEA SmartStore box 
 \end{figure}
 
 \section{Software}
-This section will go through the finished components of software that have been used in the
-testbed.
+This section will go through the finished components of software that were used in the test bed.
 
 \begin{description}
    \item[Firmware: ArduPlane]
    The firmware running on the flight controller is called ArduPlane, which is part of the open-source autopilot software suite ArduPilot that enables the creation of unmanned, autonomous vehicles \cite{ardupilot-org}. It is developed by a community of developers and is available on GitHub \cite{ardupilot-github}.
    
    \item[Protocol: MAVLink]
-   As can be read on their website \cite{mavlink}, MAVLink is a lightweight protocol suited for communication with drones and between drone components. It has a byte overhead of only 14 bytes and allows for concurrent communication between up to 255 systems. 
+   As can be read on their website \cite{mavlink}, MAVLink is a lightweight protocol suited for communication with drones and between drone components. It has a byte overhead of 14 bytes and allows for concurrent communication between up to 255 systems. 
+   
+   \item[Package: pymavlink]
+   This package is a Python interface to communicate with MAVLink devices, available at \cite{pymavlink}. In the test bed software it is used to send control-commands to the drone.
 
    \item [Software: MAVProxy]
-   MAVProxy is a software running on the companion computer whose main task is to relay MAVLink messages between the flight controller and the ground station \cite{mavproxy}. This is required as a mobile network modem cannot be connected directly to the flight controller. 
+   MAVProxy \cite{mavproxy} is a software running on the companion computer whose task is to relay MAVLink messages from the control station to the flight controller. In the test bed it relays messages between the ethernet port (application) and the serial port (drone box). 
 
-   \item[Package: pymavlink]
-   This package is the Python interface to the MAVLink protocol, available at \cite{pymavlink}. In this thesis, it is used to send and receive MAVLink messages on the GCS.
-   
    \item[UV4L]
-   UV4L is a video streaming server that supports real-time communication protocols such as WebRTC \cite{uv4l}. In this thesis, it is the software used to stream the local video feed over the web. 
+   UV4L is a video streaming server that supports real-time communication protocols and video encodings \cite{uv4l}. It's function in the test bed is to stream the local video feed to the web. 
    
    \item[Janus Server]
    As described on their webpage \cite{janus}, Janus is a plugin-based software that helps establish WebRTC connections. In this thesis it is used to establish the connection between the UV4L server and the web browser, enabling the peer-to-peer connection between the two devices.
 \end{description}
 
+\section{Gimbal Control Interface}
+Using the software components previously named, a program serving as the gimbal interface for the operator was implemented in Python. The software takes joystick inputs from a PlayStation-controller and sends messages updating the position of the gimbal with desired delay, while also displaying the video feed in a window. The same software was also modified so that it could record the video being displayed to the operator. A visual overview of the system is shown in Figure \ref{fig:system-overview}.
+\begin{figure}[!hbt]
+   \centering
+   \includegraphics[scale=0.5]{images/system-overview.png} 
+   \caption{An overview of the entire system. On the left, the drone and it's components including the RPi, RPi camera module and the flight controller are shown. On the right, the ground station and its' components including the web application, Janus server and the controller are shown. The colour of the connections represent what data they transfer, where orange is video, orange double-line is video negotiation and yellow is control.}
+   \label{fig:system-overview}
+\end{figure}
 
-
-
-% \subsection{Software: mavlink-router}
-% \label{sec:mavlink-router}
-% The software mavlink-router is a daemon that allows for the routing of MAVLink messages between multiple endpoints \cite{mavlink-router}. In this thesis, it is run on the companion computer to relay MAVLink messages between the flight controller and the ground station.
-% % @misc{mavlink-router,
-% title = {MAVLink-router, GitHub},
-% howpublished = {\url{https://github.com/mavlink-router/mavlink-router}},
-% note = {Accessed: 2023-02-13}
-% }
-
-
-\subsection{Gimbal Control Interface}
-Using the software components previously named, a program serving as the gimbal interface for the operator was implemented in Python. The software takes joystick inputs from a PlayStation-controller and sends messages updating the position of the gimbal with desired delay, while also displaying the video feed in a window. The same software was also modified so that it could record the video being displayed to the operator. Finally, a simple PI-controller was also implemented into the software to autonomously follow an object.
-
-\subsection{Result Script}
+\section{Result Script}
 In order to get results from the recorded video of each subject a script was implemented that was run on each trial, measuring the error of the operator in each video frame and saving it to a file.
 
 \section{Hoverboard robot}
