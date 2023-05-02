@@ -11,6 +11,7 @@
 \usepackage{graphicx}
 \usepackage[titletoc, header, page]{appendix}
 \usepackage{transparent}
+\usepackage{algpseudocode}
 
 % used to display the used files at the end. Select nofilelist as a package option to disable this
 \listfiles % initialize
@@ -198,6 +199,36 @@ The application was run with Python version 3.9.16 and used the following librar
    \item[Multiprocessing]
    This standard module was used in order to run the video tasks in different processes to not interfere with the control. The video frames were accessed by a process which then passed them to a the recording process using a queue. For more information see \cite{multiprocessing}.  
 \end{description}
+
+The application was run on a machine with the following specifications:
+\begin{description}
+   \item[CPU] Intel Core i7-4770 @ 3.40GHz, 4 cores 8 threads
+   \item[RAM] 16 GB
+   \item[GPU] Mesa Intel HD Graphics 4600 (HSW GT2)
+\end{description}
+
+Delay was introduced in the controls by entering commands in a queue along with a timestamp, with the program waiting until timestamp was reached before sending the command. The following algorithm was used to calculate the delay:
+\begin{algorithmic}
+   \While{running}
+   \State $timestamp, pitch, yaw = queue.get()$
+   \State $t0 = now()$
+   \State $diff = timestamp + delay - t0$
+   \If{diff > 0}
+      \State $time.sleep(diff)$
+   \EndIf
+   \State $send\_command(pitch, yaw)$
+   \EndWhile
+\end{algorithmic}
+
+% while True:
+% timestamp, pitch, yaw = self.queue.get()
+
+% t0 = time.time()
+
+% diff = timestamp + delay_s - t0
+
+% if diff > 0: 
+%     time.sleep(diff)
 
 \section{Result Script}
 In order to get results from the recorded video of each subject a script was implemented that was run on each trial, measuring the error of the operator in each video frame and saving it to a file.
