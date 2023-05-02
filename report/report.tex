@@ -163,22 +163,22 @@ The control of the gimbal involves the following components:
 \end{itemize}
 
 \section{Hardware}
-This chapter will go through the finished components of hardware that have been used in the testbed.
+This section will go through the finished components of hardware that have been used in the testbed.
 
 \begin{description}
-   \item[Flight Controller, Pixracer R15] The flight controller is the brain of the aircraft and houses components and connectors relevant to in-flight operations such as servos for control surfaces, GPS and accelorometer. The components and connectors relevant to this thesis has been the serial connector to the Raspberry Pi and the servo-connectors for gimbal.
+   \item[Flight Controller: Pixracer R15] The flight controller is the brain of the aircraft and houses components and connectors relevant to in-flight operations such as servos for control surfaces, GPS and accelorometer. The components and connectors relevant to this thesis has been the serial connector to the Raspberry Pi and the servo-connectors for gimbal.
 
-   \item[Raspberry Pi 4] The Raspberry Pi serves as the onboard computer, commonly known as the "companion computer" in the context of drone hardware. It is connected to the flight controller via USB and makes it possible to relay messages sent over ethernet instead of radio, allowing to connect to a ground station over the Internet. 
+   \item[Companion Computer: Raspberry Pi 4] The Raspberry Pi serves as the onboard computer, commonly known as the "companion computer" in the context of drone hardware. It is connected to the flight controller via USB and makes it possible to relay messages sent over ethernet instead of radio, allowing to connect to a ground station over the Internet. 
 
    \item[Gimbal] The gimbal used in the experiment is designed and manufactured by Fredrik Falkman at the SSRS. It is a 3D-printed design that has three degrees of freedom made possible by three servos connected to drive belts that control each axis of the camera. The servos are connected to the flight controller which also provides them with power. The gimbal also hosts a Raspberry Pi Camera Module which is directly connected to the Raspberry with a ribbon cable. 
-    
-   \item[Raspberry Pi Camera Module v2] 
-
+   
+   \item[Raspberry Pi Camera Module v2] The camera module is a small camera that is mounted inside on a flat surface on the gimbal. The camera connects to the module board which is then connected to the Raspberry Pi with a ribbon cable. It is capable of recording 1080p video at 30 fps and has a 4:3 aspect ration.
 
 \end{description}
 
 \section{Software}
-There were many different softwares involved in this project, and this chapter will briefly go through the main ones that have been used in this thesis. A brief description of the program for the particular test bed will also be included.
+This section will go through the finished components of software that have been used in the
+testbed.
 
 \begin{description}
    \item[Firmware: ArduPlane]
