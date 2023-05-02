@@ -174,12 +174,16 @@ The flight controller is the brain of the aircraft and houses the following comp
    \item connector to external GPS receiver
    \item servo-connectors for aircraft control surfaces and gimbal
 \end{itemize}
-   
-\subsection{Raspberry Pi 4}
-The Raspberry serves as the onboard computer, commonly known as the "companion computer" in the context of drone hardware. It is connected to the flight controller via USB and relays messages between the flight controller and the ground station over its connection to the Internet. In the SSRS drone, the Raspberry has a 4G modem which is what allows the drone to fly beyond visual line-of-sight (BVLOS).
 
-\subsection{Gimbal}
-The gimbal used in the experiment is designed and manufactured by Fredrik Falkman at the SSRS. It is a 3D-printed design that has three degrees of freedom made possible by three servos connected to drive belts that control each axis of the camera. The servos are connected to the flight controller which also provides them with power. The gimbal also hosts a Raspberry Pi Camera Module which is directly connected to the Raspberry with a ribbon cable.  
+\begin{description}
+   \item[Raspberry Pi 4] The Raspberry serves as the onboard computer, commonly known as the "companion computer" in the context of drone hardware. It is connected to the flight controller via USB and relays messages between the flight controller and the ground station over its connection to the Internet. In the SSRS drone, the Raspberry has a 4G modem which is what allows the drone to fly beyond visual line-of-sight (BVLOS).
+
+   \item[Raspberry Pi Camera Module]
+
+   \item[Gimbal] The gimbal used in the experiment is designed and manufactured by Fredrik Falkman at the SSRS. It is a 3D-printed design that has three degrees of freedom made possible by three servos connected to drive belts that control each axis of the camera. The servos are connected to the flight controller which also provides them with power. The gimbal also hosts a Raspberry Pi Camera Module which is directly connected to the Raspberry with a ribbon cable.  
+
+\end{description}
+
 
 \section{Software}
 There were many different softwares involved in this project, and this chapter will briefly go through the main ones that have been used in this thesis. A brief description of the program for the particular test bed will also be included.
