@@ -195,7 +195,7 @@ The application was run with Python version 3.9.16 and used the following librar
    Open Computer Vision, a very popular library for computer vision tasks. In the test interface it is used for displaying and recording the video feed. Available at \cite{opencv}.
 
    \item[Multiprocessing]
-   This standard module was used in order to run the video tasks in different processes to not interfere with the control. The video frames were accessed by a process which then passed them to a the recording process using a queue. For more information see \cite{multiprocessing}.  
+   This standard module was used in order to run the video tasks in different processes to not interfere with the control. The video frames were accessed and displayed by one process and then feeded to another process saving each frame. For more information on the library see \cite{multiprocessing}.  
 \end{description}
 
 The application was run on a machine with the following specifications:
@@ -412,7 +412,7 @@ In figure \ref{fig:0vs600} the trials of all subjects have been summarized on a 
 
 \begin{figure}[!hbt]
    \centering
-   \includegraphics[scale=0.5]{images/0vs600.png} 
+   \makebox[\textwidth]{\includegraphics[scale=0.35]{images/0vs600.png}}
    \caption{Total trials for latencies 0 and 600 averaged over all subjects.}
    \label{fig:0vs600}
 \end{figure}
