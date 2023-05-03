@@ -351,7 +351,14 @@ At the end of the fifth and last trial the subject got to fill in the sickness q
 The following two sections will describe the quantative and qualitative methods that are used to evaluate the performance of the system.
 
 \subsection{Quantative Evaluation}
-To measure each subjects performance, a script using a detection algorithm was used on the recorded video which for each frame gave the distance between the red dot and the center of the apriltag. A frame from the detection script can be seen in figure \ref{fig:resultcalc}.
+To measure each subjects performance, a script using a detection algorithm was used on the recorded video which for each frame gave the distance between the red dot and the center of the apriltag. The formula for calculating the pixel distance between the two points is shown in equation \ref{eq:distance}. A frame from the detection script can be seen in figure \ref{fig:resultcalc}.
+
+
+\begin{equation}
+   \label{eq:distance}
+   d = \sqrt{(x_{hoverboard} - x_{center})^2 + (y_{hoverboard} - y_{center})^2}
+\end{equation}
+
 
 \begin{figure}[!hbt]
    \centering
