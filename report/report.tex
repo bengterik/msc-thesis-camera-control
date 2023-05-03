@@ -351,7 +351,7 @@ At the end of the fifth and last trial the subject got to fill in the sickness q
 The following two sections will describe the quantative and qualitative methods that are used to evaluate the performance of the system.
 
 \subsection{Quantative Evaluation}
-To measure each subjects performance, each trial was recorded and a script using a detection algorithm gave the distance between the red dot and the center of the apriltag. A frame from the detection script can be seen in figure \ref{fig:resultcalc}.
+To measure each subjects performance, a script using a detection algorithm was used on the recorded video which for each frame gave the distance between the red dot and the center of the apriltag. A frame from the detection script can be seen in figure \ref{fig:resultcalc}.
 
 \begin{figure}[!hbt]
    \centering
@@ -378,7 +378,7 @@ Right after the last trial the subject filled out the SSQ once more. Then, a bri
 \end{enumerate}
 
 \subsection{Auto-follow mode}
-As a proof of concept, an auto-follow mode was implemented in the application using real-time object detection of the video feed. Although it is not optimal to have that high latency introduced in the control-loop, it is of interest as the resource heavy object detection algorithm does not stress the hardware on the drone. The mode is evaluated with the same methods as the rest of the experiment, although the user is just passively watching the feed.
+As a proof of concept, an auto-follow mode was implemented in the application using real-time object detection of the video feed. Although it is not optimal to have that high latency introduced in the control-loop, it is of interest as the resource heavy object detection algorithm does not stress the hardware on the drone.
 
 \section{Known Sources of Error}
 
