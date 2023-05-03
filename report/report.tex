@@ -323,7 +323,21 @@ The interface was opened on the subject's screen and the task was explained. The
    \label{fig:apriltag}
 \end{figure}
 
-The subject was then given a chance to try the system, and was given the controller and presented with the view. The hoverboard was started and ran for one lap in the same path that it would run during the test.
+The subject was then given a chance to try the system, and was given the controller and presented with the view. The hoverboard was started and ran for one lap in the same path that it would run during the test. The view of the subject is shown in figure \ref{fig:}.
+
+\begin{figure}[!hbt]
+   \centering
+   \includegraphics[scale=0.08]{images/apriltag.jpg} 
+   \caption{The apriltag used to show the subject where to aim.}
+   \label{fig:}
+\end{figure}
+
+\begin{figure}[!hbt]
+   \centering
+   \includegraphics[scale=0.3]{images/interface.png} 
+   \caption{The interface that the subject was presented with. The red dot in the middle of the screen is overlayed on the video feed so that the subject has a better reference of the center of the screen.}
+   \label{fig:interface}
+\end{figure}
 
 \subsection{Test Procedure}
 After the task description and warm-up the tests commenced. The added latencies tested were 0, 200, 300, 400 and 600 and the order in which they were given to the subject was random. 
@@ -337,7 +351,14 @@ At the end of the fifth and last trial the subject got to fill in the sickness q
 The following two sections will describe the quantative and qualitative methods that are used to evaluate the performance of the system.
 
 \subsection{Quantative Evaluation}
-To measure each subjects performance, each trial was recorded and a script using a detection algorithm gave the distance between the red dot and the center of the apriltag.    
+To measure each subjects performance, each trial was recorded and a script using a detection algorithm gave the distance between the red dot and the center of the apriltag. A frame from the detection script can be seen in figure \ref{fig:resultcalc}.
+
+\begin{figure}[!hbt]
+   \centering
+   \includegraphics[scale=0.3]{images/resultcalc.png} 
+   \caption{Example of a result from the detection algorithm. The green square outlines the result of the detected object and the red dot in the middle of its center. The error is the distance between the two dots as outlined by the black indicators.}
+   \label{fig:resultcalc}
+\end{figure}
 
 \subsection{Qualitative Evaluation}
 After each trial the subject answered a form with four questions about the system on a scale from 1-5, labeled 'terrible' to 'excellent'. The questions were the following:
@@ -430,7 +451,7 @@ In figure \ref{fig:ecdf} the ECDF over the averages at each delay is shown. The 
    \centering
    \includegraphics[scale=0.5]{images/form-ans.png} 
    \caption{Form answers averaged for all subjects for each delay.}
-   \label{fig:ecdf}
+   \label{fig:form-ans}
 \end{figure}
 
 In figure \ref{fig:hoverboard-pos} all the values from the trials have been averaged and the position of the hoverboard has been superimposed.
