@@ -434,17 +434,16 @@ In \ref{tab:averages} the mean and standard deviation of the different delays ar
 \begin{figure}[!hbt]
    \centering
    \includegraphics[scale=0.5]{images/avg-std.png} 
-   \caption{Average and standard deviation for all delays. Delays 100 and 500 are added for correct scale.}
+   \caption{Pixel error average and standard deviation for all delays. Delays 100 and 500 are added on the x-axis for correct scale.}
    \label{fig:avg-std}
 \end{figure}
 
-
-In figure \ref{fig:ecdf} the ECDF over the averages at each delay is shown. The x-axis represents the value which the entry has while the y-axis represents the percentage of entries that are less than or equal to the x-axis value. The increase in both average and mean can be clearly observed as the delay increases. One can also deduce that the distance between the ECDF distributions for 0ms and 200ms is much smaller than that between the 400ms and 600ms. This could indicate that the added delay had a larger impact at 400ms than at 0 ms. 
+In figure \ref{fig:ecdf} the empirical cumulative distribution functions (ECDF) for the results of each delay are shown. The x-axis represents the value which the entry has while the y-axis represents the percentage of entries that are less than or equal to the x-axis value. The increase in both average and mean can be clearly observed as the delay increases. It can also be deduced that the distance between the center of the ECDF distributions for 0ms and 200ms is much smaller than that between the curves for 400ms and 600ms. This could indicate that the added 200ms added delay had a larger impact at 400ms than at 0 ms.
 
 \begin{figure}[!hbt]
    \centering
    \includegraphics[scale=0.5]{images/ecdf.png} 
-   \caption{ECDF of the total distance for all subjects.}
+   \caption{ECDF of the total distance for all subjects. The curves show the distribution of the error for each delay. A larger inclination suggests a larger spread and the more to the right the curve is, the larger the average error.}
    \label{fig:ecdf}
 \end{figure}
 
