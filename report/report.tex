@@ -75,7 +75,9 @@ Historically drones have been limited by the maximum distance it can travel from
 
 % The thesis work is a collaboration between the Swedish Sea Rescue Society and the Department of Electrical and Information Technology at (+the Faculty of Engineering?) Lund University.
 \section{SSRS Needs}
-The SSRS has been conducting a research project called Eyes-On-Scene where drones are to be used to give better information to a rescue crew on their way to the scene of the accident. As part of the project a mission control software in which one can manage a fleet of drones and see their video feeds has been implemented. However, the drone camera can only be controlled by a so called region of interest (ROI), which points the camera at a GPS location provided on a map. This is not ideal for the operator, as the act of uploading a new ROI requires a point to be selected on the map which then is uploaded to the drone, forcing a context switch for the operator from the video feed to the map. Instead, the SSRS want to be able to adjust the gimbal angle with direct controls, such as with a joystick or the arrow keys. The SSRS also wants an estimate of the latency between the drone and the operator, which they currently don't know.
+The SSRS has been conducting a research project called Eyes-On-Scene where drones are to be used to give better information to a rescue crew on their way to the scene of the accident. As part of the project a mission control software in which one can manage a fleet of drones and see their video feeds has been implemented. The drone camera is controlled by a so called region of interest (ROI) point, which is a GPS-location where the camera aims automatically. As the plane wiggles a lot during flight, stabilization is a necessity. With the camera pointed at an ROI, the plane's sensors can compensate for it's movements resulting in a much more stable image.
+The act of uploading a new ROI requires a point to be selected on a map, which then can be uploaded to the drone. This forces a context switch for the operator from the video feed to the map. To make it easier to operate the gimbal, SSRS want to be able to adjust the gimbal angle with direct controls, such as with a joystick or the arrow keys. The SSRS also wants an estimate of the latency between the drone and the operator, which they currently don't know.
+To illustrate the use case a scenario is presented in ???, where a drone is loitering around an accident site. The operator can provide a ROI to the interface as a GPS point, but will have to go through the process of choosing and uploading a new point each time.
 
 \section{Research Motivation}
 With the expansion of newer, low-latency network technologies like 5G, the use case for remote control has grown stronger. With everything from connected cars, remote surgery or log lifting, the uses of real-time remote-control are many.  
@@ -428,7 +430,7 @@ Right after the last trial the subject filled out the SSQ once more. Then, a bri
 \vspace{10pt}
 
 \subsection{Auto-follow mode}
-As a proof of concept, an auto-follow mode was developed which allowed the gimbal to follow the hoverboard. This was made using the same object detection algorithm as the result script, but in real-time coupled with a PI-controller which had the center of the image as reference value. Due to time limitations this was not investigated any further.
+As a proof of concept, an auto-follow mode was developed which allowed the gimbal to follow the hoverboard. This was made using the object detection algorithm from the result script, but in real-time coupled with a PI-controller which had the center of the image as reference value. Due to time limitations this was not investigated any further.
 
 \section{Known Sources of Error}
 
