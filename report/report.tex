@@ -12,7 +12,6 @@
 \usepackage[titletoc, header, page]{appendix}
 \usepackage{transparent}
 \usepackage{algpseudocode}
-
 % used to display the used files at the end. Select nofilelist as a package option to disable this
 \listfiles % initialize
 
@@ -367,22 +366,66 @@ To measure each subjects performance, a script using a detection algorithm was u
    \label{fig:resultcalc}
 \end{figure}
 
-\subsection{Qualitative Evaluation}f
-After each trial the subject answered a form with four questions about the system on a scale from 1-5, labeled 'terrible' to 'excellent'. The questions were the following:
-\begin{enumerate}
-   \item How would you describe the controllability of the system?
-   \item How would you rate your ability to perform the task?
-   \item How would you rate your experience of the system?
-   \item How would you rate your impression of the system as a whole?
-\end{enumerate}
+\subsection{Qualitative Evaluation}
+After each trial the subject answered a form with four questions about the system on a five degree scale, labeled 'Terrible' to 'Excellent'. The questions are shown in table \ref{tab:form-questions}. 
 
-Right after the last trial the subject filled out the SSQ once more. Then, a brief interview was conducted with the following four questions:
-\begin{enumerate}
-   \item What was your general experience of controlling the camera?
-   \item Did you experience any difference in the controls between the trials?
-   \item Was there any part of the track that was harder than any other?
-   \item Do you think the system would have been usable with the worst experimental conditions?
-\end{enumerate}
+\setlength{\extrarowheight}{5pt}
+\vspace{10pt}
+
+\begin{table}[!hbt]
+   \centering
+   \begin{tabular}{|c|}
+      \hline
+      \textbf{How would you describe the controllability of the system?} \\
+      \\
+      Terrible \hspace{10pt} Poor \hspace{10pt} Fair \hspace{10pt} Good \hspace{10pt} Excellent \\    
+      \\
+      \hline
+      \textbf{How would you rate your ability to perform the task?} \\
+      \\
+      Terrible \hspace{10pt} Poor \hspace{10pt} Fair \hspace{10pt} Good \hspace{10pt} Excellent \\    
+      \\
+      \hline
+      \textbf{How would you rate your experience of the system?} \\
+      \\
+      Terrible \hspace{10pt} Poor \hspace{10pt} Fair \hspace{10pt} Good \hspace{10pt} Excellent \\    
+      \\
+      \hline
+      \textbf{How would you rate your impression of the system as a whole?} \\
+      \\
+      Terrible \hspace{10pt} Poor \hspace{10pt} Fair \hspace{10pt} Good \hspace{10pt} Excellent \\    
+      \\
+      \hline
+   \end{tabular}
+   \caption{The questions asked for each delay after each trial.}
+   \label{tab:form-questions}
+\end{table}
+
+\vspace{10pt}
+
+Right after the last trial the subject filled out the SSQ once more. Then, a brief interview was conducted with questions about the system and experience in general. The questions can be seen in table \ref{tab:interview-questions}.
+
+\setlength{\extrarowheight}{5pt}
+\vspace{10pt}
+
+\begin{table}[!hbt]
+   \centering
+      \begin{tabular}{|c|}
+         \hline
+         \textbf{What was your general experience of controlling the camera?} \\
+         \hline
+         \textbf{Did you experience any difference in the controls between the trials?} \\
+         \hline
+         \textbf{Was there any part of the track that was harder than any other?} \\
+         \hline
+         \textbf{Do you think the system would have been usable with the worst experimental conditions?} \\
+         \hline
+      \end{tabular}
+   \caption{The questions asked for each delay after each trial.}
+   \label{tab:interview-questions}
+\end{table}
+
+\vspace{10pt}
 
 \subsection{Auto-follow mode}
 As a proof of concept, an auto-follow mode was developed which allowed the gimbal to follow the hoverboard. This was made using the same object detection algorithm as the result script, but in real-time coupled with a PI-controller which had the center of the image as reference value. Due to time limitations this was not investigated any further.
