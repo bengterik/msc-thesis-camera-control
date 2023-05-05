@@ -543,7 +543,22 @@ The use of WebRTC along with Janus enables two units to talk to one another dire
 One part of WebRTC that was of particular interest during the implementation was data channels. These are meant to be utilized to send small amounts of data along with the videopackets utilizing the already established P2P to transmit for example a time stamp or control commands. In UV4L it is possible to check a box that automatically ties the gyroscope of a device to the output of three servos. Since the control in this project goes through the Ardupilot firmware one would need to implement a relay running on the companion computer, which there was not time for in the implementation part of this project. 
 
 \chapter{Field testing}
-In the end stages of the thesis' work, the gimbal interface was tested on the SSRS during a real flying scenario over the Gothenburg archipelago. The goal of the field testing was to confirm that the software for controlling the gimbal would work on the actual drone in a real scenario as well as to collect data on the latency of the system. All communication with the drone was done over the mobile network.
+In the end stage of the thesis' work, the gimbal interface was tested on the drone during a real flight scenario in the archipelago of Gothenburg. The SSRS have a permit to operate drones within a delimited area of the archipelago and because of this, the drone can be flown beyond visual line-of-sight with all communication going over the mobile network. 
+
+\section{Goals}
+The goal of the field testing was to:
+\begin{itemize}
+   \item confirm that the gimbal control did not interfere with the drone's flight controls 
+   \item see how suitable the controls was when the drone was not stationary, as in the experiment
+   \item compare the manual controls to the already existing ROI-mode which has been used before
+\end{itemize} 
+
+\section{Flight}
+A flight of roughly 30 minutes with 17 waypoints and 2 loiter points was performed. For the waypoints the camera was held in manual mode for the most of the time, enabling the camera operator to look around using the joystick. The latency of the video was estimated to be between one and two seconds, which gave some delay to the controls. However, the gimbal was still controllable and the camera operator could still look around and point the camera at objects of interest.
+
+For convenience, a button on the control was mapped to switch the gimbal control between manual mode and ROI-mode available in the firmware. This made it possible to easily switch between the two.
+
+During loitering the camera was difficult to control manually as the plane was moving around a lot. When going around in a circle the plane also moves a lot in the yaw and roll axes, making it very difficult to compensate manually with the joystick. The ROI-mode was better suited for this, although there were some inconsistencies in the altitude data for the points which caused the camera to point at a point below the surface of the earth. The point was adjusted by raising the altitude provided to the GPS-point. 
 
 \chapter{Conclusion}
 
