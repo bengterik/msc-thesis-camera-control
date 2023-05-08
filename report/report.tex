@@ -126,7 +126,7 @@ As part of the Eyes-On-Scene-project, a study was performed at Chalmers by Grote
 \chapter{Test Bed for QoE Experiment}
 This chapter will go through the technical details of the test bed used in the experiment. First, the hardware provided by SSRS will be presented. Then, the different software packages and APIs will be outlined. Lastly, the software implemented specifically for the test bed and the hoverboard will be detailed.
 
-\section{Hardware}
+\section{SSRS Hardware}
 \begin{description}
    \item[Flight Controller: Pixracer R15] The flight controller is the brain of the aircraft and houses components and connectors relevant to in-flight operations such as servos for control surfaces, GPS and accelorometer. The components and connectors relevant to this thesis has been the serial connector to the Raspberry Pi and the servo-connectors for gimbal.
 
@@ -534,20 +534,22 @@ On the second question, namely "ability to control task", the results for 200ms,
 \end{figure}
 
 \chapter{Discussion}
-As the goal of this thesis work was to develop an application that could be used in a controlled experiment as well as in actual flight, there were many design choices that were taken into consideration during development. This section will discuss the main requirements of the system and the reasoning behind the design choices taken.
+As the goal of this thesis work was to develop an application that could be used in a controlled experiment as well as in actual flight, there were some design choices that were taken during development. This section will briefly discuss the reasoning behind the design choices taken.
 
 \section{Video streaming}
 In the real drone system the video feed is done with WebRTC. This is a modern peer-to-peer video protocol well suited for the application of video from IoT, and the intention was to use this in the test bed as it had a low latency and also was accessible through the browser. However, it proved more difficult to access as other video processing software had to be used to access the raw video feed, which was needed for adjusting image parameters as well as for detection and recording of the images. In the end the MJPEG format was chosen, as it had acceptable delay and could be integrated only by providing a web address to the OpenCV video capture module.
 
-\section{Native or web application}
-The application that the SSRS currently use for mission control is hosted on the web, and as such the test bed was initially developed as web-application. This proved difficult, as the developer was not experienced with web applications along with the amount of tasks that were to be performed simultaneously, i.e. control, recording, detection. As the web approach proved too complex, the test bed was implemented as a native python application.
+\section{Native vs. web}
+The application that the SSRS currently use for mission control is hosted on the web, and as such the test bed was initially developed as web-application. This proved difficult, as the developer was not experienced with multithreaded web applications necessary for the tasks that were to be performed simultaneously, i.e. control, recording, detection. As the web approach proved too complex, the test bed was implemented as a native python application.
 
 \section{Sources of error}
 \subsection{Frame detection accuracy and interpolation} 
 
 \section{Experiment execution}
 
+\chapter{Conclusion}
 
+\chapter{Future Work}
 
 \chapter{Field testing}
 In the end stage of the thesis' work, the gimbal interface was tested on the drone during a real flight scenario in the archipelago of Gothenburg. The SSRS have a permit to operate drones within a delimited area of the archipelago and because of this, the drone can be flown beyond visual line-of-sight with all communication going over the mobile network. 
@@ -555,9 +557,9 @@ In the end stage of the thesis' work, the gimbal interface was tested on the dro
 \section{Goals}
 The goal of the field testing was to:
 \begin{itemize}
-   \item confirm that the gimbal control did not interfere with the drone's flight controls 
-   \item see how suitable the controls was when the drone was not stationary, as in the experiment
-   \item compare the manual controls to the already existing ROI-mode which has been used before
+   \item confirm that the gimbal control did not interfere with the flight control software
+   \item evaluate suitability of the controls in a dynamic environment
+   \item compare the manual controls to the already existing ROI-mode
 \end{itemize} 
 
 \section{Flight}
@@ -567,9 +569,7 @@ For convenience, a button on the control was mapped to switch the gimbal control
 
 During loitering the camera was difficult to control manually as the plane was moving around a lot. When going around in a circle the plane also moves a lot in the yaw and roll axes, making it very difficult to compensate manually with the joystick. The ROI-mode was better suited for this, although there were some inconsistencies in the altitude data for the points which caused the camera to point at a point below the surface of the earth. The point was adjusted by raising the altitude provided to the GPS-point. 
 
-\chapter{Conclusion}
 
-\chapter{Future Work}
 
 
 % Should use consistent formatting when it comes to Names ("FirstName LastName", or "F. LastName")
