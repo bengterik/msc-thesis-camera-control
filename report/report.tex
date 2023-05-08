@@ -124,10 +124,10 @@ K. Brunnström et al. \cite{latency-impact} performed a study on log lifting usi
 As part of the Eyes-On-Scene-project, a study was performed at Chalmers by Grote et al. \cite{eos-maritime} where the same emergency call was performed with and without images from a UAV at the emergency site. The study showed that imagery from the accident gave the rescue personnel a sence of control before arriving at the scene when knowing what they were going to face. The crew was also faster at locating a person or object when having aerial footage of the scene.
 
 \chapter{Test Bed}
-This chapter will go through the technical details of the test bed used in the experiment. First, the hardware provided by SSRS will be presented. Then, the different software packages and APIs will be outlined. Lastly, the software implemented specifically for the test bed and the hoverboard will be detailed.
+This chapter will go through the components of the test beds used in the experiments. First, all the hardware will be presented. Then, the pre-existing software along with the software implemented specifically for the test bed will be detailed.
 
-\section{Pre-existing Hardware and Software}
-In this section the pre-existing software and hardware included in the thesis work is presented. 
+\section{Hardware}
+In this section the hardware used in the experiments is presented. 
 
 \subsection{Fixed-Wing Drone}
 As part of the EOS-project a fixed-wing drone has been developed. It belongs to the SSRS and is designed together with plane manufacturer Smartplanes. The plane can be seen in \ref{fig:fv-drone-pics}.
@@ -140,9 +140,9 @@ As part of the EOS-project a fixed-wing drone has been developed. It belongs to 
    \label{fig:fv-drone-pics}
 \end{figure}
 
-The components relevant for this thesis are:
+The components relevant for this thesis work are:
 \begin{description}
-   \item[Flight Controller: Pixracer R15] The flight controller is the brain of the aircraft and houses components and connectors relevant to in-flight operations such as servos for control surfaces, GPS and accelorometer. The components and connectors relevant to this thesis has been the serial connector to the Raspberry Pi and the servo-connectors for gimbal.
+   \item[Flight Controller: Pixracer R15] The flight controller is the brain of the aircraft and houses components and connectors relevant to in-flight operations such as servos for control surfaces or other equipment, GPS and accelorometer.
 
    \item[Companion Computer: Raspberry Pi 4] The Raspberry Pi serves as the onboard computer, commonly known as the "companion computer" in the context of drone hardware. It is connected to the flight controller via USB and makes it possible to relay messages sent over ethernet instead of radio, allowing to connect to a ground station over the Internet. 
    
@@ -160,8 +160,6 @@ The components relevant for this thesis are:
    \end{figure}
    
    \item[Raspberry Pi Camera Module v2] The camera module is a small camera that is mounted inside on a flat surface on the gimbal. The camera connects to the module board which is then connected to the Raspberry Pi with a ribbon cable. It is capable of recording 1440x1080 video at 30 fps and has a 4:3 aspect ration. 
-   
-   \item[]  
 
 \subsection{Gimbal Package}
 As the entire drone was not needed to conduct the QoE experiment, a Raspberry Pi, flight controller and gimbal were mounted inside a 2L Ikea SmartStore. The boards were mounted inside the box with velcro tape and the gimbal was mounted in a cutout in the bottom of the box. Pictures of the box can be seen in figure \ref{fig:drone-setup}.
@@ -177,16 +175,25 @@ As the entire drone was not needed to conduct the QoE experiment, a Raspberry Pi
 \end{figure}
 
 \subsection{Hoverboard robot}
-To make the object that was to be followed move, a hoverboard from another project was used. The hoverboard has four wheels and can be controlled by a game controller or follow a set of points using coordinates for which it uses a Lidar and SLAM-algorithm. This makes it possible to have the hoverboard run in a programmed route with little error. The apriltag was fastened on top of the hoverboard as high as possible without blocking the lidar. A picture of the hoverboard with the apriltag mounted is shown in figure \ref{fig:hoverboard}.
+In order to introduce movement in QoE experiment, a modified hoverboard was used. The hoverboard has four wheels and could be controlled via joystick inputs or coordinates. It's manouvering was assisted by real-time lidar-mapping of the room. The hoverboard can be seen in \ref{fig:hoverboard}
 
 \begin{figure}[!hbt]
    \centering
-   \includegraphics[scale=0.05]{images/hoverboard.jpg} 
+   \includegraphics[scale=0.07]{images/hoverboard.jpg} 
    \caption{}
    \label{fig:hoverboard}
 \end{figure}
 
-\subsection{Software}
+\subsection{Apriltag}
+To have an object that was easy to detect by a computer, an apriltag was used. The apriltag is a type of low-resolution QR-code often used in robotics to estimate orientation and position of robots or objects with the help of computer vision. It was fastened on top of the hoverboard as high as possible without blocking the lidar. The apriltag can be seen mounted on the hoverboard in figure \ref{fig:hoverboard}.
+
+
+
+
+\section{Software}
+In this section the software used in the experiments will be detailed.
+
+\subsection{Pre-existing Software}
 \begin{description}
    \item[Firmware: ArduPlane]
    The firmware running on the flight controller is called ArduPlane, which is part of the open-source autopilot software suite ArduPilot that enables the creation of unmanned, autonomous vehicles \cite{ardupilot-org}. It is developed by a community of developers and is available on GitHub \cite{ardupilot-github}.
@@ -202,12 +209,12 @@ To make the object that was to be followed move, a hoverboard from another proje
    
    \item[Janus Server]
    As described on their webpage \cite{janus}, Janus is a plugin-based software that helps establish WebRTC connections. In this thesis it is used to establish the connection between the UV4L server and the web browser, enabling the peer-to-peer connection between the two devices.
+
+   \item[Hoverboard software] The hoverboard has software which allows it to be controlled by a game controller or follow a set of points using coordinates for which it uses it's Lidar and a SLAM-algorithm. This makes it possible to have the hoverboard run in a programmed route with little error. 
 \end{description}
 
-\section{Implemented Software}
-
 \subsection{Gimbal Control Interface}
-Using the software components previously named, a program serving as the gimbal interface for the operator was implemented in Python. The software takes joystick inputs from a PlayStation-controller and sends messages updating the position of the gimbal with desired delay, while also displaying the video feed in a window. The same software was also modified so that it could record the video being displayed to the operator. A visual overview of the system is shown in Figure \ref{fig:system-overview}.
+A program displaying the video feed from the camera while taking joystick inputs from the operator was implemented in Python. The software took the joystick inputs from a PlayStation-controller and could send messages to the flight controller updating the position of the gimbal at a desired frequency and delay. The program could also record the video feed. A visual overview of the system is shown in Figure \ref{fig:system-overview}.
 \begin{figure}[!hbt]
    \centering
    \includegraphics[scale=0.5]{images/system-overview.png} 
@@ -228,13 +235,6 @@ The application was run with Python version 3.9.16 and used the following librar
 
    \item[Multiprocessing]
    This standard module was used in order to run the video tasks in different processes to not interfere with the control. The video frames were accessed and displayed by one process and then feeded to another process saving each frame. For more information on the library see \cite{multiprocessing}.  
-\end{description}
-
-The application was run on a machine with the following specifications:
-\begin{description}
-   \item[CPU] Intel Core i7-4770 @ 3.40GHz, 4 cores 8 threads
-   \item[RAM] 16 GB
-   \item[GPU] Mesa Intel HD Graphics 4600 (HSW GT2)
 \end{description}
 
 Delay was introduced in the controls by entering commands in a queue along with a timestamp, with the program waiting until timestamp was reached before sending the command. The following algorithm was used to schedule the sending of commands according to the delay:
@@ -306,6 +306,12 @@ There was no compensation for the subjects other than home baked goods and a hot
 
 \subsubsection{Lab Conditions}
 The lab is located in the E-building at LTH, Lund University. It can also be mentioned that the windows in the room face north, so there was no risk of direct sunlight during the experiments.
+The computer screen was 24' and the application was run on a machine with the following specifications:
+\begin{description}
+   \item[CPU] Intel Core i7-4770 @ 3.40GHz, 4 cores 8 threads
+   \item[RAM] 16 GB
+   \item[GPU] Mesa Intel HD Graphics 4600 (HSW GT2)
+\end{description}
 
 \subsection{Experimental Procedure}
 In this section each of the steps will be described in more detail. The experimental procedure is summarized in the table \ref{tab:task-timeline}.
