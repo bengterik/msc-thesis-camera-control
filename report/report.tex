@@ -464,6 +464,9 @@ To make for better averages over different trials, all NaN values, i.e frames wh
 The center of the apriltag did not have a very clear center which could have made it difficult for the subject to complete the task. To remedy this, a printed apriltag where the center was marked out, but it could be that the subject had difficulty identifying the exact center during the trial. 
 
 \chapter{Results}
+This chapter will go through the main findings of the experiment. The quantative measurements will first be presented followed by the results from the forms and interviews.
+
+\section{Quantative measurements}
 In \ref{tab:averages} the mean and standard deviation of the different delays are presented. The values are also visualized in plot \ref{fig:avg-std}. A clear trend can be seen where both the mean and standard deviation increase with the delay. An interesting feature of the data is that the mean after 400ms starts to increase at a non-linear rate, while the standard deviation has a more or less linear increase all throughout the added delays.
 
 \begin{table}[ht]
@@ -518,6 +521,8 @@ It can be seen that there is a
    \label{fig:0vs600}
 \end{figure}
 
+
+\section{Forms and interviews}
 In \ref{fig:form-ans} the answers from the questionnaires filled out after each trial are averaged over all subjects and visualized as a grouped bar chart. It is important to note that the jumps in delay are not uniform. A monotonous decrease can be seen on all questions where higher delays give lower scores on average. 
 On the second question, namely "ability to control task", the results for 200ms, 300ms, and 400ms are similar. The jumps from 0ms to 200ms and 400ms to 600ms seem to be much more impactful on the subject's perceived ability to perform the task than the jump from 200ms to 400ms.
 
@@ -529,14 +534,10 @@ On the second question, namely "ability to control task", the results for 200ms,
 \end{figure}
 
 \chapter{Discussion}
-\section{Sources of error}
-\subsection{Frame detection accuracy and interpolation} 
+\section{Test bed design choices}
+As the goal of this thesis work was to develop an application that could be used in a controlled experiment as well as in actual flight (in the span of a semester), there were many design choices that were taken into consideration during development. This section will discuss the main requirements of the system and the reasoning behind the design choices taken.
 
-
-\section{System Architecture (SKRIVA DET SOM QOS?)}
-Although being a bit outside the research scope of the project, a natural consequence has been to evaluate the strengths and weaknesses of different system architectures that could be implemented for real drone missions. This section will bring up some of the requierments from SSRS along with the particular architectures considered for the application of sea rescue.
-
-\subsection{Main goals}
+\subsection{Requirements of the system}
 Being a real-time application over the Internet, there are many parts of the system that can introduce latency and efforts to reduce it can be boiled down to two actions: 
 \begin{itemize}
    \item reducing the amount of processing agents between the operator and what is being controlled
@@ -548,6 +549,14 @@ However, while one particular architecture might meet requierments in one area, 
 The use of WebRTC along with Janus enables two units to talk to one another directly over the web, removing a potential server that has to process the video feed and the relay it forward. However, if one would like to record the video and save it on a server the feed now has to be redirected to the server from either the system of the end user or the drone itself. 
 
 One part of WebRTC that was of particular interest during the implementation was data channels. These are meant to be utilized to send small amounts of data along with the videopackets utilizing the already established P2P to transmit for example a time stamp or control commands. In UV4L it is possible to check a box that automatically ties the gyroscope of a device to the output of three servos. Since the control in this project goes through the Ardupilot firmware one would need to implement a relay running on the companion computer, which there was not time for in the implementation part of this project. 
+
+
+\section{Sources of error}
+\subsection{Frame detection accuracy and interpolation} 
+
+\section{Experiment execution}
+
+
 
 \chapter{Field testing}
 In the end stage of the thesis' work, the gimbal interface was tested on the drone during a real flight scenario in the archipelago of Gothenburg. The SSRS have a permit to operate drones within a delimited area of the archipelago and because of this, the drone can be flown beyond visual line-of-sight with all communication going over the mobile network. 
