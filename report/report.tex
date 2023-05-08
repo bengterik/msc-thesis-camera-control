@@ -101,7 +101,7 @@ As stated in their statutes \cite{ssrs-statues}, the mission of SSRS is not sole
 \subsection{Drone Project: Eyes On Scene}
 This thesis work is part of a project called Eyes-on-Scene, where a task-specific drone and mission control software has been developed to meet the requirements of sea rescue missions. In this section the drone and surrounding system will be briefly described.
 
-The drone uses a fixed wing frame and is designed for two modes: sprinting and loitering, which allows for short response time while also being able to stay in the air for a long time. The only equipment it carries is a single camera gimbal with adjustable roll, pitch and yaw angles. The current system uses a launchpad for takeoff and the idea is that the plane will be able to land on a rescue vessel or in the water, allowing it to be picked up. 
+The drone uses a fixed-wing frame and is designed for two modes: sprinting and loitering, which allows for short response time while also being able to stay in the air for a long time. The only equipment it carries is a single camera gimbal with adjustable roll, pitch and yaw angles. The current system uses a launchpad for takeoff and the idea is that the plane will be able to land on a rescue vessel or in the water, allowing it to be picked up. 
 
 A web interface for mission control has also been developed in the project. Currently, the interface allows flying to and loitering around waypoints given on a map which also displays both other naval and aerial traffic in real time. The map also shows the the regulatoy zones in which one is not allowed to fly, i.e. close to airports or military zones. The interface provides video from the drone camera which is recorded and accessible after the mission.
 
@@ -123,31 +123,52 @@ K. Brunnström et al. \cite{latency-impact} performed a study on log lifting usi
 
 As part of the Eyes-On-Scene-project, a study was performed at Chalmers by Grote et al. \cite{eos-maritime} where the same emergency call was performed with and without images from a UAV at the emergency site. The study showed that imagery from the accident gave the rescue personnel a sence of control before arriving at the scene when knowing what they were going to face. The crew was also faster at locating a person or object when having aerial footage of the scene.
 
-\chapter{Test Bed for QoE Experiment}
+\chapter{Test Bed}
 This chapter will go through the technical details of the test bed used in the experiment. First, the hardware provided by SSRS will be presented. Then, the different software packages and APIs will be outlined. Lastly, the software implemented specifically for the test bed and the hoverboard will be detailed.
 
-\section{SSRS Hardware}
+\section{Pre-existing Hardware and Software}
+In this section the pre-existing software and hardware included in the thesis work is presented. 
+
+\subsection{Fixed-Wing Drone}
+As part of the EOS-project a fixed-wing drone has been developed. It belongs to the SSRS and is designed together with plane manufacturer Smartplanes. The plane can be seen in \ref{fig:fv-drone-pics}.
+
+\begin{figure}[htp]
+   \centering
+   \includegraphics[width=.25\textwidth]{images/fv-1.jpg}
+   \rotatebox{90}{\includegraphics[width=.41\textwidth]{images/fv-3.jpg}}
+   \caption{The SSRS fixed-wing drone. The left picture is the inside of the drone housing with the internals visible and the right picture shows the housing mounted on the airframe.}
+   \label{fig:fv-drone-pics}
+\end{figure}
+
+The components relevant for this thesis are:
 \begin{description}
    \item[Flight Controller: Pixracer R15] The flight controller is the brain of the aircraft and houses components and connectors relevant to in-flight operations such as servos for control surfaces, GPS and accelorometer. The components and connectors relevant to this thesis has been the serial connector to the Raspberry Pi and the servo-connectors for gimbal.
 
    \item[Companion Computer: Raspberry Pi 4] The Raspberry Pi serves as the onboard computer, commonly known as the "companion computer" in the context of drone hardware. It is connected to the flight controller via USB and makes it possible to relay messages sent over ethernet instead of radio, allowing to connect to a ground station over the Internet. 
+   
+   \item[4G Modem] Sim-card modem allowing access to the mobile network. 
 
-   \item[Gimbal] The gimbal used in the experiment is designed and manufactured by Fredrik Falkman at the SSRS. It is a 3D-printed design that has three degrees of freedom made possible by three servos connected to drive belts that control each axis of the camera. The servos are connected to the flight controller which also provides them with power. When mounted the servo-housing is inside the aircraft while the part with the mounting plate for the camera module sticks out on the bottom of the drone. In \ref{fig:gimbal-pics} the schematics of the gimbal can be seen. 
+   \item[Gimbal] The gimbal is designed and manufactured by Fredrik Falkman at the SSRS. It is a 3D-printed design that has three degrees of freedom made possible by three servos connected to drive belts that control each axis of the camera. The servos are connected to the flight controller which also provides them with power. When mounted the servo-housing is inside the aircraft while the part with the mounting plate for the camera module sticks out on the bottom of the drone. In \ref{fig:gimbal-pics} the schematics of the gimbal can be seen. 
    
    \begin{figure}[htp]
       \centering
       \includegraphics[width=.3\textwidth]{images/gimbal-1.png}\hfill
       \includegraphics[width=.3\textwidth]{images/gimbal-2.png}\hfill
       \includegraphics[width=.3\textwidth]{images/gimbal-3.png}
-      \caption{Schematics of the gimbal used in the experiment. The middle and left picture shows the gimbal with its full housing. To the right the housing has has been removed and a mockup camera module has been inserted in the mounting plate.}
+      \caption{Schematics of the drone gimbal. The middle and left picture shows the gimbal with its full housing. To the right the housing has has been removed and a mockup camera module has been inserted in the mounting plate.}
       \label{fig:gimbal-pics}
    \end{figure}
    
-   \item[Raspberry Pi Camera Module v2] The camera module is a small camera that is mounted inside on a flat surface on the gimbal. The camera connects to the module board which is then connected to the Raspberry Pi with a ribbon cable. It is capable of recording 1440x1080 video at 30 fps and has a 4:3 aspect ration.
+   \item[Raspberry Pi Camera Module v2] The camera module is a small camera that is mounted inside on a flat surface on the gimbal. The camera connects to the module board which is then connected to the Raspberry Pi with a ribbon cable. It is capable of recording 1440x1080 video at 30 fps and has a 4:3 aspect ration. 
+   
+   \item[]  
+
+\subsection{Gimbal Package}
+As the entire drone was not needed to conduct the QoE experiment, the necessary components were mounted inside a 2L Ikea SmartStore box where the gimbal was mounted in a cutout in the bottom of the box. The other components are mounted inside the box with velcro tape. Pictures of the box can be seen in figure \ref{fig:drone-setup}. The components are the following:
+
+
 
 \end{description}
-
-In the test bed all the components are mounted inside an 2L Ikea SmartStore box where the gimbal is mounted in a cutout in the bottom of the box. The other components are mounted inside the box with velcro tape. Pictures of the box can be seen in figure \ref{fig:drone-setup}. 
 
 \begin{figure}[htp]
    \centering
@@ -157,7 +178,17 @@ In the test bed all the components are mounted inside an 2L Ikea SmartStore box 
    \label{fig:drone-setup}
 \end{figure}
 
-\section{Software}
+\subsection{Hoverboard robot}
+To make the object that was to be followed move, a hoverboard from another project was used. The hoverboard has four wheels and can be controlled by a game controller or follow a set of points using coordinates for which it uses a Lidar and SLAM-algorithm. This makes it possible to have the hoverboard run in a programmed route with little error. The apriltag was fastened on top of the hoverboard as high as possible without blocking the lidar. A picture of the hoverboard with the apriltag mounted is shown in figure \ref{fig:hoverboard}.
+
+\begin{figure}[!hbt]
+   \centering
+   \includegraphics[scale=0.05]{images/hoverboard.jpg} 
+   \caption{}
+   \label{fig:hoverboard}
+\end{figure}
+
+\subsection{Software}
 \begin{description}
    \item[Firmware: ArduPlane]
    The firmware running on the flight controller is called ArduPlane, which is part of the open-source autopilot software suite ArduPilot that enables the creation of unmanned, autonomous vehicles \cite{ardupilot-org}. It is developed by a community of developers and is available on GitHub \cite{ardupilot-github}.
@@ -175,7 +206,9 @@ In the test bed all the components are mounted inside an 2L Ikea SmartStore box 
    As described on their webpage \cite{janus}, Janus is a plugin-based software that helps establish WebRTC connections. In this thesis it is used to establish the connection between the UV4L server and the web browser, enabling the peer-to-peer connection between the two devices.
 \end{description}
 
-\section{Gimbal Control Interface}
+\section{Implemented Software}
+
+\subsection{Gimbal Control Interface}
 Using the software components previously named, a program serving as the gimbal interface for the operator was implemented in Python. The software takes joystick inputs from a PlayStation-controller and sends messages updating the position of the gimbal with desired delay, while also displaying the video feed in a window. The same software was also modified so that it could record the video being displayed to the operator. A visual overview of the system is shown in Figure \ref{fig:system-overview}.
 \begin{figure}[!hbt]
    \centering
@@ -235,23 +268,19 @@ Although the sources of the delay were not examined in any further depth there a
    
 \end{description}
 
-\section{Result Script}
+\subsection{Result Script}
 In order to get results from the recorded video of each subject a script was implemented that was run on each trial, measuring the error of the operator in each video frame and saving it to a file.
 
-\section{Hoverboard robot}
-To make the object that was to be followed move, a hoverboard from another project was used. The hoverboard has four wheels and can be controlled by a game controller or follow a set of points using coordinates for which it uses a Lidar and SLAM-algorithm. This makes it possible to have the hoverboard run in a programmed route with little error. The apriltag was fastened on top of the hoverboard as high as possible without blocking the lidar. A picture of the hoverboard with the apriltag mounted is shown in figure \ref{fig:hoverboard}.
+\subsection{Auto-follow mode}
+As a proof of concept, an auto-follow mode was developed which allowed the gimbal to follow the hoverboard. This was made using the object detection algorithm from the result script, but in real-time coupled with a PI-controller which had the center of the image as reference value. Due to time limitations this was not investigated any further.
 
-\begin{figure}[!hbt]
-   \centering
-   \includegraphics[scale=0.05]{images/hoverboard.jpg} 
-   \caption{}
-   \label{fig:hoverboard}
-\end{figure}
+\chapter{Experiments}
+This chapter will describe the setup, procedure and evaluation of the two experiments that were performed.
 
-\chapter{Experiment}
-This chapter will describe the experimental setup, procedure and evaluation.
+\section{QoE Lab Experiment}
+This section describes the procedure of the experiment aimed at evaluating the effect of latency on the gimbal operator using the hoverboard robot.   
 
-\section{Experimental Setup}
+\subsection{Experimental Setup}
 The experiment was set up in a lab where the subject and the conductor sits at a desk with a high shelf behind them obscuring the view towards the rest of the lab. Behind the shelf the robots used in the experiment are located. An illustration of the lab setup is provided in figure \ref{fig:exp-setup}. 
 
 \begin{figure}[!hbt]
@@ -270,17 +299,17 @@ An image of the hoverboard and the camera is shown in image \ref{fig:real-exp}.
    \label{fig:real-exp}
 \end{figure}
 
-\subsection{Subject selection and recruitment}
+\subsubsection{Subject selection and recruitment}
 The subjects were recruited mostly from the conductor's network of contacts, as in order for the subjects to be covered by insurance during the experiment, the subjects had to be either be students or employed by Lund University. Some of the participants came spontaneously while others booked a time in a spreadsheet provided by the conductor.
 
 There were 10 test subjects, 4 women and 6 men, with an average age of 26.1 years where the youngest was 23 and the oldest 37. Furthermore, they were questioned about their eyesight, handedness as well as experience with FPV-games and flying drones.
 
 There was no compensation for the subjects other than home baked goods and a hot beverage, which were offered at the beginning of each experiment. 
 
-\subsection{Lab Conditions}
+\subsubsection{Lab Conditions}
 The lab is located in the E-building at LTH, Lund University. It can also be mentioned that the windows in the room face north, so there was no risk of direct sunlight during the experiments.
 
-\section{Experimental Procedure}
+\subsection{Experimental Procedure}
 In this section each of the steps will be described in more detail. The experimental procedure is summarized in the table \ref{tab:task-timeline}.
 
 \begin{table}[ht]
@@ -306,10 +335,10 @@ In this section each of the steps will be described in more detail. The experime
    \end{tabular}
 \end{table}
 
-\subsection{Task}
+\subsubsection{Task}
 The task was to keep the center of the screen, marked with a red dot, aligned with the center of the apriltag laying on top of the hoverboard (shown in \ref{fig:hoverboard}) while moving in an elipse.
 
-\subsection{Introduction}
+\subsubsection{Introduction}
 The experiment starts with the subject being seated at the desk to read through the consent form. After this was signed the conductor clarified that the subject was free to ask any question during the experiment and could choose to interrupt it without declaring any reason. 
 
 Then, the subject fill out the background information form where they also get to choose a four digit code which from that point is the only identifier of the subject and it's results. If the subject booked a time slot in the spreadsheet, they were at this point removed from it.
@@ -340,7 +369,7 @@ The subject was then given a chance to try the system, and was given the control
    \label{fig:interface}
 \end{figure}
 
-\subsection{Test Procedure}
+\subsubsection{Test Procedure}
 After the task description and warm-up the tests commenced. The added latencies tested were 0, 200, 300, 400 and 600 and the order in which they were given to the subject was random. 
 At the beginning of each trial the interface was restarted with one of the latencies induced in the system. The subject was then asked to put the red marker in the middle of the screen in the middle of the apriltag. When the subject confirmed that they were ready to start the conductor started the hoverboard. The subject followed the hoverboard for two laps, which took about 2 minutes in total.
 
@@ -348,10 +377,10 @@ After the laps were completed the interface was shut down and the subject was as
 
 At the end of the fifth and last trial the subject got to fill in the sickness questionnaire was also asked a few interview questions by the conductor.
 
-\section{Evaluation}
+\subsection{Evaluation}
 The following two sections will describe the quantative and qualitative methods that are used to evaluate the performance of the system.
 
-\subsection{Quantative Evaluation}
+\subsubsection{Quantative Evaluation}
 To measure each subjects performance, a script using a detection algorithm was used on the recorded video which for each frame gave the distance between the red dot and the center of the apriltag. Pythagoras' theroem was used for calculating the pixel distance between the two points and is shown in equation \ref{eq:distance}. A frame from the detection script can be seen in figure \ref{fig:resultcalc}.
 
 
@@ -368,7 +397,7 @@ To measure each subjects performance, a script using a detection algorithm was u
    \label{fig:resultcalc}
 \end{figure}
 
-\subsection{Qualitative Evaluation}
+\subsubsection{Qualitative Evaluation}
 After each trial the subject answered a form with four questions about the system on a five degree scale, labeled 'Terrible' to 'Excellent'. The questions are shown in table \ref{tab:form-questions}. 
 
 \setlength{\extrarowheight}{5pt}
@@ -429,8 +458,24 @@ Right after the last trial the subject filled out the SSQ once more. Then, a bri
 
 \vspace{10pt}
 
-\subsection{Auto-follow mode}
-As a proof of concept, an auto-follow mode was developed which allowed the gimbal to follow the hoverboard. This was made using the object detection algorithm from the result script, but in real-time coupled with a PI-controller which had the center of the image as reference value. Due to time limitations this was not investigated any further.
+\section{Field testing}
+This experiment aimed at evaluating the gimbal interface in a real scenario, flying in the archipelago of Gothenburg. The SSRS have a permit to operate drones within a delimited area of the archipelago and because of this, the drone can be flown beyond visual line-of-sight with all communication going over the mobile network. 
+
+The main goals of the field testing were:
+\begin{itemize}
+   \item confirm that the gimbal control did not interfere with the flight control software
+   \item evaluate suitability of the controls in a dynamic environment
+   \item compare the manual controls to the already existing ROI-mode
+\end{itemize} 
+
+\subsection{Preparations}
+
+\subsection{Procedure}
+A flight of roughly 30 minutes with 17 waypoints and 2 loiter points was performed. For the waypoints the camera was held in manual mode for the most of the time, enabling the camera operator to look around using the joystick. The latency of the video was estimated to be between one and two seconds, which gave some delay to the controls. However, the gimbal was still controllable and the camera operator could still look around and point the camera at objects of interest.
+
+For convenience, a button on the control was mapped to switch the gimbal control between manual mode and ROI-mode available in the firmware. This made it possible to easily switch between the two.
+
+During loitering the camera was difficult to control manually as the plane was moving around a lot. When going around in a circle the plane also moves a lot in the yaw and roll axes, making it very difficult to compensate manually with the joystick. The ROI-mode was better suited for this, although there were some inconsistencies in the altitude data for the points which caused the camera to point at a point below the surface of the earth. The point was adjusted by raising the altitude provided to the GPS-point. 
 
 \section{Known Sources of Error}
 
@@ -550,26 +595,6 @@ The application that the SSRS currently use for mission control is hosted on the
 \chapter{Conclusion}
 
 \chapter{Future Work}
-
-\chapter{Field testing}
-In the end stage of the thesis' work, the gimbal interface was tested on the drone during a real flight scenario in the archipelago of Gothenburg. The SSRS have a permit to operate drones within a delimited area of the archipelago and because of this, the drone can be flown beyond visual line-of-sight with all communication going over the mobile network. 
-
-\section{Goals}
-The goal of the field testing was to:
-\begin{itemize}
-   \item confirm that the gimbal control did not interfere with the flight control software
-   \item evaluate suitability of the controls in a dynamic environment
-   \item compare the manual controls to the already existing ROI-mode
-\end{itemize} 
-
-\section{Flight}
-A flight of roughly 30 minutes with 17 waypoints and 2 loiter points was performed. For the waypoints the camera was held in manual mode for the most of the time, enabling the camera operator to look around using the joystick. The latency of the video was estimated to be between one and two seconds, which gave some delay to the controls. However, the gimbal was still controllable and the camera operator could still look around and point the camera at objects of interest.
-
-For convenience, a button on the control was mapped to switch the gimbal control between manual mode and ROI-mode available in the firmware. This made it possible to easily switch between the two.
-
-During loitering the camera was difficult to control manually as the plane was moving around a lot. When going around in a circle the plane also moves a lot in the yaw and roll axes, making it very difficult to compensate manually with the joystick. The ROI-mode was better suited for this, although there were some inconsistencies in the altitude data for the points which caused the camera to point at a point below the surface of the earth. The point was adjusted by raising the altitude provided to the GPS-point. 
-
-
 
 
 % Should use consistent formatting when it comes to Names ("FirstName LastName", or "F. LastName")
