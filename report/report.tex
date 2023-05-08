@@ -276,7 +276,10 @@ As a proof of concept, an auto-follow mode was developed which allowed the gimba
 This chapter will describe the setup, procedure and evaluation of the two experiments that were performed.
 
 \section{QoE Lab Experiment}
-This section describes the procedure of the experiment aimed at evaluating the effect of latency on the gimbal operator using the hoverboard robot.   
+This section describes the procedure of the experiment aimed at evaluating the effect of latency on the gimbal operator using the hoverboard robot. 
+
+\subsection{Task}
+The task was to keep the center of the screen, marked with a red dot (as seen in \ref{fig:interface}), aligned with the center of the apriltag laying on top of the hoverboard (shown in \ref{fig:hoverboard}) while moving in an elipse.
 
 \subsection{Experimental Setup}
 The experiment was set up in a lab where the subject and the conductor sits at a desk with a high shelf behind them obscuring the view towards the rest of the lab. Behind the shelf the robots used in the experiment are located. An illustration of the lab setup is provided in figure \ref{fig:exp-setup}. 
@@ -339,16 +342,13 @@ In this section each of the steps will be described in more detail. The experime
    \end{tabular}
 \end{table}
 
-\subsubsection{Task}
-The task was to keep the center of the screen, marked with a red dot, aligned with the center of the apriltag laying on top of the hoverboard (shown in \ref{fig:hoverboard}) while moving in an elipse.
-
 \subsubsection{Introduction}
 The experiment starts with the subject being seated at the desk to read through the consent form. After this was signed the conductor clarified that the subject was free to ask any question during the experiment and could choose to interrupt it without declaring any reason. 
 
 Then, the subject fill out the background information form where they also get to choose a four digit code which from that point is the only identifier of the subject and it's results. If the subject booked a time slot in the spreadsheet, they were at this point removed from it.
 
-\subsection{Task Description}
-The interface was opened on the subject's screen and the task was explained. The subjects were also shown a printed apriltag with a cross on it, marking the spot where to aim on the tag. The particular apriltag printed for this experiment had two white and two black squares meeting in the middle, making the center easier to identify. The apriltag shown to the subject is shown in figure \ref{fig:apriltag}.
+\subsubsection{Experiment Walkthrough}
+The task was explained to the subject while a printed apriltag with a cross on it was shown, marking the spot where to aim on the tag. The particular apriltag printed for this experiment had two white and two black squares meeting in the middle, making the center easier to identify. The apriltag shown to the subject is shown in figure \ref{fig:apriltag}.
 
 \begin{figure}[!hbt]
    \centering
@@ -357,14 +357,7 @@ The interface was opened on the subject's screen and the task was explained. The
    \label{fig:apriltag}
 \end{figure}
 
-The subject was then given a chance to try the system, and was given the controller and presented with the view. The hoverboard was started and ran for one lap in the same path that it would run during the test. The view of the subject is shown in figure \ref{fig:}.
-
-\begin{figure}[!hbt]
-   \centering
-   \includegraphics[scale=0.08]{images/apriltag.jpg} 
-   \caption{The apriltag used to show the subject where to aim.}
-   \label{fig:}
-\end{figure}
+The subject was then given a chance to try the system without any delay, and was given the controller and presented with the view, shown in figure \ref{fig:interface}. The hoverboard was started and ran for one lap in the same path that it would run during the test and the subject could try and follow it.
 
 \begin{figure}[!hbt]
    \centering
