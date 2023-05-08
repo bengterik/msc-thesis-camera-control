@@ -535,7 +535,10 @@ On the second question, namely "ability to control task", the results for 200ms,
 
 \chapter{Discussion}
 \section{Test bed design choices}
-As the goal of this thesis work was to develop an application that could be used in a controlled experiment as well as in actual flight (in the span of a semester), there were many design choices that were taken into consideration during development. This section will discuss the main requirements of the system and the reasoning behind the design choices taken.
+As the goal of this thesis work was to develop an application that could be used in a controlled experiment as well as in actual flight, there were many design choices that were taken into consideration during development. This section will discuss the main requirements of the system and the reasoning behind the design choices taken.
+
+\section{Video streaming}
+In the real drone system the video feed is done with WebRTC. This is a modern peer-to-peer video protocol well suited for the application of video from IoT, and the intention was to use this in the test bed as it had a low latency and also was accessible through the browser. However, it proved more difficult to programmatically access the raw video feed, which was needed for adjusting image parameters as well as for detection and recording of the images. Luckily the streaming solution offered an MJPEG stream which integrated well with the OpenCV library.   
 
 \subsection{Requirements of the system}
 Being a real-time application over the Internet, there are many parts of the system that can introduce latency and efforts to reduce it can be boiled down to two actions: 
