@@ -268,7 +268,7 @@ Although the sources of the delay were not examined in any further depth there w
 \end{description}
 
 \subsection{Design Choices} 
-This section aims to explain some of the design choices that were taken during development of the gimbal interface. It is only relevant if the reader is interested in the development process and can thus be skipped otherwise.
+This section aims to explain some of the design choices that were taken during development of the gimbal interface. It can be skipped if the reader is not interested in the development process.
 
 \subsubsection{Video streaming}
 In the real drone system the video feed is done with WebRTC. This is a modern peer-to-peer video protocol well suited for the application of video from IoT, and the intention was to use this in the test bed as it had a low latency and was accessible through the browser. The goal was to get the raw video feed to OpenCV in order to adjust image parameters as well as for detection and recording of the images. Unfortunately, the raw video feed proved difficult to access as other video processing software had to be used along with the peer-to-peer negotiation. In the end the MJPEG format was chosen, as it had acceptable delay and could be integrated only by providing a HTTP source to the OpenCV video capture module.
@@ -596,6 +596,8 @@ It can be seen that there is a
 
 
 \subsection{Forms and interviews}
+
+\subsubsection{Trial forms}
 In \ref{fig:form-ans} the answers from the questionnaires filled out after each trial are averaged over all subjects and visualized as a grouped bar chart. It is important to note that the jumps in delay are not uniform. A monotonous decrease can be seen on all questions where higher delays give lower scores on average. 
 On the second question, namely "ability to control task", the results for 200ms, 300ms, and 400ms are similar. The jumps from 0ms to 200ms and 400ms to 600ms seem to be much more impactful on the subject's perceived ability to perform the task than the jump from 200ms to 400ms.
 
@@ -605,6 +607,20 @@ On the second question, namely "ability to control task", the results for 200ms,
    \caption{Form answers averaged for all subjects for each delay.}
    \label{fig:form-ans}
 \end{figure}
+
+\subsubsection{SSQ}
+In \ref{fig:ssq-ans} the difference between the answers in the SSQ forms before and after the trials averaged over all subjects. The largest response increase is on symptom four, namely "eye strain", which had an average increase of  0.5. This result stems from four subjects reporting an increase, with one incrementing their response by 2. 
+
+The results from the SSQ suggest a small increase in symptoms after the trials, but the increase is not large enough to be considered significant for a sample size of only 10 subjects.
+
+\begin{figure}[!hbt]
+   \centering
+   \includegraphics[scale=0.6]{images/ssq-results.png} 
+   \caption{Difference in SSQ answers from before and after the trials on a scale from 0 to 4.}
+   \label{fig:ssq-ans}
+\end{figure}
+
+\subsubsection{Interviews}
 
 \section{Field Testing}
 The gimbal control software integrated successfully into the running system and did not interfere with the controls during the course of the experiment. Thus, the first goal of the field testing was successfull. 
