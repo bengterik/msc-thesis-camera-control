@@ -523,17 +523,18 @@ The main goals of the field testing were:
 For the experiment the gimbal control interface used earlier was modified in order to run with the software and video streaming configured on the actual drone. The video and recording component was entirely removed and the IP address which the program connected to was changed to that of the 4G modem. 
 In order to compare the new controls to the already existing ROI-mode, a button on the controller was mapped to switch between joystick-mode and ROI-mode, using pre-programmed GPS-points for the drone to look at.
 
+\subsection{Outdoor Conditions}
+The weather was sunny with almost no clouds. The wind was estimated to be around 5-9 m/s at ground level and the temperature was around 12 degrees Celsius.
+
 \subsection{Procedure}
-A flight of roughly 30 minutes with 17 waypoints and 2 loiter (circling) points was performed. For the waypoints the camera was held in manual mode for the most of the time, enabling the camera operator to look around using the joystick. The latency of the video was estimated to be between one and two seconds, which gave some delay to the controls. However, the gimbal was still controllable and the camera operator could still look around and point the camera at objects of interest.
-
-For convenience, a button on the control was mapped to switch the gimbal control between manual mode and ROI-mode available in the firmware. This made it possible to easily switch between the two.
-
-During loitering the camera was difficult to control manually as the plane was moving around a lot. When going around in a circle the plane also moves a lot in the yaw and roll axes, making it very difficult to compensate manually with the joystick. The ROI-mode was better suited for this, although there were some inconsistencies in the altitude data for the points which caused the camera to point at a point below the surface of the earth. The point was adjusted by raising the altitude provided to the GPS-point. 
+A flight plan of 17 waypoints and 2 loiter-waypoints was uploaded to the drone. The first and the last waypoints were close to the launch and the rest were placed on a route out in the archipelago. The drone was launched in manual mode and was circled around the operators to confirm that all the systems were working. The gimbal control software was also confirmed to be working during this phase, and the latency of the control was estimated to be between one and two seconds. 
+The drone was then switched into auto mode and the flight plan was started.
 
 \chapter{Results}
-This chapter will go through the main findings of the experiment. The quantative measurements will first be presented followed by the results from the forms and interviews.
+This chapter will go through the main findings of the experiments. The quantative measurements will first be presented followed by the results from the forms and interviews. Lastly, the results from the field testing will be presented.
 
-\section{Quantative measurements}
+\section{QoE Experiment}
+\subsection{Quantative measurements}
 In \ref{tab:averages} the mean and standard deviation of the different delays are presented. The values are also visualized in plot \ref{fig:avg-std}. A clear trend can be seen where both the mean and standard deviation increase with the delay. An interesting feature of the data is that the mean after 400ms starts to increase at a non-linear rate, while the standard deviation has a more or less linear increase all throughout the added delays.
 
 \begin{table}[ht]
@@ -589,7 +590,7 @@ It can be seen that there is a
 \end{figure}
 
 
-\section{Forms and interviews}
+\subsection{Forms and interviews}
 In \ref{fig:form-ans} the answers from the questionnaires filled out after each trial are averaged over all subjects and visualized as a grouped bar chart. It is important to note that the jumps in delay are not uniform. A monotonous decrease can be seen on all questions where higher delays give lower scores on average. 
 On the second question, namely "ability to control task", the results for 200ms, 300ms, and 400ms are similar. The jumps from 0ms to 200ms and 400ms to 600ms seem to be much more impactful on the subject's perceived ability to perform the task than the jump from 200ms to 400ms.
 
@@ -599,6 +600,19 @@ On the second question, namely "ability to control task", the results for 200ms,
    \caption{Form answers averaged for all subjects for each delay.}
    \label{fig:form-ans}
 \end{figure}
+
+\section{Field Testing}
+The gimbal control software integrated successfully into the running system and did not interfere with the controls during the course of the experiment. Thus, the first goal of the field testing was successfull. 
+The two different modes of operation were tested and the results are presented in the following sections.
+
+\section{Manual Control}
+- delay made it difficult to control
+- there was a lot of movement in all axes, making the feedback from the camera less clear
+- when the plane was flying straight the manual mode was very useful as the plane was more stable and the perspective did not change.
+
+
+\section{ROI Control}
+When going around in a circle the plane also moves a lot in the yaw and roll axes, making it very difficult to compensate manually with the joystick. The ROI-mode was better suited for this, although there were some inconsistencies in the altitude data for the points which caused the camera to point at a point below the surface of the earth. The point was adjusted by raising the altitude provided to the GPS-point. 
 
 \chapter{Discussion}
 
