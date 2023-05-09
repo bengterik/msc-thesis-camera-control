@@ -127,16 +127,16 @@ As part of the Eyes-On-Scene-project, a study was performed at Chalmers by Grote
 This chapter will go through the technical details of the test beds and their components as were used in the experiments. First, all the hardware will be presented. Then, the pre-existing software along with the software implemented specifically for the thesis work will be detailed along with some discussion about design choices made.
 
 \section{Hardware}
-In this section the hardware used in the experiments is presented. 
+In this section the hardware used in the experiments is presented.
 
 \subsection{Fixed-Wing Drone}
-As part of the EOS-project a fixed-wing drone has been developed. It belongs to the SSRS and is designed together with plane manufacturer Smartplanes. The plane can be seen in \ref{fig:fv-drone-pics}.
+During the course of the EOS-project a fixed-wing drone has been developed specifically for sea rescue missions. It belongs to the SSRS and is designed together with plane manufacturer Smartplanes. The plane can be seen in \ref{fig:fv-drone-pics}.
 
 \begin{figure}[htp]
    \centering
-   \includegraphics[width=.35\textwidth]{images/fv-1.jpg}
    \rotatebox{90}{\includegraphics[width=.574\textwidth]{images/fv-3.jpg}}
-   \caption{The SSRS fixed-wing drone. The left picture is the inside of the drone housing with the internals visible and the right picture shows the housing mounted on the airframe.}
+   \includegraphics[width=.35\textwidth]{images/fv-1.jpg}
+   \caption{The SSRS fixed-wing drone. The leftmost picture shows the full drone frame and the rightmost picture shows the inside of the drone housing with the internal components visible.}
    \label{fig:fv-drone-pics}
 \end{figure}
 
@@ -148,14 +148,14 @@ The components relevant for this thesis work are:
    
    \item[4G Modem] Sim-card modem allowing access to the mobile network. 
 
-   \item[Gimbal] The gimbal is designed and manufactured by Fredrik Falkman at the SSRS. It is a 3D-printed design that has three degrees of freedom made possible by three servos connected to drive belts that control each axis of the camera. The servos are connected to the flight controller which also provides them with power. When mounted the servo-housing is inside the aircraft while the part with the mounting plate for the camera module sticks out on the bottom of the drone. In \ref{fig:gimbal-pics} the schematics of the gimbal can be seen. 
+   \item[Camera Gimbal] The camera gimbal on the drone is designed and manufactured by Fredrik Falkman at the SSRS. It is a 3D-printed design that has three degrees of freedom made possible by three servos connected to drive belts that control each axis of the camera. The servos are connected to the flight controller which also provide them with power. The gimbal is designed to house a small camera which when mounted looks out from the bottom of the drone. In \ref{fig:gimbal-pics} the schematics of the gimbal can be seen. 
    
    \begin{figure}[htp]
       \centering
       \includegraphics[width=.3\textwidth]{images/gimbal-1.png}\hfill
       \includegraphics[width=.3\textwidth]{images/gimbal-2.png}\hfill
       \includegraphics[width=.3\textwidth]{images/gimbal-3.png}
-      \caption{Schematics of the drone gimbal. The middle and left picture shows the gimbal with its full housing. To the right the housing has has been removed and a mockup camera module has been inserted in the mounting plate.}
+      \caption{Schematics of the drone gimbal. The middle and left picture shows the gimbal with its full housing. To the right the housing has has been removed and a mockup camera module has been inserted on the mounting plate.}
       \label{fig:gimbal-pics}
    \end{figure}
    
