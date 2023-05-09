@@ -201,7 +201,7 @@ In this section the software used in the experiments will be detailed.
    MAVProxy \cite{mavproxy} is a software running on the companion computer whose task is to relay MAVLink messages from an ethernet interface to the flight controllers serial interface. 
 
    \item[UV4L]
-   UV4L is a video streaming server that supports several real-time communication protocols and video encodings \cite{uv4l}. It's function in the test bed is to stream the video from the camera to the web. 
+   UV4L is a video streaming server that supports several real-time communication protocols and video encodings \cite{uv4l}. It's function in the test bed is to stream the video from the camera to the web. As for video encoding, MJPEG was used.
    
    \item[Janus Server]
    As described on their webpage \cite{janus}, Janus is a plugin-based software that helps establish WebRTC connections. In this thesis it is used to establish the connection between the UV4L server and the web browser, enabling the peer-to-peer connection between the two devices.
@@ -246,26 +246,29 @@ Delay in the controls could be introduced by providing a program argument. The d
    \EndWhile
 \end{algorithmic}
 
-The inherent delay of the system was measured by recording a stopwatch, the controller and the video feed of the drone simultaneously. The screen and the controller were then filmed on a phone in 120 FPS to measure the time between a control input to the video feed updating. To measure the network delay a simple ping-measure was taken.
+The screen and the controller were then filmed on a phone in 120 FPS to measure the time between a control input to the video feed updating. To measure the network delay a simple ping-measure was taken.
 
 The network latency was found to be below 1 ms. The delay of the video feed alone was between 100-150ms while the full controller to video feedback delay was around 400ms. 
 
-\subsection{Design Choices} 
-This section aims to explain some of the design choices that were taken during development of the gimbal interface. It is only relevant if the reader is interested in the development process and can thus be skipped otherwise.
-
-\subsubsection{Sources of Delay}
-Although the sources of the delay were not examined in any further depth there are a few known causes of the delay:
+\subsection{Sources of Delay}
+Although the sources of the delay were not examined in any further depth there were a some known sources of the delay:
 \begin{description}
    \item[Message frequency] 
    While the internal model of the gimbal's orientation was updated by interrupts, the message rate to the flight controller was set to a maximum of 20Hz, resulting in a delay between 0-50ms.
    
    \item [Video encoding]
-   Some video encodings are faster at the cost of quality and vice versa. MJPEG was chosen as the video encoding and the delay of the video feed was measured to be between 100-150ms. 
+   The delay of the video feed was measured by recording a stopwatch, the controller and the video feed of the stopwatch simultaneously. The difference between the stopwatch on the recording and the screen was estimated to be between 100-150ms.
    
-   \item[MAVProxy] Each message must be taken from the ethernet interface of the Raspberry Pi and be sent on the serial interface to the flight controller. 
+   \item [Network delay] 
+   The network delay was measured with pings to be below 1ms. 
+
+   \item[MAVProxy relaying] Each message must be taken from the ethernet interface of the Raspberry Pi and be sent on the serial interface to the flight controller. An estimate of this time was not made.
    
-   \item[Flight Controller] The flight controller must process the message and send the appropriate PWM signals to the gimbal motors. The processor running the firmware is a small chip and it is possible that gimbal control is not a high priority message in the software.   
+   \item[Flight Controller] The flight controller must process the message and send the appropriate PWM signals to the gimbal motors. The processor running the firmware is a small chip and it is possible that gimbal control is not a high priority message in the software. An estimate of this time was not made.
 \end{description}
+
+\subsection{Design Choices} 
+This section aims to explain some of the design choices that were taken during development of the gimbal interface. It is only relevant if the reader is interested in the development process and can thus be skipped otherwise.
 
 \subsubsection{Video streaming}
 In the real drone system the video feed is done with WebRTC. This is a modern peer-to-peer video protocol well suited for the application of video from IoT, and the intention was to use this in the test bed as it had a low latency and was accessible through the browser. The goal was to get the raw video feed to OpenCV in order to adjust image parameters as well as for detection and recording of the images. Unfortunately, the raw video feed proved difficult to access as other video processing software had to be used along with the peer-to-peer negotiation. In the end the MJPEG format was chosen, as it had acceptable delay and could be integrated only by providing a HTTP source to the OpenCV video capture module.
