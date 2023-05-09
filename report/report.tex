@@ -251,7 +251,7 @@ The inherent delay of the system was measured by recording a stopwatch, the cont
 The network latency was found to be below 1 ms. The delay of the video feed alone was between 100-150ms while the full controller to video feedback delay was around 400ms. 
 
 \subsection{Design Choices} 
-As the goal was to implement an interface that could be used both in a controlled experiment as well as in actual flight there were several design choices that were taken during development. This section will briefly discuss the reasoning behind these.
+This section aims to explain some of the design choices that were taken during development of the gimbal interface. It is only relevant if the reader is interested in the development process and can thus be skipped otherwise.
 
 \subsubsection{Sources of Delay}
 Although the sources of the delay were not examined in any further depth there are a few known causes of the delay:
@@ -260,7 +260,7 @@ Although the sources of the delay were not examined in any further depth there a
    While the internal model of the gimbal's orientation was updated by interrupts, the message rate to the flight controller was set to a maximum of 20Hz, resulting in a delay between 0-50ms.
    
    \item [Video encoding]
-   Some video encodings are faster at the cost of quality and vice versa. Although not the fastest, MJPEG was chosen as the video encoding.
+   Some video encodings are faster at the cost of quality and vice versa. MJPEG was chosen as the video encoding and the delay of the video feed was measured to be between 100-150ms. 
    
    \item[MAVProxy] Each message must be taken from the ethernet interface of the Raspberry Pi and be sent on the serial interface to the flight controller. 
    
