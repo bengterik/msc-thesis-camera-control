@@ -13,6 +13,8 @@
 \usepackage{transparent}
 \usepackage{algpseudocode}
 \usepackage{amsmath}
+\usepackage{titlesec}
+
 % used to display the used files at the end. Select nofilelist as a package option to disable this
 \listfiles % initialize
 
@@ -472,6 +474,8 @@ Right after the last trial the subject filled out the SSQ once more. Then, a bri
          \hline
          \textbf{4. Do you think the system would have been usable with the worst experimental conditions?} \\
          \hline
+         \textbf{5. Do you think training would have helped an operator get better using the system?} \\
+         \hline
       \end{tabular}
    \caption{The interview questions asked by the conductor after the last trial.}
    \label{tab:interview-questions}
@@ -509,7 +513,11 @@ To make for better averages over different trials, all NaN values, i.e frames wh
 \end{figure}
 
 \subsubsection{Difficulty of the task}
-The center of the apriltag did not have a very clear center which could have made it difficult for the subject to complete the task. To remedy this, a printed apriltag where the center was marked out, but it could be that the subject had difficulty identifying the exact center during the trial. 
+The center of the apriltag did not have a very clear center which could have made it difficult for the subject to complete the task. To remedy this, a printed apriltag where the center was marked out, but it could be that the subject had difficulty identifying the exact center during the trial.
+
+\subsubsection{Control Choppiness}
+\label{sec:control-choppiness}
+The control of the gimbal is done through a command sent to the drone with two angles for pitch and yaw. The drone then moves the gimbal to the desired position. Although the angle was provided as a float, small increases in angle did not produce movement. This resulted in the control being somewhat choppy despite the continous feeling of the joystick. The choppiness was larger when looking farther away from the drone, as the ratio between the angle and the movement of the gimbal was larger. 
 
 \section{Field testing}
 This experiment aimed at running the gimbal interface on the real drone in-flight. The SSRS have a permit to operate drones beyond visual line of sight within a delimited area of the archipelago of Gothenburg. Because of this, the drone can be flown longer distances while all communication going over the mobile network. 
@@ -596,10 +604,12 @@ It can be seen that there is a
 
 
 \subsection{Forms and interviews}
+In this section the results from the forms and interviews are presented and discussed.
 
 \subsubsection{Trial forms}
-In \ref{fig:form-ans} the answers from the questionnaires filled out after each trial are averaged over all subjects and visualized as a grouped bar chart. It is important to note that the jumps in delay are not uniform. A monotonous decrease can be seen on all questions where higher delays give lower scores on average. 
-On the second question, namely "ability to control task", the results for 200ms, 300ms, and 400ms are similar. The jumps from 0ms to 200ms and 400ms to 600ms seem to be much more impactful on the subject's perceived ability to perform the task than the jump from 200ms to 400ms.
+In \ref{fig:form-ans} the answers from the questionnaires filled out after each trial are averaged over all subjects and visualized as a grouped bar chart. It is important to note that the jumps in delay are not uniform. The questions can be seen in \ref{tab:form-questions}.
+
+A monotonous decrease can be seen on all questions where higher delays give lower scores on average. On the second question, namely "ability to control task", the results for 200ms, 300ms, and 400ms are similar. The jumps from 0ms to 200ms and 400ms to 600ms seem to be much more impactful on the subject's perceived ability to perform the task than the jump from 200ms to 400ms.
 
 \begin{figure}[!hbt]
    \centering
@@ -609,9 +619,9 @@ On the second question, namely "ability to control task", the results for 200ms,
 \end{figure}
 
 \subsubsection{SSQ}
-In \ref{fig:ssq-ans} the difference between the answers in the SSQ forms before and after the trials averaged over all subjects. The largest response increase is on symptom four, namely "eye strain", which had an average increase of  0.5. This result stems from four subjects reporting an increase, with one incrementing their response by 2. 
+In \ref{fig:ssq-ans} the difference in SSQ answers before and after the trials been averaged over all subjects. The largest response increase is on symptom four, namely "eye strain", which had an average increase of  0.5 with four out of all the subjects reporting an increase. The next two highest symptoms were "fullness of head" and "blurred vision". 
 
-The results from the SSQ suggest a small increase in symptoms after the trials, but the increase is not large enough to be considered significant for a sample size of only 10 subjects.
+The results from the SSQ suggest a small increase in  symptoms after the trials, but the increase is not large enough to be considered significant for a sample size of only 10 subjects.
 
 \begin{figure}[!hbt]
    \centering
@@ -621,6 +631,32 @@ The results from the SSQ suggest a small increase in symptoms after the trials, 
 \end{figure}
 
 \subsubsection{Interviews}
+The answers to the interview questions will be summarized in this section.
+
+\titleformat{\paragraph}[hang]{\normalfont\small\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{1em}
+
+\paragraph{1. What was your general experience of controlling the camera?}
+A majority of the subjects reported that camera controls felt choppy, which is probably caused by the controls, explained in section \ref{sec:control-choppiness} on control choppiness. The subjects also reported that the controls felt very different throughout the trials. Some subjects also said that they grew more accustomed to the controls as the trials progressed.
+
+Some quotes from the subjects are presented below.
+\begin{description}
+   \item[Subject 4545] "Had this been my day job I would have jumped out the window". 
+   \item[Subject 1111] "Intuitive, sometimes there was delay that made it diffficult."
+\end{description}
+
+\paragraph{2. Did you experience any difference in the controls between the trials?}
+All the subjects felt reported a difference in the trials. Usually subjects had a clear view on which trials were the easiest or the most difficult.
+
+\paragraph{3. Was there any part of the track that was harder than any other?}
+Almost all subjects reported that the last corner was the most difficult out of the entire track. This is supported by the quantative results as a visible spike in pixel error is present at that point in the track throughout all trials.
+Some also stated that it was easier when the hoverboard was closer to the camera. This could be due to the effect of camera's choppiness which was less noticable short range, as explained in section \ref{sec:control-choppiness}.
+
+\paragraph{4. Do you think the system would have been usable with the worst experimental conditions?}
+On this question the answer of the subjects varied. A couple gave an absolute no, while others said that it depended on how exact one had to follow the object. 
+
+\paragraph{5. Do you think training would have helped an operator get better using the system?}
+All the subjects responded that training would improve one's performance in the system and that they got better at the task as the trials progressed. 
 
 \section{Field Testing}
 The gimbal control software integrated successfully into the running system and did not interfere with the controls during the course of the experiment. Thus, the first goal of the field testing was successfull. 
