@@ -123,8 +123,8 @@ K. Brunnström et al. \cite{latency-impact} performed a study on log lifting usi
 
 As part of the Eyes-On-Scene-project, a study was performed at Chalmers by Grote et al. \cite{eos-maritime} where the same emergency call was performed with and without images from a UAV at the emergency site. The study showed that imagery from the accident gave the rescue personnel a sence of control before arriving at the scene when knowing what they were going to face. The crew was also faster at locating a person or object when having aerial footage of the scene.
 
-\chapter{Test Bed}
-This chapter will go through the components of the test beds used in the experiments. First, all the hardware will be presented. Then, the pre-existing software along with the software implemented specifically for the test bed will be detailed.
+\chapter{Test Beds}
+This chapter will go through the technical details of the test beds and their components as were used in the experiments. First, all the hardware will be presented. Then, the pre-existing software along with the software implemented specifically for the thesis work will be detailed along with some discussion about design choices made.
 
 \section{Hardware}
 In this section the hardware used in the experiments is presented. 
@@ -134,8 +134,8 @@ As part of the EOS-project a fixed-wing drone has been developed. It belongs to 
 
 \begin{figure}[htp]
    \centering
-   \includegraphics[width=.25\textwidth]{images/fv-1.jpg}
-   \rotatebox{90}{\includegraphics[width=.41\textwidth]{images/fv-3.jpg}}
+   \includegraphics[width=.35\textwidth]{images/fv-1.jpg}
+   \rotatebox{90}{\includegraphics[width=.574\textwidth]{images/fv-3.jpg}}
    \caption{The SSRS fixed-wing drone. The left picture is the inside of the drone housing with the internals visible and the right picture shows the housing mounted on the airframe.}
    \label{fig:fv-drone-pics}
 \end{figure}
@@ -185,10 +185,7 @@ In order to introduce movement in QoE experiment, a modified hoverboard was used
 \end{figure}
 
 \subsection{Apriltag}
-To have an object that was easy to detect by a computer, an apriltag was used. The apriltag is a type of low-resolution QR-code often used in robotics to estimate orientation and position of robots or objects with the help of computer vision. It was fastened on top of the hoverboard as high as possible without blocking the lidar. The apriltag can be seen mounted on the hoverboard in figure \ref{fig:hoverboard}.
-
-
-
+An apriltag is a type of low-resolution QR-code often used in robotics to estimate orientation and position of robots or objects with the help of computer vision. It was fastened on top of the hoverboard as high as possible without blocking the lidar. The apriltag can be seen mounted on the hoverboard in figure \ref{fig:hoverboard}.
 
 \section{Software}
 In this section the software used in the experiments will be detailed.
