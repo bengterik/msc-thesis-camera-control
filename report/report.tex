@@ -265,10 +265,12 @@ Although the sources of the delay were not examined in any further depth there a
 \end{description}
 
 \subsubsection{Video streaming}
-In the real drone system the video feed is done with WebRTC. This is a modern peer-to-peer video protocol well suited for the application of video from IoT, and the intention was to use this in the test bed as it had a low latency and also was accessible through the browser. However, it proved more difficult to access as other video processing software had to be used to access the raw video feed, which was needed for adjusting image parameters as well as for detection and recording of the images. In the end the MJPEG format was chosen, as it had acceptable delay and could be integrated only by providing a web address to the OpenCV video capture module.
+In the real drone system the video feed is done with WebRTC. This is a modern peer-to-peer video protocol well suited for the application of video from IoT, and the intention was to use this in the test bed as it had a low latency and also was accessible through the browser. The goal was to get the raw video feed to OpenCV in order to adjust image parameters as well as for detection and recording of the images. Unfortunately, the raw video feed proved more difficult to access as other video processing software had to be used along with the peer-to-peer negotiation. In the end the MJPEG format was chosen, as it had acceptable delay and could be integrated only by providing a HTTP source to the OpenCV video capture module.
 
 \subsubsection{Native vs. web}
-The application that the SSRS currently use for mission control is hosted on the web, and as such the test bed was initially developed as web-application. This proved difficult, as the developer was not experienced with multithreaded web applications necessary for the tasks that were to be performed simultaneously, i.e. control, recording, detection. As the web approach proved too complex, the test bed was implemented as a native python application.
+The application that the SSRS currently use for mission control is hosted on the web, and as such the test bed was initially developed as web-application. This proved difficult for the developer as he had limited experienced working with web applications. As the amount of tasks for the program to perform grew, a decision was made to implement the test bed as a native Python application instead. This made it easier to orchestrate the video and control tasks using regular UNIX processes from the Python multiprocessing library. 
+
+With this decision the possibility to remotely host the application was lost, but as the goal was to develop a working test bed this was deemed acceptable. 
 
 \section{Result Script}
 In order to get results from the recorded video of each subject a script was implemented that was run on each trial, measuring the error of the operator in each video frame and saving it to a file.
