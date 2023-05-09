@@ -606,23 +606,24 @@ The gimbal control software integrated successfully into the running system and 
 The two different modes of operation were tested and the results are presented in the following sections.
 
 \section{Manual Control}
-- delay made it difficult to control
-- there was a lot of movement in all axes, making the feedback from the camera less clear
-- when the plane was flying straight the manual mode was very useful as the plane was more stable and the perspective did not change.
+During the initial loiter, the plane's orientation changed quickly depending on where the plane was facing with respect to the direction of the wind. This made the gimbal very difficult to control manually, with the delay of the controls making it almost impossible to manually compensate with the joystick when the plane made an aggressive roll or yaw.
 
+After the plane had left the initial loiters it had more time flying straight. During this time the camera was much easier to control manually, as the plane was more stable and the orientation was remained the same for an extended amount of time. 
+Between the ?? and ?? waypoint, a boat was spotted slightly beside the plane. The gimbal operator decided to try and follow the boat. Although the delay made it more difficult to control the gimbal than in the lab experiment, the boat was successfully followed for a short time. An image from the video feed can be seen in figure ??. It was also observed that the position of the boat next to the aircraft could be estimated by the operator, allowing preemptive gimbal movements to compensate for the delay. 
+
+Another observation from the experiment is that, being a fixed wing aircraft, the operator's ability to control the camera relies heavily on the manouvering of the aircraft, which means that improving the controls of the actual aircraft would improve the experience of controlling the camera significantly. 
 
 \section{ROI Control}
-When going around in a circle the plane also moves a lot in the yaw and roll axes, making it very difficult to compensate manually with the joystick. The ROI-mode was better suited for this, although there were some inconsistencies in the altitude data for the points which caused the camera to point at a point below the surface of the earth. The point was adjusted by raising the altitude provided to the GPS-point. 
+The ROI-mode was activated on one of the loitering points and worked well when the perspective of the drone changed quickly. However, there were some inconsistencies in the altitude data for the points which caused the camera to point at a point below the surface of the earth. The point was adjusted by raising the altitude provided to the GPS-point. 
 
-\chapter{Discussion}
-
-
-\section{Sources of error}
-\subsection{Frame detection accuracy and interpolation} 
-
-\section{Experiment execution}
+It could also be observed that increasing the loiter-radius gave a better image as the inexactness of the GPS-point was less impactful.
 
 \chapter{Conclusion}
+
+\section{QoE Experiment}
+
+\section{Field testing}
+The experience of controlling the camera could obviously be improved by lowering the delay, but the results were still satisfactory. 
 
 \chapter{Future Work}
 
