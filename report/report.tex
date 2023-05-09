@@ -276,7 +276,8 @@ The application that the SSRS currently use for mission control is hosted on the
 With this decision the possibility to remotely host the application was lost, but as the goal was to develop a working test bed this was deemed acceptable. 
 
 \section{Result Script}
-In order to extract the results from the recorded video, a Python-script with the detection algorithm was implemented. 
+\label{sec:resultscript}
+In order to extract the results from the recorded video, a Python-script running the detection algorithm was implemented. 
 
 The script used the following python libraries:
 \begin{description}
@@ -412,7 +413,7 @@ At the end of the fifth and last trial the subject got to fill in the sickness q
 The following two sections will describe the quantative and qualitative methods that were used to evaluate the system.
 
 \subsubsection{Quantative Evaluation}
-To measure the performance of each subject, a script using a detection algorithm was used on the recorded video which for each frame gave the distance between the red dot and the center of the apriltag.
+To measure the performance of each subject, the result script described in section \ref{sec:resultscript} was used. This resulted in one CSV-file with about 2700 rows of data per trial. The start and end frames where extracted manually from the video of each trial and were saved in a separate file.  
 
 \subsubsection{Qualitative Evaluation}
 After each trial the subject answered a form with four questions about the system on a five degree scale, labeled 'Terrible' to 'Excellent'. The questions are shown in table \ref{tab:form-questions}. 
@@ -476,16 +477,16 @@ Right after the last trial the subject filled out the SSQ once more. Then, a bri
 \vspace{10pt}
 
 
-\section{Known Sources of Error}
+\subsection{Known Sources of Error}
 
-\subsection{Ecological validity}
+\subsubsection{Ecological validity}
 The future operators of the system are to be the volunteers of SSRS, which have a wide variety in age and background. Thus,there are three main concerns with the ecological validity of the study. Firstly, the subjects were all either students or researchers at Lund University. Secondly, the average age of the subjects was low. Lastly, the sample size was only ten people. 
 
 The last concern is probably least important when it comes to the validity of the study, as the low number of participants could be compensated for by having each subject provide more data. Each subject generated around 13 500 data points in five trials with two laps each, resulting in about 135 000 data points in total. This is likely to have had a positive effect on the validity of the results.
 
 The second and third concerns are more difficult to compensate for, as only employees or students at the university could be used as subjects due to the university insurance. There are of course people of different ages and backgrounds working and studying at the university, but due to time restraints as well as lack of compensation for the subjects, most came from the conductors network of contacts.
 
-\subsection{Frame detection accuracy}
+\subsubsection{Frame detection accuracy}
 The detection algorithm used to calculate the distance from the center of the apriltag to the center of the screen could sometimes during fast camera movements not detect the apriltag. This resulted in a NaN value at that particular frame. The average percentage of frames detected where 85\%, with a minimum of 80\% and a maximum of 89\%. The percentage of frames detected was not found to be correlated with the delay and are plotted for each subject and delay in figure \ref{fig:frames-detected}. 
 
 \begin{figure}[!hbt]
@@ -504,7 +505,7 @@ To make for better averages over different trials, all NaN values, i.e frames wh
    \label{fig:raw-vs-interpolated}
 \end{figure}
 
-\subsection{Difficulty of the task}
+\subsubsection{Difficulty of the task}
 The center of the apriltag did not have a very clear center which could have made it difficult for the subject to complete the task. To remedy this, a printed apriltag where the center was marked out, but it could be that the subject had difficulty identifying the exact center during the trial. 
 
 \section{Field testing}
