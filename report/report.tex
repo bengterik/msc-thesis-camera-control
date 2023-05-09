@@ -12,6 +12,7 @@
 \usepackage[titletoc, header, page]{appendix}
 \usepackage{transparent}
 \usepackage{algpseudocode}
+\usepackage{amsmath}
 % used to display the used files at the end. Select nofilelist as a package option to disable this
 \listfiles % initialize
 
@@ -256,19 +257,21 @@ As the goal was to implement an interface that could be used both in a controlle
 Although the sources of the delay were not examined in any further depth there are a few known causes of the delay:
 \begin{description}
    \item[Message frequency] 
-   While the internal model of the gimbal's orientation was updated by interrupts, the message rate to the flight controller was set to a maximum of 20Hz.
+   While the internal model of the gimbal's orientation was updated by interrupts, the message rate to the flight controller was set to a maximum of 20Hz, resulting in a delay between 0-50ms.
    
    \item [Video encoding]
    Some video encodings are faster at the cost of quality and vice versa. Although not the fastest, MJPEG was chosen as the video encoding.
    
-   \item[MAVProxy] Each message must be taken from the ethernet interface of the Raspberry Pi and be sent on the serial interface to the flight controller. It must then be processed before the servos can be updated. 
+   \item[MAVProxy] Each message must be taken from the ethernet interface of the Raspberry Pi and be sent on the serial interface to the flight controller. 
+   
+   \item[Flight Controller] The flight controller must process the message and send the appropriate PWM signals to the gimbal motors. The processor running the firmware is a small chip and it is possible that gimbal control is not a high priority message in the software.   
 \end{description}
 
 \subsubsection{Video streaming}
-In the real drone system the video feed is done with WebRTC. This is a modern peer-to-peer video protocol well suited for the application of video from IoT, and the intention was to use this in the test bed as it had a low latency and also was accessible through the browser. The goal was to get the raw video feed to OpenCV in order to adjust image parameters as well as for detection and recording of the images. Unfortunately, the raw video feed proved more difficult to access as other video processing software had to be used along with the peer-to-peer negotiation. In the end the MJPEG format was chosen, as it had acceptable delay and could be integrated only by providing a HTTP source to the OpenCV video capture module.
+In the real drone system the video feed is done with WebRTC. This is a modern peer-to-peer video protocol well suited for the application of video from IoT, and the intention was to use this in the test bed as it had a low latency and was accessible through the browser. The goal was to get the raw video feed to OpenCV in order to adjust image parameters as well as for detection and recording of the images. Unfortunately, the raw video feed proved difficult to access as other video processing software had to be used along with the peer-to-peer negotiation. In the end the MJPEG format was chosen, as it had acceptable delay and could be integrated only by providing a HTTP source to the OpenCV video capture module.
 
 \subsubsection{Native vs. web}
-The application that the SSRS currently use for mission control is hosted on the web, and as such the test bed was initially developed as web-application. This proved difficult for the developer as he had limited experienced working with web applications. As the amount of tasks for the program to perform grew, a decision was made to implement the test bed as a native Python application instead. This made it easier to orchestrate the video and control tasks using regular UNIX processes from the Python multiprocessing library. 
+The application that the SSRS currently use for mission control is hosted on the web, and as such the test bed was initially developed as web-application. This proved difficult for the developer as they had limited experienced working with web applications. As the amount of tasks for the program to perform grew, a decision was made to implement the test bed as a native Python application instead. This made it easier to orchestrate the video and control tasks using regular UNIX processes from the Python multiprocessing library. 
 
 With this decision the possibility to remotely host the application was lost, but as the goal was to develop a working test bed this was deemed acceptable. 
 
@@ -283,10 +286,25 @@ The script used the following python libraries:
    \item[sys] Iterating over directories, reading and writing files.  
 \end{description}
 
-The script took each frame and ran the detection algorithm on it. If an apriltag was detected in the image, the distance between the center of the apriltag and the center of the screen was saved with the corresponding frame number in a CSV-file named after the subject and the specific trial. In case of no detection, a NaN value was introducet for that frame. The video with the detection overlay was also saved for later inspection.
+Pythagoras' theroem was used for calculating the pixel distance between the two points and is shown in equation \ref{eq:distance}. A frame from the detection script can be seen in figure \ref{fig:resultcalc}.
+
+\begin{equation}
+   \label{eq:distance}
+   \overrightarrow{px} = \sqrt{(x_{hoverboard} - x_{center})^2 + (y_{hoverboard} - y_{center})^2}
+\end{equation}
+
+
+\begin{figure}[!hbt]
+   \centering
+   \includegraphics[scale=0.3]{images/resultcalc.png} 
+   \caption{Example of a result from the detection algorithm. The green square outlines the result of the detected object and the red dot its' center. The error is the distance between the two dots as outlined by the black indicators.}
+   \label{fig:resultcalc}
+\end{figure}
+
+The script took each frame of a recorded trial and ran the detection algorithm on it. If an apriltag was detected in the image, the distance between the center of the apriltag and the center of the screen was saved with the corresponding frame number in a CSV-file named after the subject and the specific trial. In case of no detection, a NaN value was inserted for that frame. The video with the detection overlay was also saved for later inspection.
 
 \section{Auto-follow mode}
-As a proof of concept, an auto-follow mode was developed which allowed the gimbal to follow the hoverboard. This was made using the object detection algorithm from the result script, but in real-time coupled with a PI-controller which had the center of the image as reference value. Due to time limitations this was not investigated any further.
+As a proof of concept, an auto-follow mode was developed which allowed the gimbal to follow the apriltag. This was made using the object detection algorithm from the result script coupled with a PI-controller which had the center of the image center as reference value. Due to time limitations this was not investigated any further.
 
 \chapter{Experiments}
 This chapter will describe the setup, procedure and evaluation of the two experiments that were performed.
@@ -394,21 +412,7 @@ At the end of the fifth and last trial the subject got to fill in the sickness q
 The following two sections will describe the quantative and qualitative methods that were used to evaluate the system.
 
 \subsubsection{Quantative Evaluation}
-To measure the performance of each subject, a script using a detection algorithm was used on the recorded video which for each frame gave the distance between the red dot and the center of the apriltag. Pythagoras' theroem was used for calculating the pixel distance between the two points and is shown in equation \ref{eq:distance}. A frame from the detection script can be seen in figure \ref{fig:resultcalc}.
-
-
-\begin{equation}
-   \label{eq:distance}
-   d = \sqrt{(x_{hoverboard} - x_{center})^2 + (y_{hoverboard} - y_{center})^2}
-\end{equation}
-
-
-\begin{figure}[!hbt]
-   \centering
-   \includegraphics[scale=0.3]{images/resultcalc.png} 
-   \caption{Example of a result from the detection algorithm. The green square outlines the result of the detected object and the red dot in the middle of its center. The error is the distance between the two dots as outlined by the black indicators.}
-   \label{fig:resultcalc}
-\end{figure}
+To measure the performance of each subject, a script using a detection algorithm was used on the recorded video which for each frame gave the distance between the red dot and the center of the apriltag.
 
 \subsubsection{Qualitative Evaluation}
 After each trial the subject answered a form with four questions about the system on a five degree scale, labeled 'Terrible' to 'Excellent'. The questions are shown in table \ref{tab:form-questions}. 
