@@ -375,10 +375,10 @@ After the laps were completed the interface was shut down and the subject was as
 At the end of the fifth and last trial the subject got to fill in the sickness questionnaire was also asked a few interview questions by the conductor.
 
 \subsection{Evaluation}
-The following two sections will describe the quantative and qualitative methods that are used to evaluate the performance of the system.
+The following two sections will describe the quantative and qualitative methods that were used to evaluate the system.
 
 \subsubsection{Quantative Evaluation}
-To measure each subjects performance, a script using a detection algorithm was used on the recorded video which for each frame gave the distance between the red dot and the center of the apriltag. Pythagoras' theroem was used for calculating the pixel distance between the two points and is shown in equation \ref{eq:distance}. A frame from the detection script can be seen in figure \ref{fig:resultcalc}.
+To measure the performance of each subject, a script using a detection algorithm was used on the recorded video which for each frame gave the distance between the red dot and the center of the apriltag. Pythagoras' theroem was used for calculating the pixel distance between the two points and is shown in equation \ref{eq:distance}. A frame from the detection script can be seen in figure \ref{fig:resultcalc}.
 
 
 \begin{equation}
@@ -455,31 +455,13 @@ Right after the last trial the subject filled out the SSQ once more. Then, a bri
 
 \vspace{10pt}
 
-\section{Field testing}
-This experiment aimed at evaluating the gimbal interface in a real scenario, flying in the archipelago of Gothenburg. The SSRS have a permit to operate drones within a delimited area of the archipelago and because of this, the drone can be flown beyond visual line-of-sight with all communication going over the mobile network. 
-
-The main goals of the field testing were:
-\begin{itemize}
-   \item confirm that the gimbal control did not interfere with the flight control software
-   \item evaluate suitability of the controls in a dynamic environment
-   \item compare the manual controls to the already existing ROI-mode
-\end{itemize} 
-
-\subsection{Preparations}
-
-\subsection{Procedure}
-A flight of roughly 30 minutes with 17 waypoints and 2 loiter points was performed. For the waypoints the camera was held in manual mode for the most of the time, enabling the camera operator to look around using the joystick. The latency of the video was estimated to be between one and two seconds, which gave some delay to the controls. However, the gimbal was still controllable and the camera operator could still look around and point the camera at objects of interest.
-
-For convenience, a button on the control was mapped to switch the gimbal control between manual mode and ROI-mode available in the firmware. This made it possible to easily switch between the two.
-
-During loitering the camera was difficult to control manually as the plane was moving around a lot. When going around in a circle the plane also moves a lot in the yaw and roll axes, making it very difficult to compensate manually with the joystick. The ROI-mode was better suited for this, although there were some inconsistencies in the altitude data for the points which caused the camera to point at a point below the surface of the earth. The point was adjusted by raising the altitude provided to the GPS-point. 
 
 \section{Known Sources of Error}
 
 \subsection{Ecological validity}
 The future operators of the system are to be the volunteers of SSRS, which have a wide variety in age and background. Thus,there are three main concerns with the ecological validity of the study. Firstly, the subjects were all either students or researchers at Lund University. Secondly, the average age of the subjects was low. Lastly, the sample size was only ten people. 
 
-The first concern is probably least important when it comes to the validity of the study, as a low number of participants could be compensated by having each subject providing more data. Each subject generated around 13 500 data points in five trials with two laps each, resulting in about 135 000 data points in total. This is likely to have had a positive effect on the validity of the results.
+The last concern is probably least important when it comes to the validity of the study, as the low number of participants could be compensated for by having each subject provide more data. Each subject generated around 13 500 data points in five trials with two laps each, resulting in about 135 000 data points in total. This is likely to have had a positive effect on the validity of the results.
 
 The second and third concerns are more difficult to compensate for, as only employees or students at the university could be used as subjects due to the university insurance. There are of course people of different ages and backgrounds working and studying at the university, but due to time restraints as well as lack of compensation for the subjects, most came from the conductors network of contacts.
 
@@ -504,6 +486,28 @@ To make for better averages over different trials, all NaN values, i.e frames wh
 
 \subsection{Difficulty of the task}
 The center of the apriltag did not have a very clear center which could have made it difficult for the subject to complete the task. To remedy this, a printed apriltag where the center was marked out, but it could be that the subject had difficulty identifying the exact center during the trial. 
+
+\section{Field testing}
+This experiment aimed at running the gimbal interface on the real drone in-flight. The SSRS have a permit to operate drones beyond visual line of sight within a delimited area of the archipelago of Gothenburg. Because of this, the drone can be flown longer distances while all communication going over the mobile network. 
+
+\subsection{Goals}
+The main goals of the field testing were:
+\begin{itemize}
+   \item confirm that the gimbal control did not interfere with the flight control software
+   \item evaluate suitability of the controls in a dynamic environment
+   \item compare the manual controls to the already existing ROI-mode
+\end{itemize} 
+
+\subsection{Preparations}
+For the experiment the gimbal control interface used earlier was modified in order to run with the software and video streaming configured on the actual drone. The video and recording component was entirely removed and the IP address which the program connected to was changed to that of the 4G modem. 
+In order to compare the new controls to the already existing ROI-mode, a button on the controller was mapped to switch between joystick-mode and ROI-mode, using pre-programmed GPS-points for the drone to look at.
+
+\subsection{Procedure}
+A flight of roughly 30 minutes with 17 waypoints and 2 loiter (circling) points was performed. For the waypoints the camera was held in manual mode for the most of the time, enabling the camera operator to look around using the joystick. The latency of the video was estimated to be between one and two seconds, which gave some delay to the controls. However, the gimbal was still controllable and the camera operator could still look around and point the camera at objects of interest.
+
+For convenience, a button on the control was mapped to switch the gimbal control between manual mode and ROI-mode available in the firmware. This made it possible to easily switch between the two.
+
+During loitering the camera was difficult to control manually as the plane was moving around a lot. When going around in a circle the plane also moves a lot in the yaw and roll axes, making it very difficult to compensate manually with the joystick. The ROI-mode was better suited for this, although there were some inconsistencies in the altitude data for the points which caused the camera to point at a point below the surface of the earth. The point was adjusted by raising the altitude provided to the GPS-point. 
 
 \chapter{Results}
 This chapter will go through the main findings of the experiment. The quantative measurements will first be presented followed by the results from the forms and interviews.
