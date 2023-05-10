@@ -440,7 +440,7 @@ After each trial the subject answered a form with four questions about the syste
       Terrible \hspace{10pt} Poor \hspace{10pt} Fair \hspace{10pt} Good \hspace{10pt} Excellent \\    
       \\
       \hline
-      \textbf{How would you rate your experience of the system?} \\
+      \textbf{How pleasant was the system to use?} \\
       \\
       Terrible \hspace{10pt} Poor \hspace{10pt} Fair \hspace{10pt} Good \hspace{10pt} Excellent \\    
       \\
@@ -607,9 +607,25 @@ It can be seen that there is a
 In this section the results from the forms and interviews are presented and discussed.
 
 \subsubsection{Trial forms}
-In \ref{fig:form-ans} the answers from the questionnaires filled out after each trial are averaged over all subjects and visualized as a grouped bar chart. It is important to note that the jumps in delay are not uniform. The questions can be seen in \ref{tab:form-questions}.
+In \ref{fig:form-ans} the answers from the questionnaires filled out after each trial are averaged over all subjects and visualized as a grouped bar chart. It is important to note that the jumps in delay are not uniform. The questions can be seen in \ref{tab:form-questions}. 
 
-A monotonous decrease can be seen on all questions where higher delays give lower scores on average. On the second question, namely "ability to control task", the results for 200ms, 300ms, and 400ms are similar. The jumps from 0ms to 200ms and 400ms to 600ms seem to be much more impactful on the subject's perceived ability to perform the task than the jump from 200ms to 400ms.
+Here follows a brief analysis of the results for each question in \ref{fig:form-ans}
+\begin{description}
+   \item[1: Controllability] 
+   The controllability decreases dramatically over all delays. Although the ratings decrease with added delay, the answers suggest that the sence of controllability did not differ much between 400ms and 600ms added delay, and that the answers could plateau with further added delay.  
+
+   \item[2: Ability to perform task] 
+   The average ratings for 200ms, 300ms, and 400ms are very similar. The added delay seems to have had little effect on the impression of their task performance, in spite of the quantative results showing a significant difference in pixel error. The subject's answer does however depend heavily the subject's interpretation of the task and how close is "good enough".
+ 
+   \item[3: How pleasant was the system to use]
+   The ratings of the pleasantness of the system seem to decrease steadily with added delay for each interval.
+
+   \item[4: Impression of the system as a whole] 
+   The system with 0ms added delay clearly made a better impression on the subjects. An interesting feature of the answers is that the systems with 200ms and 300ms have gotten the exact same rating.
+
+\end{description}
+
+
 
 \begin{figure}[!hbt]
    \centering
@@ -680,7 +696,7 @@ In this chapter the main takeaways from the two experiments will be summarized.
 
 \section{QoE Experiment}
 From the quantative results a clear trend can be seen that the delay has a negative effect on the performance of the subjects. The data also indicate that the effect on the subject performing the task was bigger between 400ms and 600ms than between 0ms and 200ms. This suggests that the effects of delay might not be linear after a certain threshold.
-According to the forms answered after each trial, the subjects rated the delays "correctly".
+According to the forms answered after each trial, the perception of the system got worse as more delay was added. For controllability and     
 
 The subjects experience a very small increase in symptoms during the trials, but the increase is not large enough to be considered significant for a sample size of only 10 subjects.
 
