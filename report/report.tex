@@ -51,15 +51,15 @@ If you want to thank people, do it here, on a separate right-hand page. Both the
 }
 
 \theabstract{
-The Swedish Sea Rescue Society (SSRS), responsible for 90\% of sea rescue in Sweden, are running a project with Chalmers, Infotiv, Airpelago and RISE called Eyes-on-Scene (EOS), investigating the use of drones to provide imagery to rescue personnell on their way to a reported incident at sea. A fixed-wing drone along with mission control software has been developed in the project, and the drone is able to fly after waypoints while providing video through the gimbal-mounted camera. The drone has a 4G modem, through which it is able to communicate with the operator and send it's video feed. 
+The Swedish Sea Rescue Society (SSRS), responsible for 90\% of sea rescue in Sweden, are running a project with Chalmers, Infotiv, Airpelago and RISE called Eyes-on-Scene (EOS), investigating the use of drones to provide imagery to rescue personnell on their way to a reported incident at sea. A fixed-wing drone along with mission control software has been developed in the project, and the drone is able to fly after waypoints while providing video through the gimbal-mounted camera. The drone also has a 4G modem, allowing it to be operated beyond visual line-of-sight (BVLOS). 
 
-During flight, the only way to control the camera is by providing a so called "Region of Interest" (ROI) with a latitude, longitude and height, which would allow the flight controller on-board to calculate the gimbal angles in order to look towards the ROI. The process of selecting a point on a map is cumbersome during flight, and the SSRS wanted to be able to control the gimbal angles directly with a joystick or the arrow keys. The SSRS was also interested in investigating if the manual controls were suitable with the delay introduced by the mobile connection.
+During flight, the only way to control the camera is by providing a so called "Region of Interest" (ROI) with a latitude, longitude and height, with which the on-board flight controller can calculate the gimbal angles to point towards the ROI. The process of selecting a point on a map is a cumbersome task during flight, and the SSRS wanted to be able to control the gimbal angles directly with a joystick or the arrow keys. The SSRS was also interested in investigating if the manual controls were suitable with the delay introduced by the mobile connection.
 
-In this thesis work, a gimbal control interface has been developed with the aim of getting manual control of the camera while also studying the effects of latency on the operator's experience. Two experiments have been carried out: one user study, evaluating the quantative and qualitative effects of latency on the operator, and one field test, where the gimbal control software was run on a flight over the Gothenburg archipelago.
+In this thesis work, a gimbal control interface has been developed with the aim of acheiving manual control of the camera while also studying the effects of latency on the operator's experience. Two experiments have been carried out: one user study, evaluating the quantative and qualitative effects of latency on the operator, and one field test, where the gimbal control software was tested during flight over the Gothenburg archipelago.
 
-In the user study, the user was given a task to perform with the interface. Five trials with simulated latencies were performed per subject and both qualitative and quantitative measurements were taken on their performance as well as their impression of the system. The results of the study indicate that the relationship between task performance and delay might not be linear, and that an equal amount of delay increase can have a larger impact after a certain threshold.
+In the user study, the user was given a task to perform with the interface. Five trials with simulated latencies were performed per subject and both qualitative and quantitative measurements were taken on their performance as well as their impression of the system. The results of the study indicate that the relationship between latency and task performance might not be linear, and that an equal amount of delay increase can have a larger impact after a certain threshold.
 
-In the field test the software was successfully integrated with the in-flight systems. The manual controls were deemed most suitable when the drone was flying in straight lines while the pre-existing ROI-mode was superior when in loiter mode. 
+In the second experiment, the field test, the software was successfully integrated with the in-flight systems. The manual controls were deemed most suitable when the drone was flying straight, while the pre-existing ROI-mode was superior when in loiter mode. 
 }
 
 \keywords{MSc, BSc, template, report, style, structure}
@@ -77,10 +77,9 @@ In the field test the software was successfully integrated with the in-flight sy
 \chapter{Introduction}
 This chapter will give a short introduction to use cases of UAVs and the work of SSRS along with the motivation and scope for the thesis work.
 
-\section{Drone use}
-With the recent advancements in technology, the use of drones has skyrocketed. Most notably they have been used in warfare for surveillance and attack purposes, but in recent years the civilian applications have also increased (SOURCES). Common civilian use cases are in cinematography, agriculture and delivery, and there is also a growing interest in using drones for search and rescue (GET MORE EXAMPLES). 
+\section{UAVs}
+The use of UAVs (drones) has skyrocketed during the last 5 year. Most notably they have been used in warfare for surveillance and attack purposes, but in recent years the civilian applications have also increased. Common civilian use cases are in cinematography, agriculture and delivery, and there is also a growing interest in using drones for search and rescue, as is the case with the SSRS. 
 
-Historically drones have been limited by the maximum distance it can travel from it's operator, but with advancementes in mobile network technology the use case for drones has grown stronger as they now have a much larger range and can be controlled from anywhere with an internet connection.   
 
 % The thesis work is a collaboration between the Swedish Sea Rescue Society and the Department of Electrical and Information Technology at (+the Faculty of Engineering?) Lund University.
 \section{SSRS Needs}
