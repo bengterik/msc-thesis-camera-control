@@ -185,7 +185,7 @@ The drone is thouroughly described in section \ref{sec:fixed-wing-uav}. The comp
    \end{figure}
 \end{description}
    
-\subsection{Gimbal Package}
+\subsection{Gimbal Box}
 As the entire drone was not needed to conduct the QoE experiment, a Raspberry Pi, flight controller and gimbal were mounted inside a 2L Ikea SmartStore. The boards were mounted inside the box with velcro tape and the gimbal was mounted in a cutout in the bottom of the box. Pictures of the box can be seen in figure \ref{fig:drone-setup}.
 
 
@@ -336,7 +336,13 @@ As a proof of concept, an auto-follow mode was developed which allowed the gimba
 This chapter will describe the setup, procedure and evaluation of the two experiments that were performed.
 
 \section{QoE Lab Experiment}
-This section describes the procedure of the experiment aimed at evaluating the effect of latency on the gimbal operator using the hoverboard robot. 
+The lab experiment was performed in the Wireless Systems and Applications lab at Lund University. 
+
+\subsection{Goals}
+The goal of the experiment was to evaluate the operator's performance and experience when using the gimbal control interface.
+
+\subsection{Experiment Design}
+The desire was to create a task that would be as close to the real world application as possible while still making it easy to measure the performance of the operator. The system in the real world is very dynamic, so some sort of movement was desired. As the hoverboard was accessible in the lab and could be controlled easily, it was chosen as the moving platform. At first the desire was to have the gimbal box on top of the drone, having the drone move in a circle in an upside-down loiter. This was deemed to introduce several unknowns into the test bed, as the drone would have to be connected wirelessly to power and the operator in order to not have to run over any cables with the hoverboard. The lighting from the ceiling as well as the windows also reduced the contrast of the apriltag, making it harder to detect for the algorithm.
 
 \subsection{Task}
 The task was to keep the center of the screen, marked with a red dot (as seen in \ref{fig:interface}), aligned with the center of the apriltag laying on top of the hoverboard (shown in \ref{fig:hoverboard}) while moving in an elipse.
@@ -375,6 +381,8 @@ The computer screen was 24' and the application was run on a machine with the fo
    \item[RAM] 16 GB
    \item[GPU] Mesa Intel HD Graphics 4600 (HSW GT2)
 \end{description}
+
+The gimbal box was connected to the gimbal control interface via ethernet cable.
 
 \subsection{Experimental Procedure}
 In this section each of the steps will be described in more detail. The experimental procedure is summarized in the table \ref{tab:task-timeline}.
@@ -502,7 +510,6 @@ Right after the last trial the subject filled out the SSQ once more. Then, a bri
 \end{table}
 
 \vspace{10pt}
-
 
 \subsection{Known Sources of Error}
 
