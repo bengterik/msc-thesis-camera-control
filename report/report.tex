@@ -51,9 +51,15 @@ If you want to thank people, do it here, on a separate right-hand page. Both the
 }
 
 \theabstract{
-Your abstract should capture, in English, the whole thesis with focus on the problem and solution in 150 words. It should be placed on a separate right-hand page, with an additional \textit{1cm} margin on both left and right. Avoid acronyms, footnotes, and references in the abstract if possible.
+The Swedish Sea Rescue Society (SSRS), responsible for 90\% of sea rescue in Sweden, are running a project with Chalmers, Infotiv, Airpelago and RISE called Eyes-on-Scene (EOS), investigating the use of drones to provide imagery to rescue personnell on their way to an reported incident. A fixed-wing drone along with mission control software has been developed in the project, and the drone is able to fly after waypoints while providing video through the gimbal-mounted camera. The drone has a 4G modem, through which it is able to communicate with the operator and send it's video feed. 
 
-Leave a \textit{2cm} vertical space after the abstract and provide a few keywords relevant for your report. Use five to six words, of which at most two should be from the title.
+During flight, the only way to control the camera was by providing a so called "Region of Interest" (ROI) with a latitude, longitude and height, which would allow the flight controller on-board to calculate the gimbal angles in order to look towards the ROI. The process of selecting a point on a map was cumbersome during flight, and the SSRS wanted to be able to control the gimbal angles directly with a joystick or the arrow keys. The SSRS was also interested in investigating if the manual controls were suitable with the delay introduced by the mobile connection.
+
+In this thesis work, a test bed based on a subset of the drone's hardware was developed with the aim of getting manual control of the camera while also studying the effects of latency on the operator's experience. Two experiments were carried out in total: one user study evaluating quantative and qualitative effects of latency on the operator, and one field test where the gimbal control software was run on a flight over the Gothenburg archipelago.
+
+In the user study, the user was given a task to perform. Five trials with simulated latencies were performed per subject and both qualitative and quantitative measurements were taken on their performance as well as their impression of the system. The results of the study indicate that the relationship between task performance and delay might not be linear, and that an equal amount of delay increase can have a larger impact after a certain threshold.
+
+In the field test the software was successfully integrated with the in-flight systems. The manual controls were deemed most suitable when the drone was flying in straight lines whiel the pre-existing ROI-mode was superior when in loiter mode. 
 }
 
 \keywords{MSc, BSc, template, report, style, structure}
@@ -701,8 +707,8 @@ When taking into account the subject's rating of the system, it can be seen that
 The results from the field testing shows that the gimbal software could be easily integrated with the system running on the real drone. The manual controls were also deemed suitable when the plane was flying in straight lines and when surveying or following an moving object compared to the already existing ROI-mode. When loitering the ROI-mode was found to be more practical.
 
 \chapter{Future Work}
-The test bed developed in the thesis work could be used for more experiments in a lab environment. It would be interesting to look at the effect of other delays as well as the effects of other network parameters such as jitter or image quality.
-The modified test bed will(/can?) also be used as starting point for the gimbal control of the drone, and will help to evaluate the use case of drones for sea rescue further.
+The test bed developed in the thesis work could be used for more experiments in a lab environment. It would be interesting to look at the effect of other delays as well as the effects of other network parameters such as jitter or image quality. In the future it would also be interesting to perform studies on when the drone is either moving or in flight.
+The modified test bed will(/can?) also be used by the SSRS as starting point for controlling the camera on the drone, and will help to evaluate the use case of drones for sea rescue further.
 
 % Should use consistent formatting when it comes to Names ("FirstName LastName", or "F. LastName")
 %\printbibliography
