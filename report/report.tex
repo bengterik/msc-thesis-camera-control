@@ -342,7 +342,28 @@ The lab experiment was performed in the Wireless Systems and Applications lab at
 The goal of the experiment was to evaluate the operator's performance and experience when using the gimbal control interface.
 
 \subsection{Experiment Design}
-The desire was to create a task that would be as close to the real world application as possible while still making it easy to measure the performance of the operator. The system in the real world is very dynamic, so some sort of movement was desired. As the hoverboard was accessible in the lab and could be controlled easily, it was chosen as the moving platform. At first the desire was to have the gimbal box on top of the drone, having the drone move in a circle in an upside-down loiter. This was deemed to introduce several unknowns into the test bed, as the drone would have to be connected wirelessly to power and the operator in order to not have to run over any cables with the hoverboard. The lighting from the ceiling as well as the windows also reduced the contrast of the apriltag, making it harder to detect for the algorithm.
+The desire was to create a task that would be as close to the real world application as possible while still making it easy to measure the performance of the operator. The thought out scenario was that of a drone, loitering around a point while trying to focus the camera on the same point. 
+
+As this required movement within the bounds of the lab, the hoverboard accessible in the lab was thought of as a good candidate and was chosen as the moving platform. Considering that video would be the medium, pixel distance in an image was deemed to be a good metric for the performance of the operator. Furthermore, with the use of an apriltag, the amount of frames to be analyzed could be dramatically increased compared to manual analysis.
+
+At first the desire was to have the gimbal box wirelessly sitting on top of the hoverboard, with the hoverboard moving in a circle in an upside-down loiter while the gimbal was looking up at a point in the ceiling. After some initial testing, this was deemed to introduce several points of failure in the test bed:
+
+\begin{itemize}
+   \item Power had to be supplied via a powerbank.
+   \item Network connection had to go over WiFi with substantially more delay and jitter than an ethernet cable-connection. 
+   \item Using automatic detection, the lighting from the ceiling and windows reduced the contrast of the apriltag, making it harder to detect for the algorithm.
+   \item When mounted, the gimbal box was higher than the lidar mounted on the hoverboard, obscuring its' view.
+\end{itemize}
+
+In the end the loitering scenario was flipped, placing the gimbal box on top of a shelf looking down on the moving robot. The two test bed ideas can be seen in figure \ref{fig:testbed-ideas}.
+
+\begin{figure}[htp]
+   \centering
+   \includegraphics[width=.47\textwidth]{images/testbed1.png}\hfill
+   \includegraphics[width=.47\textwidth]{images/testbed2.png}
+   \caption{To the left the initial idea of the experiment where the camera is looking up on the apriltag. To the right the gimbal looks down on the apriltag placed on top of the hoverboard.}
+   \label{fig:testbed-ideas}
+\end{figure}
 
 \subsection{Task}
 The task was to keep the center of the screen, marked with a red dot (as seen in \ref{fig:interface}), aligned with the center of the apriltag laying on top of the hoverboard (shown in \ref{fig:hoverboard}) while moving in an elipse.
