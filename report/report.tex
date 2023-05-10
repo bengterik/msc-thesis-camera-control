@@ -690,20 +690,15 @@ The ROI-mode was activated on one of the loitering points and worked well when t
 It could also be observed that increasing the loiter-radius gave a better image as the inexactness of the GPS-point was less impactful.
 
 \chapter{Conclusion}
-In this chapter the main takeaways from the two experiments will be summarized.
+A test bed on the ArduPilot platform was successfully implemented and shown to work in a lab setting as well as in a real flight scenario. In the following sections the conclusions from the two experiments conducted with the test bed will be summarized.
 
 \section{QoE Experiment}
-From the quantative results a clear trend can be seen that the delay has a negative effect on the performance of the subjects. The data also indicate that the negative effect on the subject's performance was bigger between 400ms and 600ms than between 0ms and 200ms of added delay. This suggests that the effects of delay might not be linear after a certain threshold.
+From the quantative results a clear trend can be seen that the delay has a negative effect on the performance of the subjects. The task performance measure decreases linearly at first, but has a higher change rate for the 600ms added delay. Trials with higher added delays would have to be conducted to generalize the relationship between delay and task performance.
 
-According to the forms answered after each trial, the perception of the system got worse as more delay was added. The subjects reported that their sence of control decreased dramatically with more added delay, however, their rating on task performance remained equal for delays 200ms, 300ms and 400ms. Their impression of the system also got worse with more delay, although the impression for delays 200ms and 300ms remained equal.
-
-As was the intention with having both quantative and qualitative measurements, it can be seen that the experience of a user is not always proportional to the worsening of QoS parameters.    
-
-The subjects experience a very small increase in symptoms during the trials, but the increase is not large enough to be considered significant for a sample size of only 10 subjects.
-
+When taking into account the subject's rating of the system, it can be seen that the experience of a user is not always proportional to the worsening of QoS parameters. A slight increase in simulator sickness was observed, although it was not statistically significant.
 
 \section{Field testing}
-The experience of controlling the camera could obviously be improved by lowering the delay, but the results were still satisfactory. 
+The results from the field testing shows that the gimbal software could be easily integrated with the system running on the real drone. The manual controls were also deemed suitable when the plane was flying in straight lines and when surveying or following an moving object compared to the already existing ROI-mode. When loitering the ROI-mode was found to be more practical.
 
 \chapter{Future Work}
 
