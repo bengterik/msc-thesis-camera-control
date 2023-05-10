@@ -339,12 +339,12 @@ This chapter will describe the setup, procedure and evaluation of the two experi
 The lab experiment was performed in the Wireless Systems and Applications lab at Lund University. 
 
 \subsection{Goals}
-The goal of the experiment was to evaluate the operator's performance and experience when using the gimbal control interface.
+The goal of the experiment was to evaluate the operator's performance and experience when using the gimbal control interface with a simulated delay added to the control commands.
 
 \subsection{Experiment Design}
-The desire was to create a task that would be as close to the real world application as possible while still making it easy to measure the performance of the operator. The thought out scenario was that of a drone, loitering around a point while trying to focus the camera on the same point. 
+The desire was to create a task that would be as close to the real world application as possible while still making it easy to measure the performance of the operator. The thought out scenario was that of a drone, loitering around a point while trying to focus the camera on a stationary point. 
 
-As this required movement within the bounds of the lab, the hoverboard accessible in the lab was thought of as a good candidate and was chosen as the moving platform. Considering that video would be the medium, pixel distance in an image was deemed to be a good metric for the performance of the operator. Furthermore, with the use of an apriltag, the amount of frames to be analyzed could be dramatically increased compared to manual analysis.
+As this required some type of movement inside the lab, the hoverboard accessible in the lab was chosen to introduce movement in the test bed. Considering that video would be the medium, pixel distance in an image was deemed to be a good metric for the performance of the operator. Furthermore, with the use of an apriltag, the amount of frames to be analyzed could be dramatically increased compared to manual analysis.
 
 At first the desire was to have the gimbal box wirelessly sitting on top of the hoverboard, with the hoverboard moving in a circle in an upside-down loiter while the gimbal was looking up at a point in the ceiling. After some initial testing, this was deemed to introduce several points of failure in the test bed:
 
@@ -366,10 +366,11 @@ In the end the loitering scenario was flipped, placing the gimbal box on top of 
 \end{figure}
 
 \subsection{Task}
-The task was to keep the center of the screen, marked with a red dot (as seen in \ref{fig:interface}), aligned with the center of the apriltag laying on top of the hoverboard (shown in \ref{fig:hoverboard}) while moving in an elipse.
+The task for the operator was to keep the center of the screen, marked with a red dot as seen in \ref{fig:interface}, aligned with the center of the apriltag while it was moving in an elipse inside the lab.
 
 \subsection{Experimental Setup}
-The experiment was set up in a lab where the subject and the conductor sits at a desk with a high shelf behind them obscuring the view towards the rest of the lab. Behind the shelf the robots used in the experiment are located. An illustration of the lab setup is provided in figure \ref{fig:exp-setup}. 
+The experiment was set up in a lab where the subject and the conductor sits at a desk with a high shelf behind them obscuring the view towards the rest of the lab. Behind the shelf the robots used in the experiment are located. An illustration of the lab setup is provided in figure \ref{fig:exp-setup} and a photograph of the test bed is shown in figure \ref{fig:real-exp}.
+
 
 \begin{figure}[!hbt]
    \centering
@@ -378,7 +379,6 @@ The experiment was set up in a lab where the subject and the conductor sits at a
    \label{fig:exp-setup}
 \end{figure}
 
-An image of the hoverboard and the camera is shown in image \ref{fig:real-exp}.
 
 \begin{figure}[!hbt]
    \centering
