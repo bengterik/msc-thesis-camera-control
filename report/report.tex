@@ -79,16 +79,21 @@ In the second experiment, the field test, the software was successfully integrat
 \chapter{Introduction}
 The thesis work presented in this report was carried out at the Department of Electrical and Information Technology at Lund University in collaboration with the Swedish Sea Rescue Society and the other stakeholders in the Eyes-On-Scene project. 
 
-This chapter will give an introduction to the scope of the project as well as a brief overview of the report structure.
+This chapter will provide the scope of the project as well as a an overview of the report structure.
 
 \section{Scope}
-The principal goal of the thesis is to build a test bed based on the drone hardware and software provided by the SSRS in order to enable Quality of Experience (QoE) studies on camera control. An experiment investigating the effects of latency on an operator is then to be carried out using the test bed. Lastly, the software is to be integrated with the existing drone system in order to evaluate the manual gimbal-controls during flight.
+The principal goals of the thesis work are:
+\begin{description}
+   \item[G1] Build a software based on the hardware and software from SSRS capable of manually controlling the drone camera with joystick or arrow keys. 
+   \item[G2] Conduct an experiment investigating the effects of latency on an operator. 
+   \item[G3] Integrate the software into the the existing drone system in order to evaluate the manual gimbal-controls during flight.
+\end{description}
 
 \section{Report Structure}
 In the second chapter, more elaborate background is given on UAVs, the SSRS, the EOS-project as well as the research field of QoE. In the third chapter, the technical details of the test beds are presented. In the fourth chapter, the experiment procedures are presented. In the fifth chapter, the results from the user study and the field test are presented. In the sixth chapter, the conclusions are drawn. Lastly, in the seventh chapter, the future work is presented.
 
 \chapter{Background}
-In this chapter a breif background will be given of the Swedish Sea Rescue Society along with the drone project that this work is a part of. Then, the research field of Quality of Experience will be introduced, along with the related previous work.
+In this chapter a breif background will be given to the UAV as well as the SSRS and the EOS project. Then, the research field of Quality of Experience will be introduced along with the related previous work.
 
 \section{The UAV}
 \label{sec:fixed-wing-uav}
@@ -207,6 +212,22 @@ In order to introduce movement in the QoE experiment, a modified hoverboard was 
    \caption{}
    \label{fig:hoverboard}
 \end{figure}
+
+The average velocity of the hoverboard was determined at 0.184 m/s with a standard deviation of 0.0062 m/s. The error after each lap is presented in table \ref{tab:hoverboard-error}, and was non accumulative over multiple laps. 
+
+\begin{table}[!hbt]
+   \centering
+   \label{tab:hoverboard-error}
+   \begin{tabular}{|c|c|c|c|}
+      \hline
+      \textbf{Axis} & \textbf{Average (mm)} & \textbf{Min (mm)} & \textbf{Max(mm)} \\
+      \hline
+      $x$ & $6.8 $ & $-40.2$ & $51$ \\
+      \hline
+      $y$ & $42.78$ & $34.9$ & $50.9$ \\
+      \hline
+   \end{tabular}
+\end{table}
 
 \subsection{Apriltag}
 An apriltag is a type of low-resolution QR-code often used in robotics to estimate orientation and position of robots or objects with the help of computer vision. It was fastened on top of the hoverboard as high as possible without blocking the lidar. The apriltag can be seen mounted on the hoverboard in figure \ref{fig:hoverboard}.
@@ -735,14 +756,12 @@ The two different modes of operation were tested and the results are presented i
 During the initial loiter, the plane's orientation changed quickly depending on where the plane was facing with respect to the direction of the wind. This made the gimbal very difficult to control manually, with the delay of the controls making it almost impossible to manually compensate with the joystick when the plane made an aggressive roll or yaw.
 
 After the plane had left the initial loiters it had more time flying straight. During this time the camera was much easier to control manually, as the plane was more stable and the orientation was remained the same for an extended amount of time. 
-Between waypoint 11 and 12, a boat was spotted slightly beside the plane. The gimbal operator decided to try and follow the boat. Although the delay made it more difficult to control the gimbal than in the lab experiment, the boat was successfully followed for a short time. An image from the video feed can be seen in figure \ref{fig:boat-follow}. It was also observed that the position of the boat next to the aircraft could be estimated by the operator, allowing preemptive gimbal movements to compensate for the delay. 
+Between waypoint 11 and 12, a boat was spotted slightly beside the plane. The gimbal operator decided to try and follow the boat. Although the delay made it more difficult to control the gimbal than in the lab experiment, the boat was successfully followed for a short time. An illustration of the event can be seen in \ref{fig:boat-follow}. It was also observed that the operator could predict the position of the boat, allowing preemptive gimbal movements to compensate for the delay. 
 
 \begin{figure}[htp]
    \centering
-   \includegraphics[width=.33\textwidth]{images/follow-boat-1.png}\hfill
-   \includegraphics[width=.33\textwidth]{images/follow-boat-2.png}\hfill
-   \includegraphics[width=.33\textwidth]{images/follow-boat-3.png}
-   \caption{Footage from the video feed of the camera while following the boat between waypoints 11 and 12.}
+   \includegraphics[width=.33\textwidth]{images/drone-boat-illustration.png}
+   \caption{Illustration of the drone following the boat. The orange shape is the drone and the triangle the boat. The green boxes indicate points in time and the blue cone the drones field of view.}
    \label{fig:boat-follow}
 \end{figure}
 
