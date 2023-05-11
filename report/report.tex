@@ -655,7 +655,7 @@ In figure \ref{fig:ecdf} the empirical cumulative distribution functions (ECDF) 
 \begin{figure}[!hbt]
    \centering
    \includegraphics[scale=0.5]{images/ecdf.png} 
-   \caption{ECDF of the total distance for all subjects. The curves show the distribution of the error for each delay. A larger inclination suggests a larger spread and the more to the right the curve is, the larger the average error.}
+   \caption{ECDF of the total pixel error averaged over all subjects. The curves show the distribution of the error for each delay. A larger inclination suggests a larger spread and the more to the right the curve is, the larger the average error.}
    \label{fig:ecdf}
 \end{figure}
 
@@ -768,7 +768,7 @@ Between waypoint 11 and 12, a boat was spotted slightly beside the plane. The gi
 Another observation from the experiment is that, being a fixed wing aircraft, the operator's ability to control the camera relies heavily on the manouvering of the aircraft, which means that improving the controls of the actual aircraft would improve the experience of controlling the camera significantly. 
 
 \section{ROI Control}
-The ROI-mode was activated on one of the loitering points and worked well when the perspective of the drone changed quickly. However, there were some inconsistencies in the altitude data for the points which caused the camera to point at a point below the surface of the earth. The point was adjusted by raising the altitude provided to the GPS-point. 
+The ROI-mode was activated on waypoint 12, and worked well when the perspective of the drone was changing rapidly. However, there were some inconsistencies in the altitude data for the points which caused the camera to point at a point below the surface of the earth. The point was adjusted by raising the altitude provided to the GPS-point. 
 
 It could also be observed that increasing the loiter-radius gave a better image as the inexactness of the GPS-point was less impactful.
 
