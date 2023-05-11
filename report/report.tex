@@ -132,14 +132,14 @@ The Eyes-On-Scene project is an innovation and research project initiated in 202
    \item[Infotiv] Develop the launcher used for takeoff.
 \end{description}
 
-A web interface for mission control has also been developed in the project. Currently, the interface allows flying to and loitering (circling) around waypoints given on a map which also displays both other naval and aerial traffic in real time. The map also shows the the regulatoy zones in which one is not allowed to fly, i.e. close to airports or military zones. The interface provides video from the drone camera which is recorded and accessible after the mission.
+A web interface for mission control has also been developed in the project. Currently, the interface allows flying to and loitering (circling) around waypoints given on a map where other naval and aerial traffic is displayed in real-time. The map also shows the the regulatoy zones in which one is not allowed to fly, i.e. close to airports or military zones. The interface provides video from the drone camera which is recorded and accessible after the mission.
+
+The only way to control the direction of the camera is by providing a so-called "Region of Interest" (ROI), namely a GPS-point with latitude, longitude and altitude. The drone will then calculate the angle to the point and adjust the camera gimbal to look towards it. In the current interface it is possible to set a ROI by selecting a point on a map and uploading the new waypoint to the drone.
 
 \section{Quality of Experience}
-With the expansion of newer, low-latency network technologies like 4- and 5G, the use case for remote control has grown stronger. With everything from connected cars, remote surgery or log lifting, the uses of real-time remote-control are many. 
+Quality of Experience is an emerging research field that is concerned with the user's experience in multimedia systems. It is an inherently multidisciplinary field that has close ties to the field of User Experience and Human-Computer Interaction. QoE is also closely related to the field of Quality of Service (QoS), which is concerned with the technical aspects of a system, but aims instead at evaluating the subjective experience through user experiments rather than qualitative measurements.
 
-Quality of Experience is an emerging research field that is concerned with the user's experience in multimedia systems. It is an inherently multidisciplinary field that has close ties to the field of User Experience (UX) and Human-Computer Interaction (HCI). QoE is also closely related to the field of Quality of Service (QoS), which is concerned with the technical aspects of a system, but aims instead at evaluating the subjective experience through user experiments rather than qualitative measurements.
-
-In the research field of QoE, common objects of study are the effects of different network parameters like latency, jitter or image quality. Previous QoE research have been on applications like log lifting \cite{industry4.0} and excavation equipment \cite{latency-impact}.
+In the research field of QoE, common objects of study are the effects of latency, jitter or image quality on the operator's experience. Previous QoE research have been on log lifting through a VR-headset \cite{industry4.0} and remotely controlled excavation equipment \cite{latency-impact}.
 
 In the white paper \cite{qoe-definition}, Brunström et al. make a working definition of Quality of Experience: 
 
@@ -147,10 +147,9 @@ In the white paper \cite{qoe-definition}, Brunström et al. make a working defin
    \textit{Quality of Experience (QoE) is the degree of delight or annoyance of the user of an application or service. It results from the fulfillment of his or her expectations with respect to the utility and / or enjoyment of the application or service in the light of the user’s personality and current state.} 
 \end{quote}
 
-
 \section{Previous Work}
 
-W. Tärneberg et al. \cite{industry4.0} present a QoE study with industrial equipment on an excavation site where experienced operators controlled their usual equipment remotely at different latencies. 
+W. Tärneberg et al. \cite{industry4.0} present a QoE study with industrial equipment on an excavation site where experienced operators controlled their usual equipment remotely at different latencies. They conclude that studying QoE aspects of a system is highly complex and task dependant. They also state that the operator's experience is time-variant and can be highly dependant on external factors such as lighting conditions or network quality.
 
 K. Brunnström et al. \cite{latency-impact} performed a study on log lifting using a head-mounted display system. In the study, latency is introduced both in the display's response to movement as well as the controls. The display delay was found to have a strong effect on nausea, but an observable effect on controller latency could only be found at latencies above 800 ms. 
 
@@ -371,7 +370,7 @@ In the end the loitering scenario was flipped, placing the gimbal box on top of 
 The task for the operator was to keep the center of the screen, marked with a red dot as seen in \ref{fig:interface}, aligned with the center of the apriltag while it was moving in an elipse inside the lab.
 
 \subsection{Experimental Setup}
-The experiment was set up in a lab where the subject and the conductor sits at a desk with a high shelf behind them obscuring the view towards the rest of the lab. Behind the shelf the robots used in the experiment are located. An illustration of the lab setup is provided in figure \ref{fig:exp-setup} and a photograph of the test bed is shown in figure \ref{fig:real-exp}.
+The experiment was set up in a lab where the subject and the conductor sits at a desk with a high shelf behind them obscuring the view towards the rest of the lab. Behind the shelf the robots used in the experiment were located. An illustration of the lab setup is provided in figure \ref{fig:exp-setup} and a photograph of the test bed is shown in figure \ref{fig:real-exp}.
 
 
 \begin{figure}[!hbt]
@@ -544,12 +543,12 @@ The last concern is probably least important when it comes to the validity of th
 The second and third concerns are more difficult to compensate for, as only employees or students at the university could be used as subjects due to the university insurance. There are of course people of different ages and backgrounds working and studying at the university, but due to time restraints as well as lack of compensation for the subjects, most came from the conductors network of contacts.
 
 \subsubsection{Frame detection accuracy}
-The detection algorithm used to calculate the distance from the center of the apriltag to the center of the screen could sometimes during fast camera movements not detect the apriltag. This resulted in a NaN value at that particular frame. The average percentage of frames detected where 85\%, with a minimum of 80\% and a maximum of 89\%. The percentage of frames detected was not found to be correlated with the delay and are plotted for each subject and delay in figure \ref{fig:frames-detected}. 
+The detection algorithm used to calculate the distance from the center of the apriltag to the center of the screen could sometimes during fast camera movements not detect the apriltag. This resulted in a NaN value at that particular frame. The average percentage of frames detected where 85\%, with a minimum of 80\% and a maximum of 89\%. The percentage of frames detected per delay are shown in figure \ref{fig:frames-detected}. 
 
 \begin{figure}[!hbt]
    \centering
-   \includegraphics[scale=0.5]{images/frames-detected.png} 
-   \caption{Form answers averaged for all subjects for each delay.}
+   \includegraphics[scale=0.7]{images/frames-detected.png} 
+   \caption{Average frame detection accuracy per delay over all trials.}
    \label{fig:frames-detected}
 \end{figure}
 
@@ -588,8 +587,14 @@ In order to compare the new controls to the already existing ROI-mode, a button 
 The weather was sunny with almost no clouds. The ground level wind was estimated to be around 5-9 m/s and the temperature was around 12 degrees Celsius.
 
 \subsection{Procedure}
-A flight plan of 17 waypoints and 2 loiter-waypoints was uploaded to the drone. The first and the last waypoints were close to the launch and the rest were placed on a route out in the archipelago. The drone was launched in manual mode and was circled around the operators to confirm that all the systems were working. The gimbal control software was also confirmed to be working during this phase, and the latency of the control was estimated to be between one and two seconds. 
-The drone was then switched into auto mode and the flight plan was started.
+A flight plan of 17 waypoints including a loiter-waypoint was uploaded to the drone. The flight plan can be seen in \ref{fig:flight-plan}. The first and the last waypoints were close to the launch and the rest were placed on a route out in the archipelago. The drone was launched in manual mode and was circled around the operators to confirm that all the systems were working. The gimbal control software was also confirmed to be working during this phase, and the latency of the control was estimated to be between one and two seconds. The drone was then switched into auto mode and the flight plan was started.
+
+\begin{figure}[!hbt]
+   \centering
+   \includegraphics[scale=0.4]{images/flight-plan.png} 
+   \caption{The waypoints of the flight plan. The 12th waypoint was a loiter waypoint.}
+   \label{fig:flight-plan}
+\end{figure}
 
 \chapter{Results}
 This chapter will go through the main findings of the experiments. The quantative measurements will first be presented followed by the results from the forms and interviews. Lastly, the results from the field testing will be presented.
@@ -723,14 +728,23 @@ On this question the answer of the subjects varied. A couple gave an absolute no
 All the subjects responded that training would improve one's performance in the system and that they got better at the task as the trials progressed. 
 
 \section{Field Testing}
-The gimbal control software integrated successfully into the running system and did not interfere with the controls during the course of the experiment. Thus, the first goal of the field testing was successfull. 
+The gimbal control software integrated successfully into the running system and did not interfere with the controls during the course of the experiment. Thus, the first goal of the field testing was successfull.
 The two different modes of operation were tested and the results are presented in the following sections.
 
 \section{Manual Control}
 During the initial loiter, the plane's orientation changed quickly depending on where the plane was facing with respect to the direction of the wind. This made the gimbal very difficult to control manually, with the delay of the controls making it almost impossible to manually compensate with the joystick when the plane made an aggressive roll or yaw.
 
 After the plane had left the initial loiters it had more time flying straight. During this time the camera was much easier to control manually, as the plane was more stable and the orientation was remained the same for an extended amount of time. 
-Between the ?? and ?? waypoint, a boat was spotted slightly beside the plane. The gimbal operator decided to try and follow the boat. Although the delay made it more difficult to control the gimbal than in the lab experiment, the boat was successfully followed for a short time. An image from the video feed can be seen in figure ??. It was also observed that the position of the boat next to the aircraft could be estimated by the operator, allowing preemptive gimbal movements to compensate for the delay. 
+Between waypoint 11 and 12, a boat was spotted slightly beside the plane. The gimbal operator decided to try and follow the boat. Although the delay made it more difficult to control the gimbal than in the lab experiment, the boat was successfully followed for a short time. An image from the video feed can be seen in figure \ref{fig:boat-follow}. It was also observed that the position of the boat next to the aircraft could be estimated by the operator, allowing preemptive gimbal movements to compensate for the delay. 
+
+\begin{figure}[htp]
+   \centering
+   \includegraphics[width=.33\textwidth]{images/follow-boat-1.png}\hfill
+   \includegraphics[width=.33\textwidth]{images/follow-boat-2.png}\hfill
+   \includegraphics[width=.33\textwidth]{images/follow-boat-3.png}
+   \caption{Footage from the video feed of the camera while following the boat between waypoints 11 and 12.}
+   \label{fig:boat-follow}
+\end{figure}
 
 Another observation from the experiment is that, being a fixed wing aircraft, the operator's ability to control the camera relies heavily on the manouvering of the aircraft, which means that improving the controls of the actual aircraft would improve the experience of controlling the camera significantly. 
 
