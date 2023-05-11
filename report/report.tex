@@ -55,11 +55,11 @@ The Swedish Sea Rescue Society (SSRS), responsible for 90\% of sea rescue in Swe
 
 Thus far in the project, a fixed-wing drone along with mission control software has been developed, and the drone is able to fly after waypoints while providing video through the gimbal-mounted camera. The drone has a 4G modem, allowing it to be operated beyond visual line-of-sight (BVLOS). 
 
-With the current software, the SSRS did not have a way to manually control the direction of the camera, and wanted direct control with either a joystick or the arrow keys. The SSRS was also interested in investigating if the manual controls were suitable with the delay introduced by the mobile connection.
+With the current software, the SSRS do not have a way to manually control the direction of the camera, and wanted direct control with either a joystick or the arrow keys. The SSRS was also interested in investigating if the manual controls were suitable with the delay introduced by the mobile connection.
 
 In this thesis work, a gimbal control interface has been developed with the aim of acheiving manual control of the camera while also studying the effects of latency on the operator's experience. Two experiments have been carried out: one user study, evaluating quantative and qualitative effects of latency on a camera operator, and one field test, where the gimbal control software was tested during a flight over the Gothenburg archipelago.
 
-In the user study, the user was given a task to perform provided joystick a joystick and the video feed from the drone camera. Five trials with simulated latencies were performed per subject. The results of the study indicate that the relationship between latency and task performance might not be linear, and that an equal amount of delay increase can have a larger impact after a certain threshold.
+In the user study, the user was given a task to perform provided a joystick and a video feed from the drone camera. Five trials with simulated latencies were performed per subject. The results of the study indicate that the relationship between latency and task performance might not be linear, and that an equal amount of delay increase can have different effects on operator experience at different levels of latency.
 
 In the second experiment, the field test, the software was successfully integrated with the in-flight systems and a test flight was made over the Gothenburg Archipelago. The manual controls using a joystick were deemed suitable, although delay and rapid movements of the drone could introduce difficulty.  
 }
@@ -82,17 +82,17 @@ The thesis work presented in this report was carried out at the Department of El
 This chapter will give an introduction to the scope of the project as well as a brief overview of the report structure.
 
 \section{Scope}
-The principal goal of the thesis is to build a test bed based on the drone hardware and software provided by the SSRS in order to enable Quality of Experience (QoE) studies on camera control. An experiment investigating the effects of latency on an operator is then to be carried out using the test bed. Lastly, the software is to be integrated with the real system in order to evaluate the manual camera-controls during flight.
+The principal goal of the thesis is to build a test bed based on the drone hardware and software provided by the SSRS in order to enable Quality of Experience (QoE) studies on camera control. An experiment investigating the effects of latency on an operator is then to be carried out using the test bed. Lastly, the software is to be integrated with the existing drone system in order to evaluate the manual gimbal-controls during flight.
 
 \section{Report Structure}
-In the second chapter, more elaborate background is given on UAVs, the SSRS, the EOS-project as well as the research field of QoE. In the third chapter, the technical details of the test beds are presented. In the fourth chapter, the procedures of the two experiments are presented. In the fifth chapter, the results from the user study and the field test are presented. In the sixth chapter, the conclusions are drawn. Lastly, in the seventh chapter, the future work is presented.
+In the second chapter, more elaborate background is given on UAVs, the SSRS, the EOS-project as well as the research field of QoE. In the third chapter, the technical details of the test beds are presented. In the fourth chapter, the experiment procedures are presented. In the fifth chapter, the results from the user study and the field test are presented. In the sixth chapter, the conclusions are drawn. Lastly, in the seventh chapter, the future work is presented.
 
 \chapter{Background}
 In this chapter a breif background will be given of the Swedish Sea Rescue Society along with the drone project that this work is a part of. Then, the research field of Quality of Experience will be introduced, along with the related previous work.
 
 \section{The UAV}
 \label{sec:fixed-wing-uav}
-The UAV has a fixed-wing airframe and the only equipment it carries is a single camera gimbal. The current system uses a launchpad for takeoff and the idea is that the plane will be able to land on a rescue vessel or in the water, allowing it to be picked up. Pictures of the UAV can be seen in figure \ref{fig:fv-drone-pics}. The internals of the drone relevant to the thesis are described in more detail in section \ref{sec:uav-components}.
+The UAV has a fixed-wing airframe and the only equipment it carries is a single camera gimbal. The current system uses a launchpad for takeoff and the idea is that the plane will be able to land on a rescue vessel or in the water, where it can be picked up by the rescue crew. Pictures of the UAV can be seen in figure \ref{fig:fv-drone-pics}. The following subsections will give some background to the airframe and aviation terminology, while the internals of the drone relevant to the thesis are described in more detail in section \ref{sec:uav-components}.
 
 \begin{figure}[htp]
    \centering
@@ -132,7 +132,7 @@ The Eyes-On-Scene project is an innovation and research project initiated in 202
    \item[Infotiv] Develop the launcher used for takeoff.
 \end{description}
 
-A web interface for mission control has also been developed in the project. Currently, the interface allows flying to and loitering around waypoints given on a map which also displays both other naval and aerial traffic in real time. The map also shows the the regulatoy zones in which one is not allowed to fly, i.e. close to airports or military zones. The interface provides video from the drone camera which is recorded and accessible after the mission.
+A web interface for mission control has also been developed in the project. Currently, the interface allows flying to and loitering (circling) around waypoints given on a map which also displays both other naval and aerial traffic in real time. The map also shows the the regulatoy zones in which one is not allowed to fly, i.e. close to airports or military zones. The interface provides video from the drone camera which is recorded and accessible after the mission.
 
 \section{Quality of Experience}
 With the expansion of newer, low-latency network technologies like 4- and 5G, the use case for remote control has grown stronger. With everything from connected cars, remote surgery or log lifting, the uses of real-time remote-control are many. 
