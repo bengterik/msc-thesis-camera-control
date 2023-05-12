@@ -82,11 +82,13 @@ The thesis work presented in this report was carried out at the Department of El
 This chapter will provide the scope of the project as well as a an overview of the report structure.
 
 \section{Scope}
+\label{sec:scope}
 The principal goals of the thesis work are:
 \begin{description}
-   \item[G1] Build a software based on the hardware and software from SSRS capable of manually controlling the drone camera with joystick or arrow keys. 
-   \item[G2] Conduct an experiment investigating the effects of latency on an operator. 
-   \item[G3] Integrate the software into the the existing drone system in order to evaluate the manual gimbal-controls during flight.
+   \item[G1] Build a software based on the hardware from SSRS capable of manually controlling the drone camera with joystick or arrow keys. 
+   \item[G2] Conduct an experiment investigating the effects of latency on a camera operator. 
+   \item[G3] Integrate the software into the the existing drone system of SSRS.
+   \item[G4] Evaluate the manual gimbal-controls during flight and compare them to the existing "Region of Interest"-mode.
 \end{description}
 
 \section{Report Structure}
@@ -773,15 +775,19 @@ The ROI-mode was activated on waypoint 12, and worked well when the perspective 
 It could also be observed that increasing the loiter-radius gave a better image as the inexactness of the GPS-point was less impactful.
 
 \chapter{Conclusion}
-A test bed on the ArduPilot platform was successfully implemented and shown to work in a lab setting as well as in a real flight scenario. In the following sections the conclusions from the two experiments conducted with the test bed will be summarized.
+In this chapter the goals presented in section \ref{sec:scope} will be evaluated.
 
-\section{QoE Experiment}
-From the quantative results a clear trend can be seen that the delay has a negative effect on the performance of the subjects. The task performance measure decreases linearly at first, but has a higher change rate for the 600ms added delay. Trials with higher added delays would have to be conducted to generalize the relationship between delay and task performance.
+\begin{description}
+   \item[G1]  A test bed running one the hardware provided by the SSRS was implemented successfully.
 
-When taking into account the subject's rating of the system, it can be seen that the experience of a user is not always proportional to the worsening of QoS parameters. A slight increase in simulator sickness was observed, although it was not statistically significant.
+   \item[G2]  In the quantative results from the experiment, a clear trend can be seen that additional delay has a negative effect on the subject's ability to control the camera. Furthermore, the same increase in delay has a larger effect on the subject's performance when introduced at a higher delay.    
 
-\section{Field testing}
-The results from the field testing shows that the gimbal software could be easily integrated with the system running on the real drone. The manual controls were also deemed suitable when the plane was flying in straight lines and when surveying or following an moving object compared to the already existing ROI-mode. When loitering the ROI-mode was found to be more practical.
+   When taking into account the subject's rating of the system, it can be seen that the experience of a user is not always proportional to the worsening of QoS parameters. A slight increase in simulator sickness was observed, although it was not statistically insignificant with only 10 subjects.
+
+   \item[G3] The results from the field testing shows that the gimbal software could be integrated with the system running on the real drone.
+
+   \item[G4] The manual controls were deemed suitable when the plane was flying in straight lines and when surveying or following an moving object compared to the already existing ROI-mode. When loitering the ROI-mode was found to be more practical.
+\end{description}
 
 \chapter{Future Work}
 The test bed developed in the thesis work could be used for more experiments in a lab environment. It would be interesting to look at the effect of other delays as well as the effects of other network parameters such as jitter or image quality. In the future it would also be interesting to perform studies on when the drone is either moving or in flight.
