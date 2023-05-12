@@ -256,7 +256,7 @@ In this section the software used in the experiments will be detailed.
 \end{description}
 
 \section{Gimbal Control Interface}
-Using the previously described hardware and software, a program was implemented in Python displaying the video feed from the drone camera while taking control inputs from the operator. The inputs came from the joystick of a PlayStation-controller, and the program sent messages to the flight controller updating the position of the gimbal at a desired frequency and delay. The program could also record the video feed displayed to the gimbal operator. A visual overview of the system is shown in Figure \ref{fig:system-overview}.
+Addressing goal \textbf{G1} of the thesis, a program was implemented in Python displaying the video feed from the drone camera while taking control inputs from the operator. The inputs came from the joystick of a PlayStation-controller, and the program sent messages to the flight controller updating the position of the gimbal at a desired frequency and delay. The program could also record the video feed displayed to the gimbal operator. A visual overview of the system is shown in Figure \ref{fig:system-overview}.
 \begin{figure}[!hbt]
    \centering
    \includegraphics[scale=0.5]{images/system-overview.png} 
@@ -360,32 +360,29 @@ As a proof of concept, an auto-follow mode was developed which allowed the gimba
 This chapter will describe the setup, procedure and evaluation of the two experiments that were performed.
 
 \section{QoE Lab Experiment}
-The lab experiment was performed in the Wireless Systems and Applications lab at Lund University. 
-
-\subsection{Goals}
-The goal of the experiment was to evaluate the operator's performance and experience when using the gimbal control interface with a simulated delay added to the control commands.
+The goal of this experiment was to investigate the effects of latency on a camera operator, addressing goal \textbf{G1} of the thesis scope.
 
 \subsection{Experiment Design}
-The desire was to create a task that would be as close to the real world application as possible while still making it easy to measure the performance of the operator. The thought out scenario was that of a drone, loitering around a point while trying to focus the camera on a stationary point. 
+The desire was to create a task that would be similar to what an operator would perform in a sea rescue scenario, while still making it easy to measure the performance of the operator. The the initial scenario using manual controls would be a drone, loitering around a point while also trying to focus the camera on it. 
 
-As this required some type of movement inside the lab, the hoverboard accessible in the lab was chosen to introduce movement in the test bed. Considering that video would be the medium, pixel distance in an image was deemed to be a good metric for the performance of the operator. Furthermore, with the use of an apriltag, the amount of frames to be analyzed could be dramatically increased compared to manual analysis.
+As this required some type of movement inside the lab, the hoverboard was chosen to introduce movement in the test bed. With the video being the main feedback to the operator, pixel distance in an image was deemed to be a good metric for task performance. Furthermore, with the use of an apriltag, the amount of frames to be analyzed could be dramatically increased compared to manual analysis.
 
-At first the desire was to have the gimbal box wirelessly sitting on top of the hoverboard, with the hoverboard moving in a circle in an upside-down loiter while the gimbal was looking up at a point in the ceiling. After some initial testing, this was deemed to introduce several points of failure in the test bed:
+At first the desire was to have the gimbal box wirelessly sitting on top of the hoverboard, with the hoverboard moving in a circle in an upside-down loiter while the gimbal was looking up at a point in the ceiling, as shown in the leftmost picture in figure \ref{fig:testbed-ideas}. However, after some initial testing this was deemed to introduce several points of failure in the test bed:
 
 \begin{itemize}
    \item Power had to be supplied via a powerbank.
    \item Network connection had to go over WiFi with substantially more delay and jitter than an ethernet cable-connection. 
    \item Using automatic detection, the lighting from the ceiling and windows reduced the contrast of the apriltag, making it harder to detect for the algorithm.
-   \item When mounted, the gimbal box was higher than the lidar mounted on the hoverboard, obscuring its' view.
+   \item When mounted, the gimbal box was higher than the lidar mounted on the hoverboard, confusing the location algorithm on the hoverboard.
 \end{itemize}
 
-In the end the loitering scenario was flipped, placing the gimbal box on top of a shelf looking down on the moving robot. The two test bed ideas can be seen in figure \ref{fig:testbed-ideas}.
+In the end the loitering scenario was flipped, placing the gimbal box on top of a shelf looking down on the moving robot. The two test bed ideas can be seen in figure \ref{fig:testbed-ideas}. The hoverboard was started from a green marker in the room and ran two laps of a 2x1m elipse. It's path in the lab can be seen in figure \ref{fig:exp-setup}.
 
 \begin{figure}[htp]
    \centering
    \includegraphics[width=.47\textwidth]{images/testbed1.png}\hfill
    \includegraphics[width=.47\textwidth]{images/testbed2.png}
-   \caption{To the left the initial idea of the experiment where the camera is looking up on the apriltag. To the right the gimbal looks down on the apriltag placed on top of the hoverboard.}
+   \caption{To the left the initial idea of the experiment where the camera is looking up on the apriltag. To the right is the resulting scenario where the gimbal looks down on the apriltag placed on top of the hoverboard.}
    \label{fig:testbed-ideas}
 \end{figure}
 
@@ -393,7 +390,7 @@ In the end the loitering scenario was flipped, placing the gimbal box on top of 
 The task for the operator was to keep the center of the screen, marked with a red dot as seen in \ref{fig:interface}, aligned with the center of the apriltag while it was moving in an elipse inside the lab.
 
 \subsection{Experimental Setup}
-The experiment was set up in a lab where the subject and the conductor sits at a desk with a high shelf behind them obscuring the view towards the rest of the lab. Behind the shelf the robots used in the experiment were located. An illustration of the lab setup is provided in figure \ref{fig:exp-setup} and a photograph of the test bed is shown in figure \ref{fig:real-exp}.
+The experiment was set up in a lab where the subject and the conductor sat at a desk with a high shelf behind them, obscuring the view towards the rest of the lab. Behind the shelf the robots used in the experiment were located. An illustration of the lab setup is provided in figure \ref{fig:exp-setup} and a photograph of the test bed is shown in figure \ref{fig:real-exp}.
 
 
 \begin{figure}[!hbt]
@@ -412,9 +409,11 @@ The experiment was set up in a lab where the subject and the conductor sits at a
 \end{figure}
 
 \subsubsection{Subject selection and recruitment}
-The subjects were recruited mostly from the conductor's network of contacts, as in order for the subjects to be covered by insurance during the experiment, the subjects had to be either be students or employed by Lund University. Some of the participants came spontaneously while others booked a time in a spreadsheet provided by the conductor.
+The subjects were recruited mostly from the conductor's network of contacts, as in order for the subjects to be covered by insurance during the experiment the subjects had to be either be students or employed by Lund University. Some of the participants came spontaneously while others booked a time in a spreadsheet provided by the conductor.
 
-There were 10 test subjects, 4 women and 6 men, with an average age of 26.1 years where the youngest was 23 and the oldest 37. Furthermore, they were questioned about their eyesight, handedness as well as experience with FPV-games and flying drones.
+There were 10 test subjects, 4 women and 6 men, with an average age of 26.1 years where the youngest was 23 and the oldest 37. Furthermore, 5 of the subjects wore glasses and all were right-handed. 
+
+They were also asked about their experience with games with first-person-view on the scale of 0 = None, 1 = Tried, 2 = >10h, 3 = >100h, 4 = >500h, and the mean result was 3.5. The subjects were also asked about their experience with flying drones with the same scale, and the mean result was 0.5. 
 
 There was no compensation for the subjects other than home baked goods and a hot beverage, which were offered at the beginning of each experiment. 
 
@@ -585,22 +584,14 @@ To make for better averages over different trials, all NaN values, i.e frames wh
 \end{figure}
 
 \subsubsection{Difficulty of the task}
-The center of the apriltag did not have a very clear center which could have made it difficult for the subject to complete the task. To remedy this, a printed apriltag where the center was marked out, but it could be that the subject had difficulty identifying the exact center during the trial.
+The center of the apriltag did not have a very clear center which could have made it difficult for the subject to complete the task. To remedy this, a printed apriltag where the center was marked out was given to the subject. However, it could be that subject still had difficulty identifying the exact center of the apriltag during the trial.
 
 \subsubsection{Control Choppiness}
 \label{sec:control-choppiness}
-The control of the gimbal is done through a command sent to the drone with two angles for pitch and yaw. The drone then moves the gimbal to the desired position. Although the angle was provided as a float, small increases in angle did not produce movement. This resulted in the control being somewhat choppy despite the continous feeling of the joystick. The choppiness was larger when looking farther away from the drone, as the ratio between the angle and the movement of the gimbal was larger. 
+The control of the gimbal is done through a command sent to the drone with two angles for pitch and yaw. The drone then moves the gimbal to the desired position. Although the angle was provided as a float, small increases in angle did not produce movement. This resulted in the control being somewhat choppy in relation to the continous input of the joystick. As the ratio between the angle and the movement of the gimbal was larger at longer distances, the camera felt more choppy when looking at more distant points. 
 
 \section{Field testing}
-This experiment aimed at running the gimbal interface on the real drone in-flight. The SSRS have a permit to operate drones beyond visual line of sight within a delimited area of the archipelago of Gothenburg. Because of this, the drone can be flown longer distances while all communication going over the mobile network. 
-
-\subsection{Goals}
-The main goals of the field testing were:
-\begin{itemize}
-   \item confirm that the gimbal control did not interfere with the flight control software
-   \item evaluate suitability of the controls in a dynamic environment
-   \item compare the manual controls to the already existing ROI-mode
-\end{itemize} 
+The goal of this experiment was to integrate the software built for the test bed into the existing drone system, addressing goals \textbf{G3} and \textbf{G4} of the thesis scope. 
 
 \subsection{Preparations}
 For the experiment the gimbal control interface used earlier was modified in order to run with the software and video streaming configured on the actual drone. The video and recording component was entirely removed and the IP address which the program connected to was changed to that of the 4G modem. 
