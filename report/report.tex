@@ -566,16 +566,9 @@ The first and second concerns are difficult to compensate for, as only employees
 The last concern is mainly an issue with the qualitative results, as the amount of quantitative data could be increased by having each subject do several laps. Each subject generated around 13 500 data points in all five trials, resulting in about 135 000 data points for pixel error over all subjects.
 
 \subsubsection{Frame detection accuracy}
-The detection algorithm used to calculate the distance from the center of the apriltag to the center of the screen could sometimes during fast camera movements not detect the apriltag. This resulted in a NaN value at that particular frame. The average percentage of frames detected where 85\%, with a minimum of 80\% and a maximum of 89\%. The percentage of frames detected per delay are shown in figure \ref{fig:frames-detected}. 
+The detection algorithm used to calculate the distance from the center of the apriltag to the center of the screen could sometimes during fast camera movements not detect the apriltag. This resulted in a NaN value at that particular frame. The average percentage of frames detected where 85\%, with a minimum of 80\% and a maximum of 89\%.
 
-\begin{figure}[!hbt]
-   \centering
-   \includegraphics[scale=0.7]{images/frames-detected.png} 
-   \caption{Average frame detection accuracy per delay over all trials.}
-   \label{fig:frames-detected}
-\end{figure}
-
-To make for better averages over different trials, all NaN values, i.e frames where no apriltag was detected in the frame, were linearly interpolated. To illustrate this one result is shown before and after interpolation in \ref{fig:raw-vs-interpolated}. 
+To easen analysis, all NaN values, i.e frames where no apriltag was detected in the frame, were linearly interpolated. To illustrate this one result is shown before and after interpolation in \ref{fig:raw-vs-interpolated}. 
 
 \begin{figure}[!hbt]
    \centering
@@ -585,11 +578,11 @@ To make for better averages over different trials, all NaN values, i.e frames wh
 \end{figure}
 
 \subsubsection{Difficulty of the task}
-The center of the apriltag did not have a very clear center which could have made it difficult for the subject to complete the task. To remedy this, a printed apriltag where the center was marked out was given to the subject. However, it could be that subject still had difficulty identifying the exact center of the apriltag during the trial.
+The center of the apriltag did not have a very clear center, which could have made it difficult for the subject to complete the task. To remedy this, a printed apriltag where the center was marked out was given to the subject. However, the subject could still have had difficulty identifying the exact center of the apriltag during the trial.
 
 \subsubsection{Control Choppiness}
 \label{sec:control-choppiness}
-The control of the gimbal is done through a command sent to the drone with two angles for pitch and yaw. The drone then moves the gimbal to the desired position. Although the angle was provided as a float, small increases in angle did not produce movement. This resulted in the control being somewhat choppy in relation to the continous input of the joystick. As the ratio between the angle and the movement of the gimbal was larger at longer distances, the camera felt more choppy when looking at more distant points. 
+The control of the gimbal is done through a command sent to the drone with two angles for pitch and yaw. The drone then moves the gimbal to the desired angles. Although the angle was provided as a float, small increases from the joystick did not produce movement in the gimbal. This resulted in the control being choppy in relation to the continous input of the joystick. The choppiness also increased when looking at more distant points. 
 
 \section{Field testing}
 The goal of this experiment was to integrate the software built for the test bed into the existing drone system, addressing goals \textbf{G3} and \textbf{G4} of the thesis scope. 
