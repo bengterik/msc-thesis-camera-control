@@ -162,15 +162,13 @@ K. Brunnström et al. \cite{latency-impact} performed a study on log lifting usi
 
 As part of the Eyes-On-Scene-project, a study was performed at Chalmers by Grote et al. \cite{eos-maritime} where two maritime emergency calls were performed, one with and one without images from a UAV at the emergency site. The study showed that imagery from the accident gave the rescue personnel a sense of control before arriving at the scene when knowing what they were going to face. The crew was also faster at locating a person or object when having aerial footage of the scene.
 
-\chapter{Test Beds}
-This chapter will go through the technical details of the test beds and their components as were used in the experiments. First, all the hardware will be presented. Then, the pre-existing software will be outlined followed by the a section for each of the softwares implemented specifically for the thesis work.
 
-\section{Hardware}
+\section{Pre-existing Hardware}
 In this section the hardware used in the experiments is presented.
 
 \subsection{Fixed-Wing Drone}
 \label{sec:uav-components}
-The drone is thouroughly described in section \ref{sec:fixed-wing-uav}. The components relevant for this thesis work detailed in the following description.
+The drone components relevant for this thesis are detailed in the following description. Pictures of the drone can be seen in \ref{fig:fv-drone-pics} and explanation of its' design is described in section \ref{sec:fixed-wing-uav}.
 
 \begin{description}
    \item[Flight Controller: Pixracer R15] The flight controller is the brain of the aircraft and houses components and connectors relevant to in-flight operations such as servos for control surfaces or other equipment, GPS and accelorometer.
@@ -193,18 +191,6 @@ The drone is thouroughly described in section \ref{sec:fixed-wing-uav}. The comp
    \end{figure}
 \end{description}
    
-\subsection{Gimbal Box}
-As the entire drone was not needed to conduct the QoE experiment, a Raspberry Pi, flight controller and gimbal were mounted inside a 2L Ikea SmartStore. The boards were mounted inside the box with velcro tape and the gimbal was mounted in a cutout in the bottom of the box. Pictures of the box can be seen in figure \ref{fig:drone-setup}.
-
-
-\begin{figure}[htp]
-   \centering
-   \includegraphics[width=.47\textwidth]{images/drone-box-1.jpg}\hfill
-   \includegraphics[width=.47\textwidth]{images/drone-box-2.jpg}
-   \caption{The box that houses the drone hardware for the experiment. The left picture shows the box from above, from the left the following components are visible: flight controller, gimbal with camera module, power supply and Raspberry Pi. The right image shows the box from below.}
-   \label{fig:drone-setup}
-\end{figure}
-
 \subsection{Hoverboard robot}
 In order to introduce movement in the QoE experiment, a modified hoverboard was used. The hoverboard has four wheels and could be controlled via joystick inputs or coordinates. It's manouvering was assisted by real-time lidar-mapping of the room. The hoverboard can be seen in \ref{fig:hoverboard}
 
@@ -234,7 +220,7 @@ The average velocity of the hoverboard was determined at 0.184 m/s with a standa
 \subsection{Apriltag}
 An apriltag is a type of low-resolution QR-code often used in robotics to estimate orientation and position of robots or objects with the help of computer vision. It was fastened on top of the hoverboard as high as possible without blocking the lidar. The apriltag can be seen mounted on the hoverboard in figure \ref{fig:hoverboard}.
 
-\section{Pre-existing Software}
+\subsection{Pre-existing Software}
 In this section the software used in the experiments will be detailed.
 \begin{description}
    \item[Firmware: ArduPlane]
@@ -254,6 +240,21 @@ In this section the software used in the experiments will be detailed.
 
    \item[Hoverboard software] The hoverboard has software which allows it to be controlled by a game controller or follow a set of points using coordinates for which it uses it's Lidar and a SLAM-algorithm. This makes it possible to have the hoverboard run in a programmed route with little error. 
 \end{description}
+
+\chapter{Implementation}
+In this chapter the hardware and software developed specifically for the thesis will be detailed.
+
+\section{Gimbal Box}
+As the entire drone was not needed to conduct the QoE experiment, a Raspberry Pi, flight controller and gimbal were mounted inside a 2L Ikea SmartStore. The boards were mounted inside the box with velcro tape and the gimbal was mounted in a cutout in the bottom of the box. Pictures of the box can be seen in figure \ref{fig:drone-setup}.
+
+\begin{figure}[htp]
+   \centering
+   \includegraphics[width=.47\textwidth]{images/drone-box-1.jpg}\hfill
+   \includegraphics[width=.47\textwidth]{images/drone-box-2.jpg}
+   \caption{The box that houses the drone hardware for the experiment. The left picture shows the box from above, from the left the following components are visible: flight controller, gimbal with camera module, power supply and Raspberry Pi. The right image shows the box from below.}
+   \label{fig:drone-setup}
+\end{figure}
+
 
 \section{Gimbal Control Interface}
 Addressing goal \textbf{G1} of the thesis, a program was implemented in Python displaying the video feed from the drone camera while taking control inputs from the operator. The inputs came from the joystick of a PlayStation-controller, and the program sent messages to the flight controller updating the position of the gimbal at a desired frequency and delay. The program could also record the video feed displayed to the gimbal operator. A visual overview of the system is shown in Figure \ref{fig:system-overview}.
@@ -279,6 +280,8 @@ The application was run with Python version 3.9.16 and used the following librar
    This standard module was used in order to run the video tasks in different processes to not interfere with the control. The video frames were accessed and displayed by one process and then feeded to another process saving each frame. For more information on the library see \cite{multiprocessing}.  
 \end{description}
 
+\subsection{Delay}
+
 Delay in the controls could be introduced by providing a program argument. The delay was simulated by putting each outgoing message in a queue along with a timestamp, with the program waiting until \ timestamp + delay \ was reached before sending the command. The following algorithm was used to schedule the sending of commands according to the delay:
 \begin{algorithmic}
    \While{running}
@@ -297,10 +300,10 @@ The screen and the controller were then filmed on a phone in 120 FPS to measure 
 The network latency was found to be below 1 ms. The delay of the video feed alone was between 100-150ms while the full controller to video feedback delay was around 400ms. 
 
 \subsection{Sources of Delay}
-Although the sources of the delay were not examined in any further depth there were a some known sources of the delay:
+Although the sources of the delay were not examined in any great depth some probable causes were:
 \begin{description}
    \item[Message frequency] 
-   While the internal model of the gimbal's orientation was updated by interrupts, the message rate to the flight controller was set to a maximum of 20Hz, resulting in a delay between 0-50ms.
+   While the internal model of the gimbal's orientation was updated by interrupts, the message rate to the flight controller was set to a maximum of 20Hz, resulting in a delay between 0-50ms for each message.
    
    \item [Video encoding]
    The delay of the video feed was measured by recording a stopwatch, the controller and the video feed of the stopwatch simultaneously. The difference between the stopwatch on the recording and the screen was estimated to be between 100-150ms.
@@ -310,7 +313,7 @@ Although the sources of the delay were not examined in any further depth there w
 
    \item[MAVProxy relaying] Each message must be taken from the ethernet interface of the Raspberry Pi and be sent on the serial interface to the flight controller. An estimate of this time was not made.
    
-   \item[Flight Controller] The flight controller must process the message and send the appropriate PWM signals to the gimbal motors. The processor running the firmware is a small chip and it is possible that gimbal control is not a high priority message in the software. An estimate of this time was not made.
+   \item[Flight Controller] The flight controller must process the message and send the appropriate PWM signals to the gimbal servos. The processor running the firmware is a small chip and it is possible that gimbal control is not a high priority message in the software. An estimate of this time was not made.
 \end{description}
 
 \subsection{Design Choices} 
