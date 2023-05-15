@@ -162,6 +162,7 @@ K. Brunnström et al. \cite{latency-impact} performed a study on log lifting usi
 
 As part of the Eyes-On-Scene-project, a study was performed at Chalmers by Grote et al. \cite{eos-maritime} where two maritime emergency calls were performed, one with and one without images from a UAV at the emergency site. The study showed that imagery from the accident gave the rescue personnel a sense of control before arriving at the scene when knowing what they were going to face. The crew was also faster at locating a person or object when having aerial footage of the scene.
 
+In \cite{targetting}, M. Quigley et al. present a test bed with a fixed-wing UAV on which they evaluate different means of gimbal control. They find that altitude estimation causes problems with ROI-control, which results in the gimbal pointing at a circle around the point instead of directly at it. To address this they introduce controls for changing the altitude as well as the coordinates of the point, and they also have a mode in which the plane updates it's loiter point to where the gimbal is looking. Manual controls of the gimbal are also implemented using a game controller. In their test bed they map the left joystick to the attitude control of the aircraft while the right joystick is mapped to different states of the gimbal, instead of relative position.
 
 \section{Pre-existing Hardware}
 In this section the hardware used in the experiments is presented.
