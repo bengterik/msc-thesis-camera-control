@@ -220,8 +220,9 @@ The average velocity of the hoverboard was determined at 0.184 m/s with a standa
 \subsection{Apriltag}
 An apriltag is a type of low-resolution QR-code often used in robotics to estimate orientation and position of robots or objects with the help of computer vision. It was fastened on top of the hoverboard as high as possible without blocking the lidar. The apriltag can be seen mounted on the hoverboard in figure \ref{fig:hoverboard}.
 
-\subsection{Pre-existing Software}
-In this section the software used in the experiments will be detailed.
+\section{Pre-existing Software}
+In this section the already finished software used in the experiments will be detailed.
+
 \begin{description}
    \item[Firmware: ArduPlane]
    The firmware running on the flight controller is called ArduPlane, which is part of the open-source autopilot software suite ArduPilot that enables the creation of unmanned, autonomous vehicles \cite{ardupilot-org}. It is developed by a community of developers and is available on GitHub \cite{ardupilot-github}.
@@ -241,11 +242,11 @@ In this section the software used in the experiments will be detailed.
    \item[Hoverboard software] The hoverboard has software which allows it to be controlled by a game controller or follow a set of points using coordinates for which it uses it's Lidar and a SLAM-algorithm. This makes it possible to have the hoverboard run in a programmed route with little error. 
 \end{description}
 
-\chapter{Implementation}
+\chapter{Implementation of Test Bed}
 In this chapter the hardware and software developed specifically for the thesis will be detailed.
 
 \section{Gimbal Box}
-As the entire drone was not needed to conduct the QoE experiment, a Raspberry Pi, flight controller and gimbal were mounted inside a 2L Ikea SmartStore box. The boards were mounted inside the box with velcro tape and the gimbal was mounted in a cutout in the bottom of the box. Pictures of the box can be seen in figure \ref{fig:drone-setup}.
+As the entire drone was not needed to conduct the QoE experiment, a Raspberry Pi, flight controller and gimbal were mounted inside a 2L Ikea SmartStore box. The computer boards were mounted inside the box with velcro tape and the gimbal was mounted in a cutout in the bottom of the box. Pictures of the box can be seen in figure \ref{fig:drone-setup}.
 
 \begin{figure}[htp]
    \centering
@@ -257,7 +258,7 @@ As the entire drone was not needed to conduct the QoE experiment, a Raspberry Pi
 
 
 \section{Gimbal Control Interface}
-Addressing goal \textbf{G1} of the thesis, a program was implemented in Python displaying the video feed from the drone camera while taking control inputs from the operator. The inputs came from the joystick of a PlayStation-controller, and the program sent messages to the flight controller updating the position of the gimbal at a desired frequency and delay. The program could also record the video feed displayed to the gimbal operator. A visual overview of the system is shown in Figure \ref{fig:system-overview}.
+Addressing goal \textbf{G1} of the thesis, a program was implemented in Python displaying the video feed from the drone camera while taking control inputs from the operator. The inputs came from the right joystick of a PlayStation-controller while the program sent messages updating the gimbal's position with a set frequency. The program could also record the video feed displayed to the gimbal operator. A visual overview of the system is shown in Figure \ref{fig:system-overview}.
 \begin{figure}[!hbt]
    \centering
    \includegraphics[scale=0.5]{images/system-overview.png} 
@@ -587,10 +588,6 @@ The center of the apriltag did not have a very clear center, which could have ma
 \label{sec:control-choppiness}
 The control of the gimbal is done through a command sent to the drone with two angles for pitch and yaw. The drone then moves the gimbal to the desired angles. Although the angle was provided as a float, small increases from the joystick did not produce movement in the gimbal. This resulted in the control being choppy in relation to the continous input of the joystick. The choppiness also increased when looking at more distant points. 
 
-\subsection{Limitations}
-
-
-
 \section{Field testing}
 The goal of this experiment was to integrate the software built for the test bed into the existing drone system, addressing goals \textbf{G3} and \textbf{G4} of the thesis scope. 
 
@@ -770,6 +767,20 @@ The ROI-mode was activated on waypoint 12, and worked well when the perspective 
 
 It could also be observed that increasing the loiter-radius gave a better image as the inexactness of the GPS-point was less impactful.
 
+
+\chapter{Discussion}
+
+\section{Comparison with State-of-the-Art}
+
+\section{Impact}
+
+\section{Limitations}
+
+\section{Weaknesses}
+
+\section{Strengths}
+
+\section{Benefits, Ethics and Sustainability}
 
 
 \chapter{Conclusion}
