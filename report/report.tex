@@ -569,6 +569,7 @@ Right after the last trial the subject filled out the SSQ once more. Then, a bri
 \vspace{10pt}
 
 \subsection{Known Sources of Error}
+\label{sources-of-error}
 
 \subsubsection{Ecological validity}
 The future operators of the system are to be the volunteers of SSRS, which have a wide variety in age and background. Thus,there are three main concerns with the ecological validity of the study. Firstly, the subjects were all either students or researchers at Lund University. Secondly, the average age of the subjects was low. Lastly, the sample size was only ten people. 
@@ -795,15 +796,20 @@ The test bed developed in this thesis shows promise as a tool for evaluating dif
 Beyond further research, the software will be used as a starting point for gimbal control in the SSRS mission control software. 
 
 \section{Limitations}
-The main limitation of the test bed is that the scenario keeps the drone stationary, which is not the case in real flight. Although the results from the experiment are interesting in their own right, they are not directly applicable to the SSRS scenario. Another limitation with the test bed is the fact that the hoverboard ran in a predictable path. Because of this, the subject's ability to predict the path could have had an effect on their performance, which this study does not take into account.
+The main limitation of the test bed is that the scenario keeps the drone stationary, which is not the case in real flight. Although the results from the experiment are interesting in their own right, they are not directly applicable to the SSRS scenario. Another limitation with the test bed is the fact that the hoverboard ran in a predictable path. Because of this, the results are not generalizable to all paths.
 
-In a real flight scenario, conducting controlled experiments faced significant limitations due to various factors. The primary obstacle lies in the extensive preparations required for each mission. Setting up the drone and its intricate systems demands substantial effort and time. Furthermore, numerous regulations and safety measures must be adhered to before undertaking an unmanned BVLOS flight. Additionally, communication with air traffic control about the mission is initialized two weeks before the flight, and contact is held during the entirety of the mission. Due to the scarcity of actual flight tests, gimbal control was not the only goal of the flight, which meant that there were limited possibilities to orchestrate a good scenario to evaluate operator performance in the system during flight. 
 
-Another feature that was not tested was the so called "earth-frame", which is a gimbal-control-mode which points the gimbal in a compass heading, effectively stabilizing the yaw-axis as well. This mode was not tested in the experiment, but could be of interest in further implementations.
+In a real flight scenario, conducting controlled experiments is limitated due to various factors. The primary obstacle lies in the extensive preparations required for each mission, where setting up the drone and its intricate systems demands substantial effort and time. Furthermore, numerous regulations and safety measures must be adhered to before undertaking an unmanned BVLOS flight. Additionally, communication with air traffic control about the mission is initialized two weeks before the flight, and contact is held during the entirety of the mission. Due to the scarcity of actual flight tests, gimbal control was not the only goal of the flight, which meant that there were limited possibilities to orchestrate a good scenario to evaluate operator performance in the system during flight. 
 
 An initial wish was also to have the software contributed back to the ArduPilot ecosystem, which was unfortunately not possible as time did not allow for the software to be developed to a sufficient level of quality.
 
 \section{Weaknesses}
+For the QoE experiment, the main sources of are all presented in \ref{sources-of-error}. Among these, the most significant is probably the "feeling" of the controls, as there were some technical limitations leading to choppiness and an inuntitive control sensation reported by some of the subjects. Furthermore, the subject had no say in the sensitivity of the controls or if they preferred to use a different control scheme.
+
+A big weakness is also the subject selection, as they were not representative of society as a whole nor the target group of the future SSRS system.   
+
+Regarding the flight testing, there is a so called "earth-frame"-mode for the gimbal that points it in a compass heading, effectively stabilizing the yaw-axis as well. This mode was not tested in the experiment, but could be of interest in further research.
+
 
 \section{Strengths}
 
