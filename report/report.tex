@@ -77,7 +77,7 @@ In the second experiment, the field test, the software was successfully integrat
 
 \makefrontmatter
 \chapter{Introduction}
-The use of UAVs have skyrocketed during the last decade, and due to advancements in technology as well as legislature, a once mainly military technology is now seeing more use in the civilian sector with uses in cinematography, agriculture as well as search and rescue. The main selling point of the UAV is its' ability to provide aerial data (usually imagery) at a fraction of the cost of manned aircraft, making it a viable alternative for many expensive, remote or even dangerous applications.
+The use of UAVs have skyrocketed during the last decade, and due to advancements in technology as well as legislature, a once mainly military technology is now seeing more use in the civilian sector with uses in cinematography, agriculture as well as search and rescue (SAR). The main selling point of the UAV is its' ability to provide aerial data (usually imagery) at a fraction of the cost of manned aircraft, making it a viable alternative for many expensive, remote or even dangerous applications.
 
 The use of drones and other small electric vehicles in research as well as in the DIY-space has led to the rise of several open-source software initiatives which provide both the software running on the vehicle as well as the ground control software (GCS) used for planning and monitoring missions. 
 
@@ -810,11 +810,17 @@ A big weakness is also the subject selection, as they were not representative of
 
 Regarding the flight testing, there is a so called "earth-frame"-mode for the gimbal that points it in a compass heading, effectively stabilizing the yaw-axis as well. This mode was not tested in the experiment, but could be of interest in further research.
 
-
 \section{Strengths}
+The test bed along with the evaluation method presented in this thesis is a novel approach to QoE experiments. Due to the design of the ArduPilot ecosystem, the test bed is also portable and would require no modification in order to work on other vehicles such as multirotors, rovers or submarines running the ArduPilot firmware.
+
+It is also deemed a strength that the software could be used in a real flight scenario with the SSRS drone, proving it useful in a real world scenario.
 
 \section{Benefits, Ethics and Sustainability}
+With the main benefactor of the thesis being the Swedish Sea Rescue Society, this thesis will have contributed to the development of modern rescue tooling which in the future can be used to save lives. 
 
+Drones also show promise in other remote operations such as SAR in mountain environments, remote inspection of the power grid or wildfire and wildlife monitoring which have previously been done by manned aircraft. Due to most small drones being very lightweight and electrically powered, they are also much more environmentally friendly compared to aircraft equipped with combustion engines.
+
+From an ethical perspective it is also worth mentioning that the software developed in the thesis is general, and could be used in other types of applications such as border control, military operations and surveillance of civilians.
 
 \chapter{Conclusion}
 In this chapter the goals presented in section \ref{sec:scope} will be evaluated.
