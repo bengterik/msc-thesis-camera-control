@@ -815,12 +815,18 @@ The test bed along with the evaluation method presented in this thesis is a nove
 
 It is also deemed a strength that the software could be used in a real flight scenario with the SSRS drone, proving it useful in a real world scenario.
 
-\section{Benefits, Ethics and Sustainability}
-With the main benefactor of the thesis being the Swedish Sea Rescue Society, this thesis will have contributed to the development of modern rescue tooling which in the future can be used to save lives. 
+\section{Benefits}
+With the main benefactor of the thesis being the Swedish Sea Rescue Society, this thesis will have contributed to the development of modern rescue tooling which in the future can be used to save lives. Drones also show promise in other remote operations such as SAR in mountain environments \cite{drone-mountain-sar} and wildfire monitoring \cite{drones-wildfire}.
 
-Drones also show promise in other remote operations such as SAR in mountain environments, remote inspection of the power grid or wildfire and wildlife monitoring which have previously been done by manned aircraft. Due to most small drones being very lightweight and electrically powered, they are also much more environmentally friendly compared to aircraft equipped with combustion engines.
+\section{Sustainability}
+ Due to most small drones being very lightweight and electrically powered, they are also much more environmentally friendly compared to aircraft equipped with combustion engines.
 
-From an ethical perspective it is also worth mentioning that the software developed in the thesis is general, and could be used in other types of applications such as border control, military operations and surveillance of civilians.
+\section{Ethics}
+While the software developed for this thesis aims to assist in SAR-operations, gimbal control is highly applicable in military scenarios such as surveillance and target acquisition. 
+
+In a discussion in the ArduPilot forums \cite{ardupilot-military-discussion}, a user provides an image of the software Mission Planner being used in what seems to be a military operation. Although ArduPilot state in their code of conduct \cite{ardupilot-coc} that they pledge to not support or facilitate the weaponization of systems based on their software, the accessible nature of the ecosystem enables anyone to use it for any purpose. In research alone, numerous examples can be found \cite{ardupilot-military} \cite{ardupilot-military-1} where parts of the ArduPilot software and hardware ecosystem are used in military settings.
+
+Although there is evidence of parts of the software from the ecosystem being used in military applications, the nature of open source remains ill-suited for high-end military products due to the transparency of the source code. However, this is mainly applicable to products being mass produced, as ArduPilot definitely enables the creation of small weaponized drones. This is a problem for the drone industry at large, as there are many reports of commercially available drones being modified for artillery targetting or even carrying munition themselves \cite{drones-ukraine}. 
 
 \chapter{Conclusion}
 In this chapter the goals presented in section \ref{sec:scope} will be evaluated.
