@@ -791,15 +791,14 @@ For those building their own drones there are plenty of gimbals on the market wi
 In the ArduPilot ecosystem, gimbal control has seen much development in the last year, with the command used for the functionality in this thesis being supported only since the summer of 2022. As this feature is so new in the drone's software it has not been integrated into the mission control softwares yet, which is the main technical contribution for this thesis work.
 
 \section{Impact}
-The test bed developed in this thesis shows promise as a tool for evaluating different parameters relevant to QoE research. Something that sticks out in the test bed is also the ability to get a lot of data on quantitative performance in the system through the use of image recognition. A future possibility would also be to use the test bed for trials with real drones or other vehicle types, as the software is portable between them.
+The test bed developed in this thesis shows promise as a tool for evaluating different parameters relevant to QoE research. Something that sticks out in the test bed is also the ability to get a lot of data on quantitative performance through the use of image recognition. A future possibility would also be to use the test bed for trials with real drones or other vehicle types, as the software is portable between them.
 
 Beyond further research, the software will be used as a starting point for gimbal control in the SSRS mission control software. 
 
 \section{Limitations}
-The main limitation of the test bed is that the scenario keeps the drone stationary, which is not the case in real flight. Although the results from the experiment are interesting in their own right, they are not directly applicable to the SSRS scenario. Another limitation with the test bed is the fact that the hoverboard ran in a predictable path. Because of this, the results are not generalizable to all paths.
+The main limitation of the test bed is that the scenario keeps the drone stationary, which is not the case in real flight. Although the results from the experiment are interesting in their own right, the scenario in the experiment is not analog to that of a real SAR operation. This is mainly due to the fact that the hoverboard ran in a predictable path, making the results not generalizable to all paths and scenarios.
 
-
-In a real flight scenario, conducting controlled experiments is limitated due to various factors. The primary obstacle lies in the extensive preparations required for each mission, where setting up the drone and its intricate systems demands substantial effort and time. Furthermore, numerous regulations and safety measures must be adhered to before undertaking an unmanned BVLOS flight. Additionally, communication with air traffic control about the mission is initialized two weeks before the flight, and contact is held during the entirety of the mission. Due to the scarcity of actual flight tests, gimbal control was not the only goal of the flight, which meant that there were limited possibilities to orchestrate a good scenario to evaluate operator performance in the system during flight. 
+In the real flight scenario, conducting controlled experiments was limitated due to various factors. The primary obstacle lies in the extensive preparations required for each mission, where setting up the drone and its intricate systems demands substantial effort and time. Furthermore, numerous regulations and safety measures must be adhered to before undertaking an unmanned BVLOS flight. Additionally, communication with air traffic control about the mission is initialized two weeks before the flight, and contact is held during the entirety of the mission. Due to the scarcity of actual flight tests, gimbal control was not the only goal of the flight, which meant that there were limited possibilities to orchestrate a good scenario to evaluate operator performance in the system during flight. 
 
 An initial wish was also to have the software contributed back to the ArduPilot ecosystem, which was unfortunately not possible as time did not allow for the software to be developed to a sufficient level of quality.
 
@@ -811,12 +810,12 @@ A big weakness is also the subject selection, as they were not representative of
 Regarding the flight testing, there is a so called "earth-frame"-mode for the gimbal that points it in a compass heading, effectively stabilizing the yaw-axis as well. This mode was not tested in the experiment, but could be of interest in further research.
 
 \section{Strengths}
-The test bed along with the evaluation method presented in this thesis is a novel approach to QoE experiments, where qualitative measures can be taken in high quantity unintrusively to the test subject. Due to the design of the ArduPilot ecosystem, the test bed is also portable and would require no modification in order to work on other vehicles such as multirotors, rovers or submarines running the ArduPilot firmware.
+The test bed along with the evaluation method presented in this thesis is a novel approach to QoE experiments, where qualitative measures can be taken in high quantity in an unintrusive manner. Due to the design of the ArduPilot ecosystem, the test bed is also portable and would require no modification in order to work on other vehicles such as multirotors, rovers or submarines running the ArduPilot firmware.
 
-It is also deemed a strength that the software could be used in a real flight scenario with the SSRS drone, proving it useful in a real world scenario.
+Another strength of the thesis work is that the software was robust enough to be used in a real flight scenario and will be used in future flight testing.
 
 \section{Benefits}
-With the main benefactor of the thesis being the Swedish Sea Rescue Society, this thesis will have contributed to the development of modern rescue tooling which in the future can be used to save lives. Drones also show promise in other remote operations such as SAR in mountain environments \cite{drone-mountain-sar} and wildfire monitoring \cite{drones-wildfire}.
+With the main benefactor of the thesis being the Swedish Sea Rescue Society, this thesis will have contributed to the development of modern rescue tooling which in the future can be used to save lives. Drones also show promise in other remote operations such as SAR in mountain environments \cite{drones-mountain-sar} and wildfire monitoring \cite{drones-wildfire}.
 
 \section{Sustainability}
  Due to most small drones being very lightweight and electrically powered, they are also much more environmentally friendly compared to aircraft equipped with combustion engines.
