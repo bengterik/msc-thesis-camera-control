@@ -91,7 +91,7 @@ The rest of this chapter will provide the scope of the project as well as a an o
 
 \section{Scope}
 \label{sec:scope}
-The principal goals of the thesis work are:
+The principal goals of the thesis work were:
 \begin{description}
    \item[G1] Build a software based on the hardware from SSRS capable of manually controlling the drone camera with joystick or arrow keys. 
    \item[G2] Conduct an experiment investigating the effects of latency on a camera operator. 
@@ -830,15 +830,18 @@ Although there is evidence of parts of the software from the ecosystem being use
 In this chapter the goals presented in section \ref{sec:scope} will be evaluated.
 
 \begin{description}
-   \item[G1]  A test bed running one the hardware provided by the SSRS was implemented successfully.
+   \item[G1]
+   Manual gimbal control was successfully implemented on the ArduPlane platform with the use of a PlayStation controller. This was acheived through building a software in Python interfacing with the controller as well as the drone using an on-board Raspberry Pi as proxy. The software was also capable of displaying and recording the drone's video feed as well as simulating latency.
 
-   \item[G2]  In the quantative results from the experiment, a clear trend can be seen that additional delay has a negative effect on the subject's ability to control the camera. Furthermore, the same increase in delay seem to have a larger effect on the subject's performance when introduced at a higher delay.  
+   \item[G2]
+   In the quantative results from the experiment, a clear trend can be seen that additional delay has a negative effect on the subject's ability to control the camera. Furthermore, the same increase in delay seem to have a larger effect on the subject's performance when introduced at a higher delay. When taking into account the subject's rating of the system, it can be seen that the experience of a user is not always proportional to the worsening of QoS parameters. A slight increase in simulator sickness was observed, although it was not statistically significant with only 10 subjects.
 
-   When taking into account the subject's rating of the system, it can be seen that the experience of a user is not always proportional to the worsening of QoS parameters. A slight increase in simulator sickness was observed, although it was not statistically insignificant with only 10 subjects.
+   \item[G3] 
+   The results from the field testing shows that the gimbal software could be integrated with the system running on the real drone.
 
-   \item[G3] The results from the field testing shows that the gimbal software could be integrated with the system running on the real drone.
+   \item[G4]
+   The manual controls were deemed suitable when the plane was flying in straight lines to survey or follow a moving target. When loitering the already existing ROI-mode was found to be more suitable to reduce load on the gimbal operator.
 
-   \item[G4] The manual controls were deemed suitable when the plane was flying in straight lines and when surveying or following a moving. When loitering the already existing ROI-mode was found to be more suitable.
 \end{description}
 
 \chapter{Future Work}
