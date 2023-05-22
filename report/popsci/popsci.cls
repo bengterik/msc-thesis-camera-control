@@ -71,7 +71,7 @@
 \lhead{
 \vskip -3em
 \begin{tabular}{| l }
-  \sffamily \small INSTITUTIONEN FÖR DATAVETENSKAP \textbar\ LUNDS TEKNISKA HÖGSKOLA
+  \sffamily \small ELEKTRO- OCH INFORMATIONSTEKNIK \textbar\ LUNDS TEKNISKA HÖGSKOLA
   \ifx \@presentationsdag \empty 
   \else
     \textbar\ PRESENTERAD \@presentationsdag 
