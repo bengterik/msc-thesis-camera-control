@@ -35,9 +35,9 @@
 
 % not more than 4 rows!
 %\theabstract{Applikations-specifika processorer är allt mer vanligt för få ut rätt prestanda med så lite resurser som möjligt. Detta arbete har en parametrisk modell för att kunna testa hur mycket resurser som behövs för en specifik applikation.}
-\theabstract{Sjöräddningssällskapet driver idag ett projekt där man utforskar möjligheten att använda drönare för att understödja räddningspersonal vid uttryckning till havs. I detta arbete har en mjukvara för att styra kameran ombord på drönaren implementerats och utvärderats under varierande nätverksförhållanden, samt under en riktig flygning.}
+\theabstract{Sjöräddningssällskapet (SSRS) driver idag ett projekt där man utforskar möjligheten att använda drönare för att understödja räddningspersonal vid uttryckning till havs. I detta arbete har en mjukvara för att styra kameran ombord på drönaren implementerats och utvärderats i labb och under riktig flygning.}
 
-{\noindent Vid en uttryckning till havs kan små skillnader i tid vara skillnaden mellan en lyckad räddning och en katastrof. För att kunna ge räddningspersonalen bättre beslutsunderlag i ett så tidigt skeende som möjligt driver Sjöräddningssällskapet ett innovationsprojekt där man undersöker användningen av drönare för att få en tidig bild av olyckor till havs.
+{\noindent Vid en uttryckning till havs kan små skillnader i tid vara skillnaden mellan en lyckad räddning och en katastrof. För att kunna ge räddningspersonalen bättre beslutsunderlag i ett så tidigt skede som möjligt driver SSRS ett innovationsprojekt där man undersöker användningen av drönare för snabbt förse sjöräddarna med bilder från en olycksplats.
 
 \begin{figure}[!bth] % Use pictures in your pop-vet!
     \includegraphics[trim={0 20cm 0 30cm},width=\columnwidth, clip]{../images/dronepic.png} 
@@ -46,25 +46,10 @@
 
 Drönaren är en så kallad fastvinge, vilket gör att den både är snabbare och mer energieffektiv än den mer vanliga rotordrönaren. Det innebär att den kan vara snabbt på plats vid en olycka för att sedan ge kontinuerligt bildstöd från luften under längre tid än vad en rotordrönare klarat av. På undersidan av drönaren sitter en kamera monterad på en gimbal som gör det möjligt att vrida kameran i alla tre axlar.
 
-De operatörsgränssnitten tillät bara att man styrde kameran med hjälp av GPS-punkter som placeras ut på en karta, vilket inte var en så effektiv process då en GPS-punkts exakthet kan försämras av många olika störningar och att det då tog lång tid att få kameran att titta på det man faktiskt ville titta på. Sjöräddningssällskapet ville därmed se vilka möjligheter som fanns att justera kameravinkeln snabbare med hjälp av exempelvis piltangenter eller en joystick.
+Tidigare kunde SSRS bara styra kameran med hjälp av GPS-punkter som placerades ut på en karta. Detta var inte en så effektiv process då en GPS-punkts exakthet kan försämras av många olika störningar. SSRS ville därmed se vilka möjligheter som fanns att justera kameravinkeln snabbare med hjälp av exempelvis piltangenter eller en joystick.
 
 Mitt examensarbete har gått ut på att implementera manuell gimbal-styrning och inom arbetet har jag utfört två experiment: det första ett labbexperiment där drönaren stått stilla och försökspersonen fått en uppgift att med kameran. Jag har sedan tittat på hur bra de klarar av uppgiften när en fördröjning introduceras i systemet. Det visade sig att fördröjning försämrade operatörens förmåga att klara av uppgiften, men att en likvärdig ökning i fördröjning hade större effekt vid en redan högre fördröjning.
 
 Det andra experimentet gjordes under en riktig flygning i Göteborgs skärgård där jag kollade på när manuell styrning var att föredra över det tidigare nämnda GPS-läget. I och med stora fördröjningar i det mobila nätverket lämpade sig manuell kamerastyrning bäst när drönaren flög rakt och man ville titta omkring sig. Det gick även bra att följa ett objekt. 
 }
-
-% {\noindent För att öka prestandan i dagens processorer finns det vektorenheter och flera kärnor i processorer. Vektorenheten finns till för att kunna utföra en operation på en mängd data samtidigt och flera kärnor gör att man kan utföra fler instruktioner samtidigt. Ofta är processorerna designade för att kunna stödja en mängd olika datorprogram. Detta resulterar i att det blir kompromisser som kan påverka prestandan för vissa program och vara överflödigt för andra. I t.ex. videokameror, mobiltelefoner, medicinsk utrustning, digital kameror och annan inbyggd elektronik, kan man istället använda en processor som saknar vissa funktioner men som istället är mer energieffektiv. Man kan jämföra det med att frakta ett paket med en stor lastbil istället för att använda en mindre bil där samma paketet också skulle få plats.
-
-% I mitt examensarbete har jag skrivit en modell som kan användas för att snabbt designa en processor enligt vissa parametrar. Dessa parametrar väljs utifrån vilket eller vilka program man tänkta köra på den. Vissa program kan t.ex. lättare använda flera kärnor och vissa program kan använda korta eller längre vektorenheter för dess data.
-
-% %För att kunna välja vilken typ av processor som är rätt för den specifika applikationen krävs det ofta att man snabbt kan testa olika prototyper. Att implementera dessa till hårdvara kan ofta vara tidskrävande och ifall det visar sig att implementationen inte klarar dem kraven man ställt för prestanda och energieffektivitet, måste man designa för nya parametrar och mer tid har blivit slösat. %Om den här processen istället kan göras automatiskt utifrån dessa design-parametrar kan man teoretiskt spara en massa tid.
-% Modellen testades med olika multimedia program. Den mest beräkningsintensiva och mest upprepande delen av programmen användes. Dessa kallas för kärnor av programmen. Kärnorna som användes var ifrån MPEG och JPEG, som används för bildkomprimering och videokomprimering.
-
-% \begin{figure}[!bth] % Use pictures in your pop-vet!
-% \includegraphics[width=\columnwidth]{samplePic.pdf} 
-% %\caption{En fin bild}
-% \end{figure}
-% Resultatet visar att det finns en prestanda vinst jämfört med generella processorer men att detta också ökar resurserna som behövs. Detta trots att den generella processorn har nästan dubbelt så hög klockfrekvens än dem applikations-specifika processorerna. Resultatet visar också att schemaläggning av instruktionerna i programmen spelar en stor roll för att kunna utnyttja resurserna som finns tillgängliga och därmed öka prestandan. Med den schemaläggningen som utnyttjade resurserna bäst var prestandan minst 79\% bättre än den generella processorn.
-% }
-
 \end{document}
