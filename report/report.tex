@@ -252,7 +252,7 @@ In this section the already finished software used in the experiments will be de
 \end{description}
 
 \chapter{Implementation of Test Bed}
-In this chapter the hardware and software developed specifically for the thesis will be detailed.
+In this chapter the hardware and software developed specifically for the thesis are detailed.
 
 \section{Gimbal Box}
 As the entire drone was not needed to conduct the QoE experiment, a Raspberry Pi, flight controller and gimbal were mounted inside a 2L Ikea SmartStore box. The computer boards were mounted inside the box with velcro tape and the gimbal was mounted in a cutout in the bottom of the box. Pictures of the box can be seen in figure \ref{fig:drone-setup}.
@@ -602,7 +602,7 @@ The control of the gimbal is done through a command sent to the drone with two a
 The goal of this experiment was to integrate the software built for the test bed into the existing drone system, addressing goals \textbf{G3} and \textbf{G4} of the thesis scope. 
 
 \subsection{Preparations}
-For the experiment the gimbal control interface was modified to run with the software configured on the actual drone. The video and recording component was entirely removed and the IP address which the program connected to was changed to that of the 4G modem on the drone.
+For the experiment the gimbal control interface was modified to run with the software configured on the actual drone. The video and recording components were entirely removed and the IP address which the program connected to was changed to that of the 4G modem on the drone.
 
 In order to compare the new controls to the already existing ROI-mode, a button on the controller was mapped to switch between joystick-mode and ROI-mode, which when activated uploaded a pre-programmed GPS-point for the drone to look at.
 
@@ -782,18 +782,24 @@ It could also be observed that increasing the loiter-radius gave a better image 
 This chapter aims to put the results in the context of previous work in the field.
 
 \section{Comparison with State-of-the-Art}
-As fixed-wing UAVs have seen heavy use in the military sector, a high level of sophistication in the UAVs as well as their operation is usually found in these types of systems. One of the most historically known military drones are the MQ-9 Reaper series \cite{mq9reaper}, which saw heavy use by the U.S. during the conflicts in Iraq and Afghanistan \cite{mq9reaper-wiki}. More modern systems include the Turkish Bayraktar drones \cite{bayraktar-wiki} as well as the Switchblade series from the American company Aerovirement \cite{switchblade}.
+In this chapter the QoE test bed will be compared to other ones within the research field. Then, the specific functionality, namely gimbal control, will be compared to already existing solutions.
 
-In the consumer market, the chinese manufacturer DJI holds a global market share of more than 70\%, according to CNBC \cite{dji}. Although they mainly focus on rotor drones, their most popular systems are targeted towards filming and thus feature camera gimbals. These usually have gimbal modes such as stabilization, target following and ROI-mode. 
+\subsection{QoE Test Bed}
+During the development of the test bed, the research facility RISE (Stockholm, Sweden) was contacted as they had experience conducting QoE experiments. During the time of the thesis' work valuable insights and suggestions were conveyed through several meetings with Kjell Brunnström. A visit was also made to their offices were I got the chance to be a subject in one of their QoE experiments conducted by a PhD student. Although the experimental conditions and objects of study were different, the test beds shared many similarities. 
 
-There area also manufacturers specialized in drone gimbals for companies or people building there own drones, such as Gremsy \cite{gremsy} and SIYI \cite{siyi}. These gimbals cost \$1,399 and \$529.42 dollars respectively and their functionality is highly dependant on the on on board software. For comparison, the SSRS gimbal can be assembled for (EXAKT PRIS?).
+\subsection{Commercial Systems}
+In the consumer market, the chinese manufacturer DJI holds a global market share of more than 70\%, according to CNBC \cite{dji}. Their most popular systems are targeted towards filming and a lot of them feature camera gimbals with features such as stabilization, target following and ROI-mode. 
 
+For companies or people building there own drones there are also separate drone gimbals that can be bought from manufacturers such as Gremsy \cite{gremsy} or SIYI \cite{siyi}. These particular gimbals cost \$1,399 and \$529.42 dollars respectively and their functionality is highly dependant on the on board software. For comparison, the SSRS gimbal can be assembled for (EXAKT PRIS?).
+
+\subsection{Military systems}
+As fixed-wing UAVs with gimbals have seen heavy use in the military sector, a high level of sophistication in UAVs and their operations is found in these types of systems. One of the most historically known military drones also featuring a camera gimbal is the MQ-9 Reaper \cite{mq9reaper}, which saw heavy use by the U.S. during the conflicts in Iraq and Afghanistan \cite{mq9reaper-wiki}. More modern systems with drones in more similar size to the SSRS drone (although with very different use cases) include the Turkish Bayraktar drones \cite{bayraktar-wiki} as well as the Switchblade series \cite{switchblade} from the American company Aerovirement.
+
+\subsection{ArduPilot Ecosystem}
 In the ArduPilot ecosystem, gimbal control has seen much development in the last year, with the command used for the functionality in this thesis being supported only since the summer of 2022 \cite{ardupilot-gimbal-issue}. As this feature is so new in the drone's onboard software it has not yet been integrated into the mission control softwares, making it unaccessible for those without the know-how to create their own interface.
 
 \section{Impact}
-The test bed developed in this thesis shows promise as a tool for evaluating different parameters relevant to QoE research. Something that sticks out in the test bed is also the ability to get a lot of data on quantitative performance through the use of image recognition.
-
-Beyond further research, the software will be used as a starting point for gimbal control in the SSRS mission control software, contributing to the development of modern SAR tooling. Their system could also be extended to other domains where UAVs have been investigated such as SAR in mountain environments \cite{drones-mountain-sar} or wildfire monitoring \cite{drones-wildfire}.
+The test bed developed in this thesis shows promise for evaluating different parameters relevant to QoE research. Beyond further research, the software will be used as a starting point for gimbal control in the SSRS mission control software, contributing to the development of modern SAR tooling. Their system could also be extended to other domains where UAVs have been investigated such as SAR in mountain environments \cite{drones-mountain-sar} or wildfire monitoring \cite{drones-wildfire}.
 
 \section{Limitations}
 The main limitation of the test bed is that the scenario keeps the drone stationary, which is not the case in real flight. Although the results from the experiment are interesting in their own right, the scenario in the experiment is not analog to that of a real SAR operation. This is mainly due to the fact that the hoverboard ran in a predictable path, making the results not generalizable to all paths and scenarios.
@@ -810,21 +816,21 @@ A big weakness is also the subject selection, as they were not representative of
 Regarding the flight testing, there is a so called "earth-frame"-mode for the gimbal that points it in a compass heading, effectively stabilizing the yaw-axis as well. This mode was not tested in the experiment, but could be of interest in further research.
 
 \section{Strengths}
-The test bed along with the evaluation method presented in this thesis is a novel approach to QoE experiments, where qualitative measures can be taken in high quantity in an unintrusive manner. Due to the design of the ArduPilot ecosystem, the test bed is also portable and would require no modification in order to work on other vehicles such as multirotors, rovers or submarines running the ArduPilot firmware.
+The test bed along with the evaluation method presented in this thesis is a novel approach to QoE experiments, where qualitative measures can be taken in high quantity in an unintrusive manner to the test subject. Due to the design of the ArduPilot ecosystem, the test bed is also portable and would require no modification in order to work on other vehicles such as multirotors, rovers or submarines running the ArduPilot firmware.
 
 Another strength of the thesis work is that the software was robust enough to be used in a real flight scenario and will be used in future flight testing.
 
 \section{Sustainability}
-As the UAV is electrically powered, it does not produce any direct CO2 emissions during use. The results from early imagery to a rescue crew could allow them to go at lower speeds, reducing engine emissions as well as the boat's effects on the surrounding environments. 
+As the UAV is electrically powered, it does not produce any direct CO2 emissions during use. The results from early imagery to a rescue crew could allow them to go at lower speeds, reducing engine emissions as well as the boat's effects on the surrounding environment. 
 
 Currently, helicopters or airplanes can be put in for aerial support during SAR missions. Future drone systems could support or in some instances completely replace these manned vehicles, and with their smaller size and electrical propulsion they would have much smaller CO2 emissions.
 
 \section{Ethics}
-While the software developed for this thesis aims to assist in SAR-operations, gimbal control is highly applicable in military scenarios such as surveillance and target acquisition. 
+The software implemented in this thesis is aimed at assisting in SAR-operations and their functionality can as such be deemed critical to human life. Although the idea that aerial imagery is to be used as support, the intelligence provided by said footage has to be reliable as it can have an effect on the decisions on board a rescue vehicle. This places higher requirements on the robustness of the system. 
 
-In a discussion in the ArduPilot forums \cite{ardupilot-military-discussion}, a user provides an image of the software Mission Planner being used in what seems to be a military operation. Although ArduPilot state in their code of conduct \cite{ardupilot-coc} that they pledge to not support or facilitate the weaponization of systems based on their software, the accessible nature of the ecosystem enables anyone to use it for any purpose. In research alone, numerous examples can be found \cite{ardupilot-military} \cite{ardupilot-military-1} where parts of the ArduPilot software and hardware ecosystem are used in military settings.
+While the software developed for this thesis aims to assist in SAR-operations, gimbal control is highly applicable to more ethically questionable purposes such as surveillance or target acquisition for weapons. In a discussion in the ArduPilot forums \cite{ardupilot-military-discussion}, a user provides an image of the software Mission Planner being used in what seems to be a military operation. Although ArduPilot state in their code of conduct \cite{ardupilot-coc} that they pledge to not support or facilitate the weaponization of systems based on their software, the accessible nature of the ecosystem enables anyone to use it for any purpose. In research alone, numerous examples can be found \cite{ardupilot-military} \cite{ardupilot-military-1} where parts of the ArduPilot software and hardware ecosystem are used in military settings.
 
-Although there is evidence of parts of the software from the ecosystem being used in military applications, the nature of open source remains ill-suited for high-end military products due to the transparency of the source code. However, this is mainly applicable to products being mass produced, as ArduPilot definitely enables the creation of small weaponized drones. This is a problem for the drone industry at large, as there are many reports of commercially available drones being modified for artillery targetting or even carrying munition themselves \cite{drones-ukraine}. 
+Although there is evidence of parts of the software from the ecosystem being used in military applications, the nature of open source remains ill-suited for high-end military products due to the transparency of the source code. However, this is mainly applicable to products being mass produced, as ArduPilot undoubtebly enables the creation of small weaponized drones. This is a problem for the drone industry at large, as there are many reports of commercially available drones being modified for artillery targetting or even carrying munition themselves \cite{drones-ukraine}. 
 
 \chapter{Conclusion}
 In this chapter the goals presented in section \ref{sec:scope} will be evaluated.
