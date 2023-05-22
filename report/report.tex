@@ -782,13 +782,13 @@ It could also be observed that increasing the loiter-radius gave a better image 
 This chapter aims to put the results in the context of previous work in the field.
 
 \section{Comparison with State-of-the-Art}
-As fixed-wing UAVs have seen heavy use in the military sector, the highest level of sophistication are found in systems like the american reaper drone as well as other drone surveillance systems (KÄLLOR).
+As fixed-wing UAVs have seen heavy use in the military sector, a high level of sophistication in the UAVs as well as their operation is usually found in these types of systems. One of the most historically known military drones are the MQ-9 Reaper series \cite{mq9reaper}, which saw heavy use by the U.S. during the conflicts in Iraq and Afghanistan \cite{mq9reaper-wiki}. More modern systems include the Turkish Bayraktar drones \cite{bayraktar-wiki} as well as the Switchblade series from the American company Aerovirement \cite{switchblade}.
 
-Although they mainly focus on rotor drones, the chinese manufacturer DJI have a 70\% market share of civilian drones. 
+In the consumer market, the chinese manufacturer DJI holds a global market share of more than 70\%, according to CNBC \cite{dji}. Although they mainly focus on rotor drones, their most popular systems are targeted towards filming and thus feature camera gimbals. These usually have gimbal modes such as stabilization, target following and ROI-mode. 
 
-For those building their own drones there are plenty of gimbals on the market with preconfigured features like target following, ROI-mode etc. These are however quite expensive, starting at about \$. 
+There area also manufacturers specialized in drone gimbals for companies or people building there own drones, such as Gremsy \cite{gremsy} and SIYI \cite{siyi}. These gimbals cost \$1,399 and \$529.42 dollars respectively and their functionality is highly dependant on the on on board software. For comparison, the SSRS gimbal can be assembled for (EXAKT PRIS?).
 
-In the ArduPilot ecosystem, gimbal control has seen much development in the last year, with the command used for the functionality in this thesis being supported only since the summer of 2022. As this feature is so new in the drone's software it has not been integrated into the mission control softwares yet, which is the main technical contribution for this thesis work.
+In the ArduPilot ecosystem, gimbal control has seen much development in the last year, with the command used for the functionality in this thesis being supported only since the summer of 2022 \cite{ardupilot-gimbal-issue}. As this feature is so new in the drone's onboard software it has not yet been integrated into the mission control softwares, making it unaccessible for those without the know-how to create their own interface.
 
 \section{Impact}
 The test bed developed in this thesis shows promise as a tool for evaluating different parameters relevant to QoE research. Something that sticks out in the test bed is also the ability to get a lot of data on quantitative performance through the use of image recognition.
