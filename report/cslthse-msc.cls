@@ -382,10 +382,19 @@
 			\@acknowledgements
 	\fi
 
+
+	\checkoddpage
+	\ifoddpage
+	\else
+	\newpage
+	\thispagestyle{empty}
+	\mbox{ }
+	\fi
+	\includepdf[pages={1}]{popsci/popsci.pdf}
+
 	\tableofcontents
 }	
 \makeatother
-
 
 % make the bibliography
 \makeatletter
