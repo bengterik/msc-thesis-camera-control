@@ -39,16 +39,18 @@
 
 {\noindent Vid en uttryckning till havs kan små skillnader i tid vara skillnaden mellan en lyckad räddning och en katastrof. För att kunna ge räddningspersonalen bättre beslutsunderlag i ett så tidigt skeende som möjligt driver Sjöräddningssällskapet ett innovationsprojekt där man undersöker användningen av drönare för att få en tidig bild av olyckor till havs.
 
-Drönaren är en så kallad fastvinge, vilket gör att den både är snabbare och mer energieffektiv än en rotordrönare.
-
-Mitt examensarbete har som en del i detta projekt utforskat möjligheten att manuellt styra kameran med den befintliga mjukvaran ombord på drönaren. Inom arbetet har jag utfört två experiment: det första är ett labbexperiment där försökspersonen fått en uppgift att utföra och där jag sedan tittat på hur bra de klarar av uppgiften när en fördröjning simuleras i systemet. Det andra experimentet gjordes under en flygning i Göteborgs skärgård där jag kollade på när manuell styrning var att föredra över det tidigare.
-
 \begin{figure}[!bth] % Use pictures in your pop-vet!
-\includegraphics[trim={0 20cm 0 30cm},width=\columnwidth, clip]{../images/dronepic.png} 
-%\caption{En fin bild}
+    \includegraphics[trim={0 20cm 0 30cm},width=\columnwidth, clip]{../images/dronepic.png} 
+    %\caption{En fin bild}
 \end{figure}
 
-blablabla
+Drönaren är en så kallad fastvinge, vilket gör att den både är snabbare och mer energieffektiv än den mer vanliga rotordrönaren. Det innebär att den kan vara snabbt på plats vid en olycka för att sedan ge kontinuerligt bildstöd från luften under längre tid än vad en rotordrönare klarat av. På undersidan av drönaren sitter en kamera monterad på en gimbal som gör det möjligt att vrida kameran i alla tre axlar.
+
+De operatörsgränssnitten tillät bara att man styrde kameran med hjälp av GPS-punkter som placeras ut på en karta, vilket inte var en så effektiv process då en GPS-punkts exakthet kan försämras av många olika störningar och att det då tog lång tid att få kameran att titta på det man faktiskt ville titta på. Sjöräddningssällskapet ville därmed se vilka möjligheter som fanns att justera kameravinkeln snabbare med hjälp av exempelvis piltangenter eller en joystick.
+
+Mitt examensarbete har gått ut på att implementera manuell gimbal-styrning och inom arbetet har jag utfört två experiment: det första ett labbexperiment där drönaren stått stilla och försökspersonen fått en uppgift att med kameran. Jag har sedan tittat på hur bra de klarar av uppgiften när en fördröjning introduceras i systemet. Det visade sig att fördröjning försämrade operatörens förmåga att klara av uppgiften, men att en likvärdig ökning i fördröjning hade större effekt vid en redan högre fördröjning.
+
+Det andra experimentet gjordes under en riktig flygning i Göteborgs skärgård där jag kollade på när manuell styrning var att föredra över det tidigare nämnda GPS-läget. I och med stora fördröjningar i det mobila nätverket lämpade sig manuell kamerastyrning bäst när drönaren flög rakt och man ville titta omkring sig. Det gick även bra att följa ett objekt. 
 }
 
 % {\noindent För att öka prestandan i dagens processorer finns det vektorenheter och flera kärnor i processorer. Vektorenheten finns till för att kunna utföra en operation på en mängd data samtidigt och flera kärnor gör att man kan utföra fler instruktioner samtidigt. Ofta är processorerna designade för att kunna stödja en mängd olika datorprogram. Detta resulterar i att det blir kompromisser som kan påverka prestandan för vissa program och vara överflödigt för andra. I t.ex. videokameror, mobiltelefoner, medicinsk utrustning, digital kameror och annan inbyggd elektronik, kan man istället använda en processor som saknar vissa funktioner men som istället är mer energieffektiv. Man kan jämföra det med att frakta ett paket med en stor lastbil istället för att använda en mindre bil där samma paketet också skulle få plats.
