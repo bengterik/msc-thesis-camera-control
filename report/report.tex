@@ -690,28 +690,14 @@ It can be seen that there is a
 In this section the results from the forms and interviews are presented and discussed.
 
 \subsubsection{Trial forms}
-In \ref{fig:form-ans} the answers from the questionnaires filled out after each trial are averaged over all subjects and visualized as a grouped bar chart. It is important to note that the jumps in delay are not uniform. The questions can be seen in \ref{tab:form-questions}. 
+As only 10 subjects completed the trials it was hard to draw any statistical conclusions from the indiviual questions. Instead, the answers from all the questions on each delay were grouped, making for 40 answers on each delay. A box plot showing the distributions of the answers are shown in \ref{fig:form-ans}. For one subject, the 200ms trail was forgotten and was instead filled with the average answer 3 for all questions afterwards.
 
-Here follows a brief analysis of the results for each question in \ref{fig:form-ans}
-\begin{description}
-   \item[1: Controllability] 
-   The controllability decreases dramatically over all delays. Although the ratings decrease with added delay, the answers suggest that the sence of controllability did not differ much between 400ms and 600ms added delay, and that the answers could plateau with further added delay.  
-
-   \item[2: Ability to perform task] 
-   The average ratings for 200ms, 300ms, and 400ms are very similar. The added delay seems to have had little effect on the impression of their task performance, in spite of the quantative results showing a significant difference in pixel error. The subject's answer does however depend heavily the subject's interpretation of the task and how close is "good enough".
- 
-   \item[3: How pleasant was the system to use]
-   The ratings of the pleasantness of the system seem to decrease steadily with added delay for each interval.
-
-   \item[4: Impression of the system as a whole] 
-   The system with 0ms added delay clearly made a better impression on the subjects. An interesting feature of the answers is that the systems with 200ms and 300ms have gotten the exact same rating.
-
-\end{description}
+Looking at the averages a clear downward trend can be seen with an increase in delay. The largest steps are in the two steps of 200ms between 0ms to 200ms and 400ms to 600ms. When compared to the quantative results in \ref{fig:ecdf} it can be seen that the average experience of the delays does not seem to follow the same curve as the actual task performance.  
 
 \begin{figure}[!hbt]
    \centering
    \includegraphics[scale=0.6]{images/form-ans.png} 
-   \caption{Form answers averaged for all subjects for each delay.}
+   \caption{Box plot of form answers for each delay. The green line represents the mean while the orange line represents the median.}
    \label{fig:form-ans}
 \end{figure}
 
@@ -844,7 +830,7 @@ In this chapter the goals presented in section \ref{sec:scope} are evaluated.
    Manual gimbal control was successfully implemented on the ArduPlane platform with the use of a PlayStation controller. This was acheived through building a software in Python interfacing with the controller as well as the drone using an on-board Raspberry Pi as proxy. The software was also capable of displaying and recording the drone's video feed as well as simulating latency.
 
    \item[G2]
-   In the quantative results from the experiment, a clear trend can be seen that additional delay has a negative effect on the subject's ability to control the camera. Furthermore, the same increase in delay seem to have a larger effect on the subject's performance when introduced at a higher delay. When taking into account the subject's rating of the system, it can be seen that the experience of a user is not always proportional to the worsening of QoS parameters. A slight increase in simulator sickness was observed, although it was not statistically significant with only 10 subjects.
+   In the quantative results from the experiment, a clear trend can be seen that additional delay has a negative effect on the subject's ability to control the camera. Furthermore, the same increase in delay seem to have a larger effect on the subject's performance when introduced at a higher delay. When taking into account the subject's rating of the system, it can be seen that the experience of a user is not always proportional to the worsening of QoS parameters, but more subjects as well as delays are needed to establish an exact relationship. A slight increase in simulator sickness was observed, although it was not statistically significant with only 10 subjects.
 
    \item[G3] 
    The results from the field testing shows that the gimbal software could be integrated with the system running on the real drone.
