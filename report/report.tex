@@ -51,17 +51,11 @@ If you want to thank people, do it here, on a separate right-hand page. Both the
 }
 
 \theabstract{
-The Swedish Sea Rescue Society (SSRS), responsible for 90\% of sea rescue in Sweden, are running a project with Chalmers, Infotiv, Airpelago and RISE called Eyes-on-Scene (EOS), investigating the use of drones to provide early imagery of a maritime incident to rescue personnell on their way to the scene. 
+This thesis work forms part of a project investigating the use of drones in maritime search-and-rescue (SAR) operations, where they are to provide early imagery of a maritime incident to assist the decision making of rescue personnel on their way to the scene. The focus of the work is on controlling a camera gimbal on a fixed-wing drone, and in the thesis a gimbal control interface has been developed with the aim of acheiving manual control of the camera while also studying the effects of network latency on the operator's experience. Two experiments have been carried out: one user study, evaluating quantative and qualitative effects of network latency on a camera operator, and one field test, where the gimbal control software was tested during a flight over the Gothenburg archipelago.
 
-Thus far in the project, a fixed-wing drone along with mission control software has been developed, and the drone is able to fly after waypoints while providing video through the gimbal-mounted camera. The drone has a 4G modem, allowing it to be operated beyond visual line-of-sight (BVLOS). 
+In the user study, the user was given a task to perform provided a joystick and a video feed from the drone camera. The task was completed five times with different latencies introduced in the program. The results indicate that the subjects performance worsened at a nonlinear rate with more added latency, and that the subject's performance and their experience did not decrease with the same rate.
 
-With the current software, the SSRS do not have a way to manually control the direction of the camera, and wanted direct control with either a joystick or the arrow keys. The SSRS was also interested in investigating if the manual controls were suitable with the delay introduced by the mobile connection.
-
-In this thesis work, a gimbal control interface has been developed with the aim of acheiving manual control of the camera while also studying the effects of latency on the operator's experience. Two experiments have been carried out: one user study, evaluating quantative and qualitative effects of latency on a camera operator, and one field test, where the gimbal control software was tested during a flight over the Gothenburg archipelago.
-
-In the user study, the user was given a task to perform provided a joystick and a video feed from the drone camera. Five trials with simulated latencies were performed per subject. The results of the study indicate that the relationship between latency and task performance might not be linear, and that an equal amount of delay increase can have different effects on operator experience at different levels of latency.
-
-In the second experiment, the field test, the software was successfully integrated with the in-flight systems and a test flight was made over the Gothenburg Archipelago. The manual controls using a joystick were deemed suitable, although delay and rapid movements of the drone could introduce difficulty.  
+In the second experiment, the software was successfully integrated with the in-flight systems of the drone. A test flight was made over the Gothenburg Archipelago and the manual controls were deemed suitable for surverying and following an object when the drone was flying in a straight line.  
 }
 
 \keywords{MSc, BSc, template, report, style, structure}
@@ -270,7 +264,7 @@ As the entire drone was not needed to conduct the QoE experiment, a Raspberry Pi
 
 
 \section{Gimbal Control Interface}
-Addressing goal \textbf{G1} of the thesis, a program was implemented in Python displaying the video feed from the drone camera while taking control inputs from the operator. The inputs came from the right joystick of a PlayStation-controller while the program sent messages updating the gimbal's position with a set frequency. The program could also record the video feed displayed to the gimbal operator. A visual overview of the system is shown in Figure \ref{fig:system-overview}.
+Addressing goal \textbf{G1} of the thesis, a program was implemented in Python displaying the video feed from the drone camera while taking control inputs from the operator. The inputs came from the right joystick of a PlayStation-controller while the program sent messages updating the gimbal's position with a set frequency over IP. The program could also record the video feed displayed to the gimbal operator. A visual overview of the system is shown in Figure \ref{fig:system-overview}.
 \begin{figure}[!hbt]
    \centering
    \includegraphics[scale=0.25]{images/system-overview.png} 
@@ -281,7 +275,7 @@ Addressing goal \textbf{G1} of the thesis, a program was implemented in Python d
 The application was run with Python version 3.9.16 and used the following libraries:
 \begin{description} 
    \item [pymavlink (v. 2.4.37)]
-   An interface to communicate with MAVLink devices, available at \cite{pymavlink}. With the library a port can be set to send and receive MAVLink messages.
+   An interface to communicate with MAVLink devices, available at \cite{pymavlink}. With the library a port can be set to send and receive MAVLink messages over an IP or serial link.
  
    \item [Evdev v. (1.6.1)]
    A python library for interrupt-driven input devices. It is used for reading input from the Playstation-controller. Available at \cite{evdev}.
@@ -376,7 +370,7 @@ As a proof of concept, an auto-follow mode was developed which allowed the gimba
 This chapter will describe the setup, procedure and evaluation of the two experiments that were performed.
 
 \section{QoE Lab Experiment}
-The goal of this experiment was to investigate the effects of latency on a camera operator, addressing goal \textbf{G1} of the thesis scope.
+The goal of this experiment was to investigate the effects of latency on a camera operator, addressing goal \textbf{G2} of the thesis scope.
 
 \subsection{Experiment Design}
 The desire was to create a task that would be similar to what an operator would perform in a sea rescue scenario, while still making it easy to measure the performance of the operator. The the initial scenario using manual controls would be a drone, loitering around a point while also trying to focus the camera on it. 
