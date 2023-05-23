@@ -248,8 +248,8 @@ In this section the already finished software used in the experiments will be de
    \item[UV4L]
    UV4L is a video streaming server that supports several real-time communication protocols and video encodings \cite{uv4l}. It's function in the test bed is to stream the video from the camera to the web. As for video encoding, MJPEG was used.
    
-   \item[Janus Server]
-   As described on their webpage \cite{janus}, Janus is a plugin-based software that helps establish WebRTC connections. In this thesis it is used to establish the connection between the UV4L server and the web browser, enabling the peer-to-peer connection between the two devices.
+   % \item[Janus Server]
+   % As described on their webpage \cite{janus}, Janus is a plugin-based software that helps establish WebRTC connections. In this thesis it is used to establish the connection between the UV4L server and the web browser, enabling the peer-to-peer connection between the two devices.
 
    \item[Hoverboard software] The hoverboard has software which allows it to be controlled by a game controller or follow a set of points using coordinates for which it uses it's Lidar and a SLAM-algorithm. This makes it possible to have the hoverboard run in a programmed route with little error. 
 \end{description}
@@ -273,8 +273,8 @@ As the entire drone was not needed to conduct the QoE experiment, a Raspberry Pi
 Addressing goal \textbf{G1} of the thesis, a program was implemented in Python displaying the video feed from the drone camera while taking control inputs from the operator. The inputs came from the right joystick of a PlayStation-controller while the program sent messages updating the gimbal's position with a set frequency. The program could also record the video feed displayed to the gimbal operator. A visual overview of the system is shown in Figure \ref{fig:system-overview}.
 \begin{figure}[!hbt]
    \centering
-   \includegraphics[scale=0.5]{images/system-overview.png} 
-   \caption{An overview of the entire system. On the left, the drone and it's components including the RPi, RPi camera module and the flight controller are shown. On the right, the ground station and its' components including the web application, Janus server and the controller are shown. The colour of the connections represent what data they transfer, where orange is video, orange double-line is video negotiation and yellow is control.}
+   \includegraphics[scale=0.25]{images/system-overview.png} 
+   \caption{An overview of the gimbal control interface. On the left, the drone and its' hardware and software components: the RPi running MavProxy and UV4L, the flight controller running ArduPlane and the RPi camera module. On the right, the gimbal interface and its' software components: OpenCV for obtaining and displaying video, Evdev for the controller inputs and Pymavlink for establishing the connection with the drone. The colour of the connections represent what data they transfer, where orange is video and yellow is control.}
    \label{fig:system-overview}
 \end{figure}
 
