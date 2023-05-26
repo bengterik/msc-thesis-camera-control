@@ -37,23 +37,21 @@
 %\theabstract{Applikations-specifika processorer är allt mer vanligt för få ut rätt prestanda med så lite resurser som möjligt. Detta arbete har en parametrisk modell för att kunna testa hur mycket resurser som behövs för en specifik applikation.}
 \theabstract{Sjöräddningssällskapet (SSRS) driver idag ett projekt där man utforskar möjligheten att använda drönare för att understödja räddningspersonal vid uttryckning till havs. I detta examensarbete har en mjukvara för att styra en drönarkamera implementerats. Den har sedan utvärderats i labb och under riktig flygning.}
 
-{\noindent Vid en uttryckning till havs kan små skillnader i tid vara avgörande för om en utryckning resulterar i en lyckad räddning eller en katastrof. För att kunna ge räddningspersonalen bättre beslutsunderlag i ett så tidigt skede som möjligt driver SSRS ett innovationsprojekt där man undersöker användningen av drönare. Drönarna ska vara stationerade längs kusten och ska kunna flyga ut direkt vid ett larm.
+{\noindent Vid en uttryckning till havs kan små skillnader i tid vara avgörande för om en utryckning resulterar i en lyckad räddning eller en katastrof. För att kunna ge räddningspersonalen bättre beslutsunderlag i ett så tidigt skede som möjligt driver SSRS ett innovationsprojekt kallat Eyes-On-Scene (EOS), där man undersöker användningen av drönare inom sjöräddning. Drönarna ska vara stationerade längs kusten och kunna flyga ut direkt vid ett larm för att sedan skicka bilder till sjöräddarna på väg till olyckan.
 
 \begin{figure}[!bth] % Use pictures in your pop-vet!
     \includegraphics[trim={0 20cm 0 30cm},width=\columnwidth, clip]{../images/dronepic.png} 
     %\caption{En fin bild}
 \end{figure}
 
-Den drönare som tagits fram är en så kallad fastvinge, vilket gör att den både är snabbare och mer energieffektiv än den mer vanliga rotordrönaren. På undersidan av drönaren sitter en kamera monterad på en gimbal som gör det möjligt att vrida kameran i alla tre axlar.
+Den drönare som tagits fram i projektet är en så kallad fastvinge, som är en snabbare och mer energieffektiv konstruktion än den mer vanliga rotordrönaren. Den har även ett 4G-modem, vilket gör att den kan styras över Internet, varifrån som helst på jorden. 
 
-Tidigare kunde SSRS bara styra kameran med hjälp av GPS-punkter som placerades ut på en karta och som drönaren då riktade sin gimbal mot. På grund av störningar kan en GPS-punkt hamna fel, och då behöver man justera punkten genom att sätta ut en ny. SSRS ville se vilka möjligheter som fanns att manuellt justera kameravyn.
+Drönarens enda verktyg är en gimbalmonterad kamera, som under flygning styrs genom att sätta ut GPS-punkter som drönaren då automatiskt riktar kameran mot. Då det inte alltid är lätt att trycka rätt på en karta har det varit svårt att få kameran att kolla på det man vill kolla på, och SSRS har därför varit ute efter ett snabbare sätt att snabbt justera kameravyn.
 
-I mitt examensarbete har jag skapat ett gränsnitt för att styra drönarkameran med en joystick. För att utvärdera systemet utfördes två experiment, det första i ett labb och den andra under en riktig flygning över Göteborgs skärdgård.
+I mitt examensarbete har jag utvecklat ett gränsnitt för att styra drönarkameran med en joystick. Jag har sedan i en labbmiljö undersökt hur olika fördröjningar påverkar en kameraoperatör som använder gränsittet. Mjukvaran har sedan integrerats med EOS-drönarens mjukvara för att kunna styra kameran under en riktig flygning, och flera testflygningar genomfördes. 
 
-I det första experimentet undersökte jag hur en operatör upplever olika stora fördröjningar i systemet. En högre fördröjning försämrade operatörens förmåga att klara av uppgiften mer, men experimentet visade också att en likvärdig ökning i fördröjning hade större effekt desto högre latensen redan var.
+Resultaten visar att fördröjning försämrar både operatörens formåga samt upplevelse i systemet, men att sambanden är olika. Exempelvis tyder resultaten på att vissa fördröjningar kan försämra operatörens utförande av uppgiften mer än vad den försämrar operatörens upplevelse, och att det omvända gäller för andra.  
 
-I det andra experimentet jämfördes manuell styrning mot GPS-läget i olika scenarion. Det manuella läget visade sig bättre när drönaren flög rakt och man ville se omkring sig eller följa ett rörligt objekt. För att kolla på en stationär punkt var GPS-läget bättre, men manuell justering behövdes fortfarande för att den skulle titta rätt. 
-
-Arbetets bidrag består till största del av att ha möjliggjort för SSRS att bättre styra kameravyn samt att testbädden som byggts i exjobbet kan användas för vidare studier i operatörsupplevelse.    
+Testbädden visar potential i vidare studier i operatörsupplevelse, som blir ett allt mer relevant område då fler områden tillämpar fjärrstyrning. Mjukvaran kommer även användas av SSRS i framtida flygningar, där man i år förbereder för skarp utryckning för första gången i projektet.
 }
 \end{document}
