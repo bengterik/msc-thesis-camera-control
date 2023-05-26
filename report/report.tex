@@ -680,7 +680,7 @@ In \ref{fig:0vs600}, the results from 0ms and 600ms are shown with the hoverboar
 \begin{figure}[!hbt]
    \centering
    \makebox[\textwidth]{\includegraphics[scale=0.35]{images/0vs600.png}}
-   \caption{Total trials for latencies 0 and 600 averaged over all subjects.}
+   \caption{Total trials for latencies 0 and 600 averaged over all subjects with hoverboard position superimposed.}
    \label{fig:0vs600}
 \end{figure}
 
@@ -689,9 +689,9 @@ In \ref{fig:0vs600}, the results from 0ms and 600ms are shown with the hoverboar
 In this section, the results from the forms and interviews are presented and discussed.
 
 \subsubsection{Trial forms}
-As only 10 subjects completed the trials it was hard to draw any statistical conclusions from the individual questions. Instead, the answers from all the questions on each delay were grouped, making for 40 answers on each delay. A box plot showing the distributions of the answers is shown in \ref{fig:form-ans}. For one subject, the 200ms trail was forgotten and was instead filled with the average answer 3 for all questions afterward.
+As only 10 subjects completed the trials the answers from all the questions on each delay were grouped, making for 40 answers on each delay. A box plot showing the distributions of the answers is shown in \ref{fig:form-ans}. For one subject, the 200ms trail was forgotten and was instead filled with the average answer 3 for all questions afterward.
 
-Looking at the averages a clear downward trend can be seen with an increase in delay. The largest steps are in the two steps of 200ms between 0ms to 200ms and 400ms to 600ms. When compared to the quantitative results in \ref{fig:ecdf} it can be seen that the average experience of the delays does not seem to follow the same curve as the actual task performance.  
+Looking at the averages a clear downward trend can be seen with an increase in delay. The largest differences in score are between 0ms to 200ms and 400ms to 600ms, which is to be expected with the larger steps in delay. However, the trend does not seem to correspond to that of the quantitative results in \ref{fig:ecdf} where the step from 0ms to 200ms is about the same as between 200ms, 300ms and 400ms. Although there is a trend in the average, the distributions seen in \ref{fig:form-ans} are quite similar, and more trials and delays are necessary to deduce an exact connection between task performance and operator experience.   
 
 \begin{figure}[!hbt]
    \centering
@@ -731,8 +731,9 @@ Some quotes from the subjects are presented below.
 All the subjects felt reported a difference in the trials. Usually, subjects had a clear view of which trials were the easiest or the most difficult.
 
 \paragraph{3. Was there any part of the track that was harder than any other?}
-Almost all subjects reported that the last corner was the most difficult out of the entire track. This is supported by the quantitative results as a visible spike in pixel error is present at that point in the track throughout all trials.
-Some also stated that it was easier when the hoverboard was closer to the camera. This could be due to the effect of the gimbals' choppiness which was less noticeable at short range, as explained in section \ref{sec:control-choppiness}.
+Almost all subjects reported that the last corner was the most difficult out of the entire track. This is supported by the quantitative results, as a visible spike shows in the average over all subjects.
+
+Some also stated that it was easier when the hoverboard was closer to the camera. This could be due to the effect of the gimbal's choppiness which was less noticeable at short range, as explained in section \ref{sec:control-choppiness}.
 
 \paragraph{4. Do you think the system would have been usable with the worst experimental conditions?}
 On this question, the answer of the subjects varied. A couple gave an absolute no, while others said that it depended on how precise one had to follow the object. 
@@ -741,28 +742,28 @@ On this question, the answer of the subjects varied. A couple gave an absolute n
 All the subjects responded that training would improve one's performance in the system and that they got better at the task as the trials progressed. 
 
 \section{Field Testing}
-The gimbal control software was integrated successfully into the running system and did not interfere with the controls during the experiment. Thus, the goal \textbf{G3} was reached successfully.
+Before the test flights, the gimbal control software was successfully integrated into the running system and was shown not to interfere with the pilot controls. Thus, goal \textbf{G3} was reached.
 
-The two different modes of operation were tested and the results are presented in the following sections.
+During the flights, the two different modes of operation were tested and the results are presented in the following sections.
 
 \subsection{Manual Control}
-During the initial loiter, the plane's orientation changed a lot due to the incoming angle of the wind constantly changing. This made the gimbal very difficult to control manually, with the delay of the controls making it almost impossible to manually compensate with the joystick when the plane made an aggressive roll or yaw.
+During the initial loiter, the plane's orientation changed a lot due to the incoming angle of the wind constantly changing. This made the gimbal very difficult to control manually, with the delay of the controls making it almost impossible to compensate for sudden movements, like when the plane made an aggressive roll or yaw.
 
-After the plane had left the initial loiters it had more time to fly straight. During this time the camera was much easier to control manually, as the plane was more stable and the orientation remained the same for an extended amount of time. 
+After the plane had left the initial loiters it had more time to fly straight. During this time the camera was much easier to control manually, as the plane was more stable and the orientation remained the same for longer. 
 
-Between waypoints 11 and 12, a boat was spotted slightly beside the plane. The gimbal operator decided to try and follow the boat. Although the delay made it more difficult to control the gimbal than in the lab experiment, the boat was successfully followed for a short time. An illustration of the event can be seen in \ref{fig:boat-follow}. It was also observed that the operator could predict the position of the boat, allowing preemptive gimbal movements to compensate for the delay. 
+Between waypoints 11 and 12, a boat was spotted slightly beside the plane. The gimbal operator decided to try and follow the boat. Although the delay made it more difficult to control the gimbal than in the lab experiment, the boat was successfully followed during around three minutes. An illustration of the event can be seen in \ref{fig:boat-follow}. It was also observed that the operator could predict the position of the boat, allowing preemptive gimbal movements to compensate for the delay. 
 
 \begin{figure}[htp]
    \centering
-   \includegraphics[width=.33\textwidth]{images/drone-boat-illustration.png}
-   \caption{Illustration of the drone following the boat. The orange shape is the drone and the triangle is the boat. The green boxes indicate points in time and the blue cone is the drone's field of view which was changed by the gimbal control software during flight.}
+   \includegraphics[width=.5\textwidth]{images/drone-boat-illustration.png}
+   \caption{Illustration of the drone following the boat (not in real scale). The orange shape represents the drone and the grey triangle represents the boat. The green boxes indicate points in time and the blue cone is the drone's field of view which was changed by the gimbal control software during flight.}
    \label{fig:boat-follow}
 \end{figure}
 
-Another observation from the experiment is that being a fixed-wing aircraft, the operator's ability to control the camera relies heavily on the maneuvering of the aircraft, which means that improving the controls of the actual aircraft would improve the experience of controlling the camera significantly. 
+Another observation from the experiment is that being a fixed-wing aircraft, the operator's ability to control the camera relies heavily on the position and heading of the aircraft, which means that improving the controls of the actual aircraft would improve the experience of controlling the camera significantly. 
 
 \subsection{ROI Control}
-The ROI mode was activated on waypoint 12 and worked well when the perspective of the drone was changing rapidly. However, there were some inconsistencies in the altitude data for the points which caused the camera to point at a point below the surface of the earth. The point was adjusted by raising the altitude provided to the GPS point. 
+The ROI mode was activated on waypoint 12 and worked well when the drone was turning at a shorter radius. However, there were some inconsistencies in the altitude data for the points which caused the camera to point at a point below the surface of the earth. The point was adjusted by raising the altitude provided to the GPS point. 
 
 It could also be observed that increasing the loiter radius gave a better image as the inexactness of the GPS point was less impactful.
 
@@ -770,18 +771,18 @@ It could also be observed that increasing the loiter radius gave a better image 
 This chapter aims to evaluate the thesis work in the context of other works as well as its impact, limitations, weaknesses, strengths, sustainability and ethical implications.
 
 \section{Comparison with State-of-the-Art}
-In this chapter, the QoE test bed is compared to other ones within the research field. Then, the specific functionality, namely gimbal control, is compared to already existing solutions.
+In this section a comparison with other modern systems will be made. First, the QoE test bed is compared to other ones within the research field. Then, the specific functionality, namely gimbal control, is compared to already existing solutions in the commercial, military and DIY sector.
 
 \subsection{QoE Test Bed}
-During the development of the test bed, the research facility RISE (Stockholm, Sweden) was contacted as they had experience conducting QoE experiments. During the time of the thesis' work, valuable insights and suggestions were conveyed through several meetings with Kjell Brunnström. A visit was also made to their offices where I got the chance to be a subject in one of their QoE experiments conducted by a PhD student. Although the experimental conditions and objects of study were different, the test beds shared many similarities. 
+During the development of the test bed, the research facility RISE (Stockholm, Sweden) was contacted as they had ample experience conducting QoE experiments. During the time of the thesis' work, valuable insights and suggestions were conveyed through several meetings with Kjell Brunnström. A visit was also made to their offices where I got the chance to be a subject in one of their QoE experiments conducted by a PhD student. Although the experimental conditions and objects of study were different, the test beds shared many similarities. 
 
 \subsection{Commercial Systems}
-In the consumer market, the Chinese manufacturer DJI holds a global market share of more than 70\%, according to CNBC \cite{dji}. Their most popular systems are targeted toward filming and a lot of them feature camera gimbals with features such as stabilization, target following and ROI mode. 
+In the drone consumer market, the Chinese manufacturer DJI holds a global market share of more than 70\%, according to CNBC \cite{dji}. Their most popular systems are targeted toward filming and a lot of them feature camera gimbals with features such as stabilization, target following and ROI mode. 
 
 For companies or people building their own drones, there are also separate drone gimbals that can be bought from manufacturers such as Gremsy \cite{gremsy} or SIYI \cite{siyi}. These particular gimbals cost \$1,399 and \$529.42 respectively and their functionality is highly dependent on the onboard software. For comparison, the SSRS gimbal can be assembled for approximately \$50 with off-the-shelf components and a 3D printer.
 
 \subsection{Military systems}
-As fixed-wing UAVs with gimbals have seen heavy use in the military sector, a high level of sophistication in UAVs and their operations is found in these types of systems. One of the most historically known military drones also featuring a camera gimbal is the MQ-9 Reaper \cite{mq9reaper}, which saw heavy use by the U.S. during the conflicts in Iraq and Afghanistan \cite{mq9reaper-wiki}. More modern systems with drones in more similar size to the SSRS drone (although with very different use cases) include the Turkish Bayraktar drones \cite{bayraktar-wiki} as well as the Switchblade series \cite{switchblade} from the American company AeroVironment.
+As fixed-wing UAVs with gimbals have seen heavy use in the military sector, a high level of sophistication in UAVs and their operations is usually found in these types of systems. One of the most historically known military drones also featuring a camera gimbal is the MQ-9 Reaper \cite{mq9reaper}, which saw heavy use by the U.S. during the conflicts in Iraq and Afghanistan \cite{mq9reaper-wiki}. More modern systems with drones in more similar size to the SSRS drone (although with very different use cases) include the Turkish Bayraktar drones \cite{bayraktar-wiki} as well as the Switchblade series \cite{switchblade} from the American company AeroVironment.
 
 \subsection{ArduPilot Ecosystem}
 In the ArduPilot ecosystem, gimbal control has seen much development in the last year, with the command used for the functionality in this thesis being supported only since the summer of 2022 \cite{ardupilot-gimbal-issue}. As this feature is so new in the drone's onboard software it has not yet been integrated into the mission control software, making it inaccessible for those without the know-how to create an interface themselves.
@@ -790,9 +791,11 @@ In the ArduPilot ecosystem, gimbal control has seen much development in the last
 The test bed developed in this thesis shows promise for evaluating different parameters relevant to QoE research. Beyond further research, the software will be used as a starting point for gimbal control in the SSRS mission control software, contributing to the development of modern SAR tooling. Their system could also be extended to other domains where UAVs have been investigated such as SAR in mountain environments \cite{drones-mountain-sar} or wildfire monitoring \cite{drones-wildfire}.
 
 \section{Limitations}
-The main limitation of the test bed is that the scenario keeps the drone stationary, which is not the case in real flight. Although the results from the experiment are interesting in their own right, the scenario in the experiment is not analogous to that of a real SAR operation. This is mainly because the hoverboard ran in a predictable path, making the results not generalizable to all paths and scenarios.
+The main limitation of the test bed is that the scenario keeps the drone stationary, which is not the case in real flight. Although the results from the experiment are interesting in their own right, the scenario in the experiment is not analogous to that of a real SAR operation. This is mainly due to the experiment only being limited to one scenario where the hoverboard ran in a predictable path, making the results not generalizable to all paths and scenarios.
 
-In the real flight scenario, conducting controlled experiments was limited due to various factors. The primary obstacle lies in the extensive preparations required for each mission, where setting up the drone and its intricate systems demands substantial effort and time. Furthermore, numerous regulations and safety measures must be adhered to before undertaking an unmanned BVLOS flight. Additionally, communication with air traffic control about the mission is initialized two weeks before the flight, and contact is held during the entirety of the mission. Due to the scarcity of actual flight tests, gimbal control was not the only goal of the flight, which meant that there were limited possibilities to orchestrate a good scenario to evaluate operator performance in the system during flight. 
+In the real flight scenario, conducting controlled experiments was limited due to various factors. The primary obstacle lies in the extensive preparations required for each mission, where setting up the drone and its intricate systems demands substantial effort and time. Furthermore, numerous regulations and safety measures must be adhered to before undertaking an unmanned BVLOS flight. For example, communication with air traffic control about the mission is initialized two weeks before the flight, and contact is held during the entirety of the mission.
+
+Due to the scarcity of actual flight tests, gimbal control was not the only goal of the flight, which meant that there were limited possibilities to set up more scenarios to evaluate operator performance in the system during flight. 
 
 An initial wish was also to have the software contributed back to the ArduPilot ecosystem, which was unfortunately not possible as time did not allow for the software to be developed to a sufficient level of quality.
 
@@ -809,14 +812,12 @@ The test bed along with the evaluation method presented in this thesis is a nove
 Another strength of the thesis work is that the software was robust enough to be used in a real flight scenario and will be used in future flight testing.
 
 \section{Sustainability}
-As the UAV is electrically powered, it does not produce any direct CO2 emissions during use. Furthermore, the results from early imagery could allow a rescue crew to go at lower speeds, reducing engine emissions as well as the boat's effects on the surrounding environment. 
-
-Currently, helicopters or airplanes can be put in for aerial support during SAR missions. Future drone systems could support or in some instances completely replace these manned vehicles, and with their smaller size and electrical propulsion they would have much smaller CO2 emissions.
+As the UAV is electrically powered, it does not produce any direct CO2 emissions during use. Considering future scenarios, the results from early imagery could allow a rescue crew to go at lower speeds, reducing engine emissions as well as the boat's effects on the surrounding environment. Currently, helicopters or airplanes can be put in for aerial support during SAR missions. In the future, drone systems could support or in some instances completely replace these manned vehicles, and with their smaller size and electrical propulsion they would have much smaller CO2 emissions.
 
 \section{Ethics}
 The software implemented in this thesis is aimed at assisting in SAR operations and its functionality can as such be deemed critical to human life. Although the idea is that aerial imagery is only to be used as support, the intelligence provided by said imagery has to be reliable as it can affect the decisions onboard a rescue vehicle. This places higher requirements on the robustness of the system and its' operator. 
 
-While the software developed for this thesis aims to assist in SAR operations, gimbal control is highly applicable to more ethically questionable tasks such as surveillance or target acquisition and localization for weapons. 
+While the software developed for this thesis aims to assist in SAR operations, gimbal control is highly applicable to more ethically questionable tasks such as surveillance or target localization and acquisition for weapons. 
 
 In a discussion in the ArduPilot forums \cite{ardupilot-military-discussion}, a user provides an image of the software Mission Planner (a GCS in the ArduPilot ecosystem) being used in what seems to be a military operation. Although ArduPilot states in their code of conduct \cite{ardupilot-coc} that they pledge to not support or facilitate the weaponization of systems based on their software, the accessible nature of it enables anyone to use it for any purpose. In research alone, numerous examples can be found \cite{ardupilot-military} \cite{ardupilot-military-1} where parts of the ArduPilot software and hardware ecosystem are used in military settings.
 
@@ -827,7 +828,7 @@ In this chapter the goals presented in section \ref{sec:scope} are evaluated.
 
 \begin{description}
    \item[G1]
-   Manual gimbal control was successfully implemented on the ArduPlane platform with the use of a PlayStation controller. This was achieved through implementing a program in Python interfacing with the controller as well as the drone using an onboard Raspberry Pi as a proxy. The software was also capable of displaying and recording the drone's video feed as well as simulating latency.
+   Manual gimbal control was successfully implemented on the ArduPlane platform with the use of a PlayStation controller. This was achieved by implementing a program in Python with which an operator could control the view of the drone camera with a joystick. The software was also capable of displaying and recording the drone's video feed as well as simulating latency.
 
    \item[G2]
    In the quantitative results from the experiment, a clear trend can be seen that additional delay hurts the subject's ability to control the camera. Furthermore, the same increase in delay seems to have a larger effect on the subject's performance when introduced at a higher delay. When taking into account the subject's rating of the system, it can be seen that the experience of a user is not always proportional to the worsening of QoS parameters, but more subjects as well as delays are needed to establish an exact relationship. A slight increase in simulator sickness was observed, although it was not statistically significant with only 10 subjects.
