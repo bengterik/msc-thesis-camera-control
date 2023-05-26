@@ -75,11 +75,11 @@ In the second experiment, the software was successfully integrated with the in-f
 \chapter{Introduction}
 The use of UAVs has skyrocketed during the last decade, and due to advancements in technology, a once mainly military technology is now seeing more use in the civilian sector with uses in cinematography, agriculture as well as search and rescue (SAR). The main selling point of the UAV is its' ability to provide aerial data (usually imagery) at a fraction of the cost of manned aircraft, making it a viable alternative for many expensive, remote and dangerous applications.
 
-The use of drones and other small electric vehicles in research as well as in the DIY space has led to the rise of several open-source software initiatives which provide both the software running on the vehicle as well as the ground control software (GCS) used for planning and monitoring missions. 
+The use of drones and other small electric vehicles in research as well as in the DIY space has also led to the rise of several open-source software initiatives, which provide both the software running on the vehicle as well as the ground control software (GCS) used for planning and monitoring missions. 
 
-Although rotor drones are the most common consumer drones, fixed-wing drones have seen a rise in use, mainly for their increased battery time and velocity. Despite these advantages, obtaining imagery from a fixed-wing drone remains more difficult than from a rotor drone as the fixed-wing needs airspeed to stay in flight and will thus eventually fly past a stationary target. To solve this problem, a mechanical gimbal can be used to change the direction of the camera. The operator can also be assisted by software that can adjust the direction of the camera based on the drone's position and orientation, either just to stabilize the video feed or to target a stationary GPS point.
+Although rotor drones are the most common consumer drones, fixed-wing drones are expected to have a lot of use cases due to their increased battery time and velocity. Despite these advantages, obtaining imagery from a fixed-wing drone remains more difficult than from a rotor drone as the fixed-wing needs airspeed to stay in flight and will thus eventually fly past a stationary target. To solve this problem, a mechanical gimbal can be used to change the direction of the camera. The camera operator can also be assisted by software that can adjust the direction of the camera based on the drone's position and orientation, either just to stabilize the video or to target a GPS point.
 
-The Swedish Sea Rescue Society (SSRS) is running a project with Chalmers, Infotiv, Airpelago and RISE called Eyes-on-Scene (EOS), investigating the use of drones to provide early imagery of a maritime incident to rescue personnel on their way to the scene. In the project, a fixed-wing drone carrying a gimbal-mounted camera has been developed on the open-source platform ArduPilot. A web application has been built to ease the process of planning and monitoring missions as well as providing and recording the video feed from the drone camera.
+The Swedish Sea Rescue Society (SSRS), responsible for over 90\% of sea rescue in Sweden, is running a project with Chalmers, Infotiv, Airpelago and RISE called Eyes-on-Scene (EOS), investigating the use of drones to provide early imagery of a maritime incident to rescue personnel on their way to the scene. In the project, a fixed-wing drone carrying a gimbal-mounted camera has been developed on the open-source platform ArduPilot. A web application has also been built to ease the process of planning and monitoring missions as well as providing and recording the video feed from the drone camera.
 
 In the project thus far, the drone has flown several waypoint missions in the archipelago of Gothenburg where the SSRS has a permit to operate drones BVLOS. A problem for the SSRS has been to control the direction of the camera, as the only way to do so has been to upload a GPS point to the drone towards which the autopilot will point the camera. This is a cumbersome process due to the many steps involved in uploading an ROI. An ROI is also susceptible to errors in all three axes, latitude, longitude and altitude, with adjustments in any of the axes usually being necessary once the ROI is uploaded. The SSRS has therefore requested a way to manually control the direction of the camera, either with a joystick or with the arrow keys. With manual controls, they also suspect that latency will have a greater effect on the operator's experience with the system, and want to investigate these effects in more detail.
 
@@ -89,21 +89,23 @@ The rest of this chapter will provide the scope of the project as well as an ove
 \label{sec:scope}
 The principal goals of the thesis work were:
 \begin{description}
-   \item[G1] Implement software based on the hardware from SSRS capable of manually controlling the drone camera with joystick or arrow keys. 
+   \item[G1] Implement software based on the current system from SSRS capable of manually controlling the drone camera with joystick or arrow keys. 
    \item[G2] Conduct an experiment investigating the effects of latency on a camera operator. 
    \item[G3] Integrate the software into the existing drone system of SSRS.
    \item[G4] Evaluate the manual gimbal controls during flight and compare them to the existing "Region of Interest"-mode.
 \end{description}
 
 \section{Report Structure}
-In the second chapter, a more elaborate background is given on UAVs, the SSRS, EOS-project as well as the research field of QoE. A technical background is also given with descriptions of the provided hardware and pre-existing software packages. In the third chapter, the hardware running the test bed along with the software specifically implemented for it is introduced. In the fourth chapter, the two experimental procedures are presented. In the fifth chapter, the results from said experiments are presented. In the sixth chapter, the results are compared to the state-of-the-art and are also evaluated on their strengths, weaknesses, limitations as well as sustainability and ethics. In the seventh chapter, the conclusions from the results are summarized. Lastly, in the eighth chapter, possible future work is presented.
+In the second chapter, a more elaborate background is given on UAVs, the SSRS, EOS-project as well as the research field of QoE. A technical background is also given with descriptions of the provided hardware and pre-existing software packages. In the third chapter, implementation done in the thesis is presented. This includes the hardware running the test bed along with the software implemented to control the camera gimbal. In the fourth chapter, the two experimental procedures are presented. In the fifth chapter, the results from said experiments are presented. In the sixth chapter, the results are compared to the state-of-the-art and are also evaluated on their strengths, weaknesses, limitations as well as sustainability and ethics. In the seventh chapter, the conclusions from the results are summarized. Lastly, in the eighth chapter, possible future work is presented.
 
 \chapter{Background}
 First, this chapter will give background on the particular UAV used, the SSRS and the EOS project. Then, the research field of Quality of Experience will be introduced along with the related work. Lastly, a technical background will be given to the already finished hardware and software modules.  
 
 \section{The UAV}
 \label{sec:fixed-wing-uav}
-The UAV has a fixed-wing airframe and the only equipment it carries is a single camera gimbal. The current system uses a launchpad for takeoff and the idea is that the plane will be able to land on a rescue vessel or in the water, where it can be picked up by the rescue crew. Pictures of the UAV can be seen in figure \ref{fig:fv-drone-pics}. The following subsections will give some background to the airframe and aviation terminology, while the internals of the drone relevant to the thesis are described in more detail in section \ref{sec:uav-components}.
+The UAV has a fixed-wing airframe and the only equipment it carries is a single camera gimbal. The current system uses a launchpad for takeoff and the idea is that the plane will be able to land on a rescue vessel or in the water, where it can be picked up by the rescue crew. It can also be launched manually. Pictures of the UAV can be seen in figure \ref{fig:fv-drone-pics}. 
+
+The following subsections will give some background to the airframe and aviation terminology, while specific components relevant to the thesis work are detailed further on, in section \ref{sec:uav-components}.
 
 \begin{figure}[htp]
    \centering
@@ -143,12 +145,10 @@ The Eyes-On-Scene project is an innovation and research project initiated in 202
    \item[Infotiv] Develop the launcher used for takeoff.
 \end{description}
 
-A web interface for mission control has also been developed in the project. Currently, the interface allows flying to and loitering (circling) around waypoints given on a map where other naval and aerial traffic is displayed in real-time. The map also shows the zones in which one is not allowed to fly, i.e. close to airports or military zones. The interface provides video from the drone camera which is recorded and accessible after the mission.
-
-The only way to control the direction of the camera is by providing a so-called "Region of Interest" (ROI), namely a GPS point with latitude, longitude and altitude. The drone will then calculate the angle to the point and adjust the camera gimbal to look toward it. In the current interface, it is possible to set an ROI by selecting a point on a map and uploading the new waypoint to the drone.
+The interface developed for mission control allows flying to and loitering (circling) around waypoints given on a map where other naval and aerial traffic is also displayed in real-time. The map also shows the zones in which one is not allowed to fly, i.e. close to airports or military zones. The interface provides video from the drone camera which is recorded and accessible after the mission. In the current interface, it is possible to set an ROI by selecting a point on a map and uploading the new waypoint to the drone.
 
 \section{Quality of Experience}
-Quality of Experience is an emerging research field that is concerned with the user's experience in multimedia systems. It is an inherently multidisciplinary field that has close ties to the field of User Experience and Human-Computer Interaction. QoE is also closely related to the field of Quality of Service (QoS), which is concerned with the technical aspects of a system, but aims instead at evaluating the subjective experience through user experiments rather than qualitative measurements.
+Quality of Experience is an emerging research field that is concerned with the user's experience in multimedia systems. It is an inherently multidisciplinary field that has close ties to the field of User Experience and Human-Computer Interaction. QoE is also closely related to the field of Quality of Service (QoS), which is only concerned with the technical aspects of a system, and focuses instead on the user and its interaction with the system.
 
 In the research field of QoE, common objects of study are the effects of latency, jitter or image quality on the operator's experience. Previous QoE research has been on log lifting through a VR headset \cite{industry4.0} and remotely controlled excavation equipment \cite{latency-impact}.
 
@@ -160,7 +160,7 @@ In the white paper \cite{qoe-definition}, Brunström et al. make a working defin
 
 \section{Previous Work}
 
-W. Tärneberg et al. \cite{industry4.0} present a QoE study with industrial equipment on an excavation site where experienced operators controlled their usual equipment remotely at different latencies. They conclude that studying QoE aspects of a system is highly complex and task-dependent. They also state that the operator's experience is time-variant and can be highly dependent on external factors such as lighting conditions or network quality.
+W. Tärneberg et al. \cite{industry4.0} present a QoE study with industrial equipment on an excavation site where experienced operators controlled their usual equipment remotely with different latencies introduced. They conclude that studying QoE aspects of a system is highly complex and task-dependent. They also state that the operator's experience is time-variant and can be highly dependent on external factors such as lighting conditions or network quality.
 
 K. Brunnström et al. \cite{latency-impact} performed a study on log lifting using a head-mounted display system. In the study, latency is introduced both in the display's response to movement as well as the controls. The display delay was found to have a strong effect on nausea, but an observable effect on controller latency could only be found at latencies above 800 ms. 
 
@@ -173,7 +173,14 @@ In this section, the hardware used in the experiments is presented.
 
 \subsection{Fixed-Wing Drone}
 \label{sec:uav-components}
-The drone components relevant to this thesis are detailed in the following description. Pictures of the drone can be seen in \ref{fig:fv-drone-pics} and an explanation of its' design is described in section \ref{sec:fixed-wing-uav}.
+The drone components relevant to this thesis are detailed in the following description. A picture of the internals of the drone is shown in \ref{fig:drone-internals}.
+
+\begin{figure}[!hbt]
+   \centering
+   \rotatebox{90}{\includegraphics[scale=0.1]{images/fv-1.jpg}} 
+   \caption{The housing of the drone's components. On the left side the motor, antennas and control surface servos are visible. In the housing to the right, from top to bottom: RPi with a 4G-modem on top, gimbal, GPS module and flight controller mounted beneath it. To the right the battery pack can be seen.}
+   \label{fig:drone-internals}
+\end{figure}
 
 \begin{description}
    \item[Flight Controller: Pixracer R15] The flight controller is the brain of the aircraft and houses components and connectors relevant to in-flight operations such as servos for control surfaces or other equipment, GPS and accelerometer.
@@ -202,7 +209,7 @@ In order to introduce movement in the QoE experiment, a modified hoverboard was 
 \begin{figure}[!hbt]
    \centering
    \includegraphics[scale=0.07]{images/hoverboard.jpg} 
-   \caption{}
+   \caption{The hoverboard used in the test bed.}
    \label{fig:hoverboard}
 \end{figure}
 
