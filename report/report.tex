@@ -50,13 +50,13 @@ I would first like to thank Fredrik Falkman for introducing me to the EOS projec
 }
 
 \theabstract{
-This thesis work forms part of a project aiming to investigate the use of drones in maritime search-and-rescue (SAR) operations The project is organized by the Swedish Sea Rescue Society (SSRS) and thus far in the project, a fixed-wing drone along with mission control software has been developed. In this thesis work, the focus has been to improve the camera-controls of the drone by implementing a gimbal control interface to evaluate the suitability of manually controlling the camera. 
+The objective of this thesis has been to improve the camera-controls of a fixed-wing drone to be used in maritime search-and-rescue (SAR) operations by the Swedish Sea Rescue Society (SSRS). A gimbal control interface has been implemented that displays the video feed of the drone camera while taking control inputs from a joystick that moves its view in real-time. 
 
-To evaluate the interface, two experiments were conducted. The first in a lab setting, studying the effects of latency on an operator. The second, integrating the software into the existing systems and evaluating the controls when in the air. 
+The interface has then been used to conduct two experiments. The first in a lab setting, studying the effects of latency on the camera operator given a specific task. The results from this experiment show that increasing latency worsens both the operator's ability to perform the task as well as their subjective experience with the system. Comparing the rates at which they worsen, the data suggests that task performance decreases exponentially while the subjective experience decreases linearly, although more trials are required to establish the exact relationships. 
 
-The results from the first experiment show that increasing latency worsens the subject's task performance as well as their subjective experience with the system. Comparing the rates at which they worsen, the data suggests that task performance decreases exponentially while the subjective experience decreases linearly, although more trials are required to establish their exact relationship. In the second experiment, the software was successfully integrated with the pre-existing systems, and a test flight was made over the Gothenburg archipelago. During the flight, the manual controls were deemed most suitable when flying straight for longer periods, either for surveying or following a moving object.
+In the second experiment, the software was integrated with the pre-existing systems of SSRS, and a test flight using the manual controls was made over the Gothenburg archipelago. During the flight, the manual controls were deemed most suitable when flying straight for longer periods, either for surveying or following a moving object.
 
-In conclusion, a versatile test bed was developed which could be used both to conduct a laboratory experiment as well as to control the camera of the drone in flight. 
+In conclusion, a versatile test bed allowing for manual control of the drone's camera was developed. For the SSRS, it will serve as a starting point for better camera controls, while it also can be used in further research to understand the relationship between network parameters and an operator's quality of experience.
 }
 
 \keywords{Drones, Search and Rescue, Unmanned Aerial Vehicle, UAV, gimbal, camera control, ArduPilot, Quality of Experience, QoE}
