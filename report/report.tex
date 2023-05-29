@@ -100,22 +100,22 @@ The principal goals of the thesis work were:
 \end{description}
 
 \section{Report Structure}
-In the second chapter, a more elaborate background is given on UAVs, the SSRS, EOS-project as well as the research field of QoE. A technical background is also given with descriptions of the provided hardware and pre-existing software packages. In the third chapter, the implementation done in the thesis is presented. This includes the hardware running the test bed along with the software implemented to control the camera gimbal. In the fourth chapter, the two experimental procedures are presented. In the fifth chapter, the results from said experiments are presented. In the sixth chapter, the results are compared to the state-of-the-art and are also evaluated on their strengths, weaknesses, limitations as well as sustainability and ethics. In the seventh chapter, the conclusions from the results are summarized. Lastly, in the eighth chapter, possible future work is presented.
+In the second chapter, a more elaborate background is given on UAVs, the SSRS, the EOS-project as well as the research field of QoE. A technical background is also given with descriptions of the provided hardware and pre-existing software packages. In the third chapter, the implementation done in the thesis is presented. In the fourth chapter, the two experimental procedures are presented. In the fifth chapter, the results from said experiments are presented. In the sixth chapter, the results are compared to the state-of-the-art and are also evaluated on their strengths, weaknesses, limitations as well as sustainability and ethics. In the seventh chapter, the conclusions from the results are summarized. Lastly, in the eighth chapter, possible future work is presented.
 
 \chapter{Background}
 First, this chapter will give background on the particular UAV used, the SSRS and the EOS project. Then, the research field of QoE will be introduced along with the related work. Lastly, a technical background will be given to the already finished hardware and software modules.  
 
 \section{The UAV}
 \label{sec:fixed-wing-uav}
-The UAV has a fixed-wing airframe and the only equipment it carries is a single camera gimbal. The current system uses a launchpad for takeoff and the idea is that the plane will be able to land on a rescue vessel or in the water, where it can be picked up by the rescue crew. It can also be launched manually. Pictures of the UAV can be seen in figure \ref{fig:fv-drone-pics}. 
+The UAV has a fixed-wing airframe and the only equipment it carries is a single camera gimbal. While it can be launched manually, the final system will use a launchpad for takeoff and land either on a rescue vessel or in the water, where it can be picked up by the rescue crew. Pictures of the UAV can be seen in figure \ref{fig:fv-drone-pics}. 
 
-The following subsections will give some background to the airframe and aviation terminology, while specific components relevant to the thesis work are detailed further on, in section \ref{sec:uav-components}.
+The following subsections will give some background to the airframe and some basic aviation terminology. For a description of the specific components relevant to the thesis work, they are detailed in section \ref{sec:uav-components}.
 
 \begin{figure}[htp]
    \centering
    \rotatebox{90}{\includegraphics[width=.7\textwidth]{images/fv-3.jpg}}
    \includegraphics[width=.467\textwidth]{images/flying-drone.jpg}
-   \caption{The SSRS fixed-wing drone. The leftmost picture shows the top of the drone while to the right the drone is seen from below in flight. Right picture credits: Mats Ryde.}
+   \caption{The SSRS fixed-wing drone. The leftm picture shows the drone from above. In the right picture, the drone is seen in flight with the gimbal and camera visible. Right picture credits: Mats Ryde.}
    \label{fig:fv-drone-pics}
 \end{figure}
 
@@ -133,13 +133,13 @@ In aviation, there are special terms for orientation used commonly when talking 
 \end{figure}
 
 \section{The Swedish Sea Rescue Society}
-As can be read on their website \cite{ssrs}, the Swedish Sea Rescue Society (SSRS) is a non-profit organization that was founded at a conference in Stockholm in 1906 due to Sweden receiving criticism of its' poor sea rescue. Today, it is a foundation with 40 employees and over 143 000 members, and with 2400 volunteers manning their 260 rescue vessels, they carry out around 90\% of all sea rescues in Sweden all year around.
+As can be read on their website \cite{ssrs}, the Swedish Sea Rescue Society (SSRS) is a non-profit organization that was founded at a conference in Stockholm in 1906 due to Sweden receiving criticism of its poor sea rescue. Today, it is a foundation with 40 employees and over 143 000 members, and with 2400 volunteers manning their 260 rescue vessels, they contribute to around 90\% of all sea rescues in Sweden all year around.
 
 \subsection{Innovation}
-As stated in their statutes \cite{ssrs-statues}, the mission of SSRS is not solely to carry out these rescue missions but to also innovate and collaborate in the area of maritime rescue as well as other aiding activities in society as a whole. As a result of this, the drone project that this thesis is a part of has been conceived along with other innovation projects such as foiling rescue boats and improved rescue vehicles \cite{surtsey-innovation}.
+As stated in their statutes \cite{ssrs-statues}, the mission of the SSRS is not solely to carry out these rescue missions, but also to innovate and collaborate in the area of maritime rescue as well as other aiding activities in society as a whole. As a result of this, the drone project that this thesis forms part of has been conceived along with other innovation projects such as foiling rescue boats and improved rescue vehicles \cite{surtsey-innovation}.
 
 \section{Drone Project: Eyes On Scene}
-The Eyes-On-Scene project is an innovation and research project initiated in 2021 by the SSRS, Chalmers, Infotiv, Smartplanes and Airpelago. It is partially funded by the Swedish Transport Administration as part of their airspace portfolio and was set out to explore the possibilities of using UAVs as a support tool for sea rescue operations. A brief description of the different roles of the stakeholders is given in the following description:
+The Eyes-On-Scene project is a research and innovation project initiated in 2021 by the SSRS, Chalmers, Infotiv, Smartplanes and Airpelago. It is partially funded by the Swedish Transport Administration as part of their airspace portfolio and was set out to explore the possibilities of using UAVs as a support tool for sea rescue operations. A brief description of the different roles of the stakeholders is given in the following description:
 
 \begin{description}
    \item[The Swedish Sea Rescue Society] Provide domain knowledge and requirements for the project. 
@@ -149,12 +149,12 @@ The Eyes-On-Scene project is an innovation and research project initiated in 202
    \item[Infotiv] Develop the launcher used for takeoff.
 \end{description}
 
-The interface developed for mission control allows flying to and loitering (circling) around waypoints given on a map where other naval and aerial traffic is also displayed in real-time. The map also shows the zones in which one is not allowed to fly, i.e. close to airports or military zones. The interface provides video from the drone camera which is recorded and accessible after the mission. In the current interface, it is possible to set an ROI by selecting a point on a map and uploading the new waypoint to the drone.
+The current interface developed for mission control allows for flying to and loitering around (circling) waypoints given on a map where other naval and aerial traffic is also displayed in real-time. The map also shows the zones in which one is not allowed to fly, i.e. close to airports or military zones. The interface provides video from the drone camera which is recorded and accessible after the mission. In the current interface, it is possible to set an ROI by selecting a point on a map and uploading the new waypoint to the drone.
 
 \section{Quality of Experience}
-Quality of Experience is an emerging research field that is concerned with the user's experience in multimedia systems. It is an inherently multidisciplinary field that has close ties to the field of User Experience and Human-Computer Interaction. QoE is also closely related to the field of Quality of Service (QoS), which is only concerned with the technical aspects of a system, and focuses instead on the user and its interaction with the system.
+Quality of Experience is an emerging research field that is concerned with the user's experience in multimedia systems. It is an inherently multidisciplinary field that has close ties to the field of User Experience and Human-Computer Interaction. QoE is also closely related to the field of Quality of Service (QoS), where technical aspects of a networked systems are compared and evaluated on quantative measurements like latency and throughput. The focus of QoE-research is instead on the effects of network parameters on the user and its interaction with the networked system.
 
-In the research field of QoE, common objects of study are the effects of latency, jitter or image quality on the operator's experience. Previous QoE research has been on log lifting through a VR headset \cite{industry4.0} and remotely controlled excavation equipment \cite{latency-impact}.
+In the field of QoE, common objects of study are the effects of latency, jitter or image quality. For example, previous QoE research has been made on the effects of latency in remote log lifting through a VR headset \cite{industry4.0} and remotely controlled excavation equipment \cite{latency-impact}.
 
 In the white paper \cite{qoe-definition}, Brunström et al. make a working definition of Quality of Experience: 
 
@@ -661,7 +661,9 @@ In \ref{tab:averages} the mean and standard deviation of the different delays ar
    \label{fig:avg-std}
 \end{figure}
 
-In figure \ref{fig:ecdf} the empirical cumulative distribution functions (ECDF) for the results of each delay are shown. The x-axis represents the value that the entry has while the y-axis represents the percentage of entries that are less than or equal to the x-axis value. The increase in both the average and mean can be observed as the delay increases. It can also be deduced that the distance between the curves 0ms and 200ms is much smaller than that between the curves 400ms and 600ms. This could indicate that the added 200ms added delay had a larger impact at 400ms than at 0 ms.
+In figure \ref{fig:ecdf} the empirical cumulative distribution functions (ECDF) for the results of each delay are shown. The x-axis represents the value that the entry has while the y-axis represents the percentage of entries that are less than or equal to the x-axis value. The increase in both the average and mean can be observed as the delay increases. It can also be deduced that the distance between the curves 0ms and 200ms is much smaller than that between the curves 400ms and 600ms. This could indicate that the additional 200ms added delay had a larger impact at 400ms than at 0 ms.
+
+When taking into account the inherent latency of the system of around 400ms, there seems to be a larger effect on operator performance at the only latency higher than 800ms. This also the threshold delay for which an observable effect on controller latency was found in \cite{latency-impact}.
 
 \begin{figure}[!hbt]
    \centering
