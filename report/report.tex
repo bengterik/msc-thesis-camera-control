@@ -200,15 +200,15 @@ The drone components relevant to this thesis are detailed in the following descr
    \begin{figure}[htp]
       \centering
       \includegraphics[width=.3\textwidth]{images/gimbal-1.png}\hfill
-      \includegraphics[width=.3\textwidth]{images/gimbal-2.png}\hfill
-      \includegraphics[width=.3\textwidth]{images/gimbal-3.png}
-      \caption{Schematics of the drone gimbal. The middle and left picture shows the gimbal with its full housing. To the right, the housing has been removed and a mockup camera module has been inserted on the mounting plate.}
+      \includegraphics[width=.35\textwidth]{images/gimbal-3.png}\hfill
+      \includegraphics[width=.25\textwidth]{images/gimbal-2.png}
+      \caption{Schematics of the drone gimbal. The left and right picture shows the gimbal with its full housing. In the middle picture, the housing has been removed and a mockup camera module has been inserted on the mounting plate. Beneath the camera the three servos can be seen in blue.}
       \label{fig:gimbal-pics}
    \end{figure}
 \end{description}
    
 \subsection{Hoverboard robot}
-In order to introduce movement in the QoE experiment, a modified hoverboard was used. The hoverboard has four wheels and could be controlled via joystick inputs or coordinates. Its maneuvering was assisted by real-time lidar mapping of the room. The hoverboard can be seen in \ref{fig:hoverboard}
+In order to introduce movement in the QoE experiment, a modified hoverboard was used. The hoverboard had two additional wheels in order to be stable and could be controlled via joystick inputs or coordinates. Its maneuvering was assisted by real-time lidar mapping of the room. The hoverboard can be seen in \ref{fig:hoverboard}
 
 \begin{figure}[!hbt]
    \centering
@@ -221,7 +221,6 @@ The average velocity of the hoverboard was determined at 0.184 m/s with a standa
 
 \begin{table}[!hbt]
    \centering
-   \label{tab:hoverboard-error}
    \begin{tabular}{|c|c|c|c|}
       \hline
       \textbf{Axis} & \textbf{Average (mm)} & \textbf{Min (mm)} & \textbf{Max(mm)} \\
@@ -232,6 +231,7 @@ The average velocity of the hoverboard was determined at 0.184 m/s with a standa
       \hline
    \end{tabular}
    \caption{Error from the origin when told to start and stop at the same position.}
+   \label{tab:hoverboard-error}
 \end{table}
 
 \subsection{Apriltag}
@@ -263,23 +263,23 @@ In this section, the pre-existing software used in the experiments will be detai
 In this chapter the hardware and software developed specifically for the thesis are detailed.
 
 \section{Gimbal Box}
-As the entire drone was not needed to conduct the QoE experiment, a Raspberry Pi, flight controller and gimbal were mounted inside a 2L Ikea SmartStore box. The computer boards were mounted inside the box with velcro tape and the gimbal was mounted in a cutout in the bottom of the box. Pictures of the box can be seen in figure \ref{fig:drone-setup}.
+As the entire drone was not needed to test the software, a Raspberry Pi, flight controller and gimbal were mounted inside a 2L Ikea SmartStore box. The computer boards were mounted with velcro tape and the gimbal was mounted in a cutout in the bottom of the box. Pictures of the box can be seen in figure \ref{fig:drone-setup}.
 
 \begin{figure}[htp]
    \centering
    \includegraphics[width=.47\textwidth]{images/drone-box-1.jpg}\hfill
    \includegraphics[width=.47\textwidth]{images/drone-box-2.jpg}
-   \caption{The box that houses the drone hardware for the experiment. The left picture shows the box from above, from the left the following components are visible: a flight controller, a gimbal with a camera module, a power supply module and a Raspberry Pi. The right image shows the box from below.}
+   \caption{Pictures of the box that houses the drone hardware for the experiment. The left picture shows the box from above, from the left the following components are visible: a flight controller, a gimbal with a camera module, a power supply module and a Raspberry Pi. The right image shows the box from below.}
    \label{fig:drone-setup}
 \end{figure}
 
 
 \section{Gimbal Control Interface}
-Addressing goal \textbf{G1} of the thesis, a program was implemented in Python to display the video feed from the drone camera while taking control inputs from the operator. The inputs came from the right joystick of a PlayStation controller while the program sent messages updating the gimbal's position with a set frequency. The program could also record the video feed displayed to the gimbal operator. A visual overview of the system is shown in Figure \ref{fig:system-overview}.
+Addressing goal \textbf{G1} of the thesis, a program was implemented in Python to display the video feed from the drone camera while taking control inputs from the operator. The inputs came from the right joystick of a PlayStation controller while the program sent messages updating the gimbal's position with a set frequency. The program also had capability to record the video feed. A visual overview of the system is shown in Figure \ref{fig:system-overview}.
 \begin{figure}[!hbt]
    \centering
    \includegraphics[scale=0.25]{images/system-overview.png} 
-   \caption{An overview of the gimbal control interface with the color of the connecting lines representing which software speaks to which and what data they transfer. On the left, the drone and its' hardware and software components: the RPi running MavProxy and UV4L, the flight controller running ArduPlane and lastly the RPi camera module. On the right, the gimbal interface and its' software components: OpenCV for obtaining and displaying video, Evdev for the controller inputs and Pymavlink for establishing the connection with the drone. }
+   \caption{An overview of the gimbal control interface with the color of the connecting lines representing which software speaks to which data they transfer. On the left, the drone and its' hardware and software components: the RPi running MavProxy and UV4L, the flight controller running ArduPlane and lastly the RPi camera module. On the right, the gimbal interface and its' software components: OpenCV for obtaining and displaying video, Evdev for the controller inputs and Pymavlink for establishing the connection with the drone. }
    \label{fig:system-overview}
 \end{figure}
 
