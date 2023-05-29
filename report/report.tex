@@ -279,7 +279,7 @@ Addressing goal \textbf{G1} of the thesis, a program was implemented in Python t
 \begin{figure}[!hbt]
    \centering
    \includegraphics[scale=0.25]{images/system-overview.png} 
-   \caption{An overview of the gimbal control interface with the color of the connecting lines representing which software speaks to which data they transfer. On the left, the drone and its' hardware and software components: the RPi running MavProxy and UV4L, the flight controller running ArduPlane and lastly the RPi camera module. On the right, the gimbal interface and its' software components: OpenCV for obtaining and displaying video, Evdev for the controller inputs and Pymavlink for establishing the connection with the drone. }
+   \caption{An overview of the GCI with the color of the connecting lines representing which software speaks to which data they transfer. On the left, the drone and its' hardware and software components: the RPi running MavProxy and UV4L, the flight controller running ArduPlane and lastly the RPi camera module. On the right, the gimbal interface and its' software components: OpenCV for obtaining and displaying video, Evdev for the controller inputs and Pymavlink for establishing the connection with the drone. }
    \label{fig:system-overview}
 \end{figure}
 
@@ -377,9 +377,9 @@ This chapter will describe the setup, procedure and evaluation of the two experi
 The goal of this experiment was to investigate the effects of latency on a camera operator, addressing goal \textbf{G2} of the thesis scope.
 
 \subsection{Experiment Design}
-The desire was to use the drone box to create a task that would be similar to what an operator would perform in a sea rescue scenario. A likely scenario was considedered to be that of a drone loitering around a point while trying to look toward what it was loitering around. The hoverboard was chosen to move the drone box. 
+The desire was to use the drone box to create a task that would be similar to what an operator would perform in a sea rescue scenario. A likely scenario was considedered to be that of a drone loitering around a point while trying to look toward what it was loitering around. 
 
-With the video being the main feedback to the operator, pixel distance in an image was deemed to be a good metric for task performance. Furthermore, with the use of an Apriltag, the number of frames to be analyzed could be dramatically increased compared to manual analysis.
+With the video being the main feedback to the operator, pixel distance in an image was deemed to be a good metric for task performance. To evaluate the performance of an operator, automatic detection using an Apriltag was considered from the implementation stages of the thesis. With this approach, the amount of frames that could be analyzed could be dramatically increased compared to manual evaluation.
 
 Initial tests were done with the gimbal box sitting on top of the hoverboard while the hoverboard was moving in a circle. This would result in an upside-down loiter with the gimbal looking up at a point in the ceiling that was in the center of its loiter. The scenario is shown in Figure \ref{fig:testbed-idea-1}. After some initial testing, this was deemed to introduce several points of failure in the test bed:
 
@@ -390,14 +390,14 @@ Initial tests were done with the gimbal box sitting on top of the hoverboard whi
    \label{fig:testbed-idea-1}
 \end{figure}
 
-\begin{itemize}
+\begin{enumerate}
    \item Power had to be supplied via a power bank.
    \item Network connection had to go over WiFi with substantially more delay and jitter than an ethernet cable connection. 
    \item Using automatic detection, the lighting from the ceiling and windows reduced the contrast of the Apriltag, making it harder to detect for the algorithm.
    \item When mounted, the gimbal box was higher than the lidar mounted on the hoverboard, confusing the location algorithm on the hoverboard.
-\end{itemize}
+\end{enumerate}
 
-In the end, the loitering scenario was flipped, placing the gimbal box on top of a shelf and looking down at the moving robot, shown in Figure \ref{fig:testbed-idea-2}. Since the gimbal could not turn around completely, the box had to be placed next to the path where the hoverboard was running. The hoverboard was started from a green marker in the room and ran two laps of a 2x1m ellipse. Its path in the lab can be seen in Figure \ref{fig:exp-setup}.
+In the end, the loitering scenario was flipped, placing the gimbal box on top of a shelf and looking down at the moving robot, shown in Figure \ref{fig:testbed-idea-2}. Since the gimbal could not turn around completely, the box had to be placed next to the path where the hoverboard was running. Green tape was placed on the floor in the room from which the hoverboard could run in a path 2x1m ellipse. Its path in the lab can be seen in Figure \ref{fig:exp-setup}.
 
 \begin{figure}[htp]
    \centering
@@ -479,7 +479,7 @@ The experiment starts with the subject being seated at the desk to read through 
 Then, the subject fills out the background information form where they also get to choose a four-digit code which from that point is the only identifier of the subject and its results. If the subject booked a time slot in the spreadsheet, they were at this point removed from it.
 
 \subsubsection{Experiment Walkthrough}
-The task was explained to the subject while a printed Apriltag with a cross on it was shown, marking the spot where to aim at the tag. The particular Apriltag printed for this experiment had two white and two black squares meeting in the middle, making the center easier to identify. The Apriltag shown to the subject is shown in Figure \ref{fig:apriltag}.
+The task was explained to the subject along with a printed Apriltag with a cross on it, indicating the spot where to aim at the tag. The particular Apriltag printed for this experiment had two white and two black squares meeting in the middle, making the center easier to identify. The Apriltag shown to the subject is shown in Figure \ref{fig:apriltag}.
 
 \begin{figure}[!hbt]
    \centering
@@ -607,18 +607,17 @@ The control of the gimbal is done through a command sent to the drone with two a
 The goal of this experiment was to integrate the software built for the test bed into the existing drone system, addressing goals \textbf{G3} and \textbf{G4} of the thesis scope. 
 
 \subsection{Preparations}
-For the experiment, the gimbal control interface was modified to run with the software configured on the actual drone. The video and recording components were entirely removed and the IP address to which the program connected was changed to that of the 4G modem on the drone.
+For this experiment, the video and recording components were entirely removed from the GCI and the IP address to which the program connected to was changed to that of the 4G modem on the drone.
 
 To compare the new controls to the already existing ROI mode, a button on the controller was mapped to switch between joystick mode and ROI mode, which when activated uploaded a pre-programmed GPS point for the drone to look at.
 
-The SSRS permit to operate BVLOS in the Gothenburg archipelago requires contact with the flight tower being initiated two weeks ahead of a scheduled flight. This was made along with several technical preparations for the aircraft.
+The SSRS permit to operate BVLOS in the Gothenburg archipelago requires continuous contact with the flight tower, which was initiated two weeks ahead of a scheduled flight and throughout the entire flight.
 
 \subsection{Outdoor Conditions}
 The weather was sunny with almost no clouds. The ground-level wind was estimated to be around 5-9 m/s and the temperature was around 12 degrees Celsius.
 
 \subsection{Procedure}
-A flight plan of 17 waypoints including a loiter waypoint was uploaded to the drone. The flight plan can be seen in \ref{fig:flight-plan}. The first and the last waypoints were close to the launch and the rest were placed on a route out in the archipelago. The drone was launched in manual mode and was flown in circles around the operators, confirming that all the systems were working. The gimbal control software was also confirmed to be working during this phase, and the latency of the control was estimated to be between one and two seconds. The drone was then switched into auto mode and the flight plan was started.
-
+A flight plan of 17 waypoints including a loiter waypoint was uploaded to the drone. The flight plan can be seen in \ref{fig:flight-plan}. The first and the last waypoints were close to the launch and the rest were placed on a route out in the archipelago. The drone was launched in manual mode and was flown in circles around the operators, confirming that all the systems were working. The drone was then switched into auto mode and the flight plan was started.
 
 \begin{figure}[!hbt]
    \centering
@@ -747,25 +746,25 @@ On this question, the answer of the subjects varied. A couple gave an absolute n
 All the subjects responded that training would improve one's performance in the system and that they got better at the task as the trials progressed. 
 
 \section{Field Testing}
-Before the test flights, the gimbal control software was successfully integrated into the running system and was shown not to interfere with the pilot controls. Thus, goal \textbf{G3} was reached.
+Before the test flights, the GCI was successfully integrated into the running system and was shown not to interfere with the pilot controls. Thus, goal \textbf{G3} was reached.
 
 During the flights, the two different modes of operation were tested and the results are presented in the following sections.
 
 \subsection{Manual Control}
-During the initial loiter, the plane's orientation changed a lot due to the incoming angle of the wind constantly changing. This made the gimbal very difficult to control manually, with the delay of the controls making it almost impossible to compensate for sudden movements, like when the plane made an aggressive roll or yaw.
+During the initial loiter, the plane's orientation changed a lot due to the incoming angle of the wind constantly changing. This made the gimbal very difficult to control manually, with the delay of the controls making it almost impossible to compensate for sudden movements, for example when the plane made an aggressive roll or yaw.
 
 After the plane had left the initial loiters it had more time to fly straight. During this time the camera was much easier to control manually, as the plane was more stable and the orientation remained the same for longer. 
 
-Between waypoints 11 and 12, a boat was spotted slightly beside the plane. The gimbal operator decided to try and follow the boat. Although the delay made it more difficult to control the gimbal than in the lab experiment, the boat was successfully followed during around three minutes. An illustration of the event can be seen in \ref{fig:boat-follow}. It was also observed that the operator could predict the position of the boat, allowing preemptive gimbal movements to compensate for the delay. 
+Between waypoints 11 and 12, a boat was spotted coming up besides the drone which the gimbal operator decided to try and follow. Although delay made it more difficult to control the gimbal than in the lab experiment, the boat was successfully followed during around three minutes. An illustration of the event can be seen in \ref{fig:boat-follow}. It was observed that the operator could predict the position of the boat, allowing preemptive gimbal movements to compensate for the delay. 
 
 \begin{figure}[htp]
    \centering
    \includegraphics[width=.5\textwidth]{images/drone-boat-illustration.png}
-   \caption{Illustration of the drone following the boat (not in real scale). The orange shape represents the drone and the grey triangle represents the boat. The green boxes indicate points in time and the blue cone is the drone's field of view which was changed by the gimbal control software during flight.}
+   \caption{Illustration of the drone following the boat (not in real scale). The orange shape represents the drone and the grey triangle represents the boat. The green boxes indicate points in time and the blue cone is the drone's field of view which was changed by the GCI during flight.}
    \label{fig:boat-follow}
 \end{figure}
 
-Another observation from the experiment is that being a fixed-wing aircraft, the operator's ability to control the camera relies heavily on the position and heading of the aircraft, which means that improving the controls of the actual aircraft would improve the experience of controlling the camera significantly. 
+Another observation from the experiment is that being a fixed-wing aircraft, the operator's ability to control the camera relies heavily on the position and heading of the aircraft. This means that in a real scenario, the operator's ability to control the camera would be dependant highly dependant on the controls of the aircraft. 
 
 \subsection{ROI Control}
 The ROI mode was activated on waypoint 12 and worked well when the drone was turning at a shorter radius. However, there were some inconsistencies in the altitude data for the points which caused the camera to point at a point below the surface of the earth. The point was adjusted by raising the altitude provided to the GPS point. 
