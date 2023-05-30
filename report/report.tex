@@ -299,7 +299,7 @@ The application was run with Python version 3.9.16 and used the following librar
 \end{description}
 
 \subsection{Delay}
-Delays in the controls could be introduced by providing an argument to the program when started. The delay was simulated by putting each outgoing message in a queue along with a timestamp, with the program waiting until \ timestamp + delay \ was reached before sending the command. The following algorithm was used to schedule the sending of commands according to the delay:
+Delays in the controls could be introduced by providing an argument to the program when started. The delay was simulated by putting each outgoing message in a queue along with a timestamp, with the program waiting until $ \text{timestamp} + \text{delay} $ was reached before sending the command. The following algorithm was used to schedule the sending of commands according to the delay: 
 \begin{algorithmic}
    \While{running}
    \State $timestamp, pitch, yaw = queue.get()$ // blocking call
@@ -377,7 +377,7 @@ This chapter will describe the setup, procedure and evaluation of the two experi
 The goal of this experiment was to investigate the effects of latency on a camera operator, addressing goal \textbf{G2} of the thesis scope.
 
 \subsection{Experiment Design}
-The desire was to use the drone box to create a task that would be similar to what an operator would perform in a sea rescue scenario. A likely scenario was considedered to be that of a drone loitering around a point while trying to look toward what it was loitering around. 
+The desire was to use the drone box to create a task that would be similar to what an operator would perform in a sea rescue scenario. A likely scenario was considedered to be that of a drone loitering around a point while looking at the loiters center. 
 
 With the video being the main feedback to the operator, pixel distance in an image was deemed to be a good metric for task performance. To evaluate the performance of an operator, automatic detection using an Apriltag was considered from the implementation stages of the thesis. With this approach, the amount of frames that could be analyzed could be dramatically increased compared to manual evaluation.
 
@@ -769,13 +769,13 @@ Another observation from the experiment is that being a fixed-wing aircraft, the
 \subsection{ROI Control}
 The ROI mode was activated on waypoint 12 and worked well when the drone was turning at a shorter radius. However, there were some inconsistencies in the altitude data for the points which caused the camera to point at a point below the surface of the earth. The point was adjusted by raising the altitude parameter of the ROI. 
 
-It could also be observed that increasing the loiter radius gave a better image as the inexactness of the GPS point was less impactful.
+It could also be observed that increasing the loiter radius gave a better image as the inexactness of the GPS point was less impactful. 
 
 \chapter{Discussion}
-This chapter aims to evaluate the thesis work in the context of other works as well as its impact, limitations, weaknesses, strengths, sustainability and ethical implications.
+In this chapter, a comparison between the functionality developed in the thesis to the state-of-the-art will be made. Furthermore, it will also discuss the work in regards of its impact, limitations, weaknesses, strengths, sustainability and ethical implications.
 
 \section{Comparison with State-of-the-Art}
-In this section a comparison with other modern systems will be made. First, the QoE test bed is compared to other ones within the research field. Then, the specific functionality, namely gimbal control, is compared to already existing solutions in the commercial, military and DIY sector.
+In this section, a comparison with other modern systems will be made. First, the QoE test bed is compared to other ones within the research field. Then, the specific functionality, namely gimbal control, is compared to already existing solutions in the commercial, military and DIY sector.
 
 \subsection{QoE Test Bed}
 During the development of the test bed, the research facility RISE (Stockholm, Sweden) was contacted as they had ample experience conducting QoE experiments. During the time of the thesis' work, valuable insights and suggestions were conveyed through several meetings with Kjell Brunnström. A visit was also made to their offices where I got the chance to be a subject in one of their QoE experiments conducted by a PhD student. Although the experimental conditions and objects of study were different, the test beds shared many similarities. 
@@ -799,33 +799,35 @@ The main limitation of the test bed is that the scenario keeps the drone station
 
 In the real flight scenario, conducting controlled experiments was limited due to various factors. The primary obstacle lies in the extensive preparations required for each mission, where setting up the drone and its intricate systems demands substantial effort and time. Furthermore, numerous regulations and safety measures must be adhered to before undertaking an unmanned BVLOS flight. For example, communication with air traffic control about the mission is initialized two weeks before the flight, and contact is held during the entirety of the mission.
 
-Due to the scarcity of actual flight tests, gimbal control was not the only goal of the flight, which meant that there were limited possibilities to set up more scenarios to evaluate operator performance in the system during flight. 
+Due to the scarcity of actual flight tests, gimbal control was usually not the main goal of the flight, which meant that there were limited possibilities to set up scenarios to evaluate operator performance in the system during flight. One example of this is the so-called "earth-frame"-mode, with which the gimbal points in a compass heading instead of an angle relative to the aircaft. This effectively stabilizes the yaw-axis as well which could improve the steering sensation when flying. Due to time limitations this mode was not tested, but could be of interest in further research.
 
 An initial wish was also to have the software contributed back to the ArduPilot ecosystem, which was unfortunately not possible as time did not allow for the software to be developed to a sufficient level of quality.
 
 \section{Weaknesses}
-For the QoE experiment, the main sources of error are presented in their entirety in section \ref{sources-of-error}. Among these, the most significant is probably the feeling of the controls, as some technical limitations were leading to choppiness and an unintuitive control sensation reported by some of the subjects. Furthermore, the subject had no say in the sensitivity of the controls or if they preferred to use a different control scheme.
+For the QoE experiment, the main sources of error are presented in their entirety in section \ref{sources-of-error}. Among these, the most significant is probably the feeling of the controls, as many subjects reported on this in their interviews. Furthermore, the subject had no say in the sensitivity of the controls or if they preferred to use a different control scheme.
 
-A big weakness is also the subject selection, as they were not representative of society as a whole nor the target group of the future SSRS system.   
+A big weakness is also the subject selection, as they were not representative of society as a whole nor the target group of the future SSRS system. 
 
-Regarding in-flight testing, there is a so-called "earth-frame"-mode for the gimbal that points it in a compass heading, effectively stabilizing the yaw-axis as well. This mode was not tested in the experiment but could be of interest in further research.
+In regards to flight testing, the main goal of the thesis was to have working controls and it was uncertain wether a test scenario would be possible to set up. As a result of this, the in-flight tests of the gimbal, albeit successfull, are not so generalizable. 
 
 \section{Strengths}
-The test bed along with the evaluation method presented in this thesis is a novel approach to QoE experiments, where qualitative measures can be taken in high quantity in an unintrusive manner to the test subject. Due to the design of the ArduPilot ecosystem, the test bed is also portable and would require no modification to work on other vehicles such as multi-rotors, rovers or submarines running the ArduPilot firmware.
+The test bed along with the evaluation method presented in this thesis is a novel approach to QoE experiments, where qualitative measurements can be taken in high quantity unintrusively to the test subject. Due to the design of the ArduPilot ecosystem, the test bed is also compatible with other ArduPilot systems, and would require no modification in order to work on other vehicles such as multi-rotors, rovers or even submarines.
 
 Another strength of the thesis work is that the software was robust enough to be used in a real flight scenario and will be used in future flight testing.
 
 \section{Sustainability}
-As the UAV is electrically powered, it does not produce any direct CO2 emissions during use. Considering future scenarios, the results from early imagery could allow a rescue crew to go at lower speeds, reducing engine emissions as well as the boat's effects on the surrounding environment. Currently, helicopters or airplanes can be put in for aerial support during SAR missions. In the future, drone systems could support or in some instances completely replace these manned vehicles, and with their smaller size and electrical propulsion they would have much smaller CO2 emissions.
+As the UAV is electrically powered, it does not produce any direct CO2 emissions during use. Considering future SAR-scenarios, early imagery could allow a rescue crew to go at lower speeds, reducing engine emissions as well as the boat's effects on the surrounding environment. 
+
+Currently, helicopters or airplanes can be put in for aerial support during SAR missions. In the future, drone systems could support or in some instances completely replace these manned vehicles, and with their smaller size and electrical propulsion they would have much smaller CO2 emissions.
 
 \section{Ethics}
 The software implemented in this thesis is aimed at assisting in SAR operations and its functionality can as such be deemed critical to human life. Although the idea is that aerial imagery is only to be used as support, the intelligence provided by said imagery has to be reliable as it can affect the decisions onboard a rescue vehicle. This places higher requirements on the robustness of the system and its' operator. 
 
-While the software developed for this thesis aims to assist in SAR operations, gimbal control is highly applicable to more ethically questionable tasks such as surveillance or target localization and acquisition for weapons. 
+Although the software developed for this thesis is aimed at a certain type of operation, gimbal control remains highly applicable to more ethically questionable tasks such as surveillance or target acquisition for weapons. 
 
 In a discussion in the ArduPilot forums \cite{ardupilot-military-discussion}, a user provides an image of the software Mission Planner (a GCS in the ArduPilot ecosystem) being used in what seems to be a military operation. Although ArduPilot states in their code of conduct \cite{ardupilot-coc} that they pledge to not support or facilitate the weaponization of systems based on their software, the accessible nature of it enables anyone to use it for any purpose. In research alone, numerous examples can be found \cite{ardupilot-military} \cite{ardupilot-military-1} where parts of the ArduPilot software and hardware ecosystem are used in military settings.
 
-Despite this evidence, the nature of open source remains ill-suited for high-end military products due to the transparency of the source code. However, this is mainly applicable to products being mass-produced, as ArduPilot undoubtedly enables the creation of small weaponized drones. This, however, is a problem for the drone industry at large, as there are many reports of commercially available drones being modified for artillery targeting or even carrying munition themselves \cite{drones-ukraine}. 
+Despite this evidence, the nature of open source remains ill-suited for high-end military products due to the transparency of the source code. However, this is mainly applicable to products being mass-produced, as the creation of small weaponized is undoubtebly enabled by ArduPilot. This an issue for the drone industry at large, as there are many reports of commercially available drones being modified for artillery targeting or even carrying munition themselves \cite{drones-ukraine}. 
 
 \chapter{Conclusion}
 In this chapter the goals presented in section \ref{sec:scope} are evaluated.
