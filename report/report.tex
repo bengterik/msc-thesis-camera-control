@@ -46,19 +46,19 @@
 %\date{January 16, 2015}
 
 \acknowledgements{
-I would first like to thank Fredrik Falkman for introducing me to the EOS project and for providing the necessary hardware resources to enable the thesis work. I am also grateful to my supervisor, William Tärneberg, along with Haorui Peng for their many ideas and technical advice. Regarding the experiment, Kjell Brunnström and his colleagues at RISE Kiste were of great help both during its development and evaluation. Lastly, I want to thank Oscar Sanner for assisting me in using his thesis work as a part of my test bed and for being a great lab partner throughout the semester.
+I would first like to thank Fredrik Falkman for introducing me to the EOS project and for providing the necessary hardware resources to enable the thesis work. I am also grateful to my supervisor, William Tärneberg, along with Haorui Peng for their many ideas and technical advice. Regarding the experiment, Kjell Brunnström and his colleagues at RISE Kiste were of great help both during its development and evaluation. Lastly, I want to thank Oscar Sanner for letting me use his robot Oliver as a part of my test bed and for being a great lab partner throughout the semester.
 
 The user experiment in this M.Sc. project has been partly supported by Sweden´s Innovation Agency (VINNOVA, dnr. 2021-02107) through the Celtic-Next project IMMINENCE (C2020/2-2), which is hereby gratefully acknowledged.
 }
 
 \theabstract{
-The objective of this thesis has been to improve the camera-controls of a fixed-wing drone to be used in maritime search-and-rescue (SAR) operations by the Swedish Sea Rescue Society (SSRS). A gimbal control interface (GCI) has been implemented that displays the video feed of the drone camera, while taking control inputs from a joystick that moves its view in real-time. 
+The objective of this thesis has been to improve the camera controls of a fixed-wing drone to be used in maritime search-and-rescue (SAR) operations by the Swedish Sea Rescue Society (SSRS). A gimbal control interface (GCI) has been implemented that displays the video feed of the drone camera while taking control inputs from a joystick that moves its view in real-time. 
 
-In the thesis, the GCI has been used to conduct two experiments. The first in a lab setting using a Quality of Experience (QoE) framework, were the effects of latency on a camera operator given a specific task was studied. The results from this experiment shows that higher latency worsens both the operator's ability to perform the task as well as their subjective experience with the system. Comparing the rates at which they worsen, the data suggests that task performance decreases exponentially while the subjective experience decreases linearly, although more trials are required to establish their exact relationships. 
+In the thesis, the GCI has been used to conduct two experiments. The first was in a lab setting using a Quality of Experience (QoE) framework, where the effects of latency on a camera operator given a specific task were studied. The results from this experiment show that higher latency worsens both the operator's ability to perform the task as well as their subjective experience with the system. Comparing the rates at which they worsen, the data suggests that task performance decreases exponentially while the subjective experience decreases linearly, although more trials are required to establish their exact relationships. 
 
-In the second experiment, the GCI was integrated with the pre-existing systems of the SSRS and used in a test flight over the Gothenburg archipelago. During the flight, joystick-control was deemed most suitable when flying straight for longer periods, either for surveying or following a moving object.
+In the second experiment, the GCI was integrated with the pre-existing systems of the SSRS and used in a test flight over the Gothenburg archipelago. During the flight, joystick control was deemed most suitable when flying in a straight line, either for surveying or following a moving object.
 
-In conclusion, a versatile test bed allowing for manual control of a drone-mounted camera-gimbal was developed. For the SSRS, the GCI will serve as a starting point for controlling the drone's camera. Furthermore, the GCI and the test bed developed in the thesis could be used in further research to better understand the relationship between different network parameters and an operator's QoE.
+In conclusion, a versatile test bed allowing for manual control of a drone-mounted camera-gimbal was developed. For the SSRS, the GCI will serve as a starting point for controlling the drone's camera. Additionally, the GCI and the test bed developed in the thesis could be used in further research to better understand the relationship between different network parameters and an operator's QoE.
 }
 
 \keywords{Drones, Search and Rescue, Unmanned Aerial Vehicle, UAV, gimbal, camera control, ArduPilot, Quality of Experience, QoE}
@@ -79,15 +79,15 @@ In conclusion, a versatile test bed allowing for manual control of a drone-mount
 \chapter{Introduction}
 The use of unmanned aerial vehicles (UAVs) has skyrocketed during the last decades, and with consumers now having access to drones, a once mainly military technology is seeing more and more use in the civilian sector, with uses in cinematography, agriculture as well as search and rescue (SAR). The main selling point of the UAV is its' ability to provide aerial data (usually imagery) at a fraction of the cost of manned aircraft, making it a viable alternative for many expensive, remote and dangerous applications.
 
-The use of drones and other small electric vehicles in research as well as in the DIY space has also led to the rise of several open-source software initiatives, which provides off-the-shelf software both for the on-board control of the vehicle as well as the ground control software (GCS) used for planning and monitoring missions. 
+The use of drones and other small electric vehicles in research as well as in the DIY space has also led to the rise of several open-source software initiatives, which provide off-the-shelf software both for the on-board control of the vehicle as well as the ground control software (GCS) used for planning and monitoring missions. 
 
-Although rotor drones are the most common consumer drones, fixed-wing drones are expected to have a lot of use cases due to their increased battery time and velocity. Despite these advantages, obtaining imagery from a fixed-wing drone remains more difficult than from a rotor drone, as the fixed-wing needs airspeed to stay in flight and will thus eventually fly past a stationary target. To solve this problem, a mechanical gimbal can be used to change the direction of the camera. The person operating the camea can also be assisted by software that can adjust the gimbal's direction based on the drone's position and orientation, either to stabilize the image or to target a specific object or GPS point.
+Although rotor drones are the most common consumer drones, fixed-wing drones are expected to have a lot of use cases due to their increased battery time and velocity. Despite these advantages, obtaining imagery from a fixed-wing drone remains more difficult than from a rotor drone, as the fixed-wing needs airspeed to stay in flight and will thus eventually fly past a stationary target. To solve this problem, a mechanical gimbal can be used to change the direction of the camera. The person operating the camera can also be assisted by software that can adjust the gimbal's direction based on the drone's position and orientation, either to stabilize the image or to target a specific object or GPS point.
 
 The Swedish Sea Rescue Society (SSRS), responsible for over 90\% of sea rescues in Sweden, is running a project with Chalmers, Infotiv, Airpelago and RISE called Eyes-on-Scene (EOS), investigating the use of drones to provide early imagery of a maritime incident to rescue personnel on their way to the scene. In the project, a fixed-wing drone carrying a gimbal-mounted camera has been developed on the open-source platform ArduPilot. A web application has also been built to ease the process of planning and monitoring missions as well as providing and recording the video feed from the drone camera.
 
 In the project thus far, the drone has flown several waypoint missions in the archipelago of Gothenburg where the SSRS has a permit to operate drones beyond visual line-of-sight (BVLOS). The only way to control the orientation of the camera has been to upload a GPS point to the drone, also known as a "Region of Interest" (ROI), towards which the autopilot will then point the camera. Unfortunately, ROIs are susceptible to errors in all three axes, latitude, longitude and altitude, with adjustments in any of the axes usually being necessary once the ROI is uploaded. As the process of uploading an ROI is a lengthy process, the SSRS has requested a way to manually control the direction of the camera, either with a joystick or with the arrow keys. However, they suspect that with manual controls, the delay in the communication between the drone and its operator will have a greater effect on his or her experience with the system, and thus want to investigate these effects in more detail.
 
-The rest of this chapter will provide the scope of the thesus project as well as an overview of the report structure.
+The rest of this chapter will provide the scope of the thesis project as well as an overview of the report structure.
 
 \section{Scope}
 \label{sec:scope}
@@ -96,11 +96,11 @@ The principal goals of the thesis work were:
    \item[G1] Implement software based on the current system from the SSRS capable of manually controlling the camera-gimbal, for example with a joystick or the arrow keys. 
    \item[G2] Investigate the effects of latency on a camera operator. 
    \item[G3] Integrate the software controlling the gimbal into the existing drone system of SSRS.
-   \item[G4] Evaluate the manual gimbal controls during flight and compare them to the existing ROI-mode.
+   \item[G4] Evaluate the manual gimbal controls during flight and compare them to the existing ROI mode.
 \end{description}
 
 \section{Report Structure}
-In the second chapter, a more elaborate background is given on UAVs, the SSRS, the EOS-project as well as the research field of QoE. A technical background is also given with descriptions of the provided hardware and pre-existing software packages. In the third chapter, the implementation done in the thesis is presented. In the fourth chapter, the two experimental procedures are presented. In the fifth chapter, the results from said experiments are presented. In the sixth chapter, the results are compared to the state-of-the-art and are also evaluated on their strengths, weaknesses, limitations as well as sustainability and ethics. In the seventh chapter, the conclusions from the results are summarized. Lastly, in the eighth chapter, possible future work is presented.
+In the second chapter, a more elaborate background is given on UAVs, the SSRS, the EOS project as well as the research field of QoE. A technical background is also given with descriptions of the provided hardware and pre-existing software packages. In the third chapter, the implementation done in the thesis is presented. In the fourth chapter, the two experimental procedures are presented. In the fifth chapter, the results from said experiments are presented. In the sixth chapter, the results are compared to the state-of-the-art and are also evaluated on their strengths, weaknesses, limitations as well as sustainability and ethics. In the seventh chapter, the conclusions from the results are summarized. Lastly, in the eighth chapter, possible future work is presented.
 
 \chapter{Background}
 First, this chapter will give background on the particular UAV used, the SSRS and the EOS project. Then, the research field of QoE will be introduced along with the related work. Lastly, a technical background will be given to the already finished hardware and software modules.  
@@ -115,7 +115,7 @@ The following subsections will give some background to the airframe and some bas
    \centering
    \rotatebox{90}{\includegraphics[width=.7\textwidth]{images/fv-3.jpg}}
    \includegraphics[width=.467\textwidth]{images/flying-drone.jpg}
-   \caption{The SSRS fixed-wing drone. The leftm picture shows the drone from above. In the right picture, the drone is seen in flight with the gimbal and camera visible. Right picture credits: Mats Ryde.}
+   \caption{The SSRS fixed-wing drone. The left picture shows the drone from above. In the right picture, the drone is seen in flight with the gimbal and camera visible. Right picture credits: Mats Ryde.}
    \label{fig:fv-drone-pics}
 \end{figure}
 
@@ -152,7 +152,7 @@ The Eyes-On-Scene project is a research and innovation project initiated in 2021
 The current interface developed for mission control allows for flying to and loitering around (circling) waypoints given on a map where other naval and aerial traffic is also displayed in real-time. The map also shows the zones in which one is not allowed to fly, i.e. close to airports or military zones. The interface provides video from the drone camera which is recorded and accessible after the mission. In the current interface, it is possible to set an ROI by selecting a point on a map and uploading the new waypoint to the drone.
 
 \section{Quality of Experience}
-Quality of Experience is an emerging research field that is concerned with the user's experience in multimedia systems. It is an inherently multidisciplinary field that has close ties to the field of User Experience and Human-Computer Interaction. QoE is also closely related to the field of Quality of Service (QoS), where technical aspects of a networked systems are compared and evaluated on quantative measurements like latency and throughput. The focus of QoE-research is instead on the effects of network parameters on the user and its interaction with the networked system.
+Quality of Experience is an emerging research field that is concerned with the user's experience in multimedia systems. It is an inherently multidisciplinary field that has close ties to the field of User Experience and Human-Computer Interaction. QoE is also closely related to the field of Quality of Service (QoS), where technical aspects of networked systems are compared and evaluated on quantitative measurements like latency and throughput. The focus of QoE research is instead on the effects of network parameters on the user and its interaction with the networked system.
 
 In the field of QoE, common objects of study are the effects of latency, jitter or image quality. For example, previous QoE research has been made on the effects of latency in remote log lifting through a VR headset \cite{industry4.0} and remotely controlled excavation equipment \cite{latency-impact}.
 
@@ -275,7 +275,7 @@ As the entire drone was not needed to test the software, a Raspberry Pi, flight 
 
 
 \section{Gimbal Control Interface}
-Addressing goal \textbf{G1} of the thesis, a program was implemented in Python to display the video feed from the drone camera while taking control inputs from the operator. The inputs came from the right joystick of a PlayStation controller while the program sent messages updating the gimbal's position with a set frequency. The program also had capability to record the video feed. A visual overview of the system is shown in Figure \ref{fig:system-overview}.
+Addressing goal \textbf{G1} of the thesis, a program was implemented in Python to display the video feed from the drone camera while taking control inputs from the operator. The inputs came from the right joystick of a PlayStation controller while the program sent messages updating the gimbal's position with a set frequency. The program could also record the video feed. A visual overview of the system is shown in Figure \ref{fig:system-overview}.
 \begin{figure}[!hbt]
    \centering
    \includegraphics[scale=0.25]{images/system-overview.png} 
@@ -299,7 +299,7 @@ The application was run with Python version 3.9.16 and used the following librar
 \end{description}
 
 \subsection{Delay}
-Delays in the controls could be introduced by providing an argument to the program when started. The delay was simulated by putting each outgoing message in a queue along with a timestamp, with the program waiting until \ timestamp + delay \ was reached before sending the command. The following algorithm was used to schedule the sending of commands according to the delay:
+Delays in the controls could be introduced by providing an argument to the program when started. The delay was simulated by putting each outgoing message in a queue along with a timestamp, with the program waiting until $ \text{timestamp} + \text{delay} $ was reached before sending the command. The following algorithm was used to schedule the sending of commands according to the delay: 
 \begin{algorithmic}
    \While{running}
    \State $timestamp, pitch, yaw = queue.get()$ // blocking call
@@ -323,7 +323,7 @@ Although the sources of the delay could not be examined in any great depth some 
    While the internal model of the gimbal's orientation was updated by interrupts, the message rate to the flight controller was set to a maximum of 20Hz, resulting in a delay between 0-50ms for control update.
    
    \item [Video encoding and decoding]
-   Some delay is expected to come from encoding and decoding the video. This is especially relevant on the resource-constrained RPi which is responsible for the encoding.  
+   Some delay is expected to come from encoding and decoding the video. This is especially relevant with the encoding running on the resource-constrained RPi.  
 
    \item[MAVProxy relaying] Each message must be taken from the ethernet interface of the Raspberry Pi and be sent on the serial interface to the flight controller. An estimate of this time was not made.
    
@@ -377,9 +377,9 @@ This chapter will describe the setup, procedure and evaluation of the two experi
 The goal of this experiment was to investigate the effects of latency on a camera operator, addressing goal \textbf{G2} of the thesis scope.
 
 \subsection{Experiment Design}
-The desire was to use the drone box to create a task that would be similar to what an operator would perform in a sea rescue scenario. A likely scenario was considedered to be that of a drone loitering around a point while trying to look toward what it was loitering around. 
+The desire was to use the drone box to create a task that would be similar to what an operator would perform in a sea rescue scenario. A likely scenario was considered to be that of a drone loitering around a point while looking at the loiters center. 
 
-With the video being the main feedback to the operator, pixel distance in an image was deemed to be a good metric for task performance. To evaluate the performance of an operator, automatic detection using an Apriltag was considered from the implementation stages of the thesis. With this approach, the amount of frames that could be analyzed could be dramatically increased compared to manual evaluation.
+With the video being the main feedback to the operator, pixel distance in an image was deemed to be a good metric for task performance. To evaluate the performance of an operator, automatic detection using an Apriltag was considered from the implementation stages of the thesis. With this approach, the number of frames that could be analyzed could be dramatically increased compared to manual evaluation.
 
 Initial tests were done with the gimbal box sitting on top of the hoverboard while the hoverboard was moving in a circle. This would result in an upside-down loiter with the gimbal looking up at a point in the ceiling that was in the center of its loiter. The scenario is shown in Figure \ref{fig:testbed-idea-1}. After some initial testing, this was deemed to introduce several points of failure in the test bed:
 
@@ -397,7 +397,7 @@ Initial tests were done with the gimbal box sitting on top of the hoverboard whi
    \item When mounted, the gimbal box was higher than the lidar mounted on the hoverboard, confusing the location algorithm on the hoverboard.
 \end{enumerate}
 
-In the end, the loitering scenario was flipped, placing the gimbal box on top of a shelf and looking down at the moving robot, shown in Figure \ref{fig:testbed-idea-2}. Since the gimbal could not turn around completely, the box had to be placed next to the path where the hoverboard was running. Green tape was placed on the floor in the room from which the hoverboard could run in a path 2x1m ellipse. Its path in the lab can be seen in Figure \ref{fig:exp-setup}.
+In the end, the loitering scenario was flipped, placing the gimbal box on top of a shelf and looking down at the moving robot, shown in Figure \ref{fig:testbed-idea-2}. Since the gimbal could not turn around completely, the box had to be placed next to the path where the hoverboard was running. A slit of green tape was placed on the floor in the room from which the hoverboard could run in a path 2x1m ellipse. Its path in the lab can be seen in Figure \ref{fig:exp-setup}.
 
 \begin{figure}[htp]
    \centering
@@ -661,7 +661,7 @@ In \ref{tab:averages} the mean and standard deviation of the different delays ar
 
 In figure \ref{fig:ecdf} the empirical cumulative distribution functions (ECDF) for the results of each delay are shown. The x-axis represents the value that the entry has while the y-axis represents the percentage of entries that are less than or equal to the x-axis value. The increase in both the average and mean can be observed as the delay increases. It can also be deduced that the distance between the curves 0ms and 200ms is much smaller than that between the curves 400ms and 600ms. This could indicate that the additional 200ms added delay had a larger impact at 400ms than at 0 ms.
 
-When taking into account the inherent latency of the system of around 400ms, there seems to be a larger effect on operator performance at the only latency higher than 800ms. This also the threshold delay for which an observable effect on controller latency was found in \cite{latency-impact}.
+When taking into account the inherent latency of the system of around 400ms, there seems to be a larger effect on operator performance at the only latency higher than 800ms. This was also the threshold delay for which an observable effect on controller latency was found in \cite{latency-impact}.
 
 \begin{figure}[!hbt]
    \centering
@@ -755,7 +755,7 @@ During the initial loiter, the plane's orientation changed a lot due to the inco
 
 After the plane had left the initial loiters it had more time to fly straight. During this time the camera was much easier to control manually, as the plane was more stable and the orientation remained the same for longer. 
 
-Between waypoints 11 and 12, a boat was spotted coming up besides the drone which the gimbal operator decided to try and follow. Although delay made it more difficult to control the gimbal than in the lab experiment, the boat was successfully followed during around three minutes. An illustration of the event can be seen in \ref{fig:boat-follow}. It was observed that the operator could predict the position of the boat, allowing preemptive gimbal movements to compensate for the delay. 
+Between waypoints 11 and 12, a boat was spotted coming up beside the drone which the gimbal operator decided to try and follow. Although considerable delay made it more difficult to control the gimbal than in the lab experiment, the boat was successfully followed for around three minutes. An illustration of the event can be seen in \ref{fig:boat-follow}. It was observed that the operator could predict the position of the boat, allowing preemptive gimbal movements to compensate for the delay. 
 
 \begin{figure}[htp]
    \centering
@@ -764,18 +764,18 @@ Between waypoints 11 and 12, a boat was spotted coming up besides the drone whic
    \label{fig:boat-follow}
 \end{figure}
 
-Another observation from the experiment is that being a fixed-wing aircraft, the operator's ability to control the camera relies heavily on the position and heading of the aircraft. This means that in a real scenario, the operator's ability to control the camera would be dependant highly dependant on the controls of the aircraft. 
+Another observation from the experiment is that being a fixed-wing aircraft, the operator's ability to control the camera relies heavily on the position and heading of the aircraft. This means that in a real scenario, the operator's ability to control the camera would be dependant highly dependent on the controls of the aircraft. 
 
 \subsection{ROI Control}
 The ROI mode was activated on waypoint 12 and worked well when the drone was turning at a shorter radius. However, there were some inconsistencies in the altitude data for the points which caused the camera to point at a point below the surface of the earth. The point was adjusted by raising the altitude parameter of the ROI. 
 
-It could also be observed that increasing the loiter radius gave a better image as the inexactness of the GPS point was less impactful.
+It could also be observed that increasing the loiter radius gave a better image as the inexactness of the GPS point was less impactful. 
 
 \chapter{Discussion}
-This chapter aims to evaluate the thesis work in the context of other works as well as its impact, limitations, weaknesses, strengths, sustainability and ethical implications.
+In this chapter, a comparison between the functionality developed in the thesis to the state-of-the-art will be made. Furthermore, it will also discuss the work regarding its impact, limitations, weaknesses, strengths, sustainability and ethical implications.
 
 \section{Comparison with State-of-the-Art}
-In this section a comparison with other modern systems will be made. First, the QoE test bed is compared to other ones within the research field. Then, the specific functionality, namely gimbal control, is compared to already existing solutions in the commercial, military and DIY sector.
+In this section, a comparison with other modern systems will be made. First, the QoE test bed is compared to other ones within the research field. Then, the specific functionality, namely gimbal control, is compared to already existing solutions in the commercial, military and DIY sectors.
 
 \subsection{QoE Test Bed}
 During the development of the test bed, the research facility RISE (Stockholm, Sweden) was contacted as they had ample experience conducting QoE experiments. During the time of the thesis' work, valuable insights and suggestions were conveyed through several meetings with Kjell Brunnström. A visit was also made to their offices where I got the chance to be a subject in one of their QoE experiments conducted by a PhD student. Although the experimental conditions and objects of study were different, the test beds shared many similarities. 
@@ -783,7 +783,7 @@ During the development of the test bed, the research facility RISE (Stockholm, S
 \subsection{Commercial Systems}
 In the drone consumer market, the Chinese manufacturer DJI holds a global market share of more than 70\%, according to CNBC \cite{dji}. Their most popular systems are targeted toward filming and a lot of them feature camera gimbals with features such as stabilization, target following and ROI mode. 
 
-For companies or people building their own drones, there are also separate drone gimbals that can be bought from manufacturers such as Gremsy \cite{gremsy} or SIYI \cite{siyi}. These particular gimbals cost \$1,399 and \$529.42 respectively and their functionality is highly dependent on the onboard software. For comparison, the SSRS gimbal can be assembled for approximately \$50 with off-the-shelf components and a 3D printer.
+For companies or hobbyists building drones, there are also separate drone gimbals that can be bought from manufacturers such as Gremsy \cite{gremsy} or SIYI \cite{siyi}. These particular gimbals cost \$1,399 and \$529.42 respectively and their functionality is highly dependent on the onboard software. For comparison, the SSRS gimbal can be assembled for approximately \$50 with off-the-shelf components and a 3D printer.
 
 \subsection{Military systems}
 As fixed-wing UAVs with gimbals have seen heavy use in the military sector, a high level of sophistication in UAVs and their operations is usually found in these types of systems. One of the most historically known military drones also featuring a camera gimbal is the MQ-9 Reaper \cite{mq9reaper}, which saw heavy use by the U.S. during the conflicts in Iraq and Afghanistan \cite{mq9reaper-wiki}. More modern systems with drones in more similar size to the SSRS drone (although with very different use cases) include the Turkish Bayraktar drones \cite{bayraktar-wiki} as well as the Switchblade series \cite{switchblade} from the American company AeroVironment.
@@ -799,33 +799,35 @@ The main limitation of the test bed is that the scenario keeps the drone station
 
 In the real flight scenario, conducting controlled experiments was limited due to various factors. The primary obstacle lies in the extensive preparations required for each mission, where setting up the drone and its intricate systems demands substantial effort and time. Furthermore, numerous regulations and safety measures must be adhered to before undertaking an unmanned BVLOS flight. For example, communication with air traffic control about the mission is initialized two weeks before the flight, and contact is held during the entirety of the mission.
 
-Due to the scarcity of actual flight tests, gimbal control was not the only goal of the flight, which meant that there were limited possibilities to set up more scenarios to evaluate operator performance in the system during flight. 
+Due to the scarcity of actual flight tests, gimbal control was usually not the main goal of the flight, which meant that there were limited possibilities to set up scenarios to evaluate operator performance in the system during flight. One example of this is the so-called "earth-frame"-mode, with which the gimbal points in a compass heading instead of an angle relative to the aircraft. This effectively stabilizes the yaw-axis as well which could improve the steering sensation when flying. Due to time limitations, this mode was not tested but could be of interest in further research.
 
 An initial wish was also to have the software contributed back to the ArduPilot ecosystem, which was unfortunately not possible as time did not allow for the software to be developed to a sufficient level of quality.
 
 \section{Weaknesses}
-For the QoE experiment, the main sources of error are presented in their entirety in section \ref{sources-of-error}. Among these, the most significant is probably the feeling of the controls, as some technical limitations were leading to choppiness and an unintuitive control sensation reported by some of the subjects. Furthermore, the subject had no say in the sensitivity of the controls or if they preferred to use a different control scheme.
+For the QoE experiment, the main sources of error are presented in their entirety in section \ref{sources-of-error}. Among these, the most significant is probably the feeling of the controls, as many subjects reported on this in their interviews. Furthermore, the subject had no say in the sensitivity of the controls or if they preferred to use a different control scheme.
 
-A big weakness is also the subject selection, as they were not representative of society as a whole nor the target group of the future SSRS system.   
+A big weakness is also the subject selection, as they were not representative of society as a whole nor the target group of the future SSRS system. 
 
-Regarding in-flight testing, there is a so-called "earth-frame"-mode for the gimbal that points it in a compass heading, effectively stabilizing the yaw-axis as well. This mode was not tested in the experiment but could be of interest in further research.
+In regards to flight testing, the main goal of the thesis was to have working controls and it was uncertain whether a test scenario would be possible to set up. As a result of this, the in-flight tests of the gimbal, albeit successful, are not so generalizable. 
 
 \section{Strengths}
-The test bed along with the evaluation method presented in this thesis is a novel approach to QoE experiments, where qualitative measures can be taken in high quantity in an unintrusive manner to the test subject. Due to the design of the ArduPilot ecosystem, the test bed is also portable and would require no modification to work on other vehicles such as multi-rotors, rovers or submarines running the ArduPilot firmware.
+The test bed along with the evaluation method presented in this thesis is a novel approach to QoE experiments, where qualitative measurements can be taken in high quantity unintrusively to the test subject. Due to the design of the ArduPilot ecosystem, the test bed is also compatible with other ArduPilot systems and would require no modification to work on other vehicles such as multi-rotors, rovers or even submarines.
 
 Another strength of the thesis work is that the software was robust enough to be used in a real flight scenario and will be used in future flight testing.
 
 \section{Sustainability}
-As the UAV is electrically powered, it does not produce any direct CO2 emissions during use. Considering future scenarios, the results from early imagery could allow a rescue crew to go at lower speeds, reducing engine emissions as well as the boat's effects on the surrounding environment. Currently, helicopters or airplanes can be put in for aerial support during SAR missions. In the future, drone systems could support or in some instances completely replace these manned vehicles, and with their smaller size and electrical propulsion they would have much smaller CO2 emissions.
+As the UAV is electrically powered, it does not produce any direct CO2 emissions during use. Considering future SAR scenarios, early imagery could allow a rescue crew to go at lower speeds, reducing engine emissions as well as the boat's effects on the surrounding environment. 
+
+Currently, helicopters or airplanes can be put in for aerial support during SAR missions. In the future, drone systems could support or in some instances completely replace these manned vehicles, and with their smaller size and electrical propulsion they would have much smaller CO2 emissions.
 
 \section{Ethics}
 The software implemented in this thesis is aimed at assisting in SAR operations and its functionality can as such be deemed critical to human life. Although the idea is that aerial imagery is only to be used as support, the intelligence provided by said imagery has to be reliable as it can affect the decisions onboard a rescue vehicle. This places higher requirements on the robustness of the system and its' operator. 
 
-While the software developed for this thesis aims to assist in SAR operations, gimbal control is highly applicable to more ethically questionable tasks such as surveillance or target localization and acquisition for weapons. 
+Although the software developed for this thesis is aimed at a certain type of operation, gimbal control remains highly applicable to more ethically questionable tasks such as surveillance or target acquisition for weapons. 
 
 In a discussion in the ArduPilot forums \cite{ardupilot-military-discussion}, a user provides an image of the software Mission Planner (a GCS in the ArduPilot ecosystem) being used in what seems to be a military operation. Although ArduPilot states in their code of conduct \cite{ardupilot-coc} that they pledge to not support or facilitate the weaponization of systems based on their software, the accessible nature of it enables anyone to use it for any purpose. In research alone, numerous examples can be found \cite{ardupilot-military} \cite{ardupilot-military-1} where parts of the ArduPilot software and hardware ecosystem are used in military settings.
 
-Despite this evidence, the nature of open source remains ill-suited for high-end military products due to the transparency of the source code. However, this is mainly applicable to products being mass-produced, as ArduPilot undoubtedly enables the creation of small weaponized drones. This, however, is a problem for the drone industry at large, as there are many reports of commercially available drones being modified for artillery targeting or even carrying munition themselves \cite{drones-ukraine}. 
+Despite this evidence, the nature of open source remains ill-suited for high-end military products due to the transparency of the source code. However, this is mainly applicable to products being mass-produced, as the creation of small weaponized is undoubtedly enabled by ArduPilot. This an issue for the drone industry at large, as there are many reports of commercially available drones being modified for artillery targeting or even carrying munition themselves \cite{drones-ukraine}. 
 
 \chapter{Conclusion}
 In this chapter the goals presented in section \ref{sec:scope} are evaluated.
