@@ -202,7 +202,7 @@ The drone components relevant to this thesis are detailed in the following descr
       \includegraphics[width=.3\textwidth]{images/gimbal-1.png}\hfill
       \includegraphics[width=.35\textwidth]{images/gimbal-3.png}\hfill
       \includegraphics[width=.25\textwidth]{images/gimbal-2.png}
-      \caption{Schematics of the drone gimbal. The left and right picture shows the gimbal with its full housing. In the middle picture, the housing has been removed and a mockup camera module has been inserted on the mounting plate. Beneath the camera the three servos can be seen in blue.}
+      \caption{Schematics of the drone gimbal. The left and right picture shows the gimbal with its full housing. In the middle picture, the housing has been removed and a mockup camera module has been inserted on the mounting plate. Beneath the camera, the three servos can be seen in blue.}
       \label{fig:gimbal-pics}
    \end{figure}
 \end{description}
@@ -477,6 +477,21 @@ In this section, each of the steps will be described in more detail. The experim
 The experiment starts with the subject being seated at the desk to read through the consent form. After this was signed the conductor clarified that the subject was free to ask any question during the experiment and could choose to interrupt it without declaring any reason. 
 
 Then, the subject fills out the background information form where they also get to choose a four-digit code which from that point is the only identifier of the subject and its results. If the subject booked a time slot in the spreadsheet, they were at this point removed from it.
+
+\subsubsection{Simulator Sickness Questionnaire}
+When assessing the QoE of an operator, Kennedy et. al \cite{ssq}, propose 16 symptoms that can be used to detect what is called simulator sickness. The questions are answered on a scale of 0 = "None", 1 = "Light", 2 = "Moderate", and 3 = "Severe" before the first trial and then again after the last trial. The questions are presented in Table \ref{fig:ssq-ans}.
+
+\begin{table}[!hbt]
+   \centering
+   \begin{tabular}{|c|}
+   \hline
+   \textbf{Questions} \\ \hline
+   \begin{tabular}[c]{@{}l@{}}1. General discomfort\\ 2. Fatigue\\ 3. Headache\\ 4. Eye strain \\ 5. Difficulty focusing\\ 6. Increased salivation \\ 7. Sweating \\ 8. Nausea\\ 9. Difficulty concentrating \\ 10. Fullness of head \\ 11. Blurred vision \\ 12. Dizziness (with eyes open) \\ 13. Dizziness (with eyes closed) \\ 14. Vertigo \\ 15. Stomach awareness\\ 16. Burping\\ \end{tabular} \\ \hline
+   \end{tabular}
+   \caption{The symptoms assessed by the subject to detect simulator sickness.}
+   \label{tab:ssq-questions}
+\end{table}
+
 
 \subsubsection{Experiment Walkthrough}
 The task was explained to the subject along with a printed Apriltag with a cross on it, indicating the spot where to aim at the tag. The particular Apriltag printed for this experiment had two white and two black squares meeting in the middle, making the center easier to identify. The Apriltag shown to the subject is shown in Figure \ref{fig:apriltag}.
@@ -772,7 +787,7 @@ The ROI mode was activated on waypoint 12 and worked well when the drone was tur
 It could also be observed that increasing the loiter radius gave a better image as the inexactness of the GPS point was less impactful. 
 
 \chapter{Discussion}
-In this chapter, a comparison between the functionality developed in the thesis to the state-of-the-art will be made. Furthermore, it will also discuss the work regarding its impact, limitations, weaknesses, strengths, sustainability and ethical implications.
+In this chapter, a comparison between the GCI and the state-of-the-art will be made. Then, the work's impact, limitations, weaknesses, and strengths will be discussed. Finally, its contribution will be analyzed from a sustainability and ethics perspective.
 
 \section{Comparison with State-of-the-Art}
 In this section, a comparison with other modern systems will be made. First, the QoE test bed is compared to other ones within the research field. Then, the specific functionality, namely gimbal control, is compared to already existing solutions in the commercial, military and DIY sectors.
