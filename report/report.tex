@@ -858,16 +858,24 @@ Despite this evidence, the nature of open source remains ill-suited for high-end
 In this chapter the goals presented in section \ref{sec:scope} are evaluated.
 
 \begin{description}
-   \item[G1]
+
+   \item \textbf{G1: Implement software based on the current system from the SSRS capable of manually controlling the camera-gimbal, for example with a joystick or the arrow keys.} 
+
+   \item
    Manual gimbal control was successfully implemented on the ArduPlane platform with the use of a PlayStation controller. This was achieved by implementing a program in Python with which an operator could control the view of the drone camera with a joystick. The software was also capable of displaying and recording the drone's video feed as well as simulating latency.
 
-   \item[G2]
+   \item \textbf{G2: Investigate the effects of latency on a camera operator.} 
+
+   \item
    In the quantitative results from the experiment, a clear trend can be seen that additional delay hurts the subject's ability to control the camera. Furthermore, the same increase in delay seems to have a larger effect on the subject's performance when introduced at a higher delay. When taking into account the subject's rating of the system, it can be seen that the experience of a user is not always proportional to the worsening of QoS parameters, but more subjects as well as delays are needed to establish an exact relationship. A slight increase in simulator sickness was observed, although it was not statistically significant with only 10 subjects.
 
-   \item[G3] 
+   \item \textbf{G3: Integrate the software controlling the gimbal into the existing drone system of SSRS.}
+
+   \item
    The results from the field testing show that the gimbal software could be integrated with the system running on the real drone.
 
-   \item[G4]
+   \item \textbf{G4: Evaluate the manual gimbal controls during flight and compare them to the existing ROI mode.}
+   \item
    The manual controls were deemed suitable when the plane was flying in straight lines to survey or follow a moving target. When loitering the already existing ROI mode was found to be more suitable to reduce load on the gimbal operator.
 
 \end{description}
