@@ -175,7 +175,7 @@ In \cite{targetting}, M. Quigley et al. presents a test bed with a fixed-wing UA
 \section{Pre-existing Hardware}
 In this section, the hardware used in the experiments is presented.
 
-\subsection{Drone components}
+\subsection{Drone Components}
 \label{sec:uav-components}
 The drone components relevant to this thesis are detailed in the following description. A picture of the internals of the drone is shown in \ref{fig:drone-internals}.
 
@@ -207,7 +207,7 @@ The drone components relevant to this thesis are detailed in the following descr
    \end{figure}
 \end{description}
    
-\subsection{Hoverboard robot}
+\subsection{Hoverboard Robot}
 In order to introduce movement in the QoE experiment, a modified hoverboard was used. The hoverboard had two additional wheels in order to be stable and could be controlled via joystick inputs or coordinates. Its maneuvering was assisted by real-time lidar mapping of the room. The hoverboard can be seen in \ref{fig:hoverboard}
 
 \begin{figure}[!hbt]
@@ -259,7 +259,7 @@ In this section, the pre-existing software used in the experiments will be detai
    \item[Hoverboard software] The hoverboard has software that allows it to be controlled by a game controller or follow a set of points. To locate itself it uses a SLAM algorithm along with a lidar. This makes it possible to have the hoverboard run in a programmed route with little error. 
 \end{description}
 
-\chapter{Implementation of Test Bed}
+\chapter{Implementation}
 In this chapter the hardware and software developed specifically for the thesis are detailed.
 
 \section{Gimbal Box}
@@ -592,14 +592,14 @@ The interview questions can be seen in table \ref{tab:interview-questions}.
 \subsection{Known Sources of Error}
 \label{sources-of-error}
 
-\subsubsection{Ecological validity}
+\subsubsection{Ecological Validity}
 The future operators of the system are to be the volunteers of SSRS, which have a wide variety of ages and backgrounds. Thus, there are three main concerns with the ecological validity of the study. Firstly, the subjects were all either students or researchers at Lund University. Secondly, the average age of the subjects was low. Lastly, the sample size was only ten people. 
 
 The first and second concerns are difficult to compensate for, as only employees or students at the university could be used as subjects due to the university's insurance. There are of course people of different ages and backgrounds working and studying at the university, but due to time restraints as well as lack of compensation for the subjects, most came from the conductor's network of contacts.
 
 The last concern is mainly an issue with the qualitative results, as the amount of quantitative data could be increased by having each subject do several laps. Each subject generated around 13 500 data points in all five trials, resulting in about 135 000 data points for pixel error over all subjects.
 
-\subsubsection{Frame detection accuracy}
+\subsubsection{Frame Detection Accuracy}
 The detection algorithm used to calculate the distance from the center of the Apriltag to the center of the screen could sometimes during fast camera movements not detect the Apriltag. This resulted in a NaN value at that particular frame. The average percentage of frames detected where 85\%, with a minimum of 80\% and a maximum of 89\%.
 
 To ease the analysis of the results, all NaN values, i.e. frames where no Apriltag was detected in the frame, were linearly interpolated. To illustrate this one result is shown before and after interpolation in \ref{fig:raw-vs-interpolated}. 
@@ -611,14 +611,14 @@ To ease the analysis of the results, all NaN values, i.e. frames where no Aprilt
    \label{fig:raw-vs-interpolated}
 \end{figure}
 
-\subsubsection{Difficulty of the task}
+\subsubsection{Difficulty of the Task}
 The center of the Apriltag did not have a very clear center, which could have made it difficult for the subject to complete the task. To remedy this, a printed Apriltag where the center was marked out was given to the subject. However, the subject could still have had difficulty identifying the exact center of the Apriltag during the trial.
 
 \subsubsection{Control Choppiness}
 \label{sec:control-choppiness}
 The control of the gimbal is done through a command sent to the drone with two angles for pitch and yaw. The drone then moves the gimbal to the desired angles. Although the angle was provided as a float, small increases from the joystick did not move the gimbal. This resulted in the control feeling choppy with the continuous input of the joystick. The choppiness also increased when looking at more distant points. 
 
-\section{Field testing}
+\section{Field Testing}
 The goal of this experiment was to integrate the software built for the test bed into the existing drone system, addressing goals \textbf{G3} and \textbf{G4} of the thesis scope. 
 
 \subsection{Preparations}
@@ -647,14 +647,14 @@ This chapter will go through the main findings of the two experiments.
 \section{QoE Experiment}
 In this section, the results from the QoE experiment are presented.  
 
-\subsection{Quantative measurements}
+\subsection{Quantative Measurements}
 In \ref{tab:averages} the mean and standard deviation of the different delays are presented when averaged over all subjects. The values are also visualized in plot \ref{fig:avg-std}. A clear trend can be seen where both the mean and standard deviation increase with the delay. An interesting feature of the data is that the mean after 400ms starts to increase at a non-linear rate, while the standard deviation has a more or less linear increase throughout the added delays.
 
 \begin{table}[ht]
    \centering
    \begin{tabular}{|c|c|c|}
    \hline
-   \textbf{Delay} & \textbf{ Mean} & \textbf{Std. deviation} \\
+   \textbf{Delay} & \textbf{ Mean (ms)} & \textbf{Std. deviation (ms)} \\
    \hline
    0 & 29.804138 & 18.030196 \\ \hline
    200 & 35.234192 & 22.347311 \\ \hline
@@ -662,7 +662,7 @@ In \ref{tab:averages} the mean and standard deviation of the different delays ar
    400 & 46.048449 & 28.718249 \\ \hline
    600 & 61.811312 & 37.226394 \\ \hline
    \end{tabular}
-   \caption{Table caption goes here.}
+   \caption{Means and standard deviations for the added delays.}
    \label{tab:averages}
 \end{table}
 
@@ -704,10 +704,10 @@ In Figure \ref{fig:0vs600}, the results from 0ms and 600ms are shown with the ho
 \end{figure}
 
 
-\subsection{Forms and interviews}
+\subsection{Forms and Interviews}
 In this section, the results from the forms and interviews are presented and discussed.
 
-\subsubsection{Trial forms}
+\subsubsection{Trial Forms}
 As only 10 subjects completed the trials the answers from all the questions on each delay were grouped, making for 40 answers on each delay. A box plot showing the distributions of the answers is shown in \ref{fig:form-ans}. For one subject, the 200ms trail was forgotten and was instead filled with the average answer 3 for all questions afterward.
 
 Looking at the averages a clear downward trend can be seen with an increase in delay. The largest differences in score are between 0ms to 200ms and 400ms to 600ms, which is to be expected with the larger steps in delay. However, the trend does not seem to correspond to that of the quantitative results in \ref{fig:ecdf} where the step from 0ms to 200ms is about the same as between 200ms, 300ms and 400ms. Although there is a trend in the average, the distributions seen in \ref{fig:form-ans} are quite similar, and more trials and delays are necessary to deduce an exact connection between task performance and operator experience.   
