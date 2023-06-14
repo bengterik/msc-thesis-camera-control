@@ -298,6 +298,14 @@ The application was run with Python version 3.9.16 and used the following librar
    This standard module was used to run the video tasks in different processes to not interfere with the control. The video frames were accessed and displayed by one process and then fed to another process saving each frame. For more information on the library see \cite{multiprocessing}.  
 \end{description}
 
+\subsection{Joystick Inputs}
+To capture the joystick inputs, a callback function using Evdev and Python's async functionality was implemented that was called each time the controller sent an interrupt. The joystick produced an interrupt every time it moved, providing two values in the range [0, 255] (127 in the middle position). With each callback caused by the joystick, its values in both axes were scaled to the range [-127, 127] and multiplied by a sensitivity factor before being added to the pitch and yaw attributes that the class held. 
+
+As the joystick did not produce any interrupts when standing still, even when in a non-zero position, the last joystick value had to be stored and used to update the values. This was done at a rate of 20Hz, triggered by the polling from the sending thread.
+
+\subsection{Updating the Gimbal's Position}
+When started, the GCI turned the gimbal straight ahead to synchronize the GCI's gimbal angles with the ones on the actual drone. The values for pitch and yaw were held in the previously mentioned controller thread, which was polled at a rate of 20Hz by the sending thread. If the values had changed since the last poll the sending thread would send the new pitch and yaw angles to the drone.
+
 \subsection{Delay}
 Delays in the controls could be introduced by providing an argument to the program when started. The delay was simulated by putting each outgoing message in a queue along with a timestamp, with the program waiting until $ \text{timestamp} + \text{delay} $ was reached before sending the command. The following algorithm was used to schedule the sending of commands according to the delay: 
 \begin{algorithmic}
