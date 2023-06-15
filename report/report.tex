@@ -283,9 +283,9 @@ Addressing goal \textbf{G1} of the thesis, a program was implemented in Python t
 The application was run with Python version 3.9.16 and used the following libraries:
 \begin{description} 
    \item [pymavlink (v. 2.4.37)]
-   An interface to communicate with MAVLink devices, available at \cite{pymavlink}. With the library, a port can be set to send and receive MAVLink messages over an IP or serial link.
+   An interface to communicate with MAVLink devices, available at \cite{pymavlink}. With the library, a port can be set to send and receive MAVLink messages over an IP or serial link. The system used UDP as its transport protocol but could be modified to TCP as well.
  
-   \item [Evdev v. (1.6.1)]
+   \item [Evdev (v. 1.6.1)]
    A Python library for interrupt-driven input devices. It is used for reading input from the Playstation-controller. Available at \cite{evdev}.
 
    \item [OpenCV (v. 4.7)] 
