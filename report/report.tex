@@ -530,7 +530,7 @@ At the end of the fifth and last trial, the subject got to fill in the sickness 
 \subsection{Evaluation}
 The following two sections will describe the quantitative and qualitative methods that were used to evaluate the system.
 
-\subsubsection{Quantative Evaluation}
+\subsubsection{Quantitative Evaluation}
 To measure the performance of each subject, the result script described in section \ref{sec:resultscript} was used. This resulted in one CSV file with about 2700 rows of data per trial. The start and end frames were extracted manually from the video of each trial and were saved in a separate file.  
 
 \subsubsection{Qualitative Evaluation}
@@ -657,7 +657,17 @@ This chapter will go through the main findings of the two experiments.
 \section{QoE Experiment}
 In this section, the results from the QoE experiment are presented.  
 
-\subsection{Quantative Measurements}
+\subsection{Quantitative Measurements}
+To ease the interpretation of the results, two examples of different pixel errors of 48 and 178 are shown in Figure \ref{fig:pixel-error}. 
+
+\begin{figure}[htp]
+   \centering
+   \includegraphics[width=.47\textwidth]{images/pixel-error-low.png}\hfill
+   \includegraphics[width=.47\textwidth]{images/pixel-error-high.png}
+   \caption{Examples of two pixel errors from a trial. In the leftmost picture the pixel error is 48 while in the rightmost picture, the pixel error is 178.}
+   \label{fig:pixel-error}
+\end{figure}
+
 In \ref{tab:averages} the mean and standard deviation of the different delays are presented when averaged over all subjects. The values are also visualized in plot \ref{fig:avg-std}. A clear trend can be seen where both the mean and standard deviation increase with the delay. An interesting feature of the data is that the mean after 400ms starts to increase at a non-linear rate, while the standard deviation has a more or less linear increase throughout the added delays.
 
 \begin{table}[ht]
