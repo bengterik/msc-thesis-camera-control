@@ -310,7 +310,7 @@ Delays in the controls could be introduced by providing an argument to the progr
 \begin{algorithmic}
    \While{running}
    \State $timestamp, pitch, yaw = queue.get()$ // blocking call
-   \State $t_{0} = time.now$
+   \State $t_{0} = time.now()$
    \State $diff = timestamp + delay - t_{0}$
    \If{diff > 0}
       \State $time.sleep(diff)$
@@ -340,17 +340,17 @@ Although the sources of the delay could not be examined in any great depth some 
 \subsection{Design Choices} 
 This section aims to explain some of the design choices that were taken during the development of the gimbal interface. It can be skipped if the reader is not interested in the development process.
 
-\subsubsection{Video streaming}
+\subsubsection{Video Streaming}
 In the real drone system, the video feed is done with WebRTC. This is a modern peer-to-peer video protocol well suited for live-streaming video. The intention was to use this in the test bed as it had a low latency and was accessible through the browser. The main goal was to get the raw video feed to OpenCV to adjust image parameters as well as to be able to do detection and recording of the frames. Unfortunately, the raw video feed proved difficult to access as other video-processing software had to be used along with the peer-to-peer negotiation. In the end, the MJPEG format was chosen, as it had an acceptable delay and could be integrated only by providing an HTTP source to the OpenCV video capture module.
 
-\subsubsection{Native vs. web}
+\subsubsection{Native vs. Web}
 The application that the SSRS currently uses for mission control is hosted on the web, and as such the test bed was initially developed as a web application. This proved difficult for the developer as they had limited experience working with web applications. As the number of tasks for the program to perform grew, a decision was made to implement the test bed as a native Python application instead. This made it easier to orchestrate the video and control tasks using regular UNIX processes from the Python multiprocessing library. 
 
 With this decision, the possibility to remotely host the application was lost, but as the goal was to develop a working test bed this was deemed acceptable. 
 
 \section{Result Script}
 \label{sec:resultscript}
-To extract the results from the recorded video, a Python script running a detection algorithm was implemented. The script used the following Python libraries:
+To measure the performance of an operator, a Python script was implemented running a detection algorithm that could detect the position of an Apriltag in a video frame. The script used the following Python libraries:
 \begin{description}
    \item[OpenCV] Video tasks and image processing.
    \item[dt-apriltags] Detection algorithm.
@@ -400,11 +400,11 @@ Initial tests were done with the gimbal box sitting on top of the hoverboard whi
 \begin{enumerate}
    \item Power had to be supplied via a power bank.
    \item Network connection had to go over WiFi with substantially more delay and jitter than an ethernet cable connection. 
-   \item Using automatic detection, the lighting from the ceiling and windows reduced the contrast of the Apriltag, making it harder to detect for the algorithm.
+   \item Light from lamps and windows reduced the contrast of the Apriltag, making it harder to detect for the Apriltag algorithm.
    \item When mounted, the gimbal box was higher than the lidar mounted on the hoverboard, confusing the location algorithm on the hoverboard.
 \end{enumerate}
 
-In the end, the loitering scenario was flipped, placing the gimbal box on top of a shelf and looking down at the moving robot, shown in Figure \ref{fig:testbed-idea-2}. Since the gimbal could not turn around completely, the box had to be placed next to the path where the hoverboard was running. A slit of green tape was placed on the floor in the room from which the hoverboard could run in a path 2x1m ellipse. Its path in the lab can be seen in Figure \ref{fig:exp-setup}.
+In the end, the loitering scenario was flipped, placing the gimbal box on top of a shelf and looking down at the moving robot, shown in Figure \ref{fig:testbed-idea-2}. Since the gimbal could not turn around completely, the box had to be placed next to the path where the hoverboard was running. A slit of green tape was placed on the floor in the room from which the hoverboard could run in a two-by-one meter ellipse. Its path in the lab can be seen in Figure \ref{fig:exp-setup}.
 
 \begin{figure}[htp]
    \centering
@@ -417,7 +417,7 @@ In the end, the loitering scenario was flipped, placing the gimbal box on top of
 The task for the operator was to keep the center of the video feed, marked with a red dot as seen in \ref{fig:interface}, aligned with the center of the Apriltag while it was moving in an ellipse inside the lab.
 
 \subsection{Experimental Setup}
-The experiment was set up in a lab where the subject and the conductor sat at a desk with a high shelf behind them, obscuring the view towards the rest of the lab. Behind the shelf, the hoverboard and gimbal boxed used were stationed. An illustration of the lab setup is provided in Figure \ref{fig:exp-setup} and a photograph of the test bed is shown in Figure \ref{fig:real-exp}.
+The experiment was set up in a lab where the subject and the conductor sat at a desk with a high shelf behind them, obscuring the view towards the rest of the lab. Behind the shelf, the hoverboard and gimbal box were stationed. An illustration of the lab setup is provided in Figure \ref{fig:exp-setup} and a photograph of the test bed is shown in Figure \ref{fig:real-exp}.
 
 
 \begin{figure}[!hbt]
@@ -445,7 +445,7 @@ There were 10 test subjects, 4 women and 6 men, with an average age of 26.1 year
 They were also asked about their experience with games with first-person-view on the scale of 0 = None, 1 = Tried, 2 = >10h, 3 = >100h, 4 = >500h, and the median result was 3.5 with 0 as the lowest and 4 as the highest. The subjects were also asked about their experience with flying drones using the same scale, and the median result was 0.5 with 0 as the lowest and 1 as the highest. 
 
 \subsubsection{Lab Conditions}
-The lab is located in the E-building at LTH, Lund University and the windows in the room face north, so there was no risk of direct sunlight during the experiments. The computer screen was 24' and the application was run on a machine with the following specifications:
+The lab is located in the E-building at LTH, Lund University and the windows in the room face north, so there was no risk of direct sunlight during the experiments. The computer screen was 24'' and the application was run on a machine with the following specifications:
 \begin{description}
    \item[CPU] Intel Core i7-4770 @ 3.40GHz, 4 cores 8 threads
    \item[RAM] 16 GB
@@ -472,7 +472,7 @@ In this section, each of the steps will be described in more detail. The experim
    & & Description of task \\
    & & Where to aim exactly on the Apriltag \\ \hline
    2 & Warm-up & The subject gets to try the setup for one lap \\ \hline
-   10 & Tests & 5 tests with added latencies [0, 200, 300, 400, 500] \\ 
+   10 & Tests & 5 tests with added latencies [0ms, 200ms, 300ms, 400ms, 600ms] \\ 
    & & in random order \\ \hline
    2 & SSQ & \\ \hline
    3 & Interview & \\ \hline
@@ -636,7 +636,7 @@ To compare the new controls to the already existing ROI mode, a button on the co
 The SSRS permit to operate BVLOS in the Gothenburg archipelago requires continuous contact with the flight tower, which was initiated two weeks ahead of a scheduled flight and throughout the entire flight.
 
 \subsection{Outdoor Conditions}
-The weather was sunny with almost no clouds. The ground-level wind was estimated to be around 5-9 m/s and the temperature was around 12 degrees Celsius.
+The weather was sunny with almost no clouds. The ground-level wind was estimated to be around 5-9m/s and the temperature was around 12 degrees Celsius.
 
 \subsection{Procedure}
 A flight plan of 17 waypoints including a loiter waypoint was uploaded to the drone. The flight plan can be seen in \ref{fig:flight-plan}. The first and the last waypoints were close to the launch and the rest were placed on a route out in the archipelago. The drone was launched in manual mode and was flown in circles around the operators, confirming that all the systems were working. The drone was then switched into auto mode and the flight plan was started.
@@ -738,7 +738,7 @@ In this section, the results from the forms and interviews are presented and dis
 \subsubsection{Trial Forms}
 As only 10 subjects completed the trials the answers from all the questions on each delay were grouped, making for 40 answers on each delay. A box plot showing the distributions of the answers is shown in \ref{fig:form-ans}. For one subject, the 200ms trail was forgotten and was instead filled with the average answer 3 for all questions afterward.
 
-Looking at the averages a clear downward trend can be seen with an increase in delay. The largest differences in score are between 0ms to 200ms and 400ms to 600ms, which is to be expected with the larger steps in delay. However, the trend does not seem to correspond to that of the quantitative results in \ref{fig:ecdf} where the step from 0ms to 200ms is about the same as between 200ms, 300ms and 400ms. Although there is a trend in the average, the distributions seen in \ref{fig:form-ans} are quite similar, and more trials and delays are necessary to deduce an exact connection between task performance and operator experience.   
+Looking at the averages a clear downward trend can be seen with an increase in delay. The largest differences in score are between 0ms to 200ms and 400ms to 600ms, which is to be expected with the larger steps in delay. However, the trend does not seem to correspond to that of the quantitative results in \ref{fig:ecdf} where the step from 0ms to 200ms is about the same as between 200ms, 300ms and 400ms. Although there is a trend in the average, the distributions seen in Figure \ref{fig:form-ans} are quite similar, and more trials and delays are necessary to deduce an exact connection between task performance and operator experience.   
 
 \begin{figure}[!hbt]
    \centering
@@ -874,7 +874,7 @@ Although the software developed for this thesis is aimed at a certain type of op
 
 In a discussion in the ArduPilot forums \cite{ardupilot-military-discussion}, a user provides an image of the software Mission Planner (a GCS in the ArduPilot ecosystem) being used in what seems to be a military operation. Although ArduPilot states in their code of conduct \cite{ardupilot-coc} that they pledge to not support or facilitate the weaponization of systems based on their software, the accessible nature of it enables anyone to use it for any purpose. In research alone, numerous examples can be found \cite{ardupilot-military} \cite{ardupilot-military-1} where parts of the ArduPilot software and hardware ecosystem are used in military settings.
 
-Despite this evidence, the nature of open source remains ill-suited for high-end military products due to the transparency of the source code. However, this is mainly applicable to products being mass-produced, as the creation of small weaponized is undoubtedly enabled by ArduPilot. This an issue for the drone industry at large, as there are many reports of commercially available drones being modified for artillery targeting or even carrying munition themselves \cite{drones-ukraine}. 
+Despite this evidence, the nature of open source remains ill-suited for high-end military products due to the transparency of the source code. However, this is mainly applicable to products being mass-produced, as the creation of small weaponized drones is undoubtedly enabled by ArduPilot. This an issue for the drone industry at large, as there are many reports of commercially available drones being modified for artillery targeting or even carrying munition themselves \cite{drones-ukraine}. 
 
 \chapter{Conclusion}
 In this chapter the goals presented in section \ref{sec:scope} are evaluated.
