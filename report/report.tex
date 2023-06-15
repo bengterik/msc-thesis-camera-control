@@ -186,7 +186,7 @@ The drone components relevant to this thesis are detailed in the following descr
 \begin{description}
    \item[Pixracer R15] The Pixracer is the flight controller, which is the brain of the aircraft. It houses the chip running the ArduPlane software as well as components and connectors relevant to in-flight operations.
 
-   \item[Raspberry Pi 4] The Raspberry Pi serves as the onboard computer, commonly known as the "companion computer" (CC) in the context of drone hardware. It is connected to the flight controller via USB and makes it possible to relay messages sent over ethernet instead of radio, allowing it to connect to a ground station over the Internet. 
+   \item[Raspberry Pi 4] The Raspberry Pi serves as the onboard computer, commonly known as the "companion computer" (CC) in the context of drone hardware. It is connected to the flight controller via USB and makes it possible to relay messages sent over Ethernet instead of radio, allowing the flight controller to connect to a ground station over the Internet. 
    
    \item[4G Modem] Sim-card modem giving access to the mobile network. 
    
@@ -275,8 +275,8 @@ As the entire drone was not needed to test the software, a Raspberry Pi, flight 
 Addressing goal \textbf{G1} of the thesis, a program was implemented in Python to display the video feed from the drone camera while taking control inputs from the operator. The inputs came from the right joystick of a PlayStation controller while the program sent messages updating the gimbal's position with a set frequency. The program could also record the video feed. A visual overview of the system is shown in Figure \ref{fig:system-overview}.
 \begin{figure}[!hbt]
    \centering
-   \includegraphics[scale=0.25]{images/system-overview.png} 
-   \caption{An overview of the GCI with the color of the connecting lines representing which software speaks to which data they transfer. On the left, the drone and its' hardware and software components: the RPi running MavProxy and UV4L, the flight controller running ArduPlane and lastly the RPi camera module. On the right, the gimbal interface and its' software components: OpenCV for obtaining and displaying video, Evdev for the controller inputs and Pymavlink for establishing the connection with the drone. }
+   \includegraphics[scale=0.4]{images/system-overview.png} 
+   \caption{An overview of the GCI with the color of the connecting lines representing which software speaks to which data they transfer. On the left, the drone and its' hardware and software components: the RPi running MavProxy and UV4L, the flight controller running ArduPlane and lastly the RPi camera module. On the right, the gimbal interface and its software components: OpenCV for obtaining and displaying video, Evdev for the controller inputs and Pymavlink for establishing the connection with the drone. }
    \label{fig:system-overview}
 \end{figure}
 
